@@ -28,6 +28,12 @@ Optionally cleanup YANG models to speed up CUE cli commands with `./...`
 rm -rf yang && rm -rf openconfig
 ```
 
+Replace ygot's `path` struct tags with `json` to be correctly recognized by CUE:
+
+```
+sed -i -E 's/path:"(\S+)"/json:"\1"/' pkg/yang.go
+```
+
 2. Init CUE mod
 
 ```
@@ -145,7 +151,7 @@ What I had to modify in the auto-generated CUE file:
 
 ```diff
 +#OpenconfigInterfaces_Interfaces_Interface_Subinterfaces: {
-+	Subinterface: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface)
++	subinterface: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface} 
 +}
 
 // OpenconfigInterfaces_Interfaces_Interface represents the /openconfig-interfaces/interfaces/interface YANG schema element.
@@ -156,7 +162,7 @@ What I had to modify in the auto-generated CUE file:
 	HoldTime?:    null | #OpenconfigInterfaces_Interfaces_Interface_HoldTime    @go(,*OpenconfigInterfaces_Interfaces_Interface_HoldTime)
 	Name?:        null | string                                                 @go(,*string)
 	RoutedVlan?:  null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan  @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan)
-+	Subinterfaces?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces
++	subinterfaces?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces
 }
 ```
 

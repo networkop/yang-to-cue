@@ -28,52 +28,52 @@ package yang
 
 // Device represents the /device YANG schema element.
 #Device: {
-	Interfaces?: null | #OpenconfigInterfaces_Interfaces @go(,*OpenconfigInterfaces_Interfaces)
+	interfaces?: null | #OpenconfigInterfaces_Interfaces @go(Interfaces,*OpenconfigInterfaces_Interfaces)
 }
 
 // OpenconfigInterfaces_Interfaces represents the /openconfig-interfaces/interfaces YANG schema element.
 #OpenconfigInterfaces_Interfaces: {
-	Interface: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface)
+	interface: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface} @go(Interface,map[string]*OpenconfigInterfaces_Interfaces_Interface)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces: {
-	Subinterface: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface)
+	subinterface: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface} 
 }
 
 // OpenconfigInterfaces_Interfaces_Interface represents the /openconfig-interfaces/interfaces/interface YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface: {
-	Aggregation?: null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation @go(,*OpenconfigInterfaces_Interfaces_Interface_Aggregation)
-	Config?:      null | #OpenconfigInterfaces_Interfaces_Interface_Config      @go(,*OpenconfigInterfaces_Interfaces_Interface_Config)
-	Ethernet?:    null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet    @go(,*OpenconfigInterfaces_Interfaces_Interface_Ethernet)
-	HoldTime?:    null | #OpenconfigInterfaces_Interfaces_Interface_HoldTime    @go(,*OpenconfigInterfaces_Interfaces_Interface_HoldTime)
-	Name?:        null | string                                                 @go(,*string)
-	RoutedVlan?:  null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan  @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan)
-	Subinterfaces?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces
+	aggregation?:   null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation @go(Aggregation,*OpenconfigInterfaces_Interfaces_Interface_Aggregation)
+	config?:        null | #OpenconfigInterfaces_Interfaces_Interface_Config      @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Config)
+	ethernet?:      null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet    @go(Ethernet,*OpenconfigInterfaces_Interfaces_Interface_Ethernet)
+	"hold-time"?:   null | #OpenconfigInterfaces_Interfaces_Interface_HoldTime    @go(HoldTime,*OpenconfigInterfaces_Interfaces_Interface_HoldTime)
+	name?:          null | string                                                 @go(Name,*string)
+	"routed-vlan"?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan  @go(RoutedVlan,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan)
+	subinterfaces?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation represents the /openconfig-interfaces/interfaces/interface/aggregation YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation: {
-	Config?:       null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config       @go(,*OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config)
-	SwitchedVlan?: null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan @go(,*OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan)
+	config?:          null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config       @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config)
+	"switched-vlan"?: null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan @go(SwitchedVlan,*OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config represents the /openconfig-interfaces/interfaces/interface/aggregation/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config: {
-	LagType:   #E_OpenconfigIfAggregate_AggregationType
-	MinLinks?: null | uint16 @go(,*uint16)
+	"lag-type":   #E_OpenconfigIfAggregate_AggregationType @go(LagType)
+	"min-links"?: null | uint16                            @go(MinLinks,*uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan represents the /openconfig-interfaces/interfaces/interface/aggregation/switched-vlan YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config represents the /openconfig-interfaces/interfaces/interface/aggregation/switched-vlan/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config: {
-	AccessVlan?:   null | uint16 @go(,*uint16)
-	InterfaceMode: #E_OpenconfigVlan_VlanModeType
-	NativeVlan?:   null | uint16 @go(,*uint16)
-	TrunkVlans: [...#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union] @go(,[]OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union)
+	"access-vlan"?:   null | uint16                  @go(AccessVlan,*uint16)
+	"interface-mode": #E_OpenconfigVlan_VlanModeType @go(InterfaceMode)
+	"native-vlan"?:   null | uint16                  @go(NativeVlan,*uint16)
+	"trunk-vlans": [...#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union is an interface that is implemented by valid types for the union
@@ -94,44 +94,44 @@ package yang
 
 // OpenconfigInterfaces_Interfaces_Interface_Config represents the /openconfig-interfaces/interfaces/interface/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Config: {
-	Description?:  null | string @go(,*string)
-	Enabled?:      null | bool   @go(,*bool)
-	LoopbackMode?: null | bool   @go(,*bool)
-	Mtu?:          null | uint16 @go(,*uint16)
-	Name?:         null | string @go(,*string)
-	Tpid?:          #E_OpenconfigVlanTypes_TPID_TYPES
-	Type?:          #E_IETFInterfaces_InterfaceType
+	description?:     null | string                     @go(Description,*string)
+	enabled?:         null | bool                       @go(Enabled,*bool)
+	"loopback-mode"?: null | bool                       @go(LoopbackMode,*bool)
+	mtu?:             null | uint16                     @go(Mtu,*uint16)
+	name?:            null | string                     @go(Name,*string)
+	tpid?:             #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
+	type?:             #E_IETFInterfaces_InterfaceType   @go(Type)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet represents the /openconfig-interfaces/interfaces/interface/ethernet YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet: {
-	Config?:       null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config       @go(,*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config)
-	SwitchedVlan?: null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan @go(,*OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan)
+	config?:          null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config       @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config)
+	"switched-vlan"?: null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan @go(SwitchedVlan,*OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config represents the /openconfig-interfaces/interfaces/interface/ethernet/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config: {
-	AggregateId?:            null | string @go(,*string)
-	AutoNegotiate?:          null | bool   @go(,*bool)
-	DuplexMode:              #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode
-	EnableFlowControl?:      null | bool @go(,*bool)
-	FecMode:                 #E_OpenconfigIfEthernet_INTERFACE_FEC
-	MacAddress?:             null | string @go(,*string)
-	PortSpeed:               #E_OpenconfigIfEthernet_ETHERNET_SPEED
-	StandaloneLinkTraining?: null | bool @go(,*bool)
+	"aggregate-id"?:             null | string                                                           @go(AggregateId,*string)
+	"auto-negotiate"?:           null | bool                                                             @go(AutoNegotiate,*bool)
+	"duplex-mode":               #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode @go(DuplexMode)
+	"enable-flow-control"?:      null | bool                                                             @go(EnableFlowControl,*bool)
+	"fec-mode":                  #E_OpenconfigIfEthernet_INTERFACE_FEC                                   @go(FecMode)
+	"mac-address"?:              null | string                                                           @go(MacAddress,*string)
+	"port-speed":                #E_OpenconfigIfEthernet_ETHERNET_SPEED                                  @go(PortSpeed)
+	"standalone-link-training"?: null | bool                                                             @go(StandaloneLinkTraining,*bool)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan represents the /openconfig-interfaces/interfaces/interface/ethernet/switched-vlan YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config represents the /openconfig-interfaces/interfaces/interface/ethernet/switched-vlan/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config: {
-	AccessVlan?:   null | uint16 @go(,*uint16)
-	InterfaceMode: #E_OpenconfigVlan_VlanModeType
-	NativeVlan?:   null | uint16 @go(,*uint16)
-	TrunkVlans: [...#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union] @go(,[]OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union)
+	"access-vlan"?:   null | uint16                  @go(AccessVlan,*uint16)
+	"interface-mode": #E_OpenconfigVlan_VlanModeType @go(InterfaceMode)
+	"native-vlan"?:   null | uint16                  @go(NativeVlan,*uint16)
+	"trunk-vlans": [...#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union is an interface that is implemented by valid types for the union
@@ -152,25 +152,25 @@ package yang
 
 // OpenconfigInterfaces_Interfaces_Interface_HoldTime represents the /openconfig-interfaces/interfaces/interface/hold-time YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_HoldTime: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config represents the /openconfig-interfaces/interfaces/interface/hold-time/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config: {
-	Down?: null | uint32 @go(,*uint32)
-	Up?:   null | uint32 @go(,*uint32)
+	down?: null | uint32 @go(Down,*uint32)
+	up?:   null | uint32 @go(Up,*uint32)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan represents the /openconfig-interfaces/interfaces/interface/routed-vlan YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config)
-	Ipv4?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4   @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4)
-	Ipv6?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6   @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config)
+	ipv4?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4   @go(Ipv4,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4)
+	ipv6?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6   @go(Ipv6,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config: {
-	Vlan: #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union
+	vlan: #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union @go(Vlan)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union is an interface that is implemented by valid types for the union
@@ -191,483 +191,483 @@ package yang
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4 represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4 YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4: {
-	Addresses?:  null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses  @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses)
-	Config?:     null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config     @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config)
-	Neighbors?:  null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors  @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors)
-	ProxyArp?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp   @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp)
-	Unnumbered?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered)
+	addresses?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses  @go(Addresses,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses)
+	config?:      null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config     @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config)
+	neighbors?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors  @go(Neighbors,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors)
+	"proxy-arp"?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp   @go(ProxyArp,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp)
+	unnumbered?:  null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered @go(Unnumbered,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses: {
-	Address: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address)
+	address: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address} @go(Address,map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config)
-	Ip?:     null | string                                                                              @go(,*string)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config)
+	ip?:     null | string                                                                              @go(Ip,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config: {
-	Ip?:           null | string @go(,*string)
-	PrefixLength?: null | uint8  @go(,*uint8)
+	ip?:              null | string @go(Ip,*string)
+	"prefix-length"?: null | uint8  @go(PrefixLength,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup: {
-	Config?:            null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config            @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config)
-	InterfaceTracking?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking)
-	VirtualRouterId?:   null | uint8                                                                                                         @go(,*uint8)
+	config?:               null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config            @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config)
+	"interface-tracking"?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking @go(InterfaceTracking,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking)
+	"virtual-router-id"?:  null | uint8                                                                                                         @go(VirtualRouterId,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config: {
-	AcceptMode?:            null | bool   @go(,*bool)
-	AdvertisementInterval?: null | uint16 @go(,*uint16)
-	Preempt?:               null | bool   @go(,*bool)
-	PreemptDelay?:          null | uint16 @go(,*uint16)
-	Priority?:              null | uint8  @go(,*uint8)
-	VirtualAddress: [...string] @go(,[]string)
-	VirtualRouterId?: null | uint8 @go(,*uint8)
+	"accept-mode"?:            null | bool   @go(AcceptMode,*bool)
+	"advertisement-interval"?: null | uint16 @go(AdvertisementInterval,*uint16)
+	preempt?:                  null | bool   @go(Preempt,*bool)
+	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
+	priority?:                 null | uint8  @go(Priority,*uint8)
+	"virtual-address": [...string] @go(VirtualAddress,[]string)
+	"virtual-router-id"?: null | uint8 @go(VirtualRouterId,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/interface-tracking YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/interface-tracking/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config: {
-	PriorityDecrement?: null | uint8 @go(,*uint8)
-	TrackInterface: [...string] @go(,[]string)
+	"priority-decrement"?: null | uint8 @go(PriorityDecrement,*uint8)
+	"track-interface": [...string] @go(TrackInterface,[]string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config: {
-	DhcpClient?: null | bool   @go(,*bool)
-	Enabled?:    null | bool   @go(,*bool)
-	Mtu?:        null | uint16 @go(,*uint16)
+	"dhcp-client"?: null | bool   @go(DhcpClient,*bool)
+	enabled?:       null | bool   @go(Enabled,*bool)
+	mtu?:           null | uint16 @go(Mtu,*uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/neighbors YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors: {
-	Neighbor: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor)
+	neighbor: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor} @go(Neighbor,map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/neighbors/neighbor YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config)
-	Ip?:     null | string                                                                               @go(,*string)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config)
+	ip?:     null | string                                                                               @go(Ip,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/neighbors/neighbor/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config: {
-	Ip?:               null | string @go(,*string)
-	LinkLayerAddress?: null | string @go(,*string)
+	ip?:                   null | string @go(Ip,*string)
+	"link-layer-address"?: null | string @go(LinkLayerAddress,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/proxy-arp YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/proxy-arp/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config: {
-	Mode: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode
+	mode: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode @go(Mode)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/unnumbered YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered: {
-	Config?:       null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config       @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config)
-	InterfaceRef?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef)
+	config?:          null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config       @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config)
+	"interface-ref"?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef @go(InterfaceRef,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/unnumbered/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config: {
-	Enabled?: null | bool @go(,*bool)
+	enabled?: null | bool @go(Enabled,*bool)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/unnumbered/interface-ref YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/unnumbered/interface-ref/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config: {
-	Interface?:    null | string @go(,*string)
-	Subinterface?: null | uint32 @go(,*uint32)
+	interface?:    null | string @go(Interface,*string)
+	subinterface?: null | uint32 @go(Subinterface,*uint32)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6 represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6 YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6: {
-	Addresses?:           null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses           @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses)
-	Config?:              null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config              @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config)
-	Neighbors?:           null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors           @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors)
-	RouterAdvertisement?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement)
-	Unnumbered?:          null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered          @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered)
+	addresses?:              null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses           @go(Addresses,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses)
+	config?:                 null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config              @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config)
+	neighbors?:              null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors           @go(Neighbors,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors)
+	"router-advertisement"?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement @go(RouterAdvertisement,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement)
+	unnumbered?:             null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered          @go(Unnumbered,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses: {
-	Address: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address)
+	address: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address} @go(Address,map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config)
-	Ip?:     null | string                                                                              @go(,*string)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config)
+	ip?:     null | string                                                                              @go(Ip,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config: {
-	Ip?:           null | string @go(,*string)
-	PrefixLength?: null | uint8  @go(,*uint8)
+	ip?:              null | string @go(Ip,*string)
+	"prefix-length"?: null | uint8  @go(PrefixLength,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup: {
-	Config?:            null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config            @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config)
-	InterfaceTracking?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking)
-	VirtualRouterId?:   null | uint8                                                                                                         @go(,*uint8)
+	config?:               null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config            @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config)
+	"interface-tracking"?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking @go(InterfaceTracking,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking)
+	"virtual-router-id"?:  null | uint8                                                                                                         @go(VirtualRouterId,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config: {
-	AcceptMode?:            null | bool   @go(,*bool)
-	AdvertisementInterval?: null | uint16 @go(,*uint16)
-	Preempt?:               null | bool   @go(,*bool)
-	PreemptDelay?:          null | uint16 @go(,*uint16)
-	Priority?:              null | uint8  @go(,*uint8)
-	VirtualAddress: [...string] @go(,[]string)
-	VirtualLinkLocal?: null | string @go(,*string)
-	VirtualRouterId?:  null | uint8  @go(,*uint8)
+	"accept-mode"?:            null | bool   @go(AcceptMode,*bool)
+	"advertisement-interval"?: null | uint16 @go(AdvertisementInterval,*uint16)
+	preempt?:                  null | bool   @go(Preempt,*bool)
+	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
+	priority?:                 null | uint8  @go(Priority,*uint8)
+	"virtual-address": [...string] @go(VirtualAddress,[]string)
+	"virtual-link-local"?: null | string @go(VirtualLinkLocal,*string)
+	"virtual-router-id"?:  null | uint8  @go(VirtualRouterId,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/interface-tracking YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/interface-tracking/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config: {
-	PriorityDecrement?: null | uint8 @go(,*uint8)
-	TrackInterface: [...string] @go(,[]string)
+	"priority-decrement"?: null | uint8 @go(PriorityDecrement,*uint8)
+	"track-interface": [...string] @go(TrackInterface,[]string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config: {
-	DhcpClient?:             null | bool   @go(,*bool)
-	DupAddrDetectTransmits?: null | uint32 @go(,*uint32)
-	Enabled?:                null | bool   @go(,*bool)
-	Mtu?:                    null | uint32 @go(,*uint32)
+	"dhcp-client"?:               null | bool   @go(DhcpClient,*bool)
+	"dup-addr-detect-transmits"?: null | uint32 @go(DupAddrDetectTransmits,*uint32)
+	enabled?:                     null | bool   @go(Enabled,*bool)
+	mtu?:                         null | uint32 @go(Mtu,*uint32)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/neighbors YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors: {
-	Neighbor: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor)
+	neighbor: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor} @go(Neighbor,map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/neighbors/neighbor YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config)
-	Ip?:     null | string                                                                               @go(,*string)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config)
+	ip?:     null | string                                                                               @go(Ip,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/neighbors/neighbor/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config: {
-	Ip?:               null | string @go(,*string)
-	LinkLayerAddress?: null | string @go(,*string)
+	ip?:                   null | string @go(Ip,*string)
+	"link-layer-address"?: null | string @go(LinkLayerAddress,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/router-advertisement YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/router-advertisement/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config: {
-	Interval?: null | uint32 @go(,*uint32)
-	Lifetime?: null | uint32 @go(,*uint32)
-	Suppress?: null | bool   @go(,*bool)
+	interval?: null | uint32 @go(Interval,*uint32)
+	lifetime?: null | uint32 @go(Lifetime,*uint32)
+	suppress?: null | bool   @go(Suppress,*bool)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/unnumbered YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered: {
-	Config?:       null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config       @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config)
-	InterfaceRef?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef)
+	config?:          null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config       @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config)
+	"interface-ref"?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef @go(InterfaceRef,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/unnumbered/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config: {
-	Enabled?: null | bool @go(,*bool)
+	enabled?: null | bool @go(Enabled,*bool)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/unnumbered/interface-ref YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/unnumbered/interface-ref/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config: {
-	Interface?:    null | string @go(,*string)
-	Subinterface?: null | uint32 @go(,*uint32)
+	interface?:    null | string @go(Interface,*string)
+	subinterface?: null | uint32 @go(Subinterface,*uint32)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config)
-	Index?:  null | uint32                                                                       @go(,*uint32)
-	Ipv4?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4   @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4)
-	Ipv6?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6   @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6)
-	Vlan?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan   @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config)
+	index?:  null | uint32                                                                       @go(Index,*uint32)
+	ipv4?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4   @go(Ipv4,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4)
+	ipv6?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6   @go(Ipv6,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6)
+	vlan?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan   @go(Vlan,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config: {
-	Description?: null | string @go(,*string)
-	Enabled?:     null | bool   @go(,*bool)
-	Index?:       null | uint32 @go(,*uint32)
+	description?: null | string @go(Description,*string)
+	enabled?:     null | bool   @go(Enabled,*bool)
+	index?:       null | uint32 @go(Index,*uint32)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4 represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4 YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4: {
-	Addresses?:  null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses  @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses)
-	Config?:     null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config     @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config)
-	Neighbors?:  null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors  @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors)
-	ProxyArp?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp   @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp)
-	Unnumbered?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered)
+	addresses?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses  @go(Addresses,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses)
+	config?:      null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config     @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config)
+	neighbors?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors  @go(Neighbors,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors)
+	"proxy-arp"?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp   @go(ProxyArp,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp)
+	unnumbered?:  null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered @go(Unnumbered,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses: {
-	Address: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address)
+	address: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address} @go(Address,map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config)
-	Ip?:     null | string                                                                                              @go(,*string)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config)
+	ip?:     null | string                                                                                              @go(Ip,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config: {
-	Ip?:           null | string @go(,*string)
-	PrefixLength?: null | uint8  @go(,*uint8)
+	ip?:              null | string @go(Ip,*string)
+	"prefix-length"?: null | uint8  @go(PrefixLength,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup: {
-	Config?:            null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config            @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config)
-	InterfaceTracking?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking)
-	VirtualRouterId?:   null | uint8                                                                                                                         @go(,*uint8)
+	config?:               null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config            @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config)
+	"interface-tracking"?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking @go(InterfaceTracking,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking)
+	"virtual-router-id"?:  null | uint8                                                                                                                         @go(VirtualRouterId,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config: {
-	AcceptMode?:            null | bool   @go(,*bool)
-	AdvertisementInterval?: null | uint16 @go(,*uint16)
-	Preempt?:               null | bool   @go(,*bool)
-	PreemptDelay?:          null | uint16 @go(,*uint16)
-	Priority?:              null | uint8  @go(,*uint8)
-	VirtualAddress: [...string] @go(,[]string)
-	VirtualRouterId?: null | uint8 @go(,*uint8)
+	"accept-mode"?:            null | bool   @go(AcceptMode,*bool)
+	"advertisement-interval"?: null | uint16 @go(AdvertisementInterval,*uint16)
+	preempt?:                  null | bool   @go(Preempt,*bool)
+	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
+	priority?:                 null | uint8  @go(Priority,*uint8)
+	"virtual-address": [...string] @go(VirtualAddress,[]string)
+	"virtual-router-id"?: null | uint8 @go(VirtualRouterId,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/interface-tracking YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/interface-tracking/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config: {
-	PriorityDecrement?: null | uint8 @go(,*uint8)
-	TrackInterface: [...string] @go(,[]string)
+	"priority-decrement"?: null | uint8 @go(PriorityDecrement,*uint8)
+	"track-interface": [...string] @go(TrackInterface,[]string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config: {
-	DhcpClient?: null | bool   @go(,*bool)
-	Enabled?:    null | bool   @go(,*bool)
-	Mtu?:        null | uint16 @go(,*uint16)
+	"dhcp-client"?: null | bool   @go(DhcpClient,*bool)
+	enabled?:       null | bool   @go(Enabled,*bool)
+	mtu?:           null | uint16 @go(Mtu,*uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/neighbors YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors: {
-	Neighbor: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor)
+	neighbor: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor} @go(Neighbor,map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config)
-	Ip?:     null | string                                                                                               @go(,*string)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config)
+	ip?:     null | string                                                                                               @go(Ip,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config: {
-	Ip?:               null | string @go(,*string)
-	LinkLayerAddress?: null | string @go(,*string)
+	ip?:                   null | string @go(Ip,*string)
+	"link-layer-address"?: null | string @go(LinkLayerAddress,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/proxy-arp YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/proxy-arp/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config: {
-	Mode: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode
+	mode: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode @go(Mode)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/unnumbered YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered: {
-	Config?:       null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config       @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config)
-	InterfaceRef?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef)
+	config?:          null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config       @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config)
+	"interface-ref"?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef @go(InterfaceRef,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/unnumbered/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config: {
-	Enabled?: null | bool @go(,*bool)
+	enabled?: null | bool @go(Enabled,*bool)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/unnumbered/interface-ref YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/unnumbered/interface-ref/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config: {
-	Interface?:    null | string @go(,*string)
-	Subinterface?: null | uint32 @go(,*uint32)
+	interface?:    null | string @go(Interface,*string)
+	subinterface?: null | uint32 @go(Subinterface,*uint32)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6 represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6 YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6: {
-	Addresses?:           null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses           @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses)
-	Config?:              null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config              @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config)
-	Neighbors?:           null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors           @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors)
-	RouterAdvertisement?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement)
-	Unnumbered?:          null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered          @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered)
+	addresses?:              null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses           @go(Addresses,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses)
+	config?:                 null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config              @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config)
+	neighbors?:              null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors           @go(Neighbors,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors)
+	"router-advertisement"?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement @go(RouterAdvertisement,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement)
+	unnumbered?:             null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered          @go(Unnumbered,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses: {
-	Address: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address)
+	address: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address} @go(Address,map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config)
-	Ip?:     null | string                                                                                              @go(,*string)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config)
+	ip?:     null | string                                                                                              @go(Ip,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config: {
-	Ip?:           null | string @go(,*string)
-	PrefixLength?: null | uint8  @go(,*uint8)
+	ip?:              null | string @go(Ip,*string)
+	"prefix-length"?: null | uint8  @go(PrefixLength,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup: {
-	Config?:            null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config            @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config)
-	InterfaceTracking?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking)
-	VirtualRouterId?:   null | uint8                                                                                                                         @go(,*uint8)
+	config?:               null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config            @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config)
+	"interface-tracking"?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking @go(InterfaceTracking,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking)
+	"virtual-router-id"?:  null | uint8                                                                                                                         @go(VirtualRouterId,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config: {
-	AcceptMode?:            null | bool   @go(,*bool)
-	AdvertisementInterval?: null | uint16 @go(,*uint16)
-	Preempt?:               null | bool   @go(,*bool)
-	PreemptDelay?:          null | uint16 @go(,*uint16)
-	Priority?:              null | uint8  @go(,*uint8)
-	VirtualAddress: [...string] @go(,[]string)
-	VirtualLinkLocal?: null | string @go(,*string)
-	VirtualRouterId?:  null | uint8  @go(,*uint8)
+	"accept-mode"?:            null | bool   @go(AcceptMode,*bool)
+	"advertisement-interval"?: null | uint16 @go(AdvertisementInterval,*uint16)
+	preempt?:                  null | bool   @go(Preempt,*bool)
+	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
+	priority?:                 null | uint8  @go(Priority,*uint8)
+	"virtual-address": [...string] @go(VirtualAddress,[]string)
+	"virtual-link-local"?: null | string @go(VirtualLinkLocal,*string)
+	"virtual-router-id"?:  null | uint8  @go(VirtualRouterId,*uint8)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/interface-tracking YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/interface-tracking/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config: {
-	PriorityDecrement?: null | uint8 @go(,*uint8)
-	TrackInterface: [...string] @go(,[]string)
+	"priority-decrement"?: null | uint8 @go(PriorityDecrement,*uint8)
+	"track-interface": [...string] @go(TrackInterface,[]string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config: {
-	DhcpClient?:             null | bool   @go(,*bool)
-	DupAddrDetectTransmits?: null | uint32 @go(,*uint32)
-	Enabled?:                null | bool   @go(,*bool)
-	Mtu?:                    null | uint32 @go(,*uint32)
+	"dhcp-client"?:               null | bool   @go(DhcpClient,*bool)
+	"dup-addr-detect-transmits"?: null | uint32 @go(DupAddrDetectTransmits,*uint32)
+	enabled?:                     null | bool   @go(Enabled,*bool)
+	mtu?:                         null | uint32 @go(Mtu,*uint32)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/neighbors YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors: {
-	Neighbor: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor} @go(,map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor)
+	neighbor: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor} @go(Neighbor,map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/neighbors/neighbor YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config)
-	Ip?:     null | string                                                                                               @go(,*string)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config)
+	ip?:     null | string                                                                                               @go(Ip,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/neighbors/neighbor/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config: {
-	Ip?:               null | string @go(,*string)
-	LinkLayerAddress?: null | string @go(,*string)
+	ip?:                   null | string @go(Ip,*string)
+	"link-layer-address"?: null | string @go(LinkLayerAddress,*string)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/router-advertisement YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/router-advertisement/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config: {
-	Interval?: null | uint32 @go(,*uint32)
-	Lifetime?: null | uint32 @go(,*uint32)
-	Suppress?: null | bool   @go(,*bool)
+	interval?: null | uint32 @go(Interval,*uint32)
+	lifetime?: null | uint32 @go(Lifetime,*uint32)
+	suppress?: null | bool   @go(Suppress,*bool)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/unnumbered YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered: {
-	Config?:       null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config       @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config)
-	InterfaceRef?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef)
+	config?:          null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config       @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config)
+	"interface-ref"?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef @go(InterfaceRef,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/unnumbered/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config: {
-	Enabled?: null | bool @go(,*bool)
+	enabled?: null | bool @go(Enabled,*bool)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/unnumbered/interface-ref YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/unnumbered/interface-ref/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config: {
-	Interface?:    null | string @go(,*string)
-	Subinterface?: null | uint32 @go(,*uint32)
+	interface?:    null | string @go(Interface,*string)
+	subinterface?: null | uint32 @go(Subinterface,*uint32)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan: {
-	Config?:         null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config         @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config)
-	EgressMapping?:  null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping  @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping)
-	IngressMapping?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping)
-	Match?:          null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match          @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match)
+	config?:            null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config         @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config)
+	"egress-mapping"?:  null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping  @go(EgressMapping,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping)
+	"ingress-mapping"?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping @go(IngressMapping,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping)
+	match?:             null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match          @go(Match,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config: {
-	VlanId: #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union
+	"vlan-id": #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union @go(VlanId)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union is an interface that is implemented by valid types for the union
@@ -688,140 +688,140 @@ package yang
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/egress-mapping YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/egress-mapping/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config: {
-	Tpid:            #E_OpenconfigVlanTypes_TPID_TYPES
-	VlanId?:         null | uint16 @go(,*uint16)
-	VlanStackAction: #E_OpenconfigVlan_VlanStackAction
+	tpid:                #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
+	"vlan-id"?:          null | uint16                     @go(VlanId,*uint16)
+	"vlan-stack-action": #E_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/ingress-mapping YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/ingress-mapping/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config: {
-	Tpid:            #E_OpenconfigVlanTypes_TPID_TYPES
-	VlanId?:         null | uint16 @go(,*uint16)
-	VlanStackAction: #E_OpenconfigVlan_VlanStackAction
+	tpid:                #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
+	"vlan-id"?:          null | uint16                     @go(VlanId,*uint16)
+	"vlan-stack-action": #E_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match: {
-	DoubleTagged?:                null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged                @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged)
-	DoubleTaggedInnerList?:       null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList       @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList)
-	DoubleTaggedInnerOuterRange?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange)
-	DoubleTaggedInnerRange?:      null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange      @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange)
-	DoubleTaggedOuterList?:       null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList       @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList)
-	DoubleTaggedOuterRange?:      null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange      @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange)
-	SingleTagged?:                null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged                @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged)
-	SingleTaggedList?:            null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList            @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList)
-	SingleTaggedRange?:           null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange           @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange)
+	"double-tagged"?:                   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged                @go(DoubleTagged,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged)
+	"double-tagged-inner-list"?:        null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList       @go(DoubleTaggedInnerList,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList)
+	"double-tagged-inner-outer-range"?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange @go(DoubleTaggedInnerOuterRange,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange)
+	"double-tagged-inner-range"?:       null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange      @go(DoubleTaggedInnerRange,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange)
+	"double-tagged-outer-list"?:        null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList       @go(DoubleTaggedOuterList,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList)
+	"double-tagged-outer-range"?:       null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange      @go(DoubleTaggedOuterRange,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange)
+	"single-tagged"?:                   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged                @go(SingleTagged,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged)
+	"single-tagged-list"?:              null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList            @go(SingleTaggedList,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList)
+	"single-tagged-range"?:             null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange           @go(SingleTaggedRange,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-list YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-list/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config: {
-	InnerVlanIds: [...uint16] @go(,[]uint16)
-	OuterVlanId?: null | uint16 @go(,*uint16)
+	"inner-vlan-ids": [...uint16] @go(InnerVlanIds,[]uint16)
+	"outer-vlan-id"?: null | uint16 @go(OuterVlanId,*uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-outer-range YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-outer-range/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config: {
-	InnerHighVlanId?: null | uint16 @go(,*uint16)
-	InnerLowVlanId?:  null | uint16 @go(,*uint16)
-	OuterHighVlanId?: null | uint16 @go(,*uint16)
-	OuterLowVlanId?:  null | uint16 @go(,*uint16)
+	"inner-high-vlan-id"?: null | uint16 @go(InnerHighVlanId,*uint16)
+	"inner-low-vlan-id"?:  null | uint16 @go(InnerLowVlanId,*uint16)
+	"outer-high-vlan-id"?: null | uint16 @go(OuterHighVlanId,*uint16)
+	"outer-low-vlan-id"?:  null | uint16 @go(OuterLowVlanId,*uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-range YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-range/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config: {
-	InnerHighVlanId?: null | uint16 @go(,*uint16)
-	InnerLowVlanId?:  null | uint16 @go(,*uint16)
-	OuterVlanId: [...uint16] @go(,[]uint16)
+	"inner-high-vlan-id"?: null | uint16 @go(InnerHighVlanId,*uint16)
+	"inner-low-vlan-id"?:  null | uint16 @go(InnerLowVlanId,*uint16)
+	"outer-vlan-id": [...uint16] @go(OuterVlanId,[]uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-outer-list YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-outer-list/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config: {
-	InnerVlanId?: null | uint16 @go(,*uint16)
-	OuterVlanIds: [...uint16] @go(,[]uint16)
+	"inner-vlan-id"?: null | uint16 @go(InnerVlanId,*uint16)
+	"outer-vlan-ids": [...uint16] @go(OuterVlanIds,[]uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-outer-range YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-outer-range/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config: {
-	InnerVlanId?:     null | uint16 @go(,*uint16)
-	OuterHighVlanId?: null | uint16 @go(,*uint16)
-	OuterLowVlanId?:  null | uint16 @go(,*uint16)
+	"inner-vlan-id"?:      null | uint16 @go(InnerVlanId,*uint16)
+	"outer-high-vlan-id"?: null | uint16 @go(OuterHighVlanId,*uint16)
+	"outer-low-vlan-id"?:  null | uint16 @go(OuterLowVlanId,*uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config: {
-	InnerVlanId?: null | uint16 @go(,*uint16)
-	OuterVlanId?: null | uint16 @go(,*uint16)
+	"inner-vlan-id"?: null | uint16 @go(InnerVlanId,*uint16)
+	"outer-vlan-id"?: null | uint16 @go(OuterVlanId,*uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged-list YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged-list/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config: {
-	VlanIds: [...uint16] @go(,[]uint16)
+	"vlan-ids": [...uint16] @go(VlanIds,[]uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged-range YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange: {
-	Config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config @go(,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config)
+	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged-range/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config: {
-	HighVlanId?: null | uint16 @go(,*uint16)
-	LowVlanId?:  null | uint16 @go(,*uint16)
+	"high-vlan-id"?: null | uint16 @go(HighVlanId,*uint16)
+	"low-vlan-id"?:  null | uint16 @go(LowVlanId,*uint16)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config: {
-	VlanId?: null | uint16 @go(,*uint16)
+	"vlan-id"?: null | uint16 @go(VlanId,*uint16)
 }
 
 // E_IETFInterfaces_InterfaceType is a derived int64 type which is used to represent

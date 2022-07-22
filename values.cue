@@ -5,27 +5,27 @@ import intfs "github.com/networkop/yang-to-cue/pkg:yang"
 
 interfaces: intfs.#OpenconfigInterfaces_Interfaces
 
-interfaces: Interface: loopback0: {
-	Config: {
-		Description: "loopback interface"
-		Mtu:         1500
-		Name:        "loopback0"
+interfaces: interface: loopback0: {
+	config: {
+		description: "loopback interface"
+		mtu:         1500
+		name:        "loopback0"
 	}
 
-	Subinterfaces: {
-		Subinterface: "0": {
-			Config: {
-				Description: "default subinterface"
-				Index:       0
+	subinterfaces: {
+		subinterface: "0": {
+			config: {
+				description: "default subinterface"
+				index:       0
 			}
-            Index: 0
-			Ipv4: {
-				Addresses: {
-					Address: "192.0.2.1": {
-						Ip: "192.0.2.1"
-						Config: {
-							PrefixLength: 24
-							Ip:           "192.0.2.1"
+            index: 0
+			ipv4: {
+				addresses: {
+					address: "192.0.2.1": {
+						ip: "192.0.2.1"
+						config: {
+							"prefix-length": 24
+							ip:           "192.0.2.1"
 						}
 					}
 				}
