@@ -1,33 +1,38 @@
 {
-  "interface": [
-    {
-      "config": {
-        "description": "loopback interface",
-        "mtu": 1500
-      },
-      "name": "loopback0",
-      "subinterfaces": {
-        "subinterface": [
-          {
-            "config": {
-              "description": "default subinterface"
-            },
-            "index": 0,
-            "ipv4": {
-              "addresses": {
-                "address": [
-                  {
-                    "config": {
-                      "prefix-length": 24
-                    },
-                    "ip": "192.0.2.1"
-                  }
-                ]
+  "interfaces": {
+    "interface": [
+      {
+        "config": {
+          "description": "loopback interface",
+          "mtu": 1500,
+          "name": "loopback0"
+        },
+        "name": "loopback0",
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "config": {
+                "description": "default subinterface",
+                "index": 0
+              },
+              "index": 0,
+              "ipv4": {
+                "addresses": {
+                  "address": [
+                    {
+                      "config": {
+                        "ip": "192.0.2.1",
+                        "prefix-length": 24
+                      },
+                      "ip": "192.0.2.1"
+                    }
+                  ]
+                }
               }
             }
-          }
-        ]
+          ]
+        }
       }
-    }
-  ]
+    ]
+  }
 }

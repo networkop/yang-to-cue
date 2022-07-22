@@ -3,14 +3,15 @@ package values
 import intfs "github.com/networkop/yang-to-cue/pkg:yang"
 
 
-Interface: [string]: intfs.#OpenconfigInterfaces_Interfaces_Interface
+interfaces: intfs.#OpenconfigInterfaces_Interfaces
 
-Interface: loopback0: {
+interfaces: Interface: loopback0: {
 	Config: {
 		Description: "loopback interface"
 		Mtu:         1500
 		Name:        "loopback0"
 	}
+
 	Subinterfaces: {
 		Subinterface: "0": {
 			Config: {
