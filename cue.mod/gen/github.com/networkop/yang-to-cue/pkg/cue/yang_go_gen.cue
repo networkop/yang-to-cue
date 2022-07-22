@@ -36,6 +36,10 @@ package yang
 	interface: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface} @go(Interface,map[string]*OpenconfigInterfaces_Interfaces_Interface)
 }
 
+#OpenconfigInterfaces_Interfaces_Interface_Subinterfaces: {
+	subinterface: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface} 
+}
+
 // OpenconfigInterfaces_Interfaces_Interface represents the /openconfig-interfaces/interfaces/interface YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface: {
 	aggregation?:   null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation @go(Aggregation,*OpenconfigInterfaces_Interfaces_Interface_Aggregation)
@@ -44,6 +48,7 @@ package yang
 	"hold-time"?:   null | #OpenconfigInterfaces_Interfaces_Interface_HoldTime    @go(HoldTime,*OpenconfigInterfaces_Interfaces_Interface_HoldTime)
 	name?:          null | string                                                 @go(Name,*string)
 	"routed-vlan"?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan  @go(RoutedVlan,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan)
+	subinterfaces?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation represents the /openconfig-interfaces/interfaces/interface/aggregation YANG schema element.
@@ -94,8 +99,8 @@ package yang
 	"loopback-mode"?: null | bool                       @go(LoopbackMode,*bool)
 	mtu?:             null | uint16                     @go(Mtu,*uint16)
 	name?:            null | string                     @go(Name,*string)
-	tpid:             #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	type:             #E_IETFInterfaces_InterfaceType   @go(Type)
+	tpid?:             #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
+	type?:             #E_IETFInterfaces_InterfaceType   @go(Type)
 }
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet represents the /openconfig-interfaces/interfaces/interface/ethernet YANG schema element.

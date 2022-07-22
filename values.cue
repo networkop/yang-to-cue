@@ -1,6 +1,6 @@
 package values
 
-import intfs "github.com/networkop/yang-to-cue/pkg:yang"
+import intfs "github.com/networkop/yang-to-cue/pkg/cue:yang"
 
 
 interfaces: intfs.#OpenconfigInterfaces_Interfaces
