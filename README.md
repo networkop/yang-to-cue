@@ -14,7 +14,7 @@ go run github.com/openconfig/ygot/generator \
 -path=openconfig \
 -generate_fakeroot \
 -fakeroot_name=device \
--output_file=pkg/yang.go \
+-output_file=pkg/ygot/yang.go \
 -compress_paths=false \
 -exclude_modules=ietf-interfaces \
 -package_name=yang \
@@ -31,7 +31,7 @@ rm -rf yang && rm -rf openconfig
 Replace ygot's `path` struct tags with `json` to be correctly recognized by CUE:
 
 ```
-sed -i -E 's/path:"(\S+)"/json:"\1"/' pkg/yang.go
+sed  -E 's/path:"(\S+)"/json:"\1"/' pkg/ygot/yang.go > pkg/cue/yang.go
 ```
 
 2. Init CUE mod
@@ -44,7 +44,7 @@ cue mod init yang.cue
 
 
 ```
-cue get go github.com/networkop/yang-to-cue/pkg/...
+cue get go github.com/networkop/yang-to-cue/pkg/cue/...
 ```
 
 4. Write some CUE to model data
@@ -62,29 +62,29 @@ cue eval ./... --out=json
 ```json
 {
     "interfaces": {
-        "Interface": {
+        "interface": {
             "loopback0": {
-                "Config": {
-                    "Description": "loopback interface",
-                    "Mtu": 1500,
-                    "Name": "loopback0"
+                "config": {
+                    "description": "loopback interface",
+                    "mtu": 1500,
+                    "name": "loopback0"
                 },
-                "Subinterfaces": {
-                    "Subinterface": {
+                "subinterfaces": {
+                    "subinterface": {
                         "0": {
-                            "Config": {
-                                "Description": "default subinterface",
-                                "Index": 0
+                            "config": {
+                                "description": "default subinterface",
+                                "index": 0
                             },
-                            "Index": 0,
-                            "Ipv4": {
-                                "Addresses": {
-                                    "Address": {
+                            "index": 0,
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
                                         "192.0.2.1": {
-                                            "Ip": "192.0.2.1",
-                                            "Config": {
-                                                "PrefixLength": 24,
-                                                "Ip": "192.0.2.1"
+                                            "ip": "192.0.2.1",
+                                            "config": {
+                                                "prefix-length": 24,
+                                                "ip": "192.0.2.1"
                                             }
                                         }
                                     }

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	oc "github.com/networkop/yang-to-cue/pkg"
+	oc "github.com/networkop/yang-to-cue/pkg/ygot"
 	"github.com/openconfig/ygot/ygot"
 )
 
