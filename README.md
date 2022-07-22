@@ -53,10 +53,84 @@ cat values.cue
 cue eval ./... --out=json
 ```
 
+```json
+{
+    "Interface": {
+        "loopback0": {
+            "Config": {
+                "Description": "loopback interface",
+                "Mtu": 1500,
+                "Name": "loopback0"
+            },
+            "Subinterfaces": {
+                "Subinterface": {
+                    "0": {
+                        "Config": {
+                            "Description": "default subinterface",
+                            "Index": 0
+                        },
+                        "Index": 0,
+                        "Ipv4": {
+                            "Addresses": {
+                                "Address": {
+                                    "192.0.2.1": {
+                                        "Ip": "192.0.2.1",
+                                        "Config": {
+                                            "PrefixLength": 24,
+                                            "Ip": "192.0.2.1"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
 6. Compare this to the json produced by ygot:
 
 ```
 go run main.go
+```
+
+```json
+{
+  "interface": [
+    {
+      "config": {
+        "description": "loopback interface",
+        "mtu": 1500
+      },
+      "name": "loopback0",
+      "subinterfaces": {
+        "subinterface": [
+          {
+            "config": {
+              "description": "default subinterface"
+            },
+            "index": 0,
+            "ipv4": {
+              "addresses": {
+                "address": [
+                  {
+                    "config": {
+                      "prefix-length": 24
+                    },
+                    "ip": "192.0.2.1"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
 ```
 
 What I had to modify in the auto-generated CUE file:
