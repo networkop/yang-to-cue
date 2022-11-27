@@ -1008,7 +1008,6 @@ package yang
 // AristaIntfAugments_AristaAddrType_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_AristaIntfAugments_AristaAddrType: int64 // #enumE_AristaIntfAugments_AristaAddrType
 
 #enumE_AristaIntfAugments_AristaAddrType:
 	#AristaIntfAugments_AristaAddrType_UNSET |
@@ -1040,7 +1039,6 @@ package yang
 // AristaIntfAugments_FallbackEnum_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_AristaIntfAugments_FallbackEnum: int64 // #enumE_AristaIntfAugments_FallbackEnum
 
 #enumE_AristaIntfAugments_FallbackEnum:
 	#AristaIntfAugments_FallbackEnum_UNSET |
@@ -1072,7 +1070,6 @@ package yang
 // AristaIntfAugments_ReflectorDirection_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_AristaIntfAugments_ReflectorDirection: int64 // #enumE_AristaIntfAugments_ReflectorDirection
 
 #enumE_AristaIntfAugments_ReflectorDirection:
 	#AristaIntfAugments_ReflectorDirection_UNSET |
@@ -1104,7 +1101,6 @@ package yang
 // AristaIntfAugments_ReflectorMacAction_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_AristaIntfAugments_ReflectorMacAction: int64 // #enumE_AristaIntfAugments_ReflectorMacAction
 
 #enumE_AristaIntfAugments_ReflectorMacAction:
 	#AristaIntfAugments_ReflectorMacAction_UNSET |
@@ -1131,7 +1127,6 @@ package yang
 // IETFInterfaces_InterfaceType_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_IETFInterfaces_InterfaceType: int64 // #enumE_IETFInterfaces_InterfaceType
 
 #enumE_IETFInterfaces_InterfaceType:
 	#IETFInterfaces_InterfaceType_UNSET |
@@ -2578,7 +2573,6 @@ package yang
 // OpenconfigIfAggregate_AggregationType_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_OpenconfigIfAggregate_AggregationType: int64 // #enumE_OpenconfigIfAggregate_AggregationType
 
 #enumE_OpenconfigIfAggregate_AggregationType:
 	#OpenconfigIfAggregate_AggregationType_UNSET |
@@ -2605,7 +2599,6 @@ package yang
 // OpenconfigIfEthernet_ETHERNET_SPEED_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_OpenconfigIfEthernet_ETHERNET_SPEED: int64 // #enumE_OpenconfigIfEthernet_ETHERNET_SPEED
 
 #enumE_OpenconfigIfEthernet_ETHERNET_SPEED:
 	#OpenconfigIfEthernet_ETHERNET_SPEED_UNSET |
@@ -2717,7 +2710,6 @@ package yang
 // OpenconfigIfEthernet_INTERFACE_FEC_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_OpenconfigIfEthernet_INTERFACE_FEC: int64 // #enumE_OpenconfigIfEthernet_INTERFACE_FEC
 
 #enumE_OpenconfigIfEthernet_INTERFACE_FEC:
 	#OpenconfigIfEthernet_INTERFACE_FEC_UNSET |
@@ -2759,7 +2751,6 @@ package yang
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode: int64 // #enumE_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode
 
 #enumE_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode:
 	#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_UNSET |
@@ -2786,7 +2777,6 @@ package yang
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding: int64 // #enumE_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding
 
 #enumE_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding:
 	#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_UNSET |
@@ -2838,7 +2828,6 @@ package yang
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode: int64 // #enumE_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode
 
 #enumE_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode:
 	#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_UNSET |
@@ -2870,7 +2859,6 @@ package yang
 // OpenconfigVlanTypes_TPID_TYPES_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_OpenconfigVlanTypes_TPID_TYPES: int64 // #enumE_OpenconfigVlanTypes_TPID_TYPES
 
 #enumE_OpenconfigVlanTypes_TPID_TYPES:
 	#OpenconfigVlanTypes_TPID_TYPES_UNSET |
@@ -2912,7 +2900,6 @@ package yang
 // OpenconfigVlan_VlanModeType_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_OpenconfigVlan_VlanModeType: int64 // #enumE_OpenconfigVlan_VlanModeType
 
 #enumE_OpenconfigVlan_VlanModeType:
 	#OpenconfigVlan_VlanModeType_UNSET |
@@ -2939,7 +2926,6 @@ package yang
 // OpenconfigVlan_VlanStackAction_UNSET is added to the enumeration which is used as
 // the nil value, indicating that the enumeration was not explicitly set by
 // the program importing the generated structures.
-#E_OpenconfigVlan_VlanStackAction: int64 // #enumE_OpenconfigVlan_VlanStackAction
 
 #enumE_OpenconfigVlan_VlanStackAction:
 	#OpenconfigVlan_VlanStackAction_UNSET |

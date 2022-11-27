@@ -45,6 +45,15 @@ go run main.go
 This generates the `./go.json` file
 
 
+5. Run the pre-import CUE type generator
+
+This is a custom type generator to workaround ygot implementation
+
+```
+go run pre-seed.go
+```
+
+
 5. Modify YGOT types for CUE
 
 ```
@@ -69,12 +78,18 @@ cue get go yang.to.cue/pkg/...
 
 The generated file is located in `cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue`
 
-8. Make some of the fields optional
+8.  Modify CUE definitions
 
 This is happens because struct fields with ENUM type are not pointers and, hence, marked as mandatory fields by cue during import.
 
 ```
 sed -i -E 's/(^[^#]\S+)(:\s+#E)/\1\?\2/' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue
+```
+
+This is to remove the generated ENUM defintions, as we've already got them from step #5 (pre-import type generator)
+
+```
+sed  -E '/#E_\S+:\s+.*/d' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue > cue.mod/gen/yang.to.cue/pkg/yang_go_gen.diff.cue
 ```
 
 9. Write some CUE based on the generated definitions
