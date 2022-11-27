@@ -1,3 +1,4 @@
+
 package main
 
 import intfs "yang.to.cue/pkg:yang"
@@ -21,6 +22,7 @@ config: interfaces: intfs.#OpenconfigInterfaces_Interfaces & {interface: [{
 					address: [{
 						ip: "192.0.2.1"
 						config: {
+							"addr-type": "PRIMARY"
 							"prefix-length": 24
 							ip:              "192.0.2.1"
 						}

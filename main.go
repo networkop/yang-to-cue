@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	oc "github.com/networkop/yang-to-cue/pkg/ygot"
 	"github.com/openconfig/ygot/ygot"
+	oc "yang.to.cue/pkg"
 )
 
 func main() {
@@ -31,9 +31,13 @@ func main() {
 	ygot.BuildEmptyTree(addr)
 	addr.Config.PrefixLength = ygot.Uint8(24)
 	addr.Config.Ip = ygot.String("192.0.2.1")
+	addr.Config.AddrType = oc.AristaIntfAugments_AristaAddrType_PRIMARY
 	json, err := ygot.EmitJSON(dev, &ygot.EmitJSONConfig{
 		Format: ygot.RFC7951,
 		Indent: "  ",
+		RFC7951Config: &ygot.RFC7951JSONConfig{
+			AppendModuleName: true,
+		},
 	})
 	if err != nil {
 		fmt.Println(err)
