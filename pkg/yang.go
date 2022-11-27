@@ -32,7 +32,7 @@ type YANGEmpty bool
 
 // Device represents the /device YANG schema element.
 type Device struct {
-	Interfaces *OpenconfigInterfaces_Interfaces `json:"interfaces" module:"openconfig-interfaces"`
+	Interfaces *OpenconfigInterfaces_Interfaces `path:"interfaces" module:"openconfig-interfaces"`
 }
 
 // IsYANGGoStruct ensures that Device implements the yang.GoStruct
@@ -48,7 +48,7 @@ func (*Device) ΛBelongingModule() string {
 
 // OpenconfigInterfaces_Interfaces represents the /openconfig-interfaces/interfaces YANG schema element.
 type OpenconfigInterfaces_Interfaces struct {
-	Interface []*OpenconfigInterfaces_Interfaces_Interface `json:"interface" module:"openconfig-interfaces"`
+	Interface map[string]*OpenconfigInterfaces_Interfaces_Interface `path:"interface" module:"openconfig-interfaces"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces implements the yang.GoStruct
@@ -64,7 +64,7 @@ func (t *OpenconfigInterfaces_Interfaces) NewInterface(Name string) (*Openconfig
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Interface == nil {
-		t.Interface = make([]*OpenconfigInterfaces_Interfaces_Interface)
+		t.Interface = make(map[string]*OpenconfigInterfaces_Interfaces_Interface)
 	}
 
 	key := Name
@@ -91,13 +91,13 @@ func (*OpenconfigInterfaces_Interfaces) ΛBelongingModule() string {
 
 // OpenconfigInterfaces_Interfaces_Interface represents the /openconfig-interfaces/interfaces/interface YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface struct {
-	Aggregation   *OpenconfigInterfaces_Interfaces_Interface_Aggregation   `json:"aggregation" module:"openconfig-if-aggregate"`
-	Config        *OpenconfigInterfaces_Interfaces_Interface_Config        `json:"config" module:"openconfig-interfaces"`
-	Ethernet      *OpenconfigInterfaces_Interfaces_Interface_Ethernet      `json:"ethernet" module:"openconfig-if-ethernet"`
-	HoldTime      *OpenconfigInterfaces_Interfaces_Interface_HoldTime      `json:"hold-time" module:"openconfig-interfaces"`
-	Name          *string                                                  `json:"name" module:"openconfig-interfaces"`
-	RoutedVlan    *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan    `json:"routed-vlan" module:"openconfig-vlan"`
-	Subinterfaces *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces `json:"subinterfaces" module:"openconfig-interfaces"`
+	Aggregation   *OpenconfigInterfaces_Interfaces_Interface_Aggregation   `path:"aggregation" module:"openconfig-if-aggregate"`
+	Config        *OpenconfigInterfaces_Interfaces_Interface_Config        `path:"config" module:"openconfig-interfaces"`
+	Ethernet      *OpenconfigInterfaces_Interfaces_Interface_Ethernet      `path:"ethernet" module:"openconfig-if-ethernet"`
+	HoldTime      *OpenconfigInterfaces_Interfaces_Interface_HoldTime      `path:"hold-time" module:"openconfig-interfaces"`
+	Name          *string                                                  `path:"name" module:"openconfig-interfaces"`
+	RoutedVlan    *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan    `path:"routed-vlan" module:"openconfig-vlan"`
+	Subinterfaces *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces `path:"subinterfaces" module:"openconfig-interfaces"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface implements the yang.GoStruct
@@ -124,8 +124,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface) ΛBelongingModule() string {
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation represents the /openconfig-interfaces/interfaces/interface/aggregation YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Aggregation struct {
-	Config       *OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config       `json:"config" module:"openconfig-if-aggregate"`
-	SwitchedVlan *OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan `json:"switched-vlan" module:"openconfig-vlan"`
+	Config       *OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config       `path:"config" module:"openconfig-if-aggregate"`
+	SwitchedVlan *OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan `path:"switched-vlan" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Aggregation implements the yang.GoStruct
@@ -141,11 +141,11 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Aggregation) ΛBelongingModule(
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config represents the /openconfig-interfaces/interfaces/interface/aggregation/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config struct {
-	Fallback        E_AristaIntfAugments_FallbackEnum       `json:"fallback" module:"arista-intf-augments"`
-	FallbackTimeout *uint16                                 `json:"fallback-timeout" module:"arista-intf-augments"`
-	LagType         E_OpenconfigIfAggregate_AggregationType `json:"lag-type" module:"openconfig-if-aggregate"`
-	MinLinks        *uint16                                 `json:"min-links" module:"openconfig-if-aggregate"`
-	Mlag            *uint16                                 `json:"mlag" module:"arista-intf-augments"`
+	Fallback        E_AristaIntfAugments_FallbackEnum       `path:"fallback" module:"arista-intf-augments"`
+	FallbackTimeout *uint16                                 `path:"fallback-timeout" module:"arista-intf-augments"`
+	LagType         E_OpenconfigIfAggregate_AggregationType `path:"lag-type" module:"openconfig-if-aggregate"`
+	MinLinks        *uint16                                 `path:"min-links" module:"openconfig-if-aggregate"`
+	Mlag            *uint16                                 `path:"mlag" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config implements the yang.GoStruct
@@ -161,7 +161,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config) ΛBelonging
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan represents the /openconfig-interfaces/interfaces/interface/aggregation/switched-vlan YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan implements the yang.GoStruct
@@ -177,11 +177,11 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan) ΛBel
 
 // OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config represents the /openconfig-interfaces/interfaces/interface/aggregation/switched-vlan/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config struct {
-	AccessVlan    *uint16                                                                                      `json:"access-vlan" module:"openconfig-vlan"`
-	InterfaceMode E_OpenconfigVlan_VlanModeType                                                                `json:"interface-mode" module:"openconfig-vlan"`
-	NativeVlan    *uint16                                                                                      `json:"native-vlan" module:"openconfig-vlan"`
-	TrunkGroups   []string                                                                                     `json:"trunk-groups" module:"arista-intf-augments"`
-	TrunkVlans    []OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union `json:"trunk-vlans" module:"openconfig-vlan"`
+	AccessVlan    *uint16                                                                                      `path:"access-vlan" module:"openconfig-vlan"`
+	InterfaceMode E_OpenconfigVlan_VlanModeType                                                                `path:"interface-mode" module:"openconfig-vlan"`
+	NativeVlan    *uint16                                                                                      `path:"native-vlan" module:"openconfig-vlan"`
+	TrunkGroups   []string                                                                                     `path:"trunk-groups" module:"arista-intf-augments"`
+	TrunkVlans    []OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union `path:"trunk-vlans" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config implements the yang.GoStruct
@@ -239,14 +239,14 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Conf
 
 // OpenconfigInterfaces_Interfaces_Interface_Config represents the /openconfig-interfaces/interfaces/interface/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Config struct {
-	Description  *string                          `json:"description" module:"openconfig-interfaces"`
-	Enabled      *bool                            `json:"enabled" module:"openconfig-interfaces"`
-	LoadInterval *uint16                          `json:"load-interval" module:"arista-intf-augments"`
-	LoopbackMode *bool                            `json:"loopback-mode" module:"openconfig-interfaces"`
-	Mtu          *uint16                          `json:"mtu" module:"openconfig-interfaces"`
-	Name         *string                          `json:"name" module:"openconfig-interfaces"`
-	Tpid         E_OpenconfigVlanTypes_TPID_TYPES `json:"tpid" module:"openconfig-vlan"`
-	Type         E_IETFInterfaces_InterfaceType   `json:"type" module:"openconfig-interfaces"`
+	Description  *string                          `path:"description" module:"openconfig-interfaces"`
+	Enabled      *bool                            `path:"enabled" module:"openconfig-interfaces"`
+	LoadInterval *uint16                          `path:"load-interval" module:"arista-intf-augments"`
+	LoopbackMode *bool                            `path:"loopback-mode" module:"openconfig-interfaces"`
+	Mtu          *uint16                          `path:"mtu" module:"openconfig-interfaces"`
+	Name         *string                          `path:"name" module:"openconfig-interfaces"`
+	Tpid         E_OpenconfigVlanTypes_TPID_TYPES `path:"tpid" module:"openconfig-vlan"`
+	Type         E_IETFInterfaces_InterfaceType   `path:"type" module:"openconfig-interfaces"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Config implements the yang.GoStruct
@@ -262,11 +262,11 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Config) ΛBelongingModule() str
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet represents the /openconfig-interfaces/interfaces/interface/ethernet YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet struct {
-	Config       *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config       `json:"config" module:"openconfig-if-ethernet"`
-	Pfc          *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc          `json:"pfc" module:"arista-intf-augments"`
-	Poe          *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe          `json:"poe" module:"openconfig-if-poe"`
-	Reflector    *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector    `json:"reflector" module:"arista-intf-augments"`
-	SwitchedVlan *OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan `json:"switched-vlan" module:"openconfig-vlan"`
+	Config       *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config       `path:"config" module:"openconfig-if-ethernet"`
+	Pfc          *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc          `path:"pfc" module:"arista-intf-augments"`
+	Poe          *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe          `path:"poe" module:"openconfig-if-poe"`
+	Reflector    *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector    `path:"reflector" module:"arista-intf-augments"`
+	SwitchedVlan *OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan `path:"switched-vlan" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet implements the yang.GoStruct
@@ -282,16 +282,16 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Ethernet) ΛBelongingModule() s
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config represents the /openconfig-interfaces/interfaces/interface/ethernet/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config struct {
-	AggregateId            *string                                                                `json:"aggregate-id" module:"openconfig-if-aggregate"`
-	AutoNegotiate          *bool                                                                  `json:"auto-negotiate" module:"openconfig-if-ethernet"`
-	DuplexMode             E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode `json:"duplex-mode" module:"openconfig-if-ethernet"`
-	EnableFlowControl      *bool                                                                  `json:"enable-flow-control" module:"openconfig-if-ethernet"`
-	FecEncoding            *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding `json:"fec-encoding" module:"arista-intf-augments"`
-	FecMode                E_OpenconfigIfEthernet_INTERFACE_FEC                                   `json:"fec-mode" module:"openconfig-if-ethernet"`
-	MacAddress             *string                                                                `json:"mac-address" module:"openconfig-if-ethernet"`
-	PortSpeed              E_OpenconfigIfEthernet_ETHERNET_SPEED                                  `json:"port-speed" module:"openconfig-if-ethernet"`
-	Sfp_1000BaseT          *bool                                                                  `json:"sfp-1000base-t" module:"arista-intf-augments"`
-	StandaloneLinkTraining *bool                                                                  `json:"standalone-link-training" module:"openconfig-if-ethernet"`
+	AggregateId            *string                                                                `path:"aggregate-id" module:"openconfig-if-aggregate"`
+	AutoNegotiate          *bool                                                                  `path:"auto-negotiate" module:"openconfig-if-ethernet"`
+	DuplexMode             E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode `path:"duplex-mode" module:"openconfig-if-ethernet"`
+	EnableFlowControl      *bool                                                                  `path:"enable-flow-control" module:"openconfig-if-ethernet"`
+	FecEncoding            *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding `path:"fec-encoding" module:"arista-intf-augments"`
+	FecMode                E_OpenconfigIfEthernet_INTERFACE_FEC                                   `path:"fec-mode" module:"openconfig-if-ethernet"`
+	MacAddress             *string                                                                `path:"mac-address" module:"openconfig-if-ethernet"`
+	PortSpeed              E_OpenconfigIfEthernet_ETHERNET_SPEED                                  `path:"port-speed" module:"openconfig-if-ethernet"`
+	Sfp_1000BaseT          *bool                                                                  `path:"sfp-1000base-t" module:"arista-intf-augments"`
+	StandaloneLinkTraining *bool                                                                  `path:"standalone-link-training" module:"openconfig-if-ethernet"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config implements the yang.GoStruct
@@ -307,11 +307,11 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config) ΛBelongingMod
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding represents the /openconfig-interfaces/interfaces/interface/ethernet/config/fec-encoding YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding struct {
-	CoherentFecEncoding E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding `json:"coherent-fec-encoding" module:"arista-intf-augments"`
-	Disabled            *bool                                                                                       `json:"disabled" module:"arista-intf-augments"`
-	FireCode            *bool                                                                                       `json:"fire-code" module:"arista-intf-augments"`
-	ReedSolomon         *bool                                                                                       `json:"reed-solomon" module:"arista-intf-augments"`
-	ReedSolomon544      *bool                                                                                       `json:"reed-solomon544" module:"arista-intf-augments"`
+	CoherentFecEncoding E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding `path:"coherent-fec-encoding" module:"arista-intf-augments"`
+	Disabled            *bool                                                                                       `path:"disabled" module:"arista-intf-augments"`
+	FireCode            *bool                                                                                       `path:"fire-code" module:"arista-intf-augments"`
+	ReedSolomon         *bool                                                                                       `path:"reed-solomon" module:"arista-intf-augments"`
+	ReedSolomon544      *bool                                                                                       `path:"reed-solomon544" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding implements the yang.GoStruct
@@ -327,7 +327,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding) Λ
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc represents the /openconfig-interfaces/interfaces/interface/ethernet/pfc YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc struct {
-	Watchdog *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc_Watchdog `json:"watchdog" module:"arista-intf-augments"`
+	Watchdog *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc_Watchdog `path:"watchdog" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc implements the yang.GoStruct
@@ -358,7 +358,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc_Watchdog) ΛBelong
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe represents the /openconfig-interfaces/interfaces/interface/ethernet/poe YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe_Config `json:"config" module:"openconfig-if-poe"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe_Config `path:"config" module:"openconfig-if-poe"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe implements the yang.GoStruct
@@ -374,7 +374,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe) ΛBelongingModule
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe_Config represents the /openconfig-interfaces/interfaces/interface/ethernet/poe/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe_Config struct {
-	Enabled *bool `json:"enabled" module:"openconfig-if-poe"`
+	Enabled *bool `path:"enabled" module:"openconfig-if-poe"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe_Config implements the yang.GoStruct
@@ -390,7 +390,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Poe_Config) ΛBelongin
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector represents the /openconfig-interfaces/interfaces/interface/ethernet/reflector YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector_Config `json:"config" module:"arista-intf-augments"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector_Config `path:"config" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector implements the yang.GoStruct
@@ -406,8 +406,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector) ΛBelonging
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector_Config represents the /openconfig-interfaces/interfaces/interface/ethernet/reflector/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector_Config struct {
-	Direction E_AristaIntfAugments_ReflectorDirection `json:"direction" module:"arista-intf-augments"`
-	MacAction E_AristaIntfAugments_ReflectorMacAction `json:"mac-action" module:"arista-intf-augments"`
+	Direction E_AristaIntfAugments_ReflectorDirection `path:"direction" module:"arista-intf-augments"`
+	MacAction E_AristaIntfAugments_ReflectorMacAction `path:"mac-action" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector_Config implements the yang.GoStruct
@@ -423,7 +423,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector_Config) ΛBe
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan represents the /openconfig-interfaces/interfaces/interface/ethernet/switched-vlan YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan implements the yang.GoStruct
@@ -439,11 +439,11 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan) ΛBelong
 
 // OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config represents the /openconfig-interfaces/interfaces/interface/ethernet/switched-vlan/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config struct {
-	AccessVlan    *uint16                                                                                   `json:"access-vlan" module:"openconfig-vlan"`
-	InterfaceMode E_OpenconfigVlan_VlanModeType                                                             `json:"interface-mode" module:"openconfig-vlan"`
-	NativeVlan    *uint16                                                                                   `json:"native-vlan" module:"openconfig-vlan"`
-	TrunkGroups   []string                                                                                  `json:"trunk-groups" module:"arista-intf-augments"`
-	TrunkVlans    []OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union `json:"trunk-vlans" module:"openconfig-vlan"`
+	AccessVlan    *uint16                                                                                   `path:"access-vlan" module:"openconfig-vlan"`
+	InterfaceMode E_OpenconfigVlan_VlanModeType                                                             `path:"interface-mode" module:"openconfig-vlan"`
+	NativeVlan    *uint16                                                                                   `path:"native-vlan" module:"openconfig-vlan"`
+	TrunkGroups   []string                                                                                  `path:"trunk-groups" module:"arista-intf-augments"`
+	TrunkVlans    []OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union `path:"trunk-vlans" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config implements the yang.GoStruct
@@ -501,7 +501,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config)
 
 // OpenconfigInterfaces_Interfaces_Interface_HoldTime represents the /openconfig-interfaces/interfaces/interface/hold-time YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_HoldTime struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config `json:"config" module:"openconfig-interfaces"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config `path:"config" module:"openconfig-interfaces"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_HoldTime implements the yang.GoStruct
@@ -517,8 +517,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_HoldTime) ΛBelongingModule() s
 
 // OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config represents the /openconfig-interfaces/interfaces/interface/hold-time/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config struct {
-	Down *uint32 `json:"down" module:"openconfig-interfaces"`
-	Up   *uint32 `json:"up" module:"openconfig-interfaces"`
+	Down *uint32 `path:"down" module:"openconfig-interfaces"`
+	Up   *uint32 `path:"up" module:"openconfig-interfaces"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config implements the yang.GoStruct
@@ -534,9 +534,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config) ΛBelongingMod
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan represents the /openconfig-interfaces/interfaces/interface/routed-vlan YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config `json:"config" module:"openconfig-vlan"`
-	Ipv4   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4   `json:"ipv4" module:"openconfig-if-ip"`
-	Ipv6   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6   `json:"ipv6" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config `path:"config" module:"openconfig-vlan"`
+	Ipv4   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4   `path:"ipv4" module:"openconfig-if-ip"`
+	Ipv6   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6   `path:"ipv6" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan implements the yang.GoStruct
@@ -552,7 +552,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan) ΛBelongingModule()
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config struct {
-	Vlan OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union `json:"vlan" module:"openconfig-vlan"`
+	Vlan OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union `path:"vlan" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config implements the yang.GoStruct
@@ -610,11 +610,11 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config) To_Opencon
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4 represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4 YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4 struct {
-	Addresses  *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses  `json:"addresses" module:"openconfig-if-ip"`
-	Config     *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config     `json:"config" module:"openconfig-if-ip"`
-	Neighbors  *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors  `json:"neighbors" module:"openconfig-if-ip"`
-	ProxyArp   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp   `json:"proxy-arp" module:"openconfig-if-ip"`
-	Unnumbered *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered `json:"unnumbered" module:"openconfig-if-ip"`
+	Addresses  *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses  `path:"addresses" module:"openconfig-if-ip"`
+	Config     *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config     `path:"config" module:"openconfig-if-ip"`
+	Neighbors  *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors  `path:"neighbors" module:"openconfig-if-ip"`
+	ProxyArp   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp   `path:"proxy-arp" module:"openconfig-if-ip"`
+	Unnumbered *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered `path:"unnumbered" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4 implements the yang.GoStruct
@@ -630,7 +630,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4) ΛBelongingMod
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses struct {
-	Address []*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address `json:"address" module:"openconfig-if-ip"`
+	Address map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address `path:"address" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses implements the yang.GoStruct
@@ -646,7 +646,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses) Ne
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Address == nil {
-		t.Address = make([]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address)
+		t.Address = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address)
 	}
 
 	key := Ip
@@ -673,9 +673,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses) ΛBe
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config `json:"config" module:"openconfig-if-ip"`
-	Ip     *string                                                                             `json:"ip" module:"openconfig-if-ip"`
-	Vrrp   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp   `json:"vrrp" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config `path:"config" module:"openconfig-if-ip"`
+	Ip     *string                                                                             `path:"ip" module:"openconfig-if-ip"`
+	Vrrp   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp   `path:"vrrp" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address implements the yang.GoStruct
@@ -703,9 +703,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config struct {
-	AddrType     E_AristaIntfAugments_AristaAddrType `json:"addr-type" module:"arista-intf-augments"`
-	Ip           *string                             `json:"ip" module:"openconfig-if-ip"`
-	PrefixLength *uint8                              `json:"prefix-length" module:"openconfig-if-ip"`
+	AddrType     E_AristaIntfAugments_AristaAddrType `path:"addr-type" module:"arista-intf-augments"`
+	Ip           *string                             `path:"ip" module:"openconfig-if-ip"`
+	PrefixLength *uint8                              `path:"prefix-length" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config implements the yang.GoStruct
@@ -722,7 +722,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp struct {
-	VrrpGroup map[uint8]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup `json:"vrrp-group" module:"openconfig-if-ip"`
+	VrrpGroup map[uint8]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup `path:"vrrp-group" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp implements the yang.GoStruct
@@ -766,10 +766,10 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup struct {
-	Config            *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config            `json:"config" module:"openconfig-if-ip"`
-	InterfaceTracking *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking `json:"interface-tracking" module:"openconfig-if-ip"`
-	TrackInterfaces   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces   `json:"track-interfaces" module:"arista-intf-augments"`
-	VirtualRouterId   *uint8                                                                                                        `json:"virtual-router-id" module:"openconfig-if-ip"`
+	Config            *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config            `path:"config" module:"openconfig-if-ip"`
+	InterfaceTracking *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking `path:"interface-tracking" module:"openconfig-if-ip"`
+	TrackInterfaces   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces   `path:"track-interfaces" module:"arista-intf-augments"`
+	VirtualRouterId   *uint8                                                                                                        `path:"virtual-router-id" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup implements the yang.GoStruct
@@ -797,14 +797,14 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config struct {
-	AcceptMode            *bool                                                                                                                          `json:"accept-mode" module:"openconfig-if-ip"`
-	AdvertisementInterval *uint16                                                                                                                        `json:"advertisement-interval" module:"openconfig-if-ip"`
-	Preempt               *bool                                                                                                                          `json:"preempt" module:"openconfig-if-ip"`
-	PreemptDelay          *uint16                                                                                                                        `json:"preempt-delay" module:"openconfig-if-ip"`
-	Priority              *uint8                                                                                                                         `json:"priority" module:"openconfig-if-ip"`
-	VirtualAddress        []string                                                                                                                       `json:"virtual-address" module:"openconfig-if-ip"`
-	VirtualAddresses      []*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses `json:"virtual-addresses" module:"arista-intf-augments"`
-	VirtualRouterId       *uint8                                                                                                                         `json:"virtual-router-id" module:"openconfig-if-ip"`
+	AcceptMode            *bool                                                                                                                          `path:"accept-mode" module:"openconfig-if-ip"`
+	AdvertisementInterval *uint16                                                                                                                        `path:"advertisement-interval" module:"openconfig-if-ip"`
+	Preempt               *bool                                                                                                                          `path:"preempt" module:"openconfig-if-ip"`
+	PreemptDelay          *uint16                                                                                                                        `path:"preempt-delay" module:"openconfig-if-ip"`
+	Priority              *uint8                                                                                                                         `path:"priority" module:"openconfig-if-ip"`
+	VirtualAddress        []string                                                                                                                       `path:"virtual-address" module:"openconfig-if-ip"`
+	VirtualAddresses      map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses `path:"virtual-addresses" module:"arista-intf-augments"`
+	VirtualRouterId       *uint8                                                                                                                         `path:"virtual-router-id" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config implements the yang.GoStruct
@@ -821,7 +821,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Add
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.VirtualAddresses == nil {
-		t.VirtualAddresses = make([]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
+		t.VirtualAddresses = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
 	}
 
 	key := Addr
@@ -848,8 +848,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/config/virtual-addresses YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses struct {
-	Addr           *string                                                                                                                            `json:"addr" module:"arista-intf-augments"`
-	VirtualAddress *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress `json:"virtual-address" module:"arista-intf-augments"`
+	Addr           *string                                                                                                                            `path:"addr" module:"arista-intf-augments"`
+	VirtualAddress *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress `path:"virtual-address" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses implements the yang.GoStruct
@@ -877,8 +877,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/config/virtual-addresses/virtual-address YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress struct {
-	Addr     *string                             `json:"addr" module:"arista-intf-augments"`
-	AddrType E_AristaIntfAugments_AristaAddrType `json:"addr-type" module:"arista-intf-augments"`
+	Addr     *string                             `path:"addr" module:"arista-intf-augments"`
+	AddrType E_AristaIntfAugments_AristaAddrType `path:"addr-type" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress implements the yang.GoStruct
@@ -895,7 +895,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/interface-tracking YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking implements the yang.GoStruct
@@ -912,8 +912,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/interface-tracking/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config struct {
-	PriorityDecrement *uint8   `json:"priority-decrement" module:"openconfig-if-ip"`
-	TrackInterface    []string `json:"track-interface" module:"openconfig-if-ip"`
+	PriorityDecrement *uint8   `path:"priority-decrement" module:"openconfig-if-ip"`
+	TrackInterface    []string `path:"track-interface" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config implements the yang.GoStruct
@@ -930,7 +930,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/track-interfaces YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces struct {
-	TrackInterface []*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface `json:"track-interface" module:"arista-intf-augments"`
+	TrackInterface map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface `path:"track-interface" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces implements the yang.GoStruct
@@ -947,7 +947,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Add
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.TrackInterface == nil {
-		t.TrackInterface = make([]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
+		t.TrackInterface = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
 	}
 
 	key := Name
@@ -974,8 +974,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/track-interfaces/track-interface YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config `json:"config" module:"arista-intf-augments"`
-	Name   *string                                                                                                                           `json:"name" module:"arista-intf-augments"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config `path:"config" module:"arista-intf-augments"`
+	Name   *string                                                                                                                           `path:"name" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface implements the yang.GoStruct
@@ -1003,8 +1003,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/addresses/address/vrrp/vrrp-group/track-interfaces/track-interface/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config struct {
-	Name              *string `json:"name" module:"arista-intf-augments"`
-	PriorityDecrement *uint8  `json:"priority-decrement" module:"arista-intf-augments"`
+	Name              *string `path:"name" module:"arista-intf-augments"`
+	PriorityDecrement *uint8  `path:"priority-decrement" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config implements the yang.GoStruct
@@ -1021,9 +1021,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config struct {
-	DhcpClient *bool   `json:"dhcp-client" module:"openconfig-if-ip"`
-	Enabled    *bool   `json:"enabled" module:"openconfig-if-ip"`
-	Mtu        *uint16 `json:"mtu" module:"openconfig-if-ip"`
+	DhcpClient *bool   `path:"dhcp-client" module:"openconfig-if-ip"`
+	Enabled    *bool   `path:"enabled" module:"openconfig-if-ip"`
+	Mtu        *uint16 `path:"mtu" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config implements the yang.GoStruct
@@ -1039,7 +1039,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Config) ΛBelon
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/neighbors YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors struct {
-	Neighbor []*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor `json:"neighbor" module:"openconfig-if-ip"`
+	Neighbor map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor `path:"neighbor" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors implements the yang.GoStruct
@@ -1055,7 +1055,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors) Ne
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Neighbor == nil {
-		t.Neighbor = make([]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor)
+		t.Neighbor = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor)
 	}
 
 	key := Ip
@@ -1082,8 +1082,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors) ΛBe
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/neighbors/neighbor YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config `json:"config" module:"openconfig-if-ip"`
-	Ip     *string                                                                              `json:"ip" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config `path:"config" module:"openconfig-if-ip"`
+	Ip     *string                                                                              `path:"ip" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor implements the yang.GoStruct
@@ -1111,8 +1111,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neigh
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/neighbors/neighbor/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config struct {
-	Ip               *string `json:"ip" module:"openconfig-if-ip"`
-	LinkLayerAddress *string `json:"link-layer-address" module:"openconfig-if-ip"`
+	Ip               *string `path:"ip" module:"openconfig-if-ip"`
+	LinkLayerAddress *string `path:"link-layer-address" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor_Config implements the yang.GoStruct
@@ -1129,7 +1129,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neigh
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/proxy-arp YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp implements the yang.GoStruct
@@ -1145,7 +1145,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp) ΛBel
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/proxy-arp/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config struct {
-	Mode E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode `json:"mode" module:"openconfig-if-ip"`
+	Mode E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode `path:"mode" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config implements the yang.GoStruct
@@ -1161,8 +1161,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/unnumbered YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered struct {
-	Config       *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config       `json:"config" module:"openconfig-if-ip"`
-	InterfaceRef *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef `json:"interface-ref" module:"openconfig-if-ip"`
+	Config       *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config       `path:"config" module:"openconfig-if-ip"`
+	InterfaceRef *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef `path:"interface-ref" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered implements the yang.GoStruct
@@ -1178,7 +1178,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered) ΛB
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/unnumbered/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config struct {
-	Enabled *bool `json:"enabled" module:"openconfig-if-ip"`
+	Enabled *bool `path:"enabled" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Config implements the yang.GoStruct
@@ -1195,7 +1195,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Conf
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/unnumbered/interface-ref YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef implements the yang.GoStruct
@@ -1212,8 +1212,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Inte
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv4/unnumbered/interface-ref/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config struct {
-	Interface    *string `json:"interface" module:"openconfig-if-ip"`
-	Subinterface *uint32 `json:"subinterface" module:"openconfig-if-ip"`
+	Interface    *string `path:"interface" module:"openconfig-if-ip"`
+	Subinterface *uint32 `path:"subinterface" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_InterfaceRef_Config implements the yang.GoStruct
@@ -1230,11 +1230,11 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered_Inte
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6 represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6 YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6 struct {
-	Addresses           *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses           `json:"addresses" module:"openconfig-if-ip"`
-	Config              *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config              `json:"config" module:"openconfig-if-ip"`
-	Neighbors           *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors           `json:"neighbors" module:"openconfig-if-ip"`
-	RouterAdvertisement *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement `json:"router-advertisement" module:"openconfig-if-ip"`
-	Unnumbered          *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered          `json:"unnumbered" module:"openconfig-if-ip"`
+	Addresses           *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses           `path:"addresses" module:"openconfig-if-ip"`
+	Config              *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config              `path:"config" module:"openconfig-if-ip"`
+	Neighbors           *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors           `path:"neighbors" module:"openconfig-if-ip"`
+	RouterAdvertisement *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement `path:"router-advertisement" module:"openconfig-if-ip"`
+	Unnumbered          *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered          `path:"unnumbered" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6 implements the yang.GoStruct
@@ -1250,7 +1250,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6) ΛBelongingMod
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses struct {
-	Address []*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address `json:"address" module:"openconfig-if-ip"`
+	Address map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address `path:"address" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses implements the yang.GoStruct
@@ -1266,7 +1266,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses) Ne
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Address == nil {
-		t.Address = make([]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address)
+		t.Address = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address)
 	}
 
 	key := Ip
@@ -1293,9 +1293,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses) ΛBe
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config `json:"config" module:"openconfig-if-ip"`
-	Ip     *string                                                                             `json:"ip" module:"openconfig-if-ip"`
-	Vrrp   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp   `json:"vrrp" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config `path:"config" module:"openconfig-if-ip"`
+	Ip     *string                                                                             `path:"ip" module:"openconfig-if-ip"`
+	Vrrp   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp   `path:"vrrp" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address implements the yang.GoStruct
@@ -1323,8 +1323,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config struct {
-	Ip           *string `json:"ip" module:"openconfig-if-ip"`
-	PrefixLength *uint8  `json:"prefix-length" module:"openconfig-if-ip"`
+	Ip           *string `path:"ip" module:"openconfig-if-ip"`
+	PrefixLength *uint8  `path:"prefix-length" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config implements the yang.GoStruct
@@ -1341,7 +1341,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp struct {
-	VrrpGroup map[uint8]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup `json:"vrrp-group" module:"openconfig-if-ip"`
+	VrrpGroup map[uint8]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup `path:"vrrp-group" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp implements the yang.GoStruct
@@ -1385,10 +1385,10 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup struct {
-	Config            *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config            `json:"config" module:"openconfig-if-ip"`
-	InterfaceTracking *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking `json:"interface-tracking" module:"openconfig-if-ip"`
-	TrackInterfaces   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces   `json:"track-interfaces" module:"arista-intf-augments"`
-	VirtualRouterId   *uint8                                                                                                        `json:"virtual-router-id" module:"openconfig-if-ip"`
+	Config            *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config            `path:"config" module:"openconfig-if-ip"`
+	InterfaceTracking *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking `path:"interface-tracking" module:"openconfig-if-ip"`
+	TrackInterfaces   *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces   `path:"track-interfaces" module:"arista-intf-augments"`
+	VirtualRouterId   *uint8                                                                                                        `path:"virtual-router-id" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup implements the yang.GoStruct
@@ -1416,15 +1416,15 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config struct {
-	AcceptMode            *bool                                                                                                                          `json:"accept-mode" module:"openconfig-if-ip"`
-	AdvertisementInterval *uint16                                                                                                                        `json:"advertisement-interval" module:"openconfig-if-ip"`
-	Preempt               *bool                                                                                                                          `json:"preempt" module:"openconfig-if-ip"`
-	PreemptDelay          *uint16                                                                                                                        `json:"preempt-delay" module:"openconfig-if-ip"`
-	Priority              *uint8                                                                                                                         `json:"priority" module:"openconfig-if-ip"`
-	VirtualAddress        []string                                                                                                                       `json:"virtual-address" module:"openconfig-if-ip"`
-	VirtualAddresses      []*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses `json:"virtual-addresses" module:"arista-intf-augments"`
-	VirtualLinkLocal      *string                                                                                                                        `json:"virtual-link-local" module:"openconfig-if-ip"`
-	VirtualRouterId       *uint8                                                                                                                         `json:"virtual-router-id" module:"openconfig-if-ip"`
+	AcceptMode            *bool                                                                                                                          `path:"accept-mode" module:"openconfig-if-ip"`
+	AdvertisementInterval *uint16                                                                                                                        `path:"advertisement-interval" module:"openconfig-if-ip"`
+	Preempt               *bool                                                                                                                          `path:"preempt" module:"openconfig-if-ip"`
+	PreemptDelay          *uint16                                                                                                                        `path:"preempt-delay" module:"openconfig-if-ip"`
+	Priority              *uint8                                                                                                                         `path:"priority" module:"openconfig-if-ip"`
+	VirtualAddress        []string                                                                                                                       `path:"virtual-address" module:"openconfig-if-ip"`
+	VirtualAddresses      map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses `path:"virtual-addresses" module:"arista-intf-augments"`
+	VirtualLinkLocal      *string                                                                                                                        `path:"virtual-link-local" module:"openconfig-if-ip"`
+	VirtualRouterId       *uint8                                                                                                                         `path:"virtual-router-id" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config implements the yang.GoStruct
@@ -1441,7 +1441,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Add
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.VirtualAddresses == nil {
-		t.VirtualAddresses = make([]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
+		t.VirtualAddresses = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
 	}
 
 	key := Addr
@@ -1468,8 +1468,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/config/virtual-addresses YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses struct {
-	Addr           *string                                                                                                                            `json:"addr" module:"arista-intf-augments"`
-	VirtualAddress *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress `json:"virtual-address" module:"arista-intf-augments"`
+	Addr           *string                                                                                                                            `path:"addr" module:"arista-intf-augments"`
+	VirtualAddress *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress `path:"virtual-address" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses implements the yang.GoStruct
@@ -1497,8 +1497,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/config/virtual-addresses/virtual-address YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress struct {
-	Addr     *string                             `json:"addr" module:"arista-intf-augments"`
-	AddrType E_AristaIntfAugments_AristaAddrType `json:"addr-type" module:"arista-intf-augments"`
+	Addr     *string                             `path:"addr" module:"arista-intf-augments"`
+	AddrType E_AristaIntfAugments_AristaAddrType `path:"addr-type" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress implements the yang.GoStruct
@@ -1515,7 +1515,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/interface-tracking YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking implements the yang.GoStruct
@@ -1532,8 +1532,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/interface-tracking/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config struct {
-	PriorityDecrement *uint8   `json:"priority-decrement" module:"openconfig-if-ip"`
-	TrackInterface    []string `json:"track-interface" module:"openconfig-if-ip"`
+	PriorityDecrement *uint8   `path:"priority-decrement" module:"openconfig-if-ip"`
+	TrackInterface    []string `path:"track-interface" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config implements the yang.GoStruct
@@ -1550,7 +1550,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/track-interfaces YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces struct {
-	TrackInterface []*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface `json:"track-interface" module:"arista-intf-augments"`
+	TrackInterface map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface `path:"track-interface" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces implements the yang.GoStruct
@@ -1567,7 +1567,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Add
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.TrackInterface == nil {
-		t.TrackInterface = make([]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
+		t.TrackInterface = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
 	}
 
 	key := Name
@@ -1594,8 +1594,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/track-interfaces/track-interface YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config `json:"config" module:"arista-intf-augments"`
-	Name   *string                                                                                                                           `json:"name" module:"arista-intf-augments"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config `path:"config" module:"arista-intf-augments"`
+	Name   *string                                                                                                                           `path:"name" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface implements the yang.GoStruct
@@ -1623,8 +1623,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/addresses/address/vrrp/vrrp-group/track-interfaces/track-interface/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config struct {
-	Name              *string `json:"name" module:"arista-intf-augments"`
-	PriorityDecrement *uint8  `json:"priority-decrement" module:"arista-intf-augments"`
+	Name              *string `path:"name" module:"arista-intf-augments"`
+	PriorityDecrement *uint8  `path:"priority-decrement" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config implements the yang.GoStruct
@@ -1641,10 +1641,10 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Addre
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config struct {
-	DhcpClient             *bool   `json:"dhcp-client" module:"openconfig-if-ip"`
-	DupAddrDetectTransmits *uint32 `json:"dup-addr-detect-transmits" module:"openconfig-if-ip"`
-	Enabled                *bool   `json:"enabled" module:"openconfig-if-ip"`
-	Mtu                    *uint32 `json:"mtu" module:"openconfig-if-ip"`
+	DhcpClient             *bool   `path:"dhcp-client" module:"openconfig-if-ip"`
+	DupAddrDetectTransmits *uint32 `path:"dup-addr-detect-transmits" module:"openconfig-if-ip"`
+	Enabled                *bool   `path:"enabled" module:"openconfig-if-ip"`
+	Mtu                    *uint32 `path:"mtu" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config implements the yang.GoStruct
@@ -1660,7 +1660,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Config) ΛBelon
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/neighbors YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors struct {
-	Neighbor []*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor `json:"neighbor" module:"openconfig-if-ip"`
+	Neighbor map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor `path:"neighbor" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors implements the yang.GoStruct
@@ -1676,7 +1676,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors) Ne
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Neighbor == nil {
-		t.Neighbor = make([]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor)
+		t.Neighbor = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor)
 	}
 
 	key := Ip
@@ -1703,8 +1703,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors) ΛBe
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/neighbors/neighbor YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config `json:"config" module:"openconfig-if-ip"`
-	Ip     *string                                                                              `json:"ip" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config `path:"config" module:"openconfig-if-ip"`
+	Ip     *string                                                                              `path:"ip" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor implements the yang.GoStruct
@@ -1732,8 +1732,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neigh
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/neighbors/neighbor/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config struct {
-	Ip               *string `json:"ip" module:"openconfig-if-ip"`
-	LinkLayerAddress *string `json:"link-layer-address" module:"openconfig-if-ip"`
+	Ip               *string `path:"ip" module:"openconfig-if-ip"`
+	LinkLayerAddress *string `path:"link-layer-address" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor_Config implements the yang.GoStruct
@@ -1750,7 +1750,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neigh
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/router-advertisement YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement implements the yang.GoStruct
@@ -1767,9 +1767,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertise
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/router-advertisement/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config struct {
-	Interval *uint32 `json:"interval" module:"openconfig-if-ip"`
-	Lifetime *uint32 `json:"lifetime" module:"openconfig-if-ip"`
-	Suppress *bool   `json:"suppress" module:"openconfig-if-ip"`
+	Interval *uint32 `path:"interval" module:"openconfig-if-ip"`
+	Lifetime *uint32 `path:"lifetime" module:"openconfig-if-ip"`
+	Suppress *bool   `path:"suppress" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertisement_Config implements the yang.GoStruct
@@ -1786,8 +1786,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_RouterAdvertise
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/unnumbered YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered struct {
-	Config       *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config       `json:"config" module:"openconfig-if-ip"`
-	InterfaceRef *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef `json:"interface-ref" module:"openconfig-if-ip"`
+	Config       *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config       `path:"config" module:"openconfig-if-ip"`
+	InterfaceRef *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef `path:"interface-ref" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered implements the yang.GoStruct
@@ -1803,7 +1803,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered) ΛB
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/unnumbered/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config struct {
-	Enabled *bool `json:"enabled" module:"openconfig-if-ip"`
+	Enabled *bool `path:"enabled" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Config implements the yang.GoStruct
@@ -1820,7 +1820,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Conf
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/unnumbered/interface-ref YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef implements the yang.GoStruct
@@ -1837,8 +1837,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Inte
 
 // OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config represents the /openconfig-interfaces/interfaces/interface/routed-vlan/ipv6/unnumbered/interface-ref/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config struct {
-	Interface    *string `json:"interface" module:"openconfig-if-ip"`
-	Subinterface *uint32 `json:"subinterface" module:"openconfig-if-ip"`
+	Interface    *string `path:"interface" module:"openconfig-if-ip"`
+	Subinterface *uint32 `path:"subinterface" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_InterfaceRef_Config implements the yang.GoStruct
@@ -1855,7 +1855,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Unnumbered_Inte
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces represents the /openconfig-interfaces/interfaces/interface/subinterfaces YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces struct {
-	Subinterface []*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface `json:"subinterface" module:"openconfig-interfaces"`
+	Subinterface map[uint32]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface `path:"subinterface" module:"openconfig-interfaces"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces implements the yang.GoStruct
@@ -1871,7 +1871,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces) NewSubinterfac
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Subinterface == nil {
-		t.Subinterface = make([]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface)
+		t.Subinterface = make(map[uint32]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface)
 	}
 
 	key := Index
@@ -1898,11 +1898,11 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces) ΛBelongingModul
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config `json:"config" module:"openconfig-interfaces"`
-	Index  *uint32                                                                      `json:"index" module:"openconfig-interfaces"`
-	Ipv4   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4   `json:"ipv4" module:"openconfig-if-ip"`
-	Ipv6   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6   `json:"ipv6" module:"openconfig-if-ip"`
-	Vlan   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan   `json:"vlan" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config `path:"config" module:"openconfig-interfaces"`
+	Index  *uint32                                                                      `path:"index" module:"openconfig-interfaces"`
+	Ipv4   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4   `path:"ipv4" module:"openconfig-if-ip"`
+	Ipv6   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6   `path:"ipv6" module:"openconfig-if-ip"`
+	Vlan   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan   `path:"vlan" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface implements the yang.GoStruct
@@ -1929,10 +1929,10 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface) ΛB
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config struct {
-	Description                 *string `json:"description" module:"openconfig-interfaces"`
-	Enabled                     *bool   `json:"enabled" module:"openconfig-interfaces"`
-	Index                       *uint32 `json:"index" module:"openconfig-interfaces"`
-	L2ProtocolForwardingProfile *string `json:"l2protocol-forwarding-profile" module:"arista-intf-augments"`
+	Description                 *string `path:"description" module:"openconfig-interfaces"`
+	Enabled                     *bool   `path:"enabled" module:"openconfig-interfaces"`
+	Index                       *uint32 `path:"index" module:"openconfig-interfaces"`
+	L2ProtocolForwardingProfile *string `path:"l2protocol-forwarding-profile" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Config implements the yang.GoStruct
@@ -1949,11 +1949,11 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Conf
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4 represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4 YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4 struct {
-	Addresses  *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses  `json:"addresses" module:"openconfig-if-ip"`
-	Config     *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config     `json:"config" module:"openconfig-if-ip"`
-	Neighbors  *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors  `json:"neighbors" module:"openconfig-if-ip"`
-	ProxyArp   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp   `json:"proxy-arp" module:"openconfig-if-ip"`
-	Unnumbered *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered `json:"unnumbered" module:"openconfig-if-ip"`
+	Addresses  *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses  `path:"addresses" module:"openconfig-if-ip"`
+	Config     *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config     `path:"config" module:"openconfig-if-ip"`
+	Neighbors  *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors  `path:"neighbors" module:"openconfig-if-ip"`
+	ProxyArp   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp   `path:"proxy-arp" module:"openconfig-if-ip"`
+	Unnumbered *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered `path:"unnumbered" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4 implements the yang.GoStruct
@@ -1969,7 +1969,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses struct {
-	Address []*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address `json:"address" module:"openconfig-if-ip"`
+	Address map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address `path:"address" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses implements the yang.GoStruct
@@ -1986,7 +1986,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ip
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Address == nil {
-		t.Address = make([]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address)
+		t.Address = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address)
 	}
 
 	key := Ip
@@ -2013,9 +2013,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config `json:"config" module:"openconfig-if-ip"`
-	Ip     *string                                                                                             `json:"ip" module:"openconfig-if-ip"`
-	Vrrp   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp   `json:"vrrp" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config `path:"config" module:"openconfig-if-ip"`
+	Ip     *string                                                                                             `path:"ip" module:"openconfig-if-ip"`
+	Vrrp   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp   `path:"vrrp" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address implements the yang.GoStruct
@@ -2043,9 +2043,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config struct {
-	AddrType     E_AristaIntfAugments_AristaAddrType `json:"addr-type" module:"arista-intf-augments"`
-	Ip           *string                             `json:"ip" module:"openconfig-if-ip"`
-	PrefixLength *uint8                              `json:"prefix-length" module:"openconfig-if-ip"`
+	AddrType     E_AristaIntfAugments_AristaAddrType `path:"addr-type" module:"arista-intf-augments"`
+	Ip           *string                             `path:"ip" module:"openconfig-if-ip"`
+	PrefixLength *uint8                              `path:"prefix-length" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config implements the yang.GoStruct
@@ -2062,7 +2062,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp struct {
-	VrrpGroup map[uint8]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup `json:"vrrp-group" module:"openconfig-if-ip"`
+	VrrpGroup map[uint8]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup `path:"vrrp-group" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp implements the yang.GoStruct
@@ -2106,10 +2106,10 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup struct {
-	Config            *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config            `json:"config" module:"openconfig-if-ip"`
-	InterfaceTracking *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking `json:"interface-tracking" module:"openconfig-if-ip"`
-	TrackInterfaces   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces   `json:"track-interfaces" module:"arista-intf-augments"`
-	VirtualRouterId   *uint8                                                                                                                        `json:"virtual-router-id" module:"openconfig-if-ip"`
+	Config            *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config            `path:"config" module:"openconfig-if-ip"`
+	InterfaceTracking *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking `path:"interface-tracking" module:"openconfig-if-ip"`
+	TrackInterfaces   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces   `path:"track-interfaces" module:"arista-intf-augments"`
+	VirtualRouterId   *uint8                                                                                                                        `path:"virtual-router-id" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup implements the yang.GoStruct
@@ -2137,14 +2137,14 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config struct {
-	AcceptMode            *bool                                                                                                                                          `json:"accept-mode" module:"openconfig-if-ip"`
-	AdvertisementInterval *uint16                                                                                                                                        `json:"advertisement-interval" module:"openconfig-if-ip"`
-	Preempt               *bool                                                                                                                                          `json:"preempt" module:"openconfig-if-ip"`
-	PreemptDelay          *uint16                                                                                                                                        `json:"preempt-delay" module:"openconfig-if-ip"`
-	Priority              *uint8                                                                                                                                         `json:"priority" module:"openconfig-if-ip"`
-	VirtualAddress        []string                                                                                                                                       `json:"virtual-address" module:"openconfig-if-ip"`
-	VirtualAddresses      []*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses `json:"virtual-addresses" module:"arista-intf-augments"`
-	VirtualRouterId       *uint8                                                                                                                                         `json:"virtual-router-id" module:"openconfig-if-ip"`
+	AcceptMode            *bool                                                                                                                                          `path:"accept-mode" module:"openconfig-if-ip"`
+	AdvertisementInterval *uint16                                                                                                                                        `path:"advertisement-interval" module:"openconfig-if-ip"`
+	Preempt               *bool                                                                                                                                          `path:"preempt" module:"openconfig-if-ip"`
+	PreemptDelay          *uint16                                                                                                                                        `path:"preempt-delay" module:"openconfig-if-ip"`
+	Priority              *uint8                                                                                                                                         `path:"priority" module:"openconfig-if-ip"`
+	VirtualAddress        []string                                                                                                                                       `path:"virtual-address" module:"openconfig-if-ip"`
+	VirtualAddresses      map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses `path:"virtual-addresses" module:"arista-intf-augments"`
+	VirtualRouterId       *uint8                                                                                                                                         `path:"virtual-router-id" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config implements the yang.GoStruct
@@ -2161,7 +2161,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ip
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.VirtualAddresses == nil {
-		t.VirtualAddresses = make([]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
+		t.VirtualAddresses = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
 	}
 
 	key := Addr
@@ -2188,8 +2188,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/config/virtual-addresses YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses struct {
-	Addr           *string                                                                                                                                            `json:"addr" module:"arista-intf-augments"`
-	VirtualAddress *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress `json:"virtual-address" module:"arista-intf-augments"`
+	Addr           *string                                                                                                                                            `path:"addr" module:"arista-intf-augments"`
+	VirtualAddress *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress `path:"virtual-address" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses implements the yang.GoStruct
@@ -2217,8 +2217,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/config/virtual-addresses/virtual-address YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress struct {
-	Addr     *string                             `json:"addr" module:"arista-intf-augments"`
-	AddrType E_AristaIntfAugments_AristaAddrType `json:"addr-type" module:"arista-intf-augments"`
+	Addr     *string                             `path:"addr" module:"arista-intf-augments"`
+	AddrType E_AristaIntfAugments_AristaAddrType `path:"addr-type" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress implements the yang.GoStruct
@@ -2235,7 +2235,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/interface-tracking YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking implements the yang.GoStruct
@@ -2252,8 +2252,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/interface-tracking/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config struct {
-	PriorityDecrement *uint8   `json:"priority-decrement" module:"openconfig-if-ip"`
-	TrackInterface    []string `json:"track-interface" module:"openconfig-if-ip"`
+	PriorityDecrement *uint8   `path:"priority-decrement" module:"openconfig-if-ip"`
+	TrackInterface    []string `path:"track-interface" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config implements the yang.GoStruct
@@ -2270,7 +2270,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/track-interfaces YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces struct {
-	TrackInterface []*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface `json:"track-interface" module:"arista-intf-augments"`
+	TrackInterface map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface `path:"track-interface" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces implements the yang.GoStruct
@@ -2287,7 +2287,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ip
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.TrackInterface == nil {
-		t.TrackInterface = make([]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
+		t.TrackInterface = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
 	}
 
 	key := Name
@@ -2314,8 +2314,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/track-interfaces/track-interface YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config `json:"config" module:"arista-intf-augments"`
-	Name   *string                                                                                                                                           `json:"name" module:"arista-intf-augments"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config `path:"config" module:"arista-intf-augments"`
+	Name   *string                                                                                                                                           `path:"name" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface implements the yang.GoStruct
@@ -2343,8 +2343,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp-group/track-interfaces/track-interface/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config struct {
-	Name              *string `json:"name" module:"arista-intf-augments"`
-	PriorityDecrement *uint8  `json:"priority-decrement" module:"arista-intf-augments"`
+	Name              *string `path:"name" module:"arista-intf-augments"`
+	PriorityDecrement *uint8  `path:"priority-decrement" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config implements the yang.GoStruct
@@ -2361,9 +2361,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config struct {
-	DhcpClient *bool   `json:"dhcp-client" module:"openconfig-if-ip"`
-	Enabled    *bool   `json:"enabled" module:"openconfig-if-ip"`
-	Mtu        *uint16 `json:"mtu" module:"openconfig-if-ip"`
+	DhcpClient *bool   `path:"dhcp-client" module:"openconfig-if-ip"`
+	Enabled    *bool   `path:"enabled" module:"openconfig-if-ip"`
+	Mtu        *uint16 `path:"mtu" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Config implements the yang.GoStruct
@@ -2380,7 +2380,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/neighbors YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors struct {
-	Neighbor []*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor `json:"neighbor" module:"openconfig-if-ip"`
+	Neighbor map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor `path:"neighbor" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors implements the yang.GoStruct
@@ -2397,7 +2397,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ip
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Neighbor == nil {
-		t.Neighbor = make([]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor)
+		t.Neighbor = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor)
 	}
 
 	key := Ip
@@ -2424,8 +2424,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config `json:"config" module:"openconfig-if-ip"`
-	Ip     *string                                                                                              `json:"ip" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config `path:"config" module:"openconfig-if-ip"`
+	Ip     *string                                                                                              `path:"ip" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor implements the yang.GoStruct
@@ -2453,8 +2453,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config struct {
-	Ip               *string `json:"ip" module:"openconfig-if-ip"`
-	LinkLayerAddress *string `json:"link-layer-address" module:"openconfig-if-ip"`
+	Ip               *string `path:"ip" module:"openconfig-if-ip"`
+	LinkLayerAddress *string `path:"link-layer-address" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor_Config implements the yang.GoStruct
@@ -2471,7 +2471,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/proxy-arp YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp implements the yang.GoStruct
@@ -2488,7 +2488,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/proxy-arp/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config struct {
-	Mode E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode `json:"mode" module:"openconfig-if-ip"`
+	Mode E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode `path:"mode" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config implements the yang.GoStruct
@@ -2505,8 +2505,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/unnumbered YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered struct {
-	Config       *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config       `json:"config" module:"openconfig-if-ip"`
-	InterfaceRef *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef `json:"interface-ref" module:"openconfig-if-ip"`
+	Config       *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config       `path:"config" module:"openconfig-if-ip"`
+	InterfaceRef *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef `path:"interface-ref" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered implements the yang.GoStruct
@@ -2523,7 +2523,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/unnumbered/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config struct {
-	Enabled *bool `json:"enabled" module:"openconfig-if-ip"`
+	Enabled *bool `path:"enabled" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_Config implements the yang.GoStruct
@@ -2540,7 +2540,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/unnumbered/interface-ref YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef implements the yang.GoStruct
@@ -2557,8 +2557,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/unnumbered/interface-ref/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config struct {
-	Interface    *string `json:"interface" module:"openconfig-if-ip"`
-	Subinterface *uint32 `json:"subinterface" module:"openconfig-if-ip"`
+	Interface    *string `path:"interface" module:"openconfig-if-ip"`
+	Subinterface *uint32 `path:"subinterface" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered_InterfaceRef_Config implements the yang.GoStruct
@@ -2575,11 +2575,11 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6 represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6 YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6 struct {
-	Addresses           *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses           `json:"addresses" module:"openconfig-if-ip"`
-	Config              *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config              `json:"config" module:"openconfig-if-ip"`
-	Neighbors           *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors           `json:"neighbors" module:"openconfig-if-ip"`
-	RouterAdvertisement *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement `json:"router-advertisement" module:"openconfig-if-ip"`
-	Unnumbered          *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered          `json:"unnumbered" module:"openconfig-if-ip"`
+	Addresses           *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses           `path:"addresses" module:"openconfig-if-ip"`
+	Config              *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config              `path:"config" module:"openconfig-if-ip"`
+	Neighbors           *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors           `path:"neighbors" module:"openconfig-if-ip"`
+	RouterAdvertisement *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement `path:"router-advertisement" module:"openconfig-if-ip"`
+	Unnumbered          *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered          `path:"unnumbered" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6 implements the yang.GoStruct
@@ -2595,7 +2595,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses struct {
-	Address []*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address `json:"address" module:"openconfig-if-ip"`
+	Address map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address `path:"address" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses implements the yang.GoStruct
@@ -2612,7 +2612,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ip
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Address == nil {
-		t.Address = make([]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address)
+		t.Address = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address)
 	}
 
 	key := Ip
@@ -2639,9 +2639,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config `json:"config" module:"openconfig-if-ip"`
-	Ip     *string                                                                                             `json:"ip" module:"openconfig-if-ip"`
-	Vrrp   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp   `json:"vrrp" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config `path:"config" module:"openconfig-if-ip"`
+	Ip     *string                                                                                             `path:"ip" module:"openconfig-if-ip"`
+	Vrrp   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp   `path:"vrrp" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address implements the yang.GoStruct
@@ -2669,8 +2669,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config struct {
-	Ip           *string `json:"ip" module:"openconfig-if-ip"`
-	PrefixLength *uint8  `json:"prefix-length" module:"openconfig-if-ip"`
+	Ip           *string `path:"ip" module:"openconfig-if-ip"`
+	PrefixLength *uint8  `path:"prefix-length" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config implements the yang.GoStruct
@@ -2687,7 +2687,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp struct {
-	VrrpGroup map[uint8]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup `json:"vrrp-group" module:"openconfig-if-ip"`
+	VrrpGroup map[uint8]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup `path:"vrrp-group" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp implements the yang.GoStruct
@@ -2731,10 +2731,10 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup struct {
-	Config            *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config            `json:"config" module:"openconfig-if-ip"`
-	InterfaceTracking *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking `json:"interface-tracking" module:"openconfig-if-ip"`
-	TrackInterfaces   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces   `json:"track-interfaces" module:"arista-intf-augments"`
-	VirtualRouterId   *uint8                                                                                                                        `json:"virtual-router-id" module:"openconfig-if-ip"`
+	Config            *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config            `path:"config" module:"openconfig-if-ip"`
+	InterfaceTracking *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking `path:"interface-tracking" module:"openconfig-if-ip"`
+	TrackInterfaces   *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces   `path:"track-interfaces" module:"arista-intf-augments"`
+	VirtualRouterId   *uint8                                                                                                                        `path:"virtual-router-id" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup implements the yang.GoStruct
@@ -2762,15 +2762,15 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config struct {
-	AcceptMode            *bool                                                                                                                                          `json:"accept-mode" module:"openconfig-if-ip"`
-	AdvertisementInterval *uint16                                                                                                                                        `json:"advertisement-interval" module:"openconfig-if-ip"`
-	Preempt               *bool                                                                                                                                          `json:"preempt" module:"openconfig-if-ip"`
-	PreemptDelay          *uint16                                                                                                                                        `json:"preempt-delay" module:"openconfig-if-ip"`
-	Priority              *uint8                                                                                                                                         `json:"priority" module:"openconfig-if-ip"`
-	VirtualAddress        []string                                                                                                                                       `json:"virtual-address" module:"openconfig-if-ip"`
-	VirtualAddresses      []*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses `json:"virtual-addresses" module:"arista-intf-augments"`
-	VirtualLinkLocal      *string                                                                                                                                        `json:"virtual-link-local" module:"openconfig-if-ip"`
-	VirtualRouterId       *uint8                                                                                                                                         `json:"virtual-router-id" module:"openconfig-if-ip"`
+	AcceptMode            *bool                                                                                                                                          `path:"accept-mode" module:"openconfig-if-ip"`
+	AdvertisementInterval *uint16                                                                                                                                        `path:"advertisement-interval" module:"openconfig-if-ip"`
+	Preempt               *bool                                                                                                                                          `path:"preempt" module:"openconfig-if-ip"`
+	PreemptDelay          *uint16                                                                                                                                        `path:"preempt-delay" module:"openconfig-if-ip"`
+	Priority              *uint8                                                                                                                                         `path:"priority" module:"openconfig-if-ip"`
+	VirtualAddress        []string                                                                                                                                       `path:"virtual-address" module:"openconfig-if-ip"`
+	VirtualAddresses      map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses `path:"virtual-addresses" module:"arista-intf-augments"`
+	VirtualLinkLocal      *string                                                                                                                                        `path:"virtual-link-local" module:"openconfig-if-ip"`
+	VirtualRouterId       *uint8                                                                                                                                         `path:"virtual-router-id" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config implements the yang.GoStruct
@@ -2787,7 +2787,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ip
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.VirtualAddresses == nil {
-		t.VirtualAddresses = make([]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
+		t.VirtualAddresses = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
 	}
 
 	key := Addr
@@ -2814,8 +2814,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/config/virtual-addresses YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses struct {
-	Addr           *string                                                                                                                                            `json:"addr" module:"arista-intf-augments"`
-	VirtualAddress *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress `json:"virtual-address" module:"arista-intf-augments"`
+	Addr           *string                                                                                                                                            `path:"addr" module:"arista-intf-augments"`
+	VirtualAddress *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress `path:"virtual-address" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses implements the yang.GoStruct
@@ -2843,8 +2843,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/config/virtual-addresses/virtual-address YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress struct {
-	Addr     *string                             `json:"addr" module:"arista-intf-augments"`
-	AddrType E_AristaIntfAugments_AristaAddrType `json:"addr-type" module:"arista-intf-augments"`
+	Addr     *string                             `path:"addr" module:"arista-intf-augments"`
+	AddrType E_AristaIntfAugments_AristaAddrType `path:"addr-type" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress implements the yang.GoStruct
@@ -2861,7 +2861,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/interface-tracking YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking implements the yang.GoStruct
@@ -2878,8 +2878,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/interface-tracking/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config struct {
-	PriorityDecrement *uint8   `json:"priority-decrement" module:"openconfig-if-ip"`
-	TrackInterface    []string `json:"track-interface" module:"openconfig-if-ip"`
+	PriorityDecrement *uint8   `path:"priority-decrement" module:"openconfig-if-ip"`
+	TrackInterface    []string `path:"track-interface" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config implements the yang.GoStruct
@@ -2896,7 +2896,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/track-interfaces YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces struct {
-	TrackInterface []*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface `json:"track-interface" module:"arista-intf-augments"`
+	TrackInterface map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface `path:"track-interface" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces implements the yang.GoStruct
@@ -2913,7 +2913,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ip
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.TrackInterface == nil {
-		t.TrackInterface = make([]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
+		t.TrackInterface = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
 	}
 
 	key := Name
@@ -2940,8 +2940,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/track-interfaces/track-interface YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config `json:"config" module:"arista-intf-augments"`
-	Name   *string                                                                                                                                           `json:"name" module:"arista-intf-augments"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config `path:"config" module:"arista-intf-augments"`
+	Name   *string                                                                                                                                           `path:"name" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface implements the yang.GoStruct
@@ -2969,8 +2969,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/addresses/address/vrrp/vrrp-group/track-interfaces/track-interface/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config struct {
-	Name              *string `json:"name" module:"arista-intf-augments"`
-	PriorityDecrement *uint8  `json:"priority-decrement" module:"arista-intf-augments"`
+	Name              *string `path:"name" module:"arista-intf-augments"`
+	PriorityDecrement *uint8  `path:"priority-decrement" module:"arista-intf-augments"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface_Config implements the yang.GoStruct
@@ -2987,10 +2987,10 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config struct {
-	DhcpClient             *bool   `json:"dhcp-client" module:"openconfig-if-ip"`
-	DupAddrDetectTransmits *uint32 `json:"dup-addr-detect-transmits" module:"openconfig-if-ip"`
-	Enabled                *bool   `json:"enabled" module:"openconfig-if-ip"`
-	Mtu                    *uint32 `json:"mtu" module:"openconfig-if-ip"`
+	DhcpClient             *bool   `path:"dhcp-client" module:"openconfig-if-ip"`
+	DupAddrDetectTransmits *uint32 `path:"dup-addr-detect-transmits" module:"openconfig-if-ip"`
+	Enabled                *bool   `path:"enabled" module:"openconfig-if-ip"`
+	Mtu                    *uint32 `path:"mtu" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Config implements the yang.GoStruct
@@ -3007,7 +3007,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/neighbors YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors struct {
-	Neighbor []*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor `json:"neighbor" module:"openconfig-if-ip"`
+	Neighbor map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor `path:"neighbor" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors implements the yang.GoStruct
@@ -3024,7 +3024,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ip
 	// Initialise the list within the receiver struct if it has not already been
 	// created.
 	if t.Neighbor == nil {
-		t.Neighbor = make([]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor)
+		t.Neighbor = make(map[string]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor)
 	}
 
 	key := Ip
@@ -3051,8 +3051,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/neighbors/neighbor YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config `json:"config" module:"openconfig-if-ip"`
-	Ip     *string                                                                                              `json:"ip" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config `path:"config" module:"openconfig-if-ip"`
+	Ip     *string                                                                                              `path:"ip" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor implements the yang.GoStruct
@@ -3080,8 +3080,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/neighbors/neighbor/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config struct {
-	Ip               *string `json:"ip" module:"openconfig-if-ip"`
-	LinkLayerAddress *string `json:"link-layer-address" module:"openconfig-if-ip"`
+	Ip               *string `path:"ip" module:"openconfig-if-ip"`
+	LinkLayerAddress *string `path:"link-layer-address" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor_Config implements the yang.GoStruct
@@ -3098,7 +3098,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/router-advertisement YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement implements the yang.GoStruct
@@ -3115,9 +3115,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/router-advertisement/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config struct {
-	Interval *uint32 `json:"interval" module:"openconfig-if-ip"`
-	Lifetime *uint32 `json:"lifetime" module:"openconfig-if-ip"`
-	Suppress *bool   `json:"suppress" module:"openconfig-if-ip"`
+	Interval *uint32 `path:"interval" module:"openconfig-if-ip"`
+	Lifetime *uint32 `path:"lifetime" module:"openconfig-if-ip"`
+	Suppress *bool   `path:"suppress" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_RouterAdvertisement_Config implements the yang.GoStruct
@@ -3134,8 +3134,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/unnumbered YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered struct {
-	Config       *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config       `json:"config" module:"openconfig-if-ip"`
-	InterfaceRef *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef `json:"interface-ref" module:"openconfig-if-ip"`
+	Config       *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config       `path:"config" module:"openconfig-if-ip"`
+	InterfaceRef *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef `path:"interface-ref" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered implements the yang.GoStruct
@@ -3152,7 +3152,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/unnumbered/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config struct {
-	Enabled *bool `json:"enabled" module:"openconfig-if-ip"`
+	Enabled *bool `path:"enabled" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_Config implements the yang.GoStruct
@@ -3169,7 +3169,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/unnumbered/interface-ref YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config `json:"config" module:"openconfig-if-ip"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config `path:"config" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef implements the yang.GoStruct
@@ -3186,8 +3186,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv6/unnumbered/interface-ref/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config struct {
-	Interface    *string `json:"interface" module:"openconfig-if-ip"`
-	Subinterface *uint32 `json:"subinterface" module:"openconfig-if-ip"`
+	Interface    *string `path:"interface" module:"openconfig-if-ip"`
+	Subinterface *uint32 `path:"subinterface" module:"openconfig-if-ip"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Unnumbered_InterfaceRef_Config implements the yang.GoStruct
@@ -3204,10 +3204,10 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan struct {
-	Config         *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config         `json:"config" module:"openconfig-vlan"`
-	EgressMapping  *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping  `json:"egress-mapping" module:"openconfig-vlan"`
-	IngressMapping *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping `json:"ingress-mapping" module:"openconfig-vlan"`
-	Match          *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match          `json:"match" module:"openconfig-vlan"`
+	Config         *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config         `path:"config" module:"openconfig-vlan"`
+	EgressMapping  *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping  `path:"egress-mapping" module:"openconfig-vlan"`
+	IngressMapping *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping `path:"ingress-mapping" module:"openconfig-vlan"`
+	Match          *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match          `path:"match" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan implements the yang.GoStruct
@@ -3223,7 +3223,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config struct {
-	VlanId OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union `json:"vlan-id" module:"openconfig-vlan"`
+	VlanId OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union `path:"vlan-id" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config implements the yang.GoStruct
@@ -3282,7 +3282,7 @@ func (t *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vl
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/egress-mapping YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping implements the yang.GoStruct
@@ -3299,9 +3299,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/egress-mapping/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config struct {
-	Tpid            E_OpenconfigVlanTypes_TPID_TYPES `json:"tpid" module:"openconfig-vlan"`
-	VlanId          *uint16                          `json:"vlan-id" module:"openconfig-vlan"`
-	VlanStackAction E_OpenconfigVlan_VlanStackAction `json:"vlan-stack-action" module:"openconfig-vlan"`
+	Tpid            E_OpenconfigVlanTypes_TPID_TYPES `path:"tpid" module:"openconfig-vlan"`
+	VlanId          *uint16                          `path:"vlan-id" module:"openconfig-vlan"`
+	VlanStackAction E_OpenconfigVlan_VlanStackAction `path:"vlan-stack-action" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config implements the yang.GoStruct
@@ -3318,7 +3318,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/ingress-mapping YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping implements the yang.GoStruct
@@ -3335,9 +3335,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/ingress-mapping/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config struct {
-	Tpid            E_OpenconfigVlanTypes_TPID_TYPES `json:"tpid" module:"openconfig-vlan"`
-	VlanId          *uint16                          `json:"vlan-id" module:"openconfig-vlan"`
-	VlanStackAction E_OpenconfigVlan_VlanStackAction `json:"vlan-stack-action" module:"openconfig-vlan"`
+	Tpid            E_OpenconfigVlanTypes_TPID_TYPES `path:"tpid" module:"openconfig-vlan"`
+	VlanId          *uint16                          `path:"vlan-id" module:"openconfig-vlan"`
+	VlanStackAction E_OpenconfigVlan_VlanStackAction `path:"vlan-stack-action" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config implements the yang.GoStruct
@@ -3354,15 +3354,15 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match struct {
-	DoubleTagged                *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged                `json:"double-tagged" module:"openconfig-vlan"`
-	DoubleTaggedInnerList       *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList       `json:"double-tagged-inner-list" module:"openconfig-vlan"`
-	DoubleTaggedInnerOuterRange *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange `json:"double-tagged-inner-outer-range" module:"openconfig-vlan"`
-	DoubleTaggedInnerRange      *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange      `json:"double-tagged-inner-range" module:"openconfig-vlan"`
-	DoubleTaggedOuterList       *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList       `json:"double-tagged-outer-list" module:"openconfig-vlan"`
-	DoubleTaggedOuterRange      *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange      `json:"double-tagged-outer-range" module:"openconfig-vlan"`
-	SingleTagged                *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged                `json:"single-tagged" module:"openconfig-vlan"`
-	SingleTaggedList            *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList            `json:"single-tagged-list" module:"openconfig-vlan"`
-	SingleTaggedRange           *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange           `json:"single-tagged-range" module:"openconfig-vlan"`
+	DoubleTagged                *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged                `path:"double-tagged" module:"openconfig-vlan"`
+	DoubleTaggedInnerList       *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList       `path:"double-tagged-inner-list" module:"openconfig-vlan"`
+	DoubleTaggedInnerOuterRange *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange `path:"double-tagged-inner-outer-range" module:"openconfig-vlan"`
+	DoubleTaggedInnerRange      *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange      `path:"double-tagged-inner-range" module:"openconfig-vlan"`
+	DoubleTaggedOuterList       *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList       `path:"double-tagged-outer-list" module:"openconfig-vlan"`
+	DoubleTaggedOuterRange      *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange      `path:"double-tagged-outer-range" module:"openconfig-vlan"`
+	SingleTagged                *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged                `path:"single-tagged" module:"openconfig-vlan"`
+	SingleTaggedList            *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList            `path:"single-tagged-list" module:"openconfig-vlan"`
+	SingleTaggedRange           *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange           `path:"single-tagged-range" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match implements the yang.GoStruct
@@ -3379,7 +3379,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged implements the yang.GoStruct
@@ -3396,7 +3396,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-list YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList implements the yang.GoStruct
@@ -3413,8 +3413,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-list/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config struct {
-	InnerVlanIds []uint16 `json:"inner-vlan-ids" module:"openconfig-vlan"`
-	OuterVlanId  *uint16  `json:"outer-vlan-id" module:"openconfig-vlan"`
+	InnerVlanIds []uint16 `path:"inner-vlan-ids" module:"openconfig-vlan"`
+	OuterVlanId  *uint16  `path:"outer-vlan-id" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config implements the yang.GoStruct
@@ -3431,7 +3431,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-outer-range YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange implements the yang.GoStruct
@@ -3448,10 +3448,10 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-outer-range/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config struct {
-	InnerHighVlanId *uint16 `json:"inner-high-vlan-id" module:"openconfig-vlan"`
-	InnerLowVlanId  *uint16 `json:"inner-low-vlan-id" module:"openconfig-vlan"`
-	OuterHighVlanId *uint16 `json:"outer-high-vlan-id" module:"openconfig-vlan"`
-	OuterLowVlanId  *uint16 `json:"outer-low-vlan-id" module:"openconfig-vlan"`
+	InnerHighVlanId *uint16 `path:"inner-high-vlan-id" module:"openconfig-vlan"`
+	InnerLowVlanId  *uint16 `path:"inner-low-vlan-id" module:"openconfig-vlan"`
+	OuterHighVlanId *uint16 `path:"outer-high-vlan-id" module:"openconfig-vlan"`
+	OuterLowVlanId  *uint16 `path:"outer-low-vlan-id" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerOuterRange_Config implements the yang.GoStruct
@@ -3468,7 +3468,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-range YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange implements the yang.GoStruct
@@ -3485,9 +3485,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-inner-range/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config struct {
-	InnerHighVlanId *uint16  `json:"inner-high-vlan-id" module:"openconfig-vlan"`
-	InnerLowVlanId  *uint16  `json:"inner-low-vlan-id" module:"openconfig-vlan"`
-	OuterVlanId     []uint16 `json:"outer-vlan-id" module:"openconfig-vlan"`
+	InnerHighVlanId *uint16  `path:"inner-high-vlan-id" module:"openconfig-vlan"`
+	InnerLowVlanId  *uint16  `path:"inner-low-vlan-id" module:"openconfig-vlan"`
+	OuterVlanId     []uint16 `path:"outer-vlan-id" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config implements the yang.GoStruct
@@ -3504,7 +3504,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-outer-list YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList implements the yang.GoStruct
@@ -3521,8 +3521,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-outer-list/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config struct {
-	InnerVlanId  *uint16  `json:"inner-vlan-id" module:"openconfig-vlan"`
-	OuterVlanIds []uint16 `json:"outer-vlan-ids" module:"openconfig-vlan"`
+	InnerVlanId  *uint16  `path:"inner-vlan-id" module:"openconfig-vlan"`
+	OuterVlanIds []uint16 `path:"outer-vlan-ids" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config implements the yang.GoStruct
@@ -3539,7 +3539,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-outer-range YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange implements the yang.GoStruct
@@ -3556,9 +3556,9 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged-outer-range/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config struct {
-	InnerVlanId     *uint16 `json:"inner-vlan-id" module:"openconfig-vlan"`
-	OuterHighVlanId *uint16 `json:"outer-high-vlan-id" module:"openconfig-vlan"`
-	OuterLowVlanId  *uint16 `json:"outer-low-vlan-id" module:"openconfig-vlan"`
+	InnerVlanId     *uint16 `path:"inner-vlan-id" module:"openconfig-vlan"`
+	OuterHighVlanId *uint16 `path:"outer-high-vlan-id" module:"openconfig-vlan"`
+	OuterLowVlanId  *uint16 `path:"outer-low-vlan-id" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange_Config implements the yang.GoStruct
@@ -3575,8 +3575,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config struct {
-	InnerVlanId *uint16 `json:"inner-vlan-id" module:"openconfig-vlan"`
-	OuterVlanId *uint16 `json:"outer-vlan-id" module:"openconfig-vlan"`
+	InnerVlanId *uint16 `path:"inner-vlan-id" module:"openconfig-vlan"`
+	OuterVlanId *uint16 `path:"outer-vlan-id" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTagged_Config implements the yang.GoStruct
@@ -3593,7 +3593,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged implements the yang.GoStruct
@@ -3610,7 +3610,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged-list YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList implements the yang.GoStruct
@@ -3627,7 +3627,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged-list/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config struct {
-	VlanIds []uint16 `json:"vlan-ids" module:"openconfig-vlan"`
+	VlanIds []uint16 `path:"vlan-ids" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config implements the yang.GoStruct
@@ -3644,7 +3644,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged-range YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange struct {
-	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config `json:"config" module:"openconfig-vlan"`
+	Config *OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config `path:"config" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange implements the yang.GoStruct
@@ -3661,8 +3661,8 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged-range/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config struct {
-	HighVlanId *uint16 `json:"high-vlan-id" module:"openconfig-vlan"`
-	LowVlanId  *uint16 `json:"low-vlan-id" module:"openconfig-vlan"`
+	HighVlanId *uint16 `path:"high-vlan-id" module:"openconfig-vlan"`
+	LowVlanId  *uint16 `path:"low-vlan-id" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange_Config implements the yang.GoStruct
@@ -3679,7 +3679,7 @@ func (*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged/config YANG schema element.
 type OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config struct {
-	VlanId *uint16 `json:"vlan-id" module:"openconfig-vlan"`
+	VlanId *uint16 `path:"vlan-id" module:"openconfig-vlan"`
 }
 
 // IsYANGGoStruct ensures that OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTagged_Config implements the yang.GoStruct

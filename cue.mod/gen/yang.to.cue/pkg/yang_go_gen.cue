@@ -569,7 +569,7 @@ package yang
 
 // OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config represents the /openconfig-interfaces/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config YANG schema element.
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config: {
-	"addr-type"?:      string @go(AddrType)
+	"addr-type"?:      #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 	ip?:              null | string                        @go(Ip,*string)
 	"prefix-length"?: null | uint8                         @go(PrefixLength,*uint8)
 }
