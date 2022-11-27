@@ -22,7 +22,8 @@
                               {
                                  "ip": "192.0.2.1",
                                  "config": {
-                                    "prefix-length": 32,
+                                    "addr-type": "PRIMARY",
+                                    "prefix-length": 24,
                                     "ip": "192.0.2.1"
                                  }
                               }
