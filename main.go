@@ -8,8 +8,6 @@ import (
 	"github.com/openconfig/ygot/ygot"
 )
 
-//go:generate go run github.com/openconfig/ygot/generator -path=yang -generate_fakeroot -fakeroot_name=device -output_file=pkg/yang.go -compress_paths=true -exclude_modules=ietf-interfaces -package_name=yang openconfig/release/models/interfaces/openconfig-if-ip.yang
-
 func main() {
 	dev := &oc.Device{}
 

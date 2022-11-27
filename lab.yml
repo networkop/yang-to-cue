@@ -1,0 +1,8 @@
+name: ceos
+
+topology:
+  nodes:
+    ceos:
+      kind: ceos
+      image: ceos:4.24.5M
+

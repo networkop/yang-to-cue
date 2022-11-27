@@ -1,0 +1,38 @@
+{
+   "interfaces": {
+      "interface": [
+         {
+            "config": {
+               "description": "loopback interface",
+               "mtu": 1500,
+               "name": "Loopback0"
+            },
+            "name": "Loopback0",
+            "subinterfaces": {
+               "subinterface": [
+                  {
+                     "config": {
+                        "description": "default subinterface",
+                        "index": 0
+                     },
+                     "index": 0,
+                     "ipv4": {
+                        "addresses": {
+                           "address": [
+                              {
+                                 "ip": "192.0.2.1",
+                                 "config": {
+                                    "prefix-length": 32,
+                                    "ip": "192.0.2.1"
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               ]
+            }
+         }
+      ]
+   }
+}

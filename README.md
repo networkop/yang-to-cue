@@ -1,182 +1,92 @@
-0. Clone YANG modules
+
+1. Initialise a Go module and add the ygot package
+
+```
+go mod init yang.to.cue
+go get github.com/openconfig/ygot/generator
+```
+
+2. Get a local copy of the required YANG models
 
 ```
 git clone --depth=1 https://github.com/YangModels/yang.git
 git clone https://github.com/openconfig/public openconfig
 ```
 
-1.  Generate types with ygot
-
-Compress Paths needs to be set to false!
+3. Generate types with ygot
 
 ```
+mkdir pkg
+
 go run github.com/openconfig/ygot/generator \
 -path=openconfig \
 -generate_fakeroot \
 -fakeroot_name=device \
--output_file=pkg/ygot/yang.go \
+-output_file=pkg/yang.go \
 -compress_paths=false \
 -exclude_modules=ietf-interfaces \
 -package_name=yang \
+-include_descriptions=false \
+-include_model_data=false \
+-include_model_data=false \
+-include_schema=false \
+-trim_enum_openconfig_prefix=true \
+-shorten_enum_leaf_names=true \
 -exclude_state \
 openconfig/release/models/interfaces/openconfig-if-ip.yang
 ```
 
-Optionally cleanup YANG models to speed up CUE cli commands with `./...`
+4. Replace Go maps with slices and path tags with json tags
 
 ```
-rm -rf yang && rm -rf openconfig
+sed -i -E 's/path:"(\S+)"/json:"\1"/' pkg/yang.go 
+sed -i -E 's/map\[string\]\*(\S+)/\[\]\*\1/' pkg/yang.go
+sed -i -E 's/map\[uint32\]\*(\S+)/\[\]\*\1/' pkg/yang.go
 ```
 
-Replace ygot's `path` struct tags with `json` to be correctly recognized by CUE:
-
-```
-sed  -E 's/path:"(\S+)"/json:"\1"/' pkg/ygot/yang.go > pkg/cue/yang.go
-```
-
-2. Init CUE mod
+5. Init CUE modules
 
 ```
 cue mod init yang.cue
 ```
 
-3. Import Go types into CUE
-
+6. Import Go types into CUE
 
 ```
-cue get go github.com/networkop/yang-to-cue/pkg/cue/...
+cue get go yang.to.cue/pkg/...
 ```
 
-4. Write some CUE to model data
+The generated file is located in `cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue`
+
+7. Make some of the fields optional
+
+This is happens because struct fields with ENUM type are not pointers and, hence, marked as mandatory fields by cue during import.
+
+```
+sed -i -E 's/(^[^#]\S+)(:\s+#E)/\1\?\2/' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue
+```
+
+8. Write some CUE based on the generated definitions
 
 ```
 cat values.cue
 ```
 
-5. Evaluate CUE values
+9. Check the that values are correct by evaluating them
 
 ```
-cue eval ./... --out=json
+cue eval values.cue --out=json
 ```
 
-```json
-{
-    "interfaces": {
-        "interface": {
-            "loopback0": {
-                "config": {
-                    "description": "loopback interface",
-                    "mtu": 1500,
-                    "name": "loopback0"
-                },
-                "subinterfaces": {
-                    "subinterface": {
-                        "0": {
-                            "config": {
-                                "description": "default subinterface",
-                                "index": 0
-                            },
-                            "index": 0,
-                            "ipv4": {
-                                "addresses": {
-                                    "address": {
-                                        "192.0.2.1": {
-                                            "ip": "192.0.2.1",
-                                            "config": {
-                                                "prefix-length": 24,
-                                                "ip": "192.0.2.1"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-```
 
-6. Compare this to the json produced by ygot:
+10. Check and update the test device details
 
 ```
-go run main.go
+cat gnmi_tool.cue
 ```
 
-```json
-{
-  "interfaces": {
-    "interface": [
-      {
-        "config": {
-          "description": "loopback interface",
-          "mtu": 1500,
-          "name": "loopback0"
-        },
-        "name": "loopback0",
-        "subinterfaces": {
-          "subinterface": [
-            {
-              "config": {
-                "description": "default subinterface",
-                "index": 0
-              },
-              "index": 0,
-              "ipv4": {
-                "addresses": {
-                  "address": [
-                    {
-                      "config": {
-                        "ip": "192.0.2.1",
-                        "prefix-length": 24
-                      },
-                      "ip": "192.0.2.1"
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      }
-    ]
-  }
-}
+11. Apply the configuration
+
 ```
-
-What I had to modify in the auto-generated CUE file:
-
-
-```diff
-+#OpenconfigInterfaces_Interfaces_Interface_Subinterfaces: {
-+	subinterface: {[string]: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface} 
-+}
-
-// OpenconfigInterfaces_Interfaces_Interface represents the /openconfig-interfaces/interfaces/interface YANG schema element.
-#OpenconfigInterfaces_Interfaces_Interface: {
-	Aggregation?: null | #OpenconfigInterfaces_Interfaces_Interface_Aggregation @go(,*OpenconfigInterfaces_Interfaces_Interface_Aggregation)
-	Config?:      null | #OpenconfigInterfaces_Interfaces_Interface_Config      @go(,*OpenconfigInterfaces_Interfaces_Interface_Config)
-	Ethernet?:    null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet    @go(,*OpenconfigInterfaces_Interfaces_Interface_Ethernet)
-	HoldTime?:    null | #OpenconfigInterfaces_Interfaces_Interface_HoldTime    @go(,*OpenconfigInterfaces_Interfaces_Interface_HoldTime)
-	Name?:        null | string                                                 @go(,*string)
-	RoutedVlan?:  null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan  @go(,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan)
-+	subinterfaces?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces
-}
-```
-
-```diff
-// OpenconfigInterfaces_Interfaces_Interface_Config represents the /openconfig-interfaces/interfaces/interface/config YANG schema element.
-#OpenconfigInterfaces_Interfaces_Interface_Config: {
-	Description?:  null | string @go(,*string)
-	Enabled?:      null | bool   @go(,*bool)
-	LoopbackMode?: null | bool   @go(,*bool)
-	Mtu?:          null | uint16 @go(,*uint16)
-	Name?:         null | string @go(,*string)
--	Tpid:          #E_OpenconfigVlanTypes_TPID_TYPES
-+   Tpid?:          #E_OpenconfigVlanTypes_TPID_TYPES
--	Type:          #E_IETFInterfaces_InterfaceType
-+	Type?:          #E_IETFInterfaces_InterfaceType
-}
+cue apply
 ```

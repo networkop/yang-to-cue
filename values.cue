@@ -1,18 +1,16 @@
-package values
+package main
 
-import intfs "github.com/networkop/yang-to-cue/pkg/cue:yang"
+import intfs "yang.to.cue/pkg:yang"
 
-interfaces: intfs.#OpenconfigInterfaces_Interfaces
-
-interfaces: interface: loopback0: {
+config: interfaces: intfs.#OpenconfigInterfaces_Interfaces & {interface: [{
 	config: {
 		description: "loopback interface"
 		mtu:         1500
-		name:        "loopback0"
+		name:        "Loopback0"
 	}
-
+	name: "Loopback0"
 	subinterfaces: {
-		subinterface: "0": {
+		subinterface: [{
 			config: {
 				description: "default subinterface"
 				index:       0
@@ -20,16 +18,16 @@ interfaces: interface: loopback0: {
 			index: 0
 			ipv4: {
 				addresses: {
-					address: "192.0.2.1": {
+					address: [{
 						ip: "192.0.2.1"
 						config: {
 							"prefix-length": 24
 							ip:              "192.0.2.1"
 						}
-					}
+					}]
 				}
 			}
-		}
+		}]
 	}
-
+}]
 }
