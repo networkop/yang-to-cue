@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"tool/exec"
 	"tool/file"
+	"tool/cli"
 )
 
 device: {
@@ -19,6 +20,11 @@ command: apply: {
 		cmd:    gnmic_set_prefix + ["--update-path", "/", "--update-file", "-"]
 		stdin:  json.Marshal(config)
 		stdout: string
+	}
+}
+command: show: {
+	cli.Print & {
+		text: json.Indent(json.Marshal(config), "", "   ")
 	}
 }
 

@@ -25,11 +25,17 @@ config: interfaces: intfs.#OpenconfigInterfaces_Interfaces & {interface: [{
 							"addr-type": "PRIMARY"
 							"prefix-length": 24
 							ip:              "192.0.2.1"
-						}
-					}]
+							}
+						}]
+					}
 				}
-			}
-		}]
-	}
-}]
+			}]
+		}
+	},
+	{
+		name: "Loopback0"
+		config: {
+			name: "Loopback0"
+		}
+	}]
 }
