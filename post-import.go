@@ -135,10 +135,11 @@ func main() {
 	_check: {
 		for e in X { 
 			let ks = e.config["{{.key}}"]
+			if ks != e["{{.key}}"] {_|_}
 			"\(ks)": true 
 		}
 	}
-	if len(_check) != len(X) { _|_ }
+	if len(_check) != len(X) { _|_ } 
 	`))
 
 	var foundDef string
@@ -163,9 +164,8 @@ func main() {
 				uniqCode.Execute(&b, map[string]interface{}{
 					"resource": yl.resource,
 					"key":      yl.key,
-					"def":      foundDef,
 				})
-				astFile, err := parser.ParseFile("foo.cue", b.Bytes())
+				astFile, err := parser.ParseFile("patch.cue", b.Bytes())
 				if err != nil {
 					log.Fatalln(err)
 				}
@@ -208,7 +208,7 @@ func main() {
 	os.WriteFile(genPath, bytes, 0644)
 }
 
-// this function convers 'CamelCase' and 'Capitalised' words into 'camel-case' and 'capitalised'
+// this function converts 'CamelCase' and 'Capitalised' words into 'camel-case' and 'capitalised'
 func normalizeName(input string) string {
 	var words []string
 	l := 0

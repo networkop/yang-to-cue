@@ -35,9 +35,6 @@ func main() {
 	json, err := ygot.EmitJSON(dev, &ygot.EmitJSONConfig{
 		Format: ygot.RFC7951,
 		Indent: "  ",
-		RFC7951Config: &ygot.RFC7951JSONConfig{
-			AppendModuleName: true,
-		},
 	})
 	if err != nil {
 		fmt.Println(err)

@@ -13,6 +13,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["name"]
+			if ks != e["name"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -180,6 +181,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["ip"]
+			if ks != e["ip"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -203,6 +205,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["virtual-router-id"]
+			if ks != e["virtual-router-id"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -228,6 +231,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["addr"]
+			if ks != e["addr"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -258,6 +262,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["name"]
+			if ks != e["name"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -285,6 +290,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["ip"]
+			if ks != e["ip"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -340,6 +346,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["ip"]
+			if ks != e["ip"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -362,6 +369,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["virtual-router-id"]
+			if ks != e["virtual-router-id"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -388,6 +396,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["addr"]
+			if ks != e["addr"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -418,6 +427,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["name"]
+			if ks != e["name"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -446,6 +456,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["ip"]
+			if ks != e["ip"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -495,6 +506,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["index"]
+			if ks != e["index"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -529,6 +541,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["ip"]
+			if ks != e["ip"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -552,6 +565,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["virtual-router-id"]
+			if ks != e["virtual-router-id"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -577,6 +591,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["addr"]
+			if ks != e["addr"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -607,6 +622,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["name"]
+			if ks != e["name"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -634,6 +650,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["ip"]
+			if ks != e["ip"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -689,6 +706,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["ip"]
+			if ks != e["ip"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -711,6 +729,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["virtual-router-id"]
+			if ks != e["virtual-router-id"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -737,6 +756,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["addr"]
+			if ks != e["addr"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -767,6 +787,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["name"]
+			if ks != e["name"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -795,6 +816,7 @@ package yang
 	_check: {
 		for e in X {
 			let ks = e.config["ip"]
+			if ks != e["ip"] {_|_}
 			"\(ks)": true
 		}
 	}
@@ -2476,17 +2498,17 @@ package yang
 #OpenconfigVlan_VlanStackAction_POP: #E_OpenconfigVlan_VlanStackAction & 2
 
 #OpenconfigVlan_VlanStackAction_SWAP:                                                         #E_OpenconfigVlan_VlanStackAction & 3
-#E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode:            "DISABLE" | "REMOTE_ONLY" | "ALL"
-#E_AristaIntfAugments_AristaAddrType:                                                         "PRIMARY" | "SECONDARY" | "IPV6"
-#E_AristaIntfAugments_ReflectorDirection:                                                     "in" | "out" | "none"
-#E_IETFInterfaces_InterfaceType:                                                              "propCnls" | "termPad" | "arcnet" | "frDlciEndPt" | "isdn" | "pos" | "propBWAp2Mp" | "vdsl" | "para" | "sonetOverheadChannel" | "sonetVT" | "fcipLink" | "gigabitEthernet" | "ptm" | "radsl" | "tunnel" | "v35" | "aluGponOnu" | "arap" | "dvbRccUpstream" | "ilan" | "dvbTdm" | "iso88025CRFPInt" | "pdnEtherLoop2" | "econet" | "reachDSL" | "virtualTg" | "aluEpon" | "frameRelay" | "lapd" | "qllc" | "sixToFour" | "smdsIcip" | "voiceEncap" | "atmbond" | "docsCableDownstream" | "srp" | "actelisMetaLOOP" | "frameRelayMPI" | "iso88025Dtr" | "iso88025Fiber" | "linegroup" | "msdsl" | "ppp" | "mediaMailOverIp" | "miox25" | "plc" | "pon155" | "rfc877x25" | "ss7SigLink" | "primaryISDN" | "voiceFXS" | "a12MppSwitch" | "hdsl2" | "lapb" | "mpc" | "teLink" | "voiceFGDOS" | "bridge" | "cnr" | "fddi" | "stackToStack" | "frameRelayService" | "opticalChannel" | "v11" | "ddnX25" | "docsCableScte55d2DsOob" | "frForward" | "infiniband" | "proteon80Mbit" | "fast" | "ipForward" | "propPointToPointSerial" | "capwapDot11Profile" | "ds0Bundle" | "dtm" | "hdlc" | "hippi" | "ieee8023adLag" | "opticalChannelGroup" | "smdsDxi" | "voiceEMFGD" | "atmVciEndPt" | "ds1FDL" | "voiceOverCable" | "atmIma" | "ds0" | "lmp" | "rpr" | "voiceFXO" | "adsl2plus" | "channel" | "hostPad" | "pppMultilinkBundle" | "iso88026Man" | "q2931" | "vmwareVirtualNic" | "ieee1394" | "capwapDot11Bss" | "ces" | "g9981" | "iso88025TokenRing" | "macSecUncontrolledIF" | "qam" | "voiceFGDEANA" | "adsl2" | "pon622" | "rs232" | "xboxWireless" | "aal5" | "docsCableScte55d1FwdOob" | "g9982" | "mpegTransport" | "otnOtu" | "propDocsWirelessUpstream" | "sipTg" | "fastdsl" | "h323Proxy" | "v36" | "ciscoISLvlan" | "propDocsWirelessDownstream" | "aluEponPhysicalUni" | "digitalWrapperOverheadChannel" | "docsCableScte55d1RetOob" | "ethernetCsmacd" | "frameRelayInterconnect" | "l3ipvlan" | "nfas" | "voiceDID" | "basicISDN" | "propMultiplexor" | "rsrb" | "sdci" | "docsCableNdr" | "ds1" | "isdns" | "macSecControlledIF" | "voiceEM" | "x213" | "atmLogical" | "gfp" | "ultra" | "usb" | "async" | "bits" | "ibm370parChan" | "tdlc" | "virtualIpAddress" | "dvbRcsMacLayer" | "ipOverAtm" | "nsip" | "sonetPath" | "docsCableUpstreamRfPort" | "opticalTransport" | "eplrs" | "gpon" | "x25mlp" | "dvbRccMacLayer" | "g703at2mb" | "hiperlan2" | "localTalk" | "vmwareNicTeam" | "aluELP" | "docsCableUpstream" | "ifPwType" | "ipOverCdlc" | "voiceEBS" | "adsl" | "compositeLink" | "e1" | "ieee802154" | "rfc1483" | "voiceOverFrameRelay" | "arcnetPlus" | "atmSubInterface" | "docsCableMCmtsDownstream" | "ds3" | "aluEponLogicalLink" | "gr303IDT" | "ieee80216WMAN" | "if-gsn" | "ifVfiType" | "aflane8025" | "atm" | "capwapWtpVirtualRadio" | "g703at64k" | "propVirtual" | "proteon10Mbit" | "bsc" | "docsCableMaclayer" | "escon" | "hssi" | "idsl" | "iso88022llc" | "iso88023Csmacd" | "hdh1822" | "aflane8023" | "cableDownstreamRfPort" | "coffee" | "docsOfdmaUpstream" | "fastEther" | "fibreChannel" | "gfast" | "ipSwitch" | "ip" | "l2vlan" | "atmRadio" | "l3ipxvlan" | "pip" | "mfSigLink" | "regular1822" | "sdlc" | "sonet" | "x86Laps" | "propDocsWirelessMaclayer" | "atmFuni" | "atmVirtual" | "bgppolicyaccounting" | "docsCableNdf" | "dvbAsiIn" | "isup" | "mvl" | "vdsl2" | "dcn" | "dlsw" | "imt" | "other" | "cctEmul" | "dvbAsiOut" | "starLan" | "x25ple" | "aluEponOnu" | "frf16MfrBundle" | "modem" | "mpls" | "v37" | "homepna" | "hyperchannel" | "h323Gatekeeper" | "interleave" | "iso88024TokenBus" | "aluGponPhysicalUni" | "dvbRccDownstream" | "propAtm" | "gr303RDT" | "myrinet" | "shdsl" | "docsCableScte55d2UsOob" | "eon" | "iana-interface-type" | "sdsl" | "aviciOpticalEther" | "isdnu" | "mplsTunnel" | "propWirelessP2P" | "cblVectaStar" | "docsOfdmDownstream" | "fastEtherFX" | "ieee80212" | "transpHdlc" | "aal2" | "gtp" | "hippiInterface" | "radioMAC" | "sipSig" | "slip" | "voiceOverAtm" | "atmDxi" | "docsCableUpstreamChannel" | "dvbRcsTdma" | "mocaVersion1" | "voiceOverIp" | "wwanPP" | "wwanPP2" | "digitalPowerline" | "ethernet3Mbit" | "g9983" | "ieee80211" | "ipOverClaw" | "pdnEtherLoop1" | "sip" | "x25huntGroup" | "lapf" | "otnOdu" | "softwareLoopback" | "tr008"
-#E_AristaIntfAugments_ReflectorMacAction:                                                     "none" | "swap"
-#E_OpenconfigVlan_VlanModeType:                                                               "ACCESS" | "TRUNK"
-#E_OpenconfigVlan_VlanStackAction:                                                            "PUSH" | "POP" | "SWAP"
-#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding: "COHERENT_SD15" | "COHERENT_HD7" | "COHERENT_G709" | "COHERENT_DEFAULT" | "COHERENT_SD25" | "COHERENT_SD25_BCH" | "COHERENT_SD20"
-#E_OpenconfigVlanTypes_TPID_TYPES:                                                            "TPID_0X8100" | "TPID_0X88A8" | "TPID_0X9100" | "TPID_0X9200" | "TPID_ANY"
-#E_OpenconfigIfEthernet_ETHERNET_SPEED:                                                       "SPEED_5GB" | "SPEED_800GB" | "SPEED_100MB" | "SPEED_10GB" | "SPEED_200GB" | "SPEED_25GB" | "SPEED_400GB" | "SPEED_40GB" | "SPEED_50GB" | "SPEED_100GB" | "SPEED_10MB" | "SPEED_1GB" | "SPEED_200GB_4LANE" | "SPEED_200GB_8LANE" | "SPEED_50GB_1LANE" | "SPEED_600GB" | "SPEED_100GB_2LANE" | "SPEED_2500MB" | "SPEED_UNKNOWN"
-#E_OpenconfigIfEthernet_INTERFACE_FEC:                                                        "FEC_FC" | "FEC_RS528" | "FEC_RS544" | "FEC_RS544_2X_INTERLEAVE" | "FEC_DISABLED"
 #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode:                      "FULL" | "HALF"
+#E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode:            "DISABLE" | "REMOTE_ONLY" | "ALL"
+#E_IETFInterfaces_InterfaceType:                                                              "dvbRcsTdma" | "mocaVersion1" | "msdsl" | "proteon10Mbit" | "voiceFGDOS" | "adsl2plus" | "ieee80216WMAN" | "sonet" | "vdsl2" | "voiceDID" | "e1" | "g703at64k" | "ieee8023adLag" | "rfc1483" | "sixToFour" | "lapd" | "para" | "pon622" | "gr303RDT" | "mediaMailOverIp" | "propDocsWirelessUpstream" | "rsrb" | "if-gsn" | "propDocsWirelessMaclayer" | "aluEponPhysicalUni" | "hdlc" | "iso88025CRFPInt" | "dvbRccMacLayer" | "termPad" | "wwanPP" | "opticalChannel" | "pip" | "arcnet" | "aviciOpticalEther" | "docsCableUpstreamChannel" | "hssi" | "iso88024TokenBus" | "mfSigLink" | "docsCableNdf" | "fastEther" | "frameRelayMPI" | "gpon" | "gr303IDT" | "docsCableUpstreamRfPort" | "dvbAsiIn" | "iso88025Fiber" | "propMultiplexor" | "radsl" | "aflane8025" | "coffee" | "h323Gatekeeper" | "ipOverAtm" | "ifPwType" | "ipOverCdlc" | "myrinet" | "sonetPath" | "pppMultilinkBundle" | "v11" | "adsl2" | "ces" | "docsCableScte55d1RetOob" | "docsOfdmaUpstream" | "ethernet3Mbit" | "frameRelayService" | "wwanPP2" | "x25huntGroup" | "bridge" | "dvbRccUpstream" | "isdn" | "isdnu" | "vmwareVirtualNic" | "atmSubInterface" | "ds1FDL" | "ptm" | "ipOverClaw" | "voiceEMFGD" | "aal5" | "ddnX25" | "fddi" | "g9982" | "hippi" | "ieee802154" | "sipSig" | "vmwareNicTeam" | "ciscoISLvlan" | "ieee80211" | "atmDxi" | "mplsTunnel" | "opticalTransport" | "pon155" | "voiceOverAtm" | "voiceOverIp" | "capwapDot11Bss" | "docsCableScte55d1FwdOob" | "qllc" | "starLan" | "a12MppSwitch" | "atmFuni" | "frDlciEndPt" | "g9983" | "idsl" | "localTalk" | "atmRadio" | "capwapWtpVirtualRadio" | "frForward" | "ip" | "virtualTg" | "voiceFXS" | "atm" | "iso88022llc" | "teLink" | "basicISDN" | "iso88025Dtr" | "macSecControlledIF" | "reachDSL" | "aal2" | "fastEtherFX" | "hostPad" | "virtualIpAddress" | "xboxWireless" | "propDocsWirelessDownstream" | "voiceEncap" | "frameRelayInterconnect" | "hippiInterface" | "otnOdu" | "primaryISDN" | "dcn" | "digitalPowerline" | "dvbTdm" | "eon" | "gfp" | "l2vlan" | "propPointToPointSerial" | "qam" | "transpHdlc" | "voiceEBS" | "cctEmul" | "homepna" | "iana-interface-type" | "ipSwitch" | "rpr" | "sip" | "atmLogical" | "capwapDot11Profile" | "mpegTransport" | "sdci" | "smdsDxi" | "ultra" | "cnr" | "digitalWrapperOverheadChannel" | "docsCableMaclayer" | "macSecUncontrolledIF" | "sipTg" | "stackToStack" | "x25mlp" | "aluEponOnu" | "frf16MfrBundle" | "l3ipvlan" | "pdnEtherLoop1" | "pdnEtherLoop2" | "propBWAp2Mp" | "g703at2mb" | "x86Laps" | "atmbond" | "cableDownstreamRfPort" | "ifVfiType" | "other" | "sdlc" | "v37" | "channel" | "hdh1822" | "aluGponPhysicalUni" | "docsCableScte55d2DsOob" | "h323Proxy" | "interleave" | "lapf" | "shdsl" | "iso88025TokenRing" | "docsCableMCmtsDownstream" | "ds3" | "ipForward" | "tdlc" | "x25ple" | "atmIma" | "dtm" | "mpls" | "sonetVT" | "ibm370parChan" | "modem" | "nfas" | "propVirtual" | "sonetOverheadChannel" | "tr008" | "usb" | "ds0" | "propAtm" | "aluELP" | "bgppolicyaccounting" | "ds0Bundle" | "eplrs" | "gfast" | "v36" | "adsl" | "srp" | "compositeLink" | "infiniband" | "propWirelessP2P" | "softwareLoopback" | "econet" | "hdsl2" | "miox25" | "mvl" | "voiceFXO" | "atmVciEndPt" | "atmVirtual" | "docsCableNdr" | "dvbRcsMacLayer" | "arcnetPlus" | "bits" | "rs232" | "ss7SigLink" | "arap" | "docsCableDownstream" | "docsCableScte55d2UsOob" | "lmp" | "v35" | "ds1" | "escon" | "q2931" | "sdsl" | "hiperlan2" | "ieee80212" | "imt" | "iso88026Man" | "l3ipxvlan" | "voiceEM" | "slip" | "aflane8023" | "aluEpon" | "aluGponOnu" | "otnOtu" | "pos" | "rfc877x25" | "propCnls" | "vdsl" | "aluEponLogicalLink" | "dvbAsiOut" | "fast" | "frameRelay" | "gtp" | "isdns" | "fibreChannel" | "hyperchannel" | "isup" | "proteon80Mbit" | "voiceOverCable" | "async" | "bsc" | "ethernetCsmacd" | "actelisMetaLOOP" | "dlsw" | "linegroup" | "plc" | "nsip" | "opticalChannelGroup" | "docsCableUpstream" | "docsOfdmDownstream" | "dvbRccDownstream" | "fastdsl" | "fcipLink" | "mpc" | "radioMAC" | "cblVectaStar" | "g9981" | "gigabitEthernet" | "ieee1394" | "regular1822" | "smdsIcip" | "tunnel" | "voiceFGDEANA" | "voiceOverFrameRelay" | "x213" | "ilan" | "iso88023Csmacd" | "lapb" | "ppp"
+#E_OpenconfigIfEthernet_ETHERNET_SPEED:                                                       "SPEED_10MB" | "SPEED_1GB" | "SPEED_600GB" | "SPEED_800GB" | "SPEED_200GB_8LANE" | "SPEED_50GB" | "SPEED_10GB" | "SPEED_200GB" | "SPEED_200GB_4LANE" | "SPEED_40GB" | "SPEED_50GB_1LANE" | "SPEED_5GB" | "SPEED_UNKNOWN" | "SPEED_100GB" | "SPEED_100GB_2LANE" | "SPEED_100MB" | "SPEED_2500MB" | "SPEED_25GB" | "SPEED_400GB"
+#E_OpenconfigIfEthernet_INTERFACE_FEC:                                                        "FEC_DISABLED" | "FEC_FC" | "FEC_RS528" | "FEC_RS544" | "FEC_RS544_2X_INTERLEAVE"
 #E_AristaIntfAugments_FallbackEnum:                                                           "none" | "static" | "individual"
+#E_OpenconfigVlanTypes_TPID_TYPES:                                                            "TPID_0X8100" | "TPID_0X88A8" | "TPID_0X9100" | "TPID_0X9200" | "TPID_ANY"
 #E_OpenconfigIfAggregate_AggregationType:                                                     "LACP" | "STATIC"
+#E_OpenconfigVlan_VlanModeType:                                                               "ACCESS" | "TRUNK"
+#E_AristaIntfAugments_AristaAddrType:                                                         "PRIMARY" | "SECONDARY" | "IPV6"
+#E_AristaIntfAugments_ReflectorDirection:                                                     "none" | "in" | "out"
+#E_AristaIntfAugments_ReflectorMacAction:                                                     "none" | "swap"
+#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding: "COHERENT_SD25_BCH" | "COHERENT_SD20" | "COHERENT_SD15" | "COHERENT_HD7" | "COHERENT_G709" | "COHERENT_DEFAULT" | "COHERENT_SD25"
+#E_OpenconfigVlan_VlanStackAction:                                                            "PUSH" | "POP" | "SWAP"

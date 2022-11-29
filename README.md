@@ -128,7 +128,11 @@ cue eval values.cue --out=json
 11. Check the that validation works against an incorrect data
 
 ```
-cue eval bad/bad.cue --out=json
+# mismatch betweek YangList.key and YangList.Config.Key
+cue eval bad/mismatch.cue --out=json
+
+# duplicate entry in YangList
+cue eval bad/duplicate.cue --out=json
 ```
 
 
