@@ -1,9 +1,9 @@
 
-package main
+package bad
 
 import intfs "yang.to.cue/pkg:yang"
 
-config: interfaces: intfs.#OpenconfigInterfaces_Interfaces & {interface: [{
+Config: interfaces: intfs.#OpenconfigInterfaces_Interfaces & {interface: [{
 	config: {
 		description: "loopback interface"
 		mtu:         1500
@@ -31,5 +31,13 @@ config: interfaces: intfs.#OpenconfigInterfaces_Interfaces & {interface: [{
 				}
 			}]
 		}
+	},
+	{
+		name: "Loopback0"
+		config: {
+			name: "Loopback0"
+		}
 	}]
 }
+
+

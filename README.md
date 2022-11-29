@@ -28,8 +28,6 @@ go run github.com/openconfig/ygot/generator \
 -exclude_modules=ietf-interfaces \
 -include_descriptions=false \
 -include_model_data=false \
--include_model_data=false \
--include_schema=false \
 -package_name=yang \
 -exclude_state \
 openconfig/release/models/interfaces/openconfig-if-ip.yang \
@@ -45,14 +43,6 @@ go run main.go
 This generates the `./go.json` file
 
 
-5. Run the pre-import CUE type generator
-
-This is a custom type generator to workaround ygot implementation
-
-```
-go run pre-seed.go
-```
-
 
 5. Modify YGOT types for CUE
 
@@ -62,7 +52,9 @@ sed -i -E 's/path:"(\S+)"/json:"\1"/' pkg/yang.go
 # replace Go maps with slices
 sed -i -E 's/map\[string\]\*(\S+)/\[\]\*\1/' pkg/yang.go
 sed -i -E 's/map\[uint32\]\*(\S+)/\[\]\*\1/' pkg/yang.go
+sed -i -E 's/map\[uint8\]\*(\S+)/\[\]\*\1/' pkg/yang.go
 ```
+
 
 6. Init CUE modules
 
@@ -80,17 +72,39 @@ The generated file is located in `cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue`
 
 8.  Modify CUE definitions
 
-This is happens because struct fields with ENUM type are not pointers and, hence, marked as mandatory fields by cue during import.
+* Remove existing ENUM definitions:
+
+```
+sed -i -E '/#E_\S+:\s+.*/d' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue 
+```
+* Patch the auto-generated CUE definitions:
+  * re-generate ygot bindings 
+  * import ENUM and YANG list definitions
+
+```
+go run github.com/openconfig/ygot/generator \
+-path=openconfig \
+-generate_fakeroot \
+-fakeroot_name=device \
+-output_file=pkg/yang.go \
+-compress_paths=false \
+-exclude_modules=ietf-interfaces \
+-include_descriptions=false \
+-include_model_data=false \
+-package_name=yang \
+-exclude_state \
+openconfig/release/models/interfaces/openconfig-if-ip.yang \
+yang/arista.yang
+
+go run post-import.go
+```
+
+* Make struct fields pointing to ENUM types optional (marked as mandatory fields by cue during import)
 
 ```
 sed -i -E 's/(^[^#]\S+)(:\s+#E)/\1\?\2/' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue
 ```
 
-This is to remove the generated ENUM defintions, as we've already got them from step #5 (pre-import type generator)
-
-```
-sed  -E '/#E_\S+:\s+.*/d' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue > cue.mod/gen/yang.to.cue/pkg/yang_go_gen.diff.cue
-```
 
 9. Write some CUE based on the generated definitions
 
@@ -104,14 +118,20 @@ cat values.cue
 cue eval values.cue --out=json
 ```
 
+11. Check the that validation works against an incorrect data
 
-11. Check and update the test device details
+```
+cue eval bad/bad.cue --out=json
+```
+
+
+12. Check and update the test device details
 
 ```
 cat gnmi_tool.cue
 ```
 
-12. Apply the configuration
+13. Apply the configuration
 
 ```
 cue apply

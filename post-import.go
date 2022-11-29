@@ -10,6 +10,7 @@ import (
 	"os"
 	"strings"
 	"text/template"
+	"unicode"
 
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/format"
@@ -31,8 +32,12 @@ import (
 //	},
 
 type YangList struct {
-	receiver, key, resource string
+	key, resource string
 }
+
+const (
+	aliasName = "X"
+)
 
 var (
 	genPath = "./cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue"
@@ -72,12 +77,18 @@ func main() {
 
 	file, err := goparser.ParseFile(fset, "yang.go", f, 0)
 	if err != nil {
-		fmt.Println(err)
-		return
+		log.Fatalln(err)
 	}
 
-	// extract YANG list details
-	store := []YangList{}
+	// extract YANG list details from a constructor function, e.g.
+	// func (t *OpenconfigInterfaces_Interfaces) NewInterface(Name string) (*OpenconfigInterfaces_Interfaces_Interface, error){
+	// 		key := Name
+	// From the above function we need to extract
+	// a) The value of method received, e.g. 'OpenconfigInterfaces_Interfaces'
+	// b) The variable assigned to key, e.g. 'Name'
+	// c) The name of the resource, e.g. 'interface
+
+	store := make(map[string]YangList)
 	var rcvName, listKey, resource string
 	goast.Inspect(file, func(n goast.Node) bool {
 		switch x := n.(type) {
@@ -87,12 +98,11 @@ func main() {
 				for _, receiver := range x.Recv.List {
 					starExpr := receiver.Type.(*goast.StarExpr)
 					name := starExpr.X.(*goast.Ident)
-					rcvName = name.Name
-					resource = strings.ToLower(strings.Split(x.Name.Name, "New")[1])
-
+					rcvName = fmt.Sprintf("#%s", name.Name)
+					resource = strings.Split(x.Name.Name, "New")[1]
 				}
-
 			}
+
 		case *goast.AssignStmt:
 			// identify a 'key: = <name>' statement
 			for _, v := range x.Lhs {
@@ -104,12 +114,11 @@ func main() {
 					for _, v2 := range x.Rhs {
 						name := v2.(*goast.Ident)
 						listKey = name.Name
-						// save 'receiver type -> key' name binding
-						store = append(store, YangList{
-							receiver: rcvName,
-							key:      strings.ToLower(listKey),
-							resource: resource,
-						})
+						// save 'receiver type -> key, resource' name binding
+						store[rcvName] = YangList{
+							resource: normalizeName(resource),
+							key:      normalizeName(listKey),
+						}
 					}
 				}
 			}
@@ -117,35 +126,98 @@ func main() {
 		return true
 	})
 
+	for rcvName, v := range store {
+		fmt.Printf("receiver: %s, key: %s, resource: %s\n", rcvName, v.key, v.resource)
+	}
+
+	// the code to be injected into CUE definitions
 	uniqCode := template.Must(template.New("validate").Parse(`
 	_check: {
-		for e in {{.resource}} { (e.config.{{.key}}): true }
-	}
-	if len(_check) != len({{.resource}}) { _|_ }
-	`))
-	for k, v := range store {
-		fmt.Printf("Key: %s, value: %s\n", k, v)
-		var b bytes.Buffer
-		uniqCode.Execute(&b, map[string]interface{}{
-			"resource": v.resource,
-			"key":      v.key,
-		})
-		fmt.Println(string(b.Bytes()))
-		astFile, err := parser.ParseFile("foo.cue", b.Bytes())
-		if err != nil {
-			fmt.Println(err)
-			continue
+		for e in X { 
+			let ks = e.config["{{.key}}"]
+			"\(ks)": true 
 		}
-		// TODO: insert these declarations into CUE definition instead
-		cueFile.Decls = append(cueFile.Decls, astFile.Decls...)
-
 	}
+	if len(_check) != len(X) { _|_ }
+	`))
+
+	var foundDef string
+	ast.Walk(cueFile, nil, func(n ast.Node) {
+		switch x := n.(type) {
+		case *ast.Ident:
+			// find all definitions
+			if strings.HasPrefix(x.Name, "#") {
+				// check if we have that definition in store
+				if _, ok := store[x.Name]; ok {
+					if x.Node == nil {
+						foundDef = x.Name
+					}
+				}
+			}
+
+		case *ast.StructLit:
+			if foundDef != "" {
+				fmt.Println("foundDef: ", foundDef)
+				yl := store[foundDef]
+				var b bytes.Buffer
+				uniqCode.Execute(&b, map[string]interface{}{
+					"resource": yl.resource,
+					"key":      yl.key,
+					"def":      foundDef,
+				})
+				astFile, err := parser.ParseFile("foo.cue", b.Bytes())
+				if err != nil {
+					log.Fatalln(err)
+				}
+				for i, elt := range x.Elts {
+					if field, ok := elt.(*ast.Field); ok {
+						name, _, err := ast.LabelName(field.Label)
+						if err != nil {
+							log.Fatal(err)
+						}
+						if name == yl.resource {
+							// replace field expression with alias
+							// this is done to be able to reference local fields that may be double-quoted
+							// see https://cuelang.slack.com/archives/CLT3ULF6C/p1669733898748219 for more details
+							alias := ast.Alias{
+								Ident: ast.NewIdent(aliasName),
+								Expr:  ast.NewBinExpr(token.COLON, ast.NewString(name), field.Value),
+							}
+							x.Elts[i] = &alias
+						}
+					}
+				}
+
+				// Add validation logic to found definition
+				x.Elts = append(x.Elts, astFile.Decls...)
+
+				// reset found definition
+				foundDef = ""
+			}
+		}
+	})
 
 	bytes, err := format.Node(cueFile, format.Simplify())
 	if err != nil {
-		fmt.Println(err)
-		return
+		log.Fatalln(err)
 	}
 	//fmt.Println(string(bytes))
+	if err := os.Truncate(genPath, 0); err != nil {
+		log.Fatalln(err)
+	}
 	os.WriteFile(genPath, bytes, 0644)
+}
+
+// this function convers 'CamelCase' and 'Capitalised' words into 'camel-case' and 'capitalised'
+func normalizeName(input string) string {
+	var words []string
+	l := 0
+	for s := input; s != ""; s = s[l:] {
+		l = strings.IndexFunc(s[1:], unicode.IsUpper) + 1
+		if l <= 0 {
+			l = len(s)
+		}
+		words = append(words, strings.ToLower(s[:l]))
+	}
+	return strings.Join(words, "-")
 }

@@ -9,15 +9,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces: {
-	interface: [...null | #OpenconfigInterfaces_Interfaces_Interface] @go(Interface,[]*OpenconfigInterfaces_Interfaces_Interface)
+	X = "interface" : [...null | #OpenconfigInterfaces_Interfaces_Interface]
 	_check: {
-		for e in interface {
-			(e.config[name]): true
+		for e in X {
+			let ks = e.config["name"]
+			"\(ks)": true
 		}
 	}
-	if len(_check) != len(interface) {
-		_|_
-	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface: {
@@ -36,9 +35,9 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config: {
-	fallback?:           #E_AristaIntfAugments_FallbackEnum       @go(Fallback)
+	fallback?:            #E_AristaIntfAugments_FallbackEnum       @go(Fallback)
 	"fallback-timeout"?: null | uint16                            @go(FallbackTimeout,*uint16)
-	"lag-type"?:         #E_OpenconfigIfAggregate_AggregationType @go(LagType)
+	"lag-type"?:          #E_OpenconfigIfAggregate_AggregationType @go(LagType)
 	"min-links"?:        null | uint16                            @go(MinLinks,*uint16)
 	mlag?:               null | uint16                            @go(Mlag,*uint16)
 }
@@ -48,9 +47,9 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config: {
-	"access-vlan"?:    null | uint16                  @go(AccessVlan,*uint16)
+	"access-vlan"?:   null | uint16                  @go(AccessVlan,*uint16)
 	"interface-mode"?: #E_OpenconfigVlan_VlanModeType @go(InterfaceMode)
-	"native-vlan"?:    null | uint16                  @go(NativeVlan,*uint16)
+	"native-vlan"?:   null | uint16                  @go(NativeVlan,*uint16)
 	"trunk-groups": [...string] @go(TrunkGroups,[]string)
 	"trunk-vlans": [...#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union)
 }
@@ -68,8 +67,8 @@ package yang
 	"loopback-mode"?: null | bool                       @go(LoopbackMode,*bool)
 	mtu?:             null | uint16                     @go(Mtu,*uint16)
 	name?:            null | string                     @go(Name,*string)
-	tpid?:            #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	type?:            #E_IETFInterfaces_InterfaceType   @go(Type)
+	tpid?:             #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
+	type?:             #E_IETFInterfaces_InterfaceType   @go(Type)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet: {
@@ -83,22 +82,22 @@ package yang
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config: {
 	"aggregate-id"?:             null | string                                                                 @go(AggregateId,*string)
 	"auto-negotiate"?:           null | bool                                                                   @go(AutoNegotiate,*bool)
-	"duplex-mode"?:              #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode       @go(DuplexMode)
+	"duplex-mode"?:               #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode       @go(DuplexMode)
 	"enable-flow-control"?:      null | bool                                                                   @go(EnableFlowControl,*bool)
 	"fec-encoding"?:             null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding @go(FecEncoding,*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding)
-	"fec-mode"?:                 #E_OpenconfigIfEthernet_INTERFACE_FEC                                         @go(FecMode)
+	"fec-mode"?:                  #E_OpenconfigIfEthernet_INTERFACE_FEC                                         @go(FecMode)
 	"mac-address"?:              null | string                                                                 @go(MacAddress,*string)
-	"port-speed"?:               #E_OpenconfigIfEthernet_ETHERNET_SPEED                                        @go(PortSpeed)
+	"port-speed"?:                #E_OpenconfigIfEthernet_ETHERNET_SPEED                                        @go(PortSpeed)
 	"sfp-1000base-t"?:           null | bool                                                                   @go(Sfp_1000BaseT,*bool)
 	"standalone-link-training"?: null | bool                                                                   @go(StandaloneLinkTraining,*bool)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding: {
 	"coherent-fec-encoding"?: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding @go(CoherentFecEncoding)
-	disabled?:                null | bool                                                                                  @go(Disabled,*bool)
-	"fire-code"?:             null | bool                                                                                  @go(FireCode,*bool)
-	"reed-solomon"?:          null | bool                                                                                  @go(ReedSolomon,*bool)
-	"reed-solomon544"?:       null | bool                                                                                  @go(ReedSolomon544,*bool)
+	disabled?:               null | bool                                                                                  @go(Disabled,*bool)
+	"fire-code"?:            null | bool                                                                                  @go(FireCode,*bool)
+	"reed-solomon"?:         null | bool                                                                                  @go(ReedSolomon,*bool)
+	"reed-solomon544"?:      null | bool                                                                                  @go(ReedSolomon544,*bool)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc: {
@@ -130,9 +129,9 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config: {
-	"access-vlan"?:    null | uint16                  @go(AccessVlan,*uint16)
+	"access-vlan"?:   null | uint16                  @go(AccessVlan,*uint16)
 	"interface-mode"?: #E_OpenconfigVlan_VlanModeType @go(InterfaceMode)
-	"native-vlan"?:    null | uint16                  @go(NativeVlan,*uint16)
+	"native-vlan"?:   null | uint16                  @go(NativeVlan,*uint16)
 	"trunk-groups": [...string] @go(TrunkGroups,[]string)
 	"trunk-vlans": [...#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union)
 }
@@ -177,18 +176,37 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses: {
-	address: [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address] @go(Address,[]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address)
+	X = "address" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address]
+	_check: {
+		for e in X {
+			let ks = e.config["ip"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address: {
 	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config)
 	ip?:     null | string                                                                              @go(Ip,*string)
+	vrrp?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp   @go(Vrrp,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config: {
-	"addr-type"?:     #E_AristaIntfAugments_AristaAddrType @go(AddrType)
+	"addr-type"?:      #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 	ip?:              null | string                        @go(Ip,*string)
 	"prefix-length"?: null | uint8                         @go(PrefixLength,*uint8)
+}
+
+#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp: {
+	X = "vrrp-group" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup]
+	_check: {
+		for e in X {
+			let ks = e.config["virtual-router-id"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup: {
@@ -205,8 +223,15 @@ package yang
 	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
 	priority?:                 null | uint8  @go(Priority,*uint8)
 	"virtual-address": [...string] @go(VirtualAddress,[]string)
-	"virtual-addresses": [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses] @go(VirtualAddresses,[]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
+	X = "virtual-addresses" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses]
 	"virtual-router-id"?: null | uint8 @go(VirtualRouterId,*uint8)
+	_check: {
+		for e in X {
+			let ks = e.config["addr"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses: {
@@ -215,7 +240,7 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:        null | string                        @go(Addr,*string)
+	addr?:       null | string                        @go(Addr,*string)
 	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
@@ -229,7 +254,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces: {
-	"track-interface": [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface] @go(TrackInterface,[]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
+	X = "track-interface" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface]
+	_check: {
+		for e in X {
+			let ks = e.config["name"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface: {
@@ -249,7 +281,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors: {
-	neighbor: [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor] @go(Neighbor,[]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor)
+	X = "neighbor" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor]
+	_check: {
+		for e in X {
+			let ks = e.config["ip"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Neighbors_Neighbor: {
@@ -297,17 +336,36 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses: {
-	address: [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address] @go(Address,[]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address)
+	X = "address" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address]
+	_check: {
+		for e in X {
+			let ks = e.config["ip"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address: {
 	config?: null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config)
 	ip?:     null | string                                                                              @go(Ip,*string)
+	vrrp?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp   @go(Vrrp,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Config: {
 	ip?:              null | string @go(Ip,*string)
 	"prefix-length"?: null | uint8  @go(PrefixLength,*uint8)
+}
+
+#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp: {
+	X = "vrrp-group" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup]
+	_check: {
+		for e in X {
+			let ks = e.config["virtual-router-id"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup: {
@@ -324,9 +382,16 @@ package yang
 	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
 	priority?:                 null | uint8  @go(Priority,*uint8)
 	"virtual-address": [...string] @go(VirtualAddress,[]string)
-	"virtual-addresses": [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses] @go(VirtualAddresses,[]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
+	X = "virtual-addresses" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses]
 	"virtual-link-local"?: null | string @go(VirtualLinkLocal,*string)
 	"virtual-router-id"?:  null | uint8  @go(VirtualRouterId,*uint8)
+	_check: {
+		for e in X {
+			let ks = e.config["addr"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses: {
@@ -335,7 +400,7 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:        null | string                        @go(Addr,*string)
+	addr?:       null | string                        @go(Addr,*string)
 	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
@@ -349,7 +414,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces: {
-	"track-interface": [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface] @go(TrackInterface,[]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
+	X = "track-interface" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface]
+	_check: {
+		for e in X {
+			let ks = e.config["name"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface: {
@@ -370,7 +442,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors: {
-	neighbor: [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor] @go(Neighbor,[]*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor)
+	X = "neighbor" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor]
+	_check: {
+		for e in X {
+			let ks = e.config["ip"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Neighbors_Neighbor: {
@@ -412,7 +491,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces: {
-	subinterface: [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface] @go(Subinterface,[]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface)
+	X = "subinterface" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface]
+	_check: {
+		for e in X {
+			let ks = e.config["index"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface: {
@@ -439,18 +525,37 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses: {
-	address: [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address] @go(Address,[]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address)
+	X = "address" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address]
+	_check: {
+		for e in X {
+			let ks = e.config["ip"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address: {
 	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config)
 	ip?:     null | string                                                                                              @go(Ip,*string)
+	vrrp?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp   @go(Vrrp,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config: {
-	"addr-type"?:     #E_AristaIntfAugments_AristaAddrType @go(AddrType)
+	"addr-type"?:      #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 	ip?:              null | string                        @go(Ip,*string)
 	"prefix-length"?: null | uint8                         @go(PrefixLength,*uint8)
+}
+
+#OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp: {
+	X = "vrrp-group" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup]
+	_check: {
+		for e in X {
+			let ks = e.config["virtual-router-id"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup: {
@@ -467,8 +572,15 @@ package yang
 	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
 	priority?:                 null | uint8  @go(Priority,*uint8)
 	"virtual-address": [...string] @go(VirtualAddress,[]string)
-	"virtual-addresses": [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses] @go(VirtualAddresses,[]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
+	X = "virtual-addresses" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses]
 	"virtual-router-id"?: null | uint8 @go(VirtualRouterId,*uint8)
+	_check: {
+		for e in X {
+			let ks = e.config["addr"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses: {
@@ -477,7 +589,7 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:        null | string                        @go(Addr,*string)
+	addr?:       null | string                        @go(Addr,*string)
 	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
@@ -491,7 +603,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces: {
-	"track-interface": [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface] @go(TrackInterface,[]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
+	X = "track-interface" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface]
+	_check: {
+		for e in X {
+			let ks = e.config["name"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface: {
@@ -511,7 +630,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors: {
-	neighbor: [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor] @go(Neighbor,[]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor)
+	X = "neighbor" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor]
+	_check: {
+		for e in X {
+			let ks = e.config["ip"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Neighbors_Neighbor: {
@@ -559,17 +685,36 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses: {
-	address: [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address] @go(Address,[]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address)
+	X = "address" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address]
+	_check: {
+		for e in X {
+			let ks = e.config["ip"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address: {
 	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config)
 	ip?:     null | string                                                                                              @go(Ip,*string)
+	vrrp?:   null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp   @go(Vrrp,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Config: {
 	ip?:              null | string @go(Ip,*string)
 	"prefix-length"?: null | uint8  @go(PrefixLength,*uint8)
+}
+
+#OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp: {
+	X = "vrrp-group" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup]
+	_check: {
+		for e in X {
+			let ks = e.config["virtual-router-id"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup: {
@@ -586,9 +731,16 @@ package yang
 	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
 	priority?:                 null | uint8  @go(Priority,*uint8)
 	"virtual-address": [...string] @go(VirtualAddress,[]string)
-	"virtual-addresses": [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses] @go(VirtualAddresses,[]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses)
+	X = "virtual-addresses" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses]
 	"virtual-link-local"?: null | string @go(VirtualLinkLocal,*string)
 	"virtual-router-id"?:  null | uint8  @go(VirtualRouterId,*uint8)
+	_check: {
+		for e in X {
+			let ks = e.config["addr"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses: {
@@ -597,8 +749,8 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:        null | string @go(Addr,*string)
-	"addr-type"?: string        @go(AddrType)
+	addr?:       null | string                        @go(Addr,*string)
+	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking: {
@@ -611,7 +763,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces: {
-	"track-interface": [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface] @go(TrackInterface,[]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface)
+	X = "track-interface" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface]
+	_check: {
+		for e in X {
+			let ks = e.config["name"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces_TrackInterface: {
@@ -632,7 +791,14 @@ package yang
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors: {
-	neighbor: [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor] @go(Neighbor,[]*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor)
+	X = "neighbor" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor]
+	_check: {
+		for e in X {
+			let ks = e.config["ip"]
+			"\(ks)": true
+		}
+	}
+	if len(_check) != len(X) {_|_}
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Neighbors_Neighbor: {
@@ -696,7 +862,7 @@ package yang
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config: {
 	tpid?:                #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	"vlan-id"?:           null | uint16                     @go(VlanId,*uint16)
+	"vlan-id"?:          null | uint16                     @go(VlanId,*uint16)
 	"vlan-stack-action"?: #E_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
 }
 
@@ -706,7 +872,7 @@ package yang
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config: {
 	tpid?:                #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	"vlan-id"?:           null | uint16                     @go(VlanId,*uint16)
+	"vlan-id"?:          null | uint16                     @go(VlanId,*uint16)
 	"vlan-stack-action"?: #E_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
 }
 
@@ -2310,105 +2476,17 @@ package yang
 #OpenconfigVlan_VlanStackAction_POP: #E_OpenconfigVlan_VlanStackAction & 2
 
 #OpenconfigVlan_VlanStackAction_SWAP:                                                         #E_OpenconfigVlan_VlanStackAction & 3
-#E_AristaIntfAugments_FallbackEnum:                                                           "none" | "static" | "individual"
-#E_AristaIntfAugments_ReflectorMacAction:                                                     "none" | "swap"
-#E_OpenconfigIfEthernet_INTERFACE_FEC:                                                        "FEC_DISABLED" | "FEC_FC" | "FEC_RS528" | "FEC_RS544" | "FEC_RS544_2X_INTERLEAVE"
-#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding: "COHERENT_G709" | "COHERENT_DEFAULT" | "COHERENT_SD25" | "COHERENT_SD25_BCH" | "COHERENT_SD20" | "COHERENT_SD15" | "COHERENT_HD7"
-#E_OpenconfigVlanTypes_TPID_TYPES:                                                            "TPID_0X8100" | "TPID_0X88A8" | "TPID_0X9100" | "TPID_0X9200" | "TPID_ANY"
-#E_OpenconfigVlan_VlanModeType:                                                               "ACCESS" | "TRUNK"
-#E_OpenconfigIfEthernet_ETHERNET_SPEED:                                                       "SPEED_100MB" | "SPEED_10GB" | "SPEED_200GB_8LANE" | "SPEED_2500MB" | "SPEED_400GB" | "SPEED_UNKNOWN" | "SPEED_100GB_2LANE" | "SPEED_1GB" | "SPEED_200GB" | "SPEED_40GB" | "SPEED_50GB_1LANE" | "SPEED_5GB" | "SPEED_100GB" | "SPEED_50GB" | "SPEED_600GB" | "SPEED_800GB" | "SPEED_25GB" | "SPEED_200GB_4LANE" | "SPEED_10MB"
-#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode:                      "FULL" | "HALF"
 #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode:            "DISABLE" | "REMOTE_ONLY" | "ALL"
+#E_AristaIntfAugments_AristaAddrType:                                                         "PRIMARY" | "SECONDARY" | "IPV6"
+#E_AristaIntfAugments_ReflectorDirection:                                                     "in" | "out" | "none"
+#E_IETFInterfaces_InterfaceType:                                                              "propCnls" | "termPad" | "arcnet" | "frDlciEndPt" | "isdn" | "pos" | "propBWAp2Mp" | "vdsl" | "para" | "sonetOverheadChannel" | "sonetVT" | "fcipLink" | "gigabitEthernet" | "ptm" | "radsl" | "tunnel" | "v35" | "aluGponOnu" | "arap" | "dvbRccUpstream" | "ilan" | "dvbTdm" | "iso88025CRFPInt" | "pdnEtherLoop2" | "econet" | "reachDSL" | "virtualTg" | "aluEpon" | "frameRelay" | "lapd" | "qllc" | "sixToFour" | "smdsIcip" | "voiceEncap" | "atmbond" | "docsCableDownstream" | "srp" | "actelisMetaLOOP" | "frameRelayMPI" | "iso88025Dtr" | "iso88025Fiber" | "linegroup" | "msdsl" | "ppp" | "mediaMailOverIp" | "miox25" | "plc" | "pon155" | "rfc877x25" | "ss7SigLink" | "primaryISDN" | "voiceFXS" | "a12MppSwitch" | "hdsl2" | "lapb" | "mpc" | "teLink" | "voiceFGDOS" | "bridge" | "cnr" | "fddi" | "stackToStack" | "frameRelayService" | "opticalChannel" | "v11" | "ddnX25" | "docsCableScte55d2DsOob" | "frForward" | "infiniband" | "proteon80Mbit" | "fast" | "ipForward" | "propPointToPointSerial" | "capwapDot11Profile" | "ds0Bundle" | "dtm" | "hdlc" | "hippi" | "ieee8023adLag" | "opticalChannelGroup" | "smdsDxi" | "voiceEMFGD" | "atmVciEndPt" | "ds1FDL" | "voiceOverCable" | "atmIma" | "ds0" | "lmp" | "rpr" | "voiceFXO" | "adsl2plus" | "channel" | "hostPad" | "pppMultilinkBundle" | "iso88026Man" | "q2931" | "vmwareVirtualNic" | "ieee1394" | "capwapDot11Bss" | "ces" | "g9981" | "iso88025TokenRing" | "macSecUncontrolledIF" | "qam" | "voiceFGDEANA" | "adsl2" | "pon622" | "rs232" | "xboxWireless" | "aal5" | "docsCableScte55d1FwdOob" | "g9982" | "mpegTransport" | "otnOtu" | "propDocsWirelessUpstream" | "sipTg" | "fastdsl" | "h323Proxy" | "v36" | "ciscoISLvlan" | "propDocsWirelessDownstream" | "aluEponPhysicalUni" | "digitalWrapperOverheadChannel" | "docsCableScte55d1RetOob" | "ethernetCsmacd" | "frameRelayInterconnect" | "l3ipvlan" | "nfas" | "voiceDID" | "basicISDN" | "propMultiplexor" | "rsrb" | "sdci" | "docsCableNdr" | "ds1" | "isdns" | "macSecControlledIF" | "voiceEM" | "x213" | "atmLogical" | "gfp" | "ultra" | "usb" | "async" | "bits" | "ibm370parChan" | "tdlc" | "virtualIpAddress" | "dvbRcsMacLayer" | "ipOverAtm" | "nsip" | "sonetPath" | "docsCableUpstreamRfPort" | "opticalTransport" | "eplrs" | "gpon" | "x25mlp" | "dvbRccMacLayer" | "g703at2mb" | "hiperlan2" | "localTalk" | "vmwareNicTeam" | "aluELP" | "docsCableUpstream" | "ifPwType" | "ipOverCdlc" | "voiceEBS" | "adsl" | "compositeLink" | "e1" | "ieee802154" | "rfc1483" | "voiceOverFrameRelay" | "arcnetPlus" | "atmSubInterface" | "docsCableMCmtsDownstream" | "ds3" | "aluEponLogicalLink" | "gr303IDT" | "ieee80216WMAN" | "if-gsn" | "ifVfiType" | "aflane8025" | "atm" | "capwapWtpVirtualRadio" | "g703at64k" | "propVirtual" | "proteon10Mbit" | "bsc" | "docsCableMaclayer" | "escon" | "hssi" | "idsl" | "iso88022llc" | "iso88023Csmacd" | "hdh1822" | "aflane8023" | "cableDownstreamRfPort" | "coffee" | "docsOfdmaUpstream" | "fastEther" | "fibreChannel" | "gfast" | "ipSwitch" | "ip" | "l2vlan" | "atmRadio" | "l3ipxvlan" | "pip" | "mfSigLink" | "regular1822" | "sdlc" | "sonet" | "x86Laps" | "propDocsWirelessMaclayer" | "atmFuni" | "atmVirtual" | "bgppolicyaccounting" | "docsCableNdf" | "dvbAsiIn" | "isup" | "mvl" | "vdsl2" | "dcn" | "dlsw" | "imt" | "other" | "cctEmul" | "dvbAsiOut" | "starLan" | "x25ple" | "aluEponOnu" | "frf16MfrBundle" | "modem" | "mpls" | "v37" | "homepna" | "hyperchannel" | "h323Gatekeeper" | "interleave" | "iso88024TokenBus" | "aluGponPhysicalUni" | "dvbRccDownstream" | "propAtm" | "gr303RDT" | "myrinet" | "shdsl" | "docsCableScte55d2UsOob" | "eon" | "iana-interface-type" | "sdsl" | "aviciOpticalEther" | "isdnu" | "mplsTunnel" | "propWirelessP2P" | "cblVectaStar" | "docsOfdmDownstream" | "fastEtherFX" | "ieee80212" | "transpHdlc" | "aal2" | "gtp" | "hippiInterface" | "radioMAC" | "sipSig" | "slip" | "voiceOverAtm" | "atmDxi" | "docsCableUpstreamChannel" | "dvbRcsTdma" | "mocaVersion1" | "voiceOverIp" | "wwanPP" | "wwanPP2" | "digitalPowerline" | "ethernet3Mbit" | "g9983" | "ieee80211" | "ipOverClaw" | "pdnEtherLoop1" | "sip" | "x25huntGroup" | "lapf" | "otnOdu" | "softwareLoopback" | "tr008"
+#E_AristaIntfAugments_ReflectorMacAction:                                                     "none" | "swap"
+#E_OpenconfigVlan_VlanModeType:                                                               "ACCESS" | "TRUNK"
 #E_OpenconfigVlan_VlanStackAction:                                                            "PUSH" | "POP" | "SWAP"
-#E_AristaIntfAugments_AristaAddrType:                                                         "SECONDARY" | "IPV6" | "PRIMARY"
-#E_AristaIntfAugments_ReflectorDirection:                                                     "none" | "in" | "out"
-#E_IETFInterfaces_InterfaceType:                                                              "atmIma" | "docsOfdmaUpstream" | "proteon80Mbit" | "isup" | "smdsIcip" | "vmwareVirtualNic" | "aal5" | "docsCableNdf" | "hssi" | "l3ipxvlan" | "actelisMetaLOOP" | "g9981" | "hippiInterface" | "aflane8023" | "mpc" | "regular1822" | "x25huntGroup" | "docsCableNdr" | "docsCableScte55d1RetOob" | "iso88025CRFPInt" | "msdsl" | "srp" | "voiceEMFGD" | "aluGponOnu" | "ipOverCdlc" | "propVirtual" | "mpls" | "sipSig" | "termPad" | "frameRelay" | "hdh1822" | "l2vlan" | "sixToFour" | "fastEtherFX" | "ifVfiType" | "ddnX25" | "dvbAsiIn" | "frDlciEndPt" | "pon622" | "propWirelessP2P" | "g703at2mb" | "other" | "v35" | "x213" | "aluELP" | "atmRadio" | "docsOfdmDownstream" | "myrinet" | "ds1" | "frf16MfrBundle" | "imt" | "mvl" | "sdci" | "sip" | "async" | "iso88025Fiber" | "ds0Bundle" | "sdlc" | "idsl" | "atmVirtual" | "ds1FDL" | "ieee1394" | "iso88025Dtr" | "miox25" | "atmbond" | "ds3" | "pppMultilinkBundle" | "teLink" | "vmwareNicTeam" | "voiceEncap" | "dvbRccDownstream" | "g703at64k" | "iso88026Man" | "lmp" | "propAtm" | "usb" | "atmLogical" | "dtm" | "fast" | "frForward" | "lapf" | "mpegTransport" | "virtualTg" | "docsCableUpstreamRfPort" | "frameRelayInterconnect" | "h323Gatekeeper" | "ilan" | "rs232" | "tdlc" | "aluGponPhysicalUni" | "atmFuni" | "lapb" | "macSecUncontrolledIF" | "sdsl" | "wwanPP2" | "aluEponLogicalLink" | "arcnet" | "adsl2plus" | "docsCableMCmtsDownstream" | "mplsTunnel" | "opticalTransport" | "a12MppSwitch" | "atmSubInterface" | "cblVectaStar" | "tr008" | "x25mlp" | "capwapDot11Profile" | "g9982" | "ipSwitch" | "shdsl" | "basicISDN" | "ces" | "econet" | "lapd" | "otnOtu" | "pdnEtherLoop1" | "atm" | "aviciOpticalEther" | "capwapDot11Bss" | "iso88025TokenRing" | "slip" | "voiceFGDOS" | "dvbRccMacLayer" | "rfc877x25" | "voiceEBS" | "voiceOverFrameRelay" | "bgppolicyaccounting" | "fibreChannel" | "opticalChannelGroup" | "rfc1483" | "virtualIpAddress" | "voiceOverAtm" | "ethernet3Mbit" | "fastEther" | "fcipLink" | "gfast" | "mocaVersion1" | "xboxWireless" | "cctEmul" | "eon" | "radioMAC" | "rpr" | "ss7SigLink" | "x86Laps" | "cableDownstreamRfPort" | "dvbRccUpstream" | "plc" | "v11" | "voiceDID" | "voiceOverIp" | "atmDxi" | "ds0" | "g9983" | "gr303RDT" | "ipForward" | "voiceEM" | "arap" | "ppp" | "propDocsWirelessUpstream" | "propMultiplexor" | "rsrb" | "wwanPP" | "aflane8025" | "bits" | "capwapWtpVirtualRadio" | "gtp" | "nsip" | "pdnEtherLoop2" | "qllc" | "voiceFGDEANA" | "digitalPowerline" | "docsCableScte55d1FwdOob" | "hdlc" | "hdsl2" | "iana-interface-type" | "macSecControlledIF" | "ciscoISLvlan" | "docsCableMaclayer" | "dvbTdm" | "hyperchannel" | "vdsl2" | "dvbRcsMacLayer" | "sonet" | "ultra" | "v37" | "aluEponOnu" | "infiniband" | "isdnu" | "iso88022llc" | "propCnls" | "smdsDxi" | "hostPad" | "localTalk" | "transpHdlc" | "atmVciEndPt" | "docsCableUpstreamChannel" | "ethernetCsmacd" | "ieee80211" | "l3ipvlan" | "pip" | "aluEpon" | "dlsw" | "docsCableUpstream" | "voiceFXS" | "cnr" | "homepna" | "ieee8023adLag" | "pos" | "channel" | "dvbRcsTdma" | "fddi" | "ieee80212" | "arcnetPlus" | "propDocsWirelessMaclayer" | "proteon10Mbit" | "stackToStack" | "aluEponPhysicalUni" | "hippi" | "digitalWrapperOverheadChannel" | "x25ple" | "fastdsl" | "h323Proxy" | "otnOdu" | "propBWAp2Mp" | "e1" | "gpon" | "sonetVT" | "radsl" | "frameRelayMPI" | "frameRelayService" | "ieee802154" | "isdns" | "nfas" | "opticalChannel" | "sipTg" | "vdsl" | "bridge" | "coffee" | "dcn" | "ip" | "linegroup" | "reachDSL" | "adsl2" | "propPointToPointSerial" | "v36" | "adsl" | "mfSigLink" | "sonetPath" | "starLan" | "modem" | "q2931" | "bsc" | "docsCableScte55d2UsOob" | "ifPwType" | "ipOverAtm" | "isdn" | "mediaMailOverIp" | "qam" | "sonetOverheadChannel" | "compositeLink" | "gigabitEthernet" | "iso88024TokenBus" | "para" | "primaryISDN" | "softwareLoopback" | "dvbAsiOut" | "ibm370parChan" | "ieee80216WMAN" | "voiceOverCable" | "escon" | "iso88023Csmacd" | "pon155" | "docsCableDownstream" | "ipOverClaw" | "voiceFXO" | "aal2" | "gfp" | "hiperlan2" | "if-gsn" | "interleave" | "ptm" | "docsCableScte55d2DsOob" | "eplrs" | "propDocsWirelessDownstream" | "gr303IDT" | "tunnel"
+#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding: "COHERENT_SD15" | "COHERENT_HD7" | "COHERENT_G709" | "COHERENT_DEFAULT" | "COHERENT_SD25" | "COHERENT_SD25_BCH" | "COHERENT_SD20"
+#E_OpenconfigVlanTypes_TPID_TYPES:                                                            "TPID_0X8100" | "TPID_0X88A8" | "TPID_0X9100" | "TPID_0X9200" | "TPID_ANY"
+#E_OpenconfigIfEthernet_ETHERNET_SPEED:                                                       "SPEED_5GB" | "SPEED_800GB" | "SPEED_100MB" | "SPEED_10GB" | "SPEED_200GB" | "SPEED_25GB" | "SPEED_400GB" | "SPEED_40GB" | "SPEED_50GB" | "SPEED_100GB" | "SPEED_10MB" | "SPEED_1GB" | "SPEED_200GB_4LANE" | "SPEED_200GB_8LANE" | "SPEED_50GB_1LANE" | "SPEED_600GB" | "SPEED_100GB_2LANE" | "SPEED_2500MB" | "SPEED_UNKNOWN"
+#E_OpenconfigIfEthernet_INTERFACE_FEC:                                                        "FEC_FC" | "FEC_RS528" | "FEC_RS544" | "FEC_RS544_2X_INTERLEAVE" | "FEC_DISABLED"
+#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode:                      "FULL" | "HALF"
+#E_AristaIntfAugments_FallbackEnum:                                                           "none" | "static" | "individual"
 #E_OpenconfigIfAggregate_AggregationType:                                                     "LACP" | "STATIC"
-_check: {
-	for e in interface {(e.config.name): true}
-}
-if len(_check) != len(interface) {_|_}
-_check: {
-	for e in address {(e.config.ip): true}
-}
-if len(_check) != len(address) {_|_}
-_check: {
-	for e in vrrpgroup {(e.config.virtualrouterid): true}
-}
-if len(_check) != len(vrrpgroup) {_|_}
-_check: {
-	for e in virtualaddresses {(e.config.addr): true}
-}
-if len(_check) != len(virtualaddresses) {_|_}
-_check: {
-	for e in trackinterface {(e.config.name): true}
-}
-if len(_check) != len(trackinterface) {_|_}
-_check: {
-	for e in neighbor {(e.config.ip): true}
-}
-if len(_check) != len(neighbor) {_|_}
-_check: {
-	for e in address {(e.config.ip): true}
-}
-if len(_check) != len(address) {_|_}
-_check: {
-	for e in vrrpgroup {(e.config.virtualrouterid): true}
-}
-if len(_check) != len(vrrpgroup) {_|_}
-_check: {
-	for e in virtualaddresses {(e.config.addr): true}
-}
-if len(_check) != len(virtualaddresses) {_|_}
-_check: {
-	for e in trackinterface {(e.config.name): true}
-}
-if len(_check) != len(trackinterface) {_|_}
-_check: {
-	for e in neighbor {(e.config.ip): true}
-}
-if len(_check) != len(neighbor) {_|_}
-_check: {
-	for e in subinterface {(e.config.index): true}
-}
-if len(_check) != len(subinterface) {_|_}
-_check: {
-	for e in address {(e.config.ip): true}
-}
-if len(_check) != len(address) {_|_}
-_check: {
-	for e in vrrpgroup {(e.config.virtualrouterid): true}
-}
-if len(_check) != len(vrrpgroup) {_|_}
-_check: {
-	for e in virtualaddresses {(e.config.addr): true}
-}
-if len(_check) != len(virtualaddresses) {_|_}
-_check: {
-	for e in trackinterface {(e.config.name): true}
-}
-if len(_check) != len(trackinterface) {_|_}
-_check: {
-	for e in neighbor {(e.config.ip): true}
-}
-if len(_check) != len(neighbor) {_|_}
-_check: {
-	for e in address {(e.config.ip): true}
-}
-if len(_check) != len(address) {_|_}
-_check: {
-	for e in vrrpgroup {(e.config.virtualrouterid): true}
-}
-if len(_check) != len(vrrpgroup) {_|_}
-_check: {
-	for e in virtualaddresses {(e.config.addr): true}
-}
-if len(_check) != len(virtualaddresses) {_|_}
-_check: {
-	for e in trackinterface {(e.config.name): true}
-}
-if len(_check) != len(trackinterface) {_|_}
-_check: {
-	for e in neighbor {(e.config.ip): true}
-}
-if len(_check) != len(neighbor) {_|_}
