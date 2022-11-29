@@ -1,6 +1,9 @@
 
-# Working with YANG-based APIs with CUE
+# Working with YANG-based APIs from CUE
 
+* Importing YANG definitions into CUE
+* Building and validating payloads
+* Applying device configuration using CUE scripting
 
 
 1. Initialise a Go module and add the ygot package
