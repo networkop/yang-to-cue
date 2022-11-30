@@ -112,7 +112,7 @@ go run post-import.go
 sed -i -E 's/(^[^#]\S+)(:\s+#E)/\1\?\2/' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue
 ```
 
-> From here on, you work exclusively with CUE definitions and can safely delete `./openconfig` and `./yang` directories with YANG models
+> From here on, you work exclusively with CUE definitions and can safely delete `./openconfig` and `./yang` directories with YANG models and `./pkg` containing ygot types.
 
 9. Write some CUE based on the generated definitions
 
