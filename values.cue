@@ -1,8 +1,8 @@
 package main
 
-import intfs "yang.to.cue/pkg:yang"
+import oc "yang.to.cue/pkg:yang"
 
-config: intfs.#Device & {
+config: oc.#Device & {
 	interfaces: interface: [{
 		config: {
 			description: "loopback interface"

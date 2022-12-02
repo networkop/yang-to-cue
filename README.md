@@ -108,6 +108,11 @@ yang/arista.yang
 go run post-import.go
 ```
 
+Add an import statement
+
+```
+sed -i '2i import "strings"' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue
+```
 
 * Make struct fields pointing to ENUM types optional (marked as mandatory fields by cue during import)
 

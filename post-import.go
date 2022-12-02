@@ -54,6 +54,13 @@ func main() {
 		log.SetLevel(log.DebugLevel)
 	}
 
+	f, err := os.OpenFile("log", os.O_APPEND|os.O_CREATE|os.O_RDWR, 0666)
+	if err != nil {
+		fmt.Printf("error opening file: %v", err)
+	}
+	defer f.Close()
+	log.SetOutput(f)
+
 	// read auto-generated file
 	genFile, err := os.ReadFile(genPath)
 	if err != nil {
@@ -77,8 +84,8 @@ func main() {
 	}
 
 	if *yangList {
-		// Generate YANG list constraints
 
+		// Generate YANG list constraints
 		fset := gotoken.NewFileSet()
 		f, err := os.ReadFile("pkg/yang.go")
 		if err != nil {
@@ -147,7 +154,8 @@ func main() {
 								}
 								store[rcvName] = YangList{
 									resource: normalizeName(resource),
-									key:      strings.Join(keys, "+"),
+									// I build a single string by joining multiple keys with a '+'
+									key: strings.Join(keys, "+"),
 								}
 							}
 
@@ -181,6 +189,7 @@ func main() {
 		var foundDef string
 		ast.Walk(cueFile, nil, func(n ast.Node) {
 			switch x := n.(type) {
+
 			case *ast.Ident:
 				// find all definitions
 				if strings.HasPrefix(x.Name, "#") {
@@ -249,7 +258,6 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	//fmt.Println(string(bytes))
 	if err := os.Truncate(genPath, 0); err != nil {
 		log.Fatalln(err)
 	}
