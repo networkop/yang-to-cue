@@ -159,7 +159,7 @@ func main() {
 		})
 
 		for rcvName, v := range store {
-			log.Debugf("receiver: %s, key: %s, resource: %s\n", rcvName, v.key, v.resource)
+			log.Infof("receiver: %s, key: %s, resource: %s\n", rcvName, v.key, v.resource)
 		}
 
 		// the code to be injected into CUE definitions
@@ -194,7 +194,7 @@ func main() {
 
 			case *ast.StructLit:
 				if foundDef != "" {
-					log.Infof("foundDef: %s", foundDef)
+					log.Debugf("foundDef: %s", foundDef)
 					yl := store[foundDef]
 					var b bytes.Buffer
 					uniqCode.Execute(&b, map[string]interface{}{
