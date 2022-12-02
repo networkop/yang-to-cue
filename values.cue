@@ -32,4 +32,30 @@ config: intfs.#Device & {
 			}]
 		}
 	}]
+	"network-instances": "network-instance": [{
+		config: name: "default"
+		name: "default"
+		protocols: protocol: [{
+			bgp: {
+				global: config: as: 65000
+				neighbors: neighbor: [{
+					"afi-safis": "afi-safi": [{
+						"afi-safi-name": "IPV4_UNICAST"
+						config: "afi-safi-name": "IPV4_UNICAST"
+					}]
+					config: {
+						"neighbor-address": "169.254.0.1"
+						"peer-as":          65001
+					}
+					"neighbor-address": "169.254.0.1"
+				}]
+			}
+			config: {
+				identifier: "BGP"
+				name:       "BGP"
+			}
+			identifier: "BGP"
+			name:       "BGP"
+		}]
+	}]
 }

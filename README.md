@@ -32,12 +32,14 @@ go run github.com/openconfig/ygot/generator \
 -fakeroot_name=device \
 -output_file=pkg/yang.go \
 -compress_paths=false \
--exclude_modules=ietf-interfaces \
+-exclude_modules=ietf-interfaces,openconfig-mpls,openconfig-isis,openconfig-evpn \
 -include_descriptions=false \
 -include_model_data=false \
 -package_name=yang \
 -exclude_state \
 openconfig/release/models/interfaces/openconfig-if-ip.yang \
+openconfig/release/models/bgp/openconfig-bgp.yang \
+openconfig/release/models/network-instance/openconfig-network-instance.yang \
 yang/arista.yang
 ```
 
@@ -57,9 +59,7 @@ This generates the `./go.json` file
 # replace 'path' tags with 'json'
 sed -i -E 's/path:"(\S+)"/json:"\1"/' pkg/yang.go
 # replace Go maps with slices
-sed -i -E 's/map\[string\]\*(\S+)/\[\]\*\1/' pkg/yang.go
-sed -i -E 's/map\[uint32\]\*(\S+)/\[\]\*\1/' pkg/yang.go
-sed -i -E 's/map\[uint8\]\*(\S+)/\[\]\*\1/' pkg/yang.go
+sed -i -E 's/map\[.*\]\*(\S+)/\[\]\*\1/' pkg/yang.go
 ```
 
 
@@ -95,21 +95,24 @@ go run github.com/openconfig/ygot/generator \
 -fakeroot_name=device \
 -output_file=pkg/yang.go \
 -compress_paths=false \
--exclude_modules=ietf-interfaces \
+-exclude_modules=ietf-interfaces,openconfig-mpls,openconfig-isis,openconfig-evpn \
 -include_descriptions=false \
 -include_model_data=false \
 -package_name=yang \
 -exclude_state \
 openconfig/release/models/interfaces/openconfig-if-ip.yang \
+openconfig/release/models/bgp/openconfig-bgp.yang \
+openconfig/release/models/network-instance/openconfig-network-instance.yang \
 yang/arista.yang
 
 go run post-import.go
 ```
 
+
 * Make struct fields pointing to ENUM types optional (marked as mandatory fields by cue during import)
 
 ```
-sed -i -E 's/(^[^#]\S+)(:\s+#E)/\1\?\2/' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue
+sed -i -E 's/(^[^#]\S+)(:\s+.*#E_)/\1\?\2/' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue
 ```
 
 > From here on, you work exclusively with CUE definitions and can safely delete `./openconfig` and `./yang` directories with YANG models and `./pkg` containing ygot types.

@@ -1,5 +1,5 @@
 {
-  "openconfig-interfaces:interfaces": {
+  "interfaces": {
     "interface": [
       {
         "config": {
@@ -16,12 +16,12 @@
                 "index": 0
               },
               "index": 0,
-              "openconfig-if-ip:ipv4": {
+              "ipv4": {
                 "addresses": {
                   "address": [
                     {
                       "config": {
-                        "arista-intf-augments:addr-type": "PRIMARY",
+                        "addr-type": "PRIMARY",
                         "ip": "192.0.2.1",
                         "prefix-length": 24
                       },
@@ -30,6 +30,56 @@
                   ]
                 }
               }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "network-instances": {
+    "network-instance": [
+      {
+        "config": {
+          "name": "default"
+        },
+        "name": "default",
+        "protocols": {
+          "protocol": [
+            {
+              "bgp": {
+                "global": {
+                  "config": {
+                    "as": 65000
+                  }
+                },
+                "neighbors": {
+                  "neighbor": [
+                    {
+                      "afi-safis": {
+                        "afi-safi": [
+                          {
+                            "afi-safi-name": "IPV4_UNICAST",
+                            "config": {
+                              "afi-safi-name": "IPV4_UNICAST"
+                            }
+                          }
+                        ]
+                      },
+                      "config": {
+                        "neighbor-address": "169.254.0.1",
+                        "peer-as": 65001
+                      },
+                      "neighbor-address": "169.254.0.1"
+                    }
+                  ]
+                }
+              },
+              "config": {
+                "identifier": "BGP",
+                "name": "BGP"
+              },
+              "identifier": "BGP",
+              "name": "BGP"
             }
           ]
         }
