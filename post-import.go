@@ -117,10 +117,12 @@ func main() {
 				// identify a constructor function
 				if strings.HasPrefix(x.Name.Name, "New") {
 					for _, receiver := range x.Recv.List {
+
 						starExpr := receiver.Type.(*goast.StarExpr)
 						name := starExpr.X.(*goast.Ident)
 						rcvName = fmt.Sprintf("#%s", name.Name)
 						resource = strings.Split(x.Name.Name, "New")[1]
+
 						log.Debugf("Found constructor for %s and receiver %s\n", resource, rcvName)
 					}
 				}
@@ -135,8 +137,10 @@ func main() {
 					if name.Name != "key" {
 						continue
 					}
+					// parsing the right-hand side of the 'key :=' expression
 					for _, v2 := range x.Rhs {
 						switch x2 := v2.(type) {
+						// this is the case for 'key := Name' basic literal
 						case *goast.Ident:
 							listKey = x2.Name
 							// save 'receiver type -> key, resource' name binding
@@ -150,12 +154,14 @@ func main() {
 						// 	 Type: Type,
 						// }
 						case *goast.CompositeLit:
+							// keys will store all key values []string{Name, Type}
 							var keys []string
 							for _, elt := range x2.Elts {
 								kv, ok := elt.(*goast.KeyValueExpr)
 								if !ok {
 									log.Infof("Found unexpected composite key ", elt)
 								}
+								// I think this might be a bug, I need to store kv.Value??
 								keys = append(keys, normalizeName(kv.Key.(*goast.Ident).Name))
 							}
 							store[rcvName] = YangList{
@@ -175,11 +181,14 @@ func main() {
 		}
 
 		// insert a global "import strings" statement
+		// assumes no pre-existing import statements
+		// create an import declaration
 		importDecl := ast.ImportDecl{
 			Specs: []*ast.ImportSpec{
 				ast.NewImport(nil, "strings"),
 			},
 		}
+		// create a header from the first declaration (assuming it's the package name) and the import
 		header := []ast.Decl{cueFile.Decls[0], &importDecl}
 		cueFile.Decls = append(header, cueFile.Decls[1:]...)
 	}
@@ -204,18 +213,8 @@ func main() {
 	var foundDef string
 	ast.Walk(cueFile, nil, func(n ast.Node) {
 		switch x := n.(type) {
-		case *ast.Ident:
-			// find all definitions
-			if strings.HasPrefix(x.Name, "#") {
-				// check if we have that definition in store
-				if _, ok := store[x.Name]; ok {
-					// if x is a global definitoin
-					if x.Node == nil {
-						foundDef = x.Name
-					}
-				}
-			}
 
+		// First two cases are for ENUM patching
 		case *ast.Field:
 			// find enum definitions
 			name, isIdent, err := ast.LabelName(x.Label)
@@ -260,6 +259,20 @@ func main() {
 								x.Y = ast.NewString("UNSET")
 							}
 						}
+					}
+				}
+			}
+
+		// Next case is for YANG lists patching
+		// find all definitions that have previsouly been saved during goast.Inspect
+		case *ast.Ident:
+			// find all definitions
+			if strings.HasPrefix(x.Name, "#") {
+				// check if we have that definition in store
+				if _, ok := store[x.Name]; ok {
+					// if x is a global definitoin
+					if x.Node == nil {
+						foundDef = x.Name
 					}
 				}
 			}
@@ -310,7 +323,7 @@ func main() {
 							continue
 						}
 
-						// replace field expression with alias
+						// replacing field expression with alias
 						// this is done to be able to reference local fields that may be double-quoted
 						// see https://cuelang.slack.com/archives/CLT3ULF6C/p1669733898748219 for more details
 						alias := ast.Alias{
@@ -322,7 +335,8 @@ func main() {
 					}
 				}
 
-				// Only append validation code if we've added an alias
+				// Append validation code to the current StructLit
+				// Only append if we've just added an alias
 				if addedAlias {
 					x.Elts = append(x.Elts, astFile.Decls...)
 				}
@@ -343,6 +357,7 @@ func main() {
 }
 
 // this function converts 'CamelCase' and 'Capitalised' words into 'camel-case' and 'capitalised'
+// borrowed from https://groups.google.com/g/golang-nuts/c/VCvbLMDE2F0
 func normalizeName(input string) string {
 	var words []string
 	l := 0
