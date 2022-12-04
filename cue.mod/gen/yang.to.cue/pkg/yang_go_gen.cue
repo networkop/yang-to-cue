@@ -1,4 +1,5 @@
 package yang
+
 import "strings"
 
 #Binary: bytes
@@ -37,7 +38,7 @@ import "strings"
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_Key: {
-	name: string                    @go(Name)
+	name?: string                    @go(Name)
 	type?: #E_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
@@ -45,7 +46,7 @@ import "strings"
 	"acl-entries"?: null | #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries @go(AclEntries,*OpenconfigAcl_Acl_AclSets_AclSet_AclEntries)
 	config?:        null | #OpenconfigAcl_Acl_AclSets_AclSet_Config     @go(Config,*OpenconfigAcl_Acl_AclSets_AclSet_Config)
 	name?:          null | string                                       @go(Name,*string)
-	type?:           #E_OpenconfigAcl_ACL_TYPE                           @go(Type)
+	type?:          #E_OpenconfigAcl_ACL_TYPE                           @go(Type)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries: {
@@ -114,17 +115,17 @@ import "strings"
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config: {
 	"destination-address"?: null | string @go(DestinationAddress,*string)
 	dscp?:                  null | uint8  @go(Dscp,*uint8)
-	"dscp-set": [...uint8] @go(DscpSet,[]uint8)
+	"dscp-set"?: [...uint8] @go(DscpSet,[]uint8)
 	"hop-limit"?:      null | uint8                                                                     @go(HopLimit,*uint8)
-	protocol:          #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union @go(Protocol)
+	protocol?:         #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union @go(Protocol)
 	"source-address"?: null | string                                                                    @go(SourceAddress,*string)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union_Uint8: Uint8: uint8
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union_Uint8: Uint8?: uint8
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6: {
 	config?: null | #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config @go(Config,*OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config)
@@ -134,18 +135,18 @@ import "strings"
 	"destination-address"?:    null | string @go(DestinationAddress,*string)
 	"destination-flow-label"?: null | uint32 @go(DestinationFlowLabel,*uint32)
 	dscp?:                     null | uint8  @go(Dscp,*uint8)
-	"dscp-set": [...uint8] @go(DscpSet,[]uint8)
+	"dscp-set"?: [...uint8] @go(DscpSet,[]uint8)
 	"hop-limit"?:         null | uint8                                                                     @go(HopLimit,*uint8)
-	protocol:             #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union @go(Protocol)
+	protocol?:            #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union @go(Protocol)
 	"source-address"?:    null | string                                                                    @go(SourceAddress,*string)
 	"source-flow-label"?: null | uint32                                                                    @go(SourceFlowLabel,*uint32)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union_Uint8: Uint8: uint8
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union_Uint8: Uint8?: uint8
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2: {
 	config?: null | #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config @go(Config,*OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config)
@@ -154,70 +155,70 @@ import "strings"
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config: {
 	"destination-mac"?:      null | string                                                                   @go(DestinationMac,*string)
 	"destination-mac-mask"?: null | string                                                                   @go(DestinationMacMask,*string)
-	ethertype:               #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union @go(Ethertype)
+	ethertype?:              #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union @go(Ethertype)
 	"source-mac"?:           null | string                                                                   @go(SourceMac,*string)
 	"source-mac-mask"?:      null | string                                                                   @go(SourceMacMask,*string)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union_E_OpenconfigPacketMatchTypes_ETHERTYPE: E_OpenconfigPacketMatchTypes_ETHERTYPE: #E_OpenconfigPacketMatchTypes_ETHERTYPE
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union_E_OpenconfigPacketMatchTypes_ETHERTYPE: E_OpenconfigPacketMatchTypes_ETHERTYPE?: #E_OpenconfigPacketMatchTypes_ETHERTYPE
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union_Uint16: Uint16: uint16
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union_Uint16: Uint16?: uint16
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls: {
 	config?: null | #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config @go(Config,*OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config: {
-	"end-label-value":   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union   @go(EndLabelValue)
-	"start-label-value": #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union @go(StartLabelValue)
-	"traffic-class"?:    null | uint8                                                                            @go(TrafficClass,*uint8)
-	"ttl-value"?:        null | uint8                                                                            @go(TtlValue,*uint8)
+	"end-label-value"?:   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union   @go(EndLabelValue)
+	"start-label-value"?: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union @go(StartLabelValue)
+	"traffic-class"?:     null | uint8                                                                            @go(TrafficClass,*uint8)
+	"ttl-value"?:         null | uint8                                                                            @go(TtlValue,*uint8)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union_Uint32: Uint32: uint32
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union_Uint32: Uint32?: uint32
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union_Uint32: Uint32: uint32
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union_Uint32: Uint32?: uint32
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport: {
 	config?: null | #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config @go(Config,*OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config: {
-	"destination-port": #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union @go(DestinationPort)
-	"source-port":      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union      @go(SourcePort)
+	"destination-port"?: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union @go(DestinationPort)
+	"source-port"?:      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union      @go(SourcePort)
 	"tcp-flags"?: [...#E_OpenconfigPacketMatchTypes_TCP_FLAGS] @go(TcpFlags,[]E_OpenconfigPacketMatchTypes_TCP_FLAGS)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union_String: String: string
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union_String: String?: string
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union_Uint16: Uint16: uint16
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union_Uint16: Uint16?: uint16
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_String: String: string
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_String: String?: string
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_Uint16: Uint16: uint16
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_Uint16: Uint16?: uint16
 
 #OpenconfigAcl_Acl_AclSets_AclSet_Config: {
 	description?: null | string             @go(Description,*string)
 	name?:        null | string             @go(Name,*string)
-	type?:         #E_OpenconfigAcl_ACL_TYPE @go(Type)
+	type?:        #E_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Config: {
@@ -268,19 +269,19 @@ import "strings"
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet_Key: {
-	"set-name": string                    @go(SetName)
+	"set-name"?: string                    @go(SetName)
 	type?:       #E_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet: {
 	config?:     null | #OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet_Config @go(Config,*OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet_Config)
 	"set-name"?: null | string                                                                    @go(SetName,*string)
-	type?:        #E_OpenconfigAcl_ACL_TYPE                                                        @go(Type)
+	type?:       #E_OpenconfigAcl_ACL_TYPE                                                        @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet_Config: {
 	"set-name"?: null | string             @go(SetName,*string)
-	type?:        #E_OpenconfigAcl_ACL_TYPE @go(Type)
+	type?:       #E_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets: {
@@ -300,19 +301,19 @@ import "strings"
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet_Key: {
-	"set-name": string                    @go(SetName)
+	"set-name"?: string                    @go(SetName)
 	type?:       #E_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet: {
 	config?:     null | #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet_Config @go(Config,*OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet_Config)
 	"set-name"?: null | string                                                                      @go(SetName,*string)
-	type?:        #E_OpenconfigAcl_ACL_TYPE                                                          @go(Type)
+	type?:       #E_OpenconfigAcl_ACL_TYPE                                                          @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet_Config: {
 	"set-name"?: null | string             @go(SetName,*string)
-	type?:        #E_OpenconfigAcl_ACL_TYPE @go(Type)
+	type?:       #E_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_InterfaceRef: {
@@ -433,9 +434,9 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config: {
-	fallback?:            #E_AristaIntfAugments_FallbackEnum       @go(Fallback)
+	fallback?:           #E_AristaIntfAugments_FallbackEnum       @go(Fallback)
 	"fallback-timeout"?: null | uint16                            @go(FallbackTimeout,*uint16)
-	"lag-type"?:          #E_OpenconfigIfAggregate_AggregationType @go(LagType)
+	"lag-type"?:         #E_OpenconfigIfAggregate_AggregationType @go(LagType)
 	"min-links"?:        null | uint16                            @go(MinLinks,*uint16)
 	mlag?:               null | uint16                            @go(Mlag,*uint16)
 }
@@ -445,18 +446,18 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config: {
-	"access-vlan"?:   null | uint16                  @go(AccessVlan,*uint16)
+	"access-vlan"?:    null | uint16                  @go(AccessVlan,*uint16)
 	"interface-mode"?: #E_OpenconfigVlan_VlanModeType @go(InterfaceMode)
-	"native-vlan"?:   null | uint16                  @go(NativeVlan,*uint16)
-	"trunk-groups": [...string] @go(TrunkGroups,[]string)
-	"trunk-vlans": [...#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union)
+	"native-vlan"?:    null | uint16                  @go(NativeVlan,*uint16)
+	"trunk-groups"?: [...string] @go(TrunkGroups,[]string)
+	"trunk-vlans"?: [...#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union: _
 
-#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union_String: String: string
+#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union_String: String?: string
 
-#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union_Uint16: Uint16: uint16
+#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union_Uint16: Uint16?: uint16
 
 #OpenconfigInterfaces_Interfaces_Interface_Config: {
 	description?:     null | string                     @go(Description,*string)
@@ -465,8 +466,8 @@ import "strings"
 	"loopback-mode"?: null | bool                       @go(LoopbackMode,*bool)
 	mtu?:             null | uint16                     @go(Mtu,*uint16)
 	name?:            null | string                     @go(Name,*string)
-	tpid?:             #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	type?:             #E_IETFInterfaces_InterfaceType   @go(Type)
+	tpid?:            #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
+	type?:            #E_IETFInterfaces_InterfaceType   @go(Type)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet: {
@@ -480,22 +481,22 @@ import "strings"
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config: {
 	"aggregate-id"?:             null | string                                                                 @go(AggregateId,*string)
 	"auto-negotiate"?:           null | bool                                                                   @go(AutoNegotiate,*bool)
-	"duplex-mode"?:               #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode       @go(DuplexMode)
+	"duplex-mode"?:              #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode       @go(DuplexMode)
 	"enable-flow-control"?:      null | bool                                                                   @go(EnableFlowControl,*bool)
 	"fec-encoding"?:             null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding @go(FecEncoding,*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding)
-	"fec-mode"?:                  #E_OpenconfigIfEthernet_INTERFACE_FEC                                         @go(FecMode)
+	"fec-mode"?:                 #E_OpenconfigIfEthernet_INTERFACE_FEC                                         @go(FecMode)
 	"mac-address"?:              null | string                                                                 @go(MacAddress,*string)
-	"port-speed"?:                #E_OpenconfigIfEthernet_ETHERNET_SPEED                                        @go(PortSpeed)
+	"port-speed"?:               #E_OpenconfigIfEthernet_ETHERNET_SPEED                                        @go(PortSpeed)
 	"sfp-1000base-t"?:           null | bool                                                                   @go(Sfp_1000BaseT,*bool)
 	"standalone-link-training"?: null | bool                                                                   @go(StandaloneLinkTraining,*bool)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding: {
 	"coherent-fec-encoding"?: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding @go(CoherentFecEncoding)
-	disabled?:               null | bool                                                                                  @go(Disabled,*bool)
-	"fire-code"?:            null | bool                                                                                  @go(FireCode,*bool)
-	"reed-solomon"?:         null | bool                                                                                  @go(ReedSolomon,*bool)
-	"reed-solomon544"?:      null | bool                                                                                  @go(ReedSolomon544,*bool)
+	disabled?:                null | bool                                                                                  @go(Disabled,*bool)
+	"fire-code"?:             null | bool                                                                                  @go(FireCode,*bool)
+	"reed-solomon"?:          null | bool                                                                                  @go(ReedSolomon,*bool)
+	"reed-solomon544"?:       null | bool                                                                                  @go(ReedSolomon544,*bool)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc: {
@@ -527,18 +528,18 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config: {
-	"access-vlan"?:   null | uint16                  @go(AccessVlan,*uint16)
+	"access-vlan"?:    null | uint16                  @go(AccessVlan,*uint16)
 	"interface-mode"?: #E_OpenconfigVlan_VlanModeType @go(InterfaceMode)
-	"native-vlan"?:   null | uint16                  @go(NativeVlan,*uint16)
-	"trunk-groups": [...string] @go(TrunkGroups,[]string)
-	"trunk-vlans": [...#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union)
+	"native-vlan"?:    null | uint16                  @go(NativeVlan,*uint16)
+	"trunk-groups"?: [...string] @go(TrunkGroups,[]string)
+	"trunk-vlans"?: [...#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union: _
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union_String: String: string
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union_String: String?: string
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union_Uint16: Uint16: uint16
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union_Uint16: Uint16?: uint16
 
 #OpenconfigInterfaces_Interfaces_Interface_HoldTime: {
 	config?: null | #OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_HoldTime_Config)
@@ -556,14 +557,14 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config: {
-	vlan: #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union @go(Vlan)
+	vlan?: #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union @go(Vlan)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union: _
 
-#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union_String: String: string
+#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union_String: String?: string
 
-#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union_Uint16: Uint16: uint16
+#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Config_Vlan_Union_Uint16: Uint16?: uint16
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4: {
 	addresses?:   null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses  @go(Addresses,*OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses)
@@ -596,7 +597,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config: {
-	"addr-type"?:      #E_AristaIntfAugments_AristaAddrType @go(AddrType)
+	"addr-type"?:     #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 	ip?:              null | string                        @go(Ip,*string)
 	"prefix-length"?: null | uint8                         @go(PrefixLength,*uint8)
 }
@@ -630,7 +631,7 @@ import "strings"
 	preempt?:                  null | bool   @go(Preempt,*bool)
 	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
 	priority?:                 null | uint8  @go(Priority,*uint8)
-	"virtual-address": [...string] @go(VirtualAddress,[]string)
+	"virtual-address"?: [...string] @go(VirtualAddress,[]string)
 	X = "virtual-addresses" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses]
 	"virtual-router-id"?: null | uint8 @go(VirtualRouterId,*uint8)
 	_check: {
@@ -653,7 +654,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:       null | string                        @go(Addr,*string)
+	addr?:        null | string                        @go(Addr,*string)
 	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
@@ -663,7 +664,7 @@ import "strings"
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config: {
 	"priority-decrement"?: null | uint8 @go(PriorityDecrement,*uint8)
-	"track-interface": [...string] @go(TrackInterface,[]string)
+	"track-interface"?: [...string] @go(TrackInterface,[]string)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces: {
@@ -814,7 +815,7 @@ import "strings"
 	preempt?:                  null | bool   @go(Preempt,*bool)
 	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
 	priority?:                 null | uint8  @go(Priority,*uint8)
-	"virtual-address": [...string] @go(VirtualAddress,[]string)
+	"virtual-address"?: [...string] @go(VirtualAddress,[]string)
 	X = "virtual-addresses" : [...null | #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses]
 	"virtual-link-local"?: null | string @go(VirtualLinkLocal,*string)
 	"virtual-router-id"?:  null | uint8  @go(VirtualRouterId,*uint8)
@@ -838,7 +839,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:       null | string                        @go(Addr,*string)
+	addr?:        null | string                        @go(Addr,*string)
 	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
@@ -848,7 +849,7 @@ import "strings"
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config: {
 	"priority-decrement"?: null | uint8 @go(PriorityDecrement,*uint8)
-	"track-interface": [...string] @go(TrackInterface,[]string)
+	"track-interface"?: [...string] @go(TrackInterface,[]string)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces: {
@@ -1000,7 +1001,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config: {
-	"addr-type"?:      #E_AristaIntfAugments_AristaAddrType @go(AddrType)
+	"addr-type"?:     #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 	ip?:              null | string                        @go(Ip,*string)
 	"prefix-length"?: null | uint8                         @go(PrefixLength,*uint8)
 }
@@ -1034,7 +1035,7 @@ import "strings"
 	preempt?:                  null | bool   @go(Preempt,*bool)
 	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
 	priority?:                 null | uint8  @go(Priority,*uint8)
-	"virtual-address": [...string] @go(VirtualAddress,[]string)
+	"virtual-address"?: [...string] @go(VirtualAddress,[]string)
 	X = "virtual-addresses" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses]
 	"virtual-router-id"?: null | uint8 @go(VirtualRouterId,*uint8)
 	_check: {
@@ -1057,7 +1058,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:       null | string                        @go(Addr,*string)
+	addr?:        null | string                        @go(Addr,*string)
 	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
@@ -1067,7 +1068,7 @@ import "strings"
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config: {
 	"priority-decrement"?: null | uint8 @go(PriorityDecrement,*uint8)
-	"track-interface": [...string] @go(TrackInterface,[]string)
+	"track-interface"?: [...string] @go(TrackInterface,[]string)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces: {
@@ -1218,7 +1219,7 @@ import "strings"
 	preempt?:                  null | bool   @go(Preempt,*bool)
 	"preempt-delay"?:          null | uint16 @go(PreemptDelay,*uint16)
 	priority?:                 null | uint8  @go(Priority,*uint8)
-	"virtual-address": [...string] @go(VirtualAddress,[]string)
+	"virtual-address"?: [...string] @go(VirtualAddress,[]string)
 	X = "virtual-addresses" : [...null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses]
 	"virtual-link-local"?: null | string @go(VirtualLinkLocal,*string)
 	"virtual-router-id"?:  null | uint8  @go(VirtualRouterId,*uint8)
@@ -1242,7 +1243,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:       null | string                        @go(Addr,*string)
+	addr?:        null | string                        @go(Addr,*string)
 	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
@@ -1252,7 +1253,7 @@ import "strings"
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking_Config: {
 	"priority-decrement"?: null | uint8 @go(PriorityDecrement,*uint8)
-	"track-interface": [...string] @go(TrackInterface,[]string)
+	"track-interface"?: [...string] @go(TrackInterface,[]string)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_TrackInterfaces: {
@@ -1350,14 +1351,14 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config: {
-	"vlan-id": #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union @go(VlanId)
+	"vlan-id"?: #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union @go(VlanId)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union: _
 
-#OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union_String: String: string
+#OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union_String: String?: string
 
-#OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union_Uint16: Uint16: uint16
+#OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Config_VlanId_Union_Uint16: Uint16?: uint16
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping: {
 	config?: null | #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config @go(Config,*OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config)
@@ -1365,7 +1366,7 @@ import "strings"
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config: {
 	tpid?:                #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	"vlan-id"?:          null | uint16                     @go(VlanId,*uint16)
+	"vlan-id"?:           null | uint16                     @go(VlanId,*uint16)
 	"vlan-stack-action"?: #E_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
 }
 
@@ -1375,7 +1376,7 @@ import "strings"
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config: {
 	tpid?:                #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	"vlan-id"?:          null | uint16                     @go(VlanId,*uint16)
+	"vlan-id"?:           null | uint16                     @go(VlanId,*uint16)
 	"vlan-stack-action"?: #E_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
 }
 
@@ -1400,7 +1401,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerList_Config: {
-	"inner-vlan-ids": [...uint16] @go(InnerVlanIds,[]uint16)
+	"inner-vlan-ids"?: [...uint16] @go(InnerVlanIds,[]uint16)
 	"outer-vlan-id"?: null | uint16 @go(OuterVlanId,*uint16)
 }
 
@@ -1422,7 +1423,7 @@ import "strings"
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedInnerRange_Config: {
 	"inner-high-vlan-id"?: null | uint16 @go(InnerHighVlanId,*uint16)
 	"inner-low-vlan-id"?:  null | uint16 @go(InnerLowVlanId,*uint16)
-	"outer-vlan-id": [...uint16] @go(OuterVlanId,[]uint16)
+	"outer-vlan-id"?: [...uint16] @go(OuterVlanId,[]uint16)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList: {
@@ -1431,7 +1432,7 @@ import "strings"
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterList_Config: {
 	"inner-vlan-id"?: null | uint16 @go(InnerVlanId,*uint16)
-	"outer-vlan-ids": [...uint16] @go(OuterVlanIds,[]uint16)
+	"outer-vlan-ids"?: [...uint16] @go(OuterVlanIds,[]uint16)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_DoubleTaggedOuterRange: {
@@ -1458,7 +1459,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedList_Config: {
-	"vlan-ids": [...uint16] @go(VlanIds,[]uint16)
+	"vlan-ids"?: [...uint16] @go(VlanIds,[]uint16)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match_SingleTaggedRange: {
@@ -1497,15 +1498,15 @@ import "strings"
 }
 
 #OpenconfigKeychain_Keychains_Keychain_Config: {
-	name?:     null | string                                                 @go(Name,*string)
-	tolerance: #OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union @go(Tolerance)
+	name?:      null | string                                                 @go(Name,*string)
+	tolerance?: #OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union @go(Tolerance)
 }
 
 #OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union: _
 
-#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union_E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance: E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance: #E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance
+#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union_E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance: E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance?: #E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance
 
-#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union_Uint32: Uint32: uint32
+#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union_Uint32: Uint32?: uint32
 
 #OpenconfigKeychain_Keychains_Keychain_Keys: {
 	X = "key" : [...null | #OpenconfigKeychain_Keychains_Keychain_Keys_Key]
@@ -1532,8 +1533,8 @@ import "strings"
 
 #OpenconfigKeychain_Keychains_Keychain_Keys_Key_Config: {
 	"crypto-algorithm"?: #E_OpenconfigKeychainTypes_CRYPTO_TYPE @go(CryptoAlgorithm)
-	"key-id"?:          null | uint64                          @go(KeyId,*uint64)
-	"secret-key"?:      null | string                          @go(SecretKey,*string)
+	"key-id"?:           null | uint64                          @go(KeyId,*uint64)
+	"secret-key"?:       null | string                          @go(SecretKey,*string)
 }
 
 #OpenconfigKeychain_Keychains_Keychain_Keys_Key_ReceiveLifetime: {
@@ -1599,7 +1600,7 @@ import "strings"
 	name?:                        null | string                                           @go(Name,*string)
 	"route-distinguisher"?:       null | string                                           @go(RouteDistinguisher,*string)
 	"router-id"?:                 null | string                                           @go(RouterId,*string)
-	type?:                         #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE @go(Type)
+	type?:                        #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_ConnectionPoints: {
@@ -1655,7 +1656,7 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_ConnectionPoints_ConnectionPoint_Endpoints_Endpoint_Config: {
 	"endpoint-id"?: null | string                                   @go(EndpointId,*string)
 	precedence?:    null | uint16                                   @go(Precedence,*uint16)
-	type?:           #E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE @go(Type)
+	type?:          #E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_ConnectionPoints_ConnectionPoint_Endpoints_Endpoint_Local: {
@@ -1695,7 +1696,7 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Encapsulation_Config: {
-	"control-word"?:         null | bool                                             @go(ControlWord,*bool)
+	"control-word"?:          null | bool                                             @go(ControlWord,*bool)
 	"encapsulation-type"?:    #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION         @go(EncapsulationType)
 	"label-allocation-mode"?: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE @go(LabelAllocationMode)
 }
@@ -1728,26 +1729,26 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config: {
-	esi:               #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union @go(Esi)
+	esi?:               #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union @go(Esi)
 	"esi-type"?:        #E_OpenconfigEvpn_EsiType                                                                                          @go(EsiType)
-	interface?:        null | string                                                                                                      @go(Interface,*string)
-	name?:             null | string                                                                                                      @go(Name,*string)
+	interface?:         null | string                                                                                                      @go(Interface,*string)
+	name?:              null | string                                                                                                      @go(Name,*string)
 	"redundancy-mode"?: #E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE                                                                        @go(RedundancyMode)
-	subinterface?:     null | uint32                                                                                                      @go(Subinterface,*uint32)
+	subinterface?:      null | uint32                                                                                                      @go(Subinterface,*uint32)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union_String: String?: string
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config: {
-	"df-election-method"?:  #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod @go(DfElectionMethod)
+	"df-election-method"?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod @go(DfElectionMethod)
 	"election-wait-time"?: null | uint32                                                                                                                          @go(ElectionWaitTime,*uint32)
 	preference?:           null | uint16                                                                                                                          @go(Preference,*uint16)
 	revertive?:            null | bool                                                                                                                            @go(Revertive,*bool)
@@ -1779,40 +1780,40 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config: {
 	"encapsulation-type"?:  #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION                                                                             @go(EncapsulationType)
-	evi?:                  null | string                                                                                                               @go(Evi,*string)
-	"multicast-group"?:    null | string                                                                                                               @go(MulticastGroup,*string)
-	"multicast-mask"?:     null | string                                                                                                               @go(MulticastMask,*string)
+	evi?:                   null | string                                                                                                               @go(Evi,*string)
+	"multicast-group"?:     null | string                                                                                                               @go(MulticastGroup,*string)
+	"multicast-mask"?:      null | string                                                                                                               @go(MulticastMask,*string)
 	"replication-mode"?:    #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode        @go(ReplicationMode)
-	"route-distinguisher": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union @go(RouteDistinguisher)
+	"route-distinguisher"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union @go(RouteDistinguisher)
 	"service-type"?:        #E_OpenconfigEvpnTypes_EVPN_TYPE                                                                                            @go(ServiceType)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union_String: String?: string
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config: {
-	"export-route-target": [...#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union] @go(ExportRouteTarget,[]OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union)
-	"import-route-target": [...#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union] @go(ImportRouteTarget,[]OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union)
+	"export-route-target"?: [...#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union] @go(ExportRouteTarget,[]OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union)
+	"import-route-target"?: [...#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union] @go(ImportRouteTarget,[]OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union_String: String?: string
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union_String: String?: string
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Pbb: {
 	X = "b-component" : [...null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Pbb_BComponent]
@@ -1949,8 +1950,8 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Fdb_MacTable_Entries_Entry_Key: {
-	"mac-address": string @go(MacAddress)
-	vlan:          uint16 @go(Vlan)
+	"mac-address"?: string @go(MacAddress)
+	vlan?:          uint16 @go(Vlan)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Fdb_MacTable_Entries_Entry: {
@@ -2001,8 +2002,8 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ApplyPolicy_Config: {
 	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
 	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
-	"export-policy": [...string] @go(ExportPolicy,[]string)
-	"import-policy": [...string] @go(ImportPolicy,[]string)
+	"export-policy"?: [...string] @go(ExportPolicy,[]string)
+	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy: {
@@ -2010,21 +2011,21 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config: {
-	"export-route-target": [...#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union] @go(ExportRouteTarget,[]OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union)
-	"import-route-target": [...#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union] @go(ImportRouteTarget,[]OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union)
+	"export-route-target"?: [...#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union] @go(ExportRouteTarget,[]OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union)
+	"import-route-target"?: [...#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union] @go(ImportRouteTarget,[]OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union_String: String?: string
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union_String: String?: string
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces: {
 	X = "interface" : [...null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface]
@@ -2049,11 +2050,11 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config: {
 	"associated-address-families"?: [...#E_OpenconfigTypes_ADDRESS_FAMILY] @go(AssociatedAddressFamilies,[]E_OpenconfigTypes_ADDRESS_FAMILY)
-	id?:                   null | string                                                                                               @go(Id,*string)
-	interface?:            null | string                                                                                               @go(Interface,*string)
+	id?:                    null | string                                                                                               @go(Id,*string)
+	interface?:             null | string                                                                                               @go(Interface,*string)
 	"irb-anycast-gateway"?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway @go(IrbAnycastGateway)
-	"mac-pinning"?:        null | bool                                                                                                 @go(MacPinning,*bool)
-	subinterface?:         null | uint32                                                                                               @go(Subinterface,*uint32)
+	"mac-pinning"?:         null | bool                                                                                                 @go(MacPinning,*bool)
+	subinterface?:          null | uint32                                                                                               @go(Subinterface,*uint32)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls: {
@@ -2073,7 +2074,7 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_Config: {
 	"null-label"?:       #E_OpenconfigMplsTypes_NULL_LABEL_TYPE          @go(NullLabel)
 	"pw-encapsulation"?: #E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION @go(PwEncapsulation)
-	"ttl-propagation"?: null | bool                                     @go(TtlPropagation,*bool)
+	"ttl-propagation"?:  null | bool                                     @go(TtlPropagation,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_InterfaceAttributes: {
@@ -2134,22 +2135,22 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config: {
-	"local-id"?:   null | string                                                                                                                          @go(LocalId,*string)
-	"lower-bound": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union @go(LowerBound)
-	"upper-bound": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union @go(UpperBound)
+	"local-id"?:    null | string                                                                                                                          @go(LocalId,*string)
+	"lower-bound"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union @go(LowerBound)
+	"upper-bound"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union @go(UpperBound)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps: {
 	"constrained-path"?:   null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath   @go(ConstrainedPath,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath)
@@ -2187,7 +2188,7 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config: {
 	name?:                      null | string                                                                                                                                        @go(Name,*string)
 	"sid-protection-required"?: null | bool                                                                                                                                          @go(SidProtectionRequired,*bool)
-	"sid-selection-mode"?:       #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode @go(SidSelectionMode)
+	"sid-selection-mode"?:      #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode @go(SidSelectionMode)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_ExplicitRouteObjects: {
@@ -2212,9 +2213,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_ExplicitRouteObjects_ExplicitRouteObject_Config: {
-	address?:   null | string                 @go(Address,*string)
+	address?:    null | string                 @go(Address,*string)
 	"hop-type"?: #E_OpenconfigMpls_MplsHopType @go(HopType)
-	index?:     null | uint8                  @go(Index,*uint8)
+	index?:      null | uint8                  @go(Index,*uint8)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels: {
@@ -2280,25 +2281,25 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_Bandwidth_Config: {
-	"set-bandwidth"?:     null | uint64                     @go(SetBandwidth,*uint64)
+	"set-bandwidth"?:      null | uint64                     @go(SetBandwidth,*uint64)
 	"specification-type"?: #E_OpenconfigMpls_TeBandwidthType @go(SpecificationType)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_Config: {
 	"admin-status"?:               #E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS @go(AdminStatus)
-	description?:                 null | string                              @go(Description,*string)
-	"hold-priority"?:             null | uint8                               @go(HoldPriority,*uint8)
-	metric?:                      null | int32                               @go(Metric,*int32)
+	description?:                  null | string                              @go(Description,*string)
+	"hold-priority"?:              null | uint8                               @go(HoldPriority,*uint8)
+	metric?:                       null | int32                               @go(Metric,*int32)
 	"metric-type"?:                #E_OpenconfigMplsTypes_LSP_METRIC_TYPE     @go(MetricType)
-	name?:                        null | string                              @go(Name,*string)
-	preference?:                  null | uint8                               @go(Preference,*uint8)
+	name?:                         null | string                              @go(Name,*string)
+	preference?:                   null | uint8                               @go(Preference,*uint8)
 	"protection-style-requested"?: #E_OpenconfigMplsTypes_PROTECTION_TYPE     @go(ProtectionStyleRequested)
-	"reoptimize-timer"?:          null | uint16                              @go(ReoptimizeTimer,*uint16)
-	"setup-priority"?:            null | uint8                               @go(SetupPriority,*uint8)
-	"shortcut-eligible"?:         null | bool                                @go(ShortcutEligible,*bool)
+	"reoptimize-timer"?:           null | uint16                              @go(ReoptimizeTimer,*uint16)
+	"setup-priority"?:             null | uint8                               @go(SetupPriority,*uint8)
+	"shortcut-eligible"?:          null | bool                                @go(ShortcutEligible,*bool)
 	"signaling-protocol"?:         #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL @go(SignalingProtocol)
-	"soft-preemption"?:           null | bool                                @go(SoftPreemption,*bool)
-	source?:                      null | string                              @go(Source,*string)
+	"soft-preemption"?:            null | bool                                @go(SoftPreemption,*bool)
+	source?:                       null | string                              @go(Source,*string)
 	type?:                         #E_OpenconfigMplsTypes_TUNNEL_TYPE         @go(Type)
 }
 
@@ -2313,7 +2314,7 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath: {
-	"p2p-primary-path": [...null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath] @go(P2PPrimaryPath,[]*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath)
+	"p2p-primary-path"?: [...null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath] @go(P2PPrimaryPath,[]*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath: {
@@ -2329,9 +2330,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_AdminGroups_Config: {
-	"exclude-group": [...string] @go(ExcludeGroup,[]string)
-	"include-all-group": [...string] @go(IncludeAllGroup,[]string)
-	"include-any-group": [...string] @go(IncludeAnyGroup,[]string)
+	"exclude-group"?: [...string] @go(ExcludeGroup,[]string)
+	"include-all-group"?: [...string] @go(IncludeAllGroup,[]string)
+	"include-any-group"?: [...string] @go(IncludeAnyGroup,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_CandidateSecondaryPaths: {
@@ -2361,13 +2362,13 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_Config: {
-	"cspf-tiebreaker"?:          #E_OpenconfigMpls_CspfTieBreaking              @go(CspfTiebreaker)
+	"cspf-tiebreaker"?:         #E_OpenconfigMpls_CspfTieBreaking              @go(CspfTiebreaker)
 	"explicit-path-name"?:      null | string                                  @go(ExplicitPathName,*string)
 	"hold-priority"?:           null | uint8                                   @go(HoldPriority,*uint8)
 	name?:                      null | string                                  @go(Name,*string)
-	"path-computation-method"?:  #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD @go(PathComputationMethod)
+	"path-computation-method"?: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD @go(PathComputationMethod)
 	"path-computation-server"?: null | string                                  @go(PathComputationServer,*string)
-	"path-control"?:             #E_OpenconfigMpls_LspControlType               @go(PathControl)
+	"path-control"?:            #E_OpenconfigMpls_LspControlType               @go(PathControl)
 	preference?:                null | uint8                                   @go(Preference,*uint8)
 	"retry-timer"?:             null | uint16                                  @go(RetryTimer,*uint16)
 	"setup-priority"?:          null | uint8                                   @go(SetupPriority,*uint8)
@@ -2392,16 +2393,16 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config)
-	type?:    #E_OpenconfigMplsTypes_PATH_METRIC_TYPE                                                                                                                                                                                   @go(Type)
+	type?:   #E_OpenconfigMplsTypes_PATH_METRIC_TYPE                                                                                                                                                                                   @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config: {
 	"metric-upper-bound"?: null | uint64                           @go(MetricUpperBound,*uint64)
-	type?:                  #E_OpenconfigMplsTypes_PATH_METRIC_TYPE @go(Type)
+	type?:                 #E_OpenconfigMplsTypes_PATH_METRIC_TYPE @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths: {
-	"p2p-secondary-path": [...null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath] @go(P2PSecondaryPath,[]*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath)
+	"p2p-secondary-path"?: [...null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath] @go(P2PSecondaryPath,[]*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath: {
@@ -2416,19 +2417,19 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_AdminGroups_Config: {
-	"exclude-group": [...string] @go(ExcludeGroup,[]string)
-	"include-all-group": [...string] @go(IncludeAllGroup,[]string)
-	"include-any-group": [...string] @go(IncludeAnyGroup,[]string)
+	"exclude-group"?: [...string] @go(ExcludeGroup,[]string)
+	"include-all-group"?: [...string] @go(IncludeAllGroup,[]string)
+	"include-any-group"?: [...string] @go(IncludeAnyGroup,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_Config: {
-	"cspf-tiebreaker"?:          #E_OpenconfigMpls_CspfTieBreaking              @go(CspfTiebreaker)
+	"cspf-tiebreaker"?:         #E_OpenconfigMpls_CspfTieBreaking              @go(CspfTiebreaker)
 	"explicit-path-name"?:      null | string                                  @go(ExplicitPathName,*string)
 	"hold-priority"?:           null | uint8                                   @go(HoldPriority,*uint8)
 	name?:                      null | string                                  @go(Name,*string)
-	"path-computation-method"?:  #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD @go(PathComputationMethod)
+	"path-computation-method"?: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD @go(PathComputationMethod)
 	"path-computation-server"?: null | string                                  @go(PathComputationServer,*string)
-	"path-control"?:             #E_OpenconfigMpls_LspControlType               @go(PathControl)
+	"path-control"?:            #E_OpenconfigMpls_LspControlType               @go(PathControl)
 	preference?:                null | uint8                                   @go(Preference,*uint8)
 	"retry-timer"?:             null | uint16                                  @go(RetryTimer,*uint16)
 	"setup-priority"?:          null | uint8                                   @go(SetupPriority,*uint8)
@@ -2453,12 +2454,12 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config)
-	type?:    #E_OpenconfigMplsTypes_PATH_METRIC_TYPE                                                                                                                                                                                        @go(Type)
+	type?:   #E_OpenconfigMplsTypes_PATH_METRIC_TYPE                                                                                                                                                                                        @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config: {
 	"metric-upper-bound"?: null | uint64                           @go(MetricUpperBound,*uint64)
-	type?:                  #E_OpenconfigMplsTypes_PATH_METRIC_TYPE @go(Type)
+	type?:                 #E_OpenconfigMplsTypes_PATH_METRIC_TYPE @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps: {
@@ -2494,66 +2495,66 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config: {
-	"incoming-label": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union @go(IncomingLabel)
-	"next-hop"?:      null | string                                                                                                                @go(NextHop,*string)
-	"push-label":     #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union     @go(PushLabel)
+	"incoming-label"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union @go(IncomingLabel)
+	"next-hop"?:       null | string                                                                                                                @go(NextHop,*string)
+	"push-label"?:     #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union     @go(PushLabel)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config: {
-	"incoming-label": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union @go(IncomingLabel)
-	"next-hop"?:      null | string                                                                                                                 @go(NextHop,*string)
-	"push-label":     #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union     @go(PushLabel)
+	"incoming-label"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union @go(IncomingLabel)
+	"next-hop"?:       null | string                                                                                                                 @go(NextHop,*string)
+	"push-label"?:     #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union     @go(PushLabel)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config: {
-	"incoming-label": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union @go(IncomingLabel)
-	"next-hop"?:      null | string                                                                                                                 @go(NextHop,*string)
-	"push-label":     #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union     @go(PushLabel)
+	"incoming-label"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union @go(IncomingLabel)
+	"next-hop"?:       null | string                                                                                                                 @go(NextHop,*string)
+	"push-label"?:     #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union     @go(PushLabel)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_UnconstrainedPath: {
 	"path-setup-protocol"?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_UnconstrainedPath_PathSetupProtocol @go(PathSetupProtocol,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_UnconstrainedPath_PathSetupProtocol)
@@ -2661,12 +2662,12 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily: {
 	"afi-name"?: #E_OpenconfigMplsLdp_MplsLdpAfi                                                                                                                                              @go(AfiName)
-	config?:    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily_Config)
+	config?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily_Config: {
 	"afi-name"?: #E_OpenconfigMplsLdp_MplsLdpAfi @go(AfiName)
-	enabled?:   null | bool                     @go(Enabled,*bool)
+	enabled?:    null | bool                     @go(Enabled,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_Config: {
@@ -2701,8 +2702,8 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Neighbors_Neighbor_Key: {
-	"lsr-id":         string @go(LsrId)
-	"label-space-id": uint16 @go(LabelSpaceId)
+	"lsr-id"?:         string @go(LsrId)
+	"label-space-id"?: uint16 @go(LabelSpaceId)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Neighbors_Neighbor: {
@@ -2749,8 +2750,8 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily: {
 	"afi-name"?: #E_OpenconfigMplsLdp_MplsLdpAfi                                                                                                               @go(AfiName)
-	config?:    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Config  @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Config)
-	targets?:   null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Targets @go(Targets,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Targets)
+	config?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Config  @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Config)
+	targets?:    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Targets @go(Targets,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Targets)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Config: {
@@ -2865,9 +2866,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_RsvpTe_InterfaceAttributes_Interface_Authentication_Config: {
-	"authentication-key"?: null | string                         @go(AuthenticationKey,*string)
+	"authentication-key"?:  null | string                         @go(AuthenticationKey,*string)
 	"authentication-type"?: #E_OpenconfigMplsTypes_RSVP_AUTH_TYPE @go(AuthenticationType)
-	enable?:               null | bool                           @go(Enable,*bool)
+	enable?:                null | bool                           @go(Enable,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_RsvpTe_InterfaceAttributes_Interface_BandwidthReservations: {
@@ -2900,7 +2901,7 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_RsvpTe_InterfaceAttributes_Interface_Protection_Config: {
-	"bypass-optimize-interval"?:       null | uint16                          @go(BypassOptimizeInterval,*uint16)
+	"bypass-optimize-interval"?:        null | uint16                          @go(BypassOptimizeInterval,*uint16)
 	"link-protection-style-requested"?: #E_OpenconfigMplsTypes_PROTECTION_TYPE @go(LinkProtectionStyleRequested)
 }
 
@@ -3020,10 +3021,10 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeGlobalAttributes_Srlgs_Srlg_Config: {
-	cost?:           null | uint32                          @go(Cost,*uint32)
+	cost?:            null | uint32                          @go(Cost,*uint32)
 	"flooding-type"?: #E_OpenconfigMpls_MplsSrlgFloodingType @go(FloodingType)
-	name?:           null | string                          @go(Name,*string)
-	value?:          null | uint32                          @go(Value,*uint32)
+	name?:            null | string                          @go(Name,*string)
+	value?:           null | uint32                          @go(Value,*uint32)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeGlobalAttributes_Srlgs_Srlg_StaticSrlgMembers: {
@@ -3086,9 +3087,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_Config: {
-	"admin-group": [...string] @go(AdminGroup,[]string)
+	"admin-group"?: [...string] @go(AdminGroup,[]string)
 	"interface-id"?: null | string @go(InterfaceId,*string)
-	"srlg-membership": [...string] @go(SrlgMembership,[]string)
+	"srlg-membership"?: [...string] @go(SrlgMembership,[]string)
 	"te-metric"?: null | uint32 @go(TeMetric,*uint32)
 }
 
@@ -3098,11 +3099,11 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config: {
 	"delta-percentage"?: null | uint8 @go(DeltaPercentage,*uint8)
-	"down-thresholds": [...uint8] @go(DownThresholds,[]uint8)
+	"down-thresholds"?: [...uint8] @go(DownThresholds,[]uint8)
 	"threshold-specification"?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification @go(ThresholdSpecification)
 	"threshold-type"?:          #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType          @go(ThresholdType)
-	"up-down-thresholds": [...uint8] @go(UpDownThresholds,[]uint8)
-	"up-thresholds": [...uint8] @go(UpThresholds,[]uint8)
+	"up-down-thresholds"?: [...uint8] @go(UpDownThresholds,[]uint8)
+	"up-thresholds"?: [...uint8] @go(UpThresholds,[]uint8)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_InterfaceRef: {
@@ -3180,7 +3181,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_PathSelectionGroups_PathSelectionGroup_Config: {
 	"group-id"?: null | string @go(GroupId,*string)
-	"mpls-lsp": [...string] @go(MplsLsp,[]string)
+	"mpls-lsp"?: [...string] @go(MplsLsp,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies: {
@@ -3207,7 +3208,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config: {
 	"policy-id"?: null | string                                                                                              @go(PolicyId,*string)
-	type?:         #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type @go(Type)
+	type?:        #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules: {
@@ -3299,17 +3300,17 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config: {
 	"destination-address"?: null | string @go(DestinationAddress,*string)
 	dscp?:                  null | uint8  @go(Dscp,*uint8)
-	"dscp-set": [...uint8] @go(DscpSet,[]uint8)
+	"dscp-set"?: [...uint8] @go(DscpSet,[]uint8)
 	"hop-limit"?:      null | uint8                                                                                                                       @go(HopLimit,*uint8)
-	protocol:          #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union @go(Protocol)
+	protocol?:         #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union @go(Protocol)
 	"source-address"?: null | string                                                                                                                      @go(SourceAddress,*string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union_Uint8: Uint8: uint8
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union_Uint8: Uint8?: uint8
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config)
@@ -3319,18 +3320,18 @@ import "strings"
 	"destination-address"?:    null | string @go(DestinationAddress,*string)
 	"destination-flow-label"?: null | uint32 @go(DestinationFlowLabel,*uint32)
 	dscp?:                     null | uint8  @go(Dscp,*uint8)
-	"dscp-set": [...uint8] @go(DscpSet,[]uint8)
+	"dscp-set"?: [...uint8] @go(DscpSet,[]uint8)
 	"hop-limit"?:         null | uint8                                                                                                                       @go(HopLimit,*uint8)
-	protocol:             #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union @go(Protocol)
+	protocol?:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union @go(Protocol)
 	"source-address"?:    null | string                                                                                                                      @go(SourceAddress,*string)
 	"source-flow-label"?: null | uint32                                                                                                                      @go(SourceFlowLabel,*uint32)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union_Uint8: Uint8: uint8
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union_Uint8: Uint8?: uint8
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config)
@@ -3339,42 +3340,42 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config: {
 	"destination-mac"?:      null | string                                                                                                                     @go(DestinationMac,*string)
 	"destination-mac-mask"?: null | string                                                                                                                     @go(DestinationMacMask,*string)
-	ethertype:               #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union @go(Ethertype)
+	ethertype?:              #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union @go(Ethertype)
 	"source-mac"?:           null | string                                                                                                                     @go(SourceMac,*string)
 	"source-mac-mask"?:      null | string                                                                                                                     @go(SourceMacMask,*string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union_E_OpenconfigPacketMatchTypes_ETHERTYPE: E_OpenconfigPacketMatchTypes_ETHERTYPE: #E_OpenconfigPacketMatchTypes_ETHERTYPE
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union_E_OpenconfigPacketMatchTypes_ETHERTYPE: E_OpenconfigPacketMatchTypes_ETHERTYPE?: #E_OpenconfigPacketMatchTypes_ETHERTYPE
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union_Uint16: Uint16: uint16
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union_Uint16: Uint16?: uint16
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config: {
-	"destination-port": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union @go(DestinationPort)
-	"source-port":      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union      @go(SourcePort)
+	"destination-port"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union @go(DestinationPort)
+	"source-port"?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union      @go(SourcePort)
 	"tcp-flags"?: [...#E_OpenconfigPacketMatchTypes_TCP_FLAGS] @go(TcpFlags,[]E_OpenconfigPacketMatchTypes_TCP_FLAGS)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union_String: String?: string
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union_Uint16: Uint16: uint16
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union_Uint16: Uint16?: uint16
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union_String: String?: string
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union_Uint16: Uint16: uint16
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union_Uint16: Uint16?: uint16
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols: {
 	X = "protocol" : [...null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol]
@@ -3394,13 +3395,13 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Key: {
 	identifier?: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Identifier)
-	name:       string                                         @go(Name)
+	name?:       string                                         @go(Name)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol: {
 	bgp?:                null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp             @go(Bgp,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp)
 	config?:             null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Config          @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Config)
-	identifier?:          #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                        @go(Identifier)
+	identifier?:         #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                        @go(Identifier)
 	igmp?:               null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Igmp            @go(Igmp,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Igmp)
 	isis?:               null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis            @go(Isis,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis)
 	"local-aggregates"?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates @go(LocalAggregates,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates)
@@ -3446,7 +3447,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi: {
 	"add-paths"?:               null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_AddPaths              @go(AddPaths,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_AddPaths)
-	"afi-safi-name"?:            #E_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                     @go(AfiSafiName)
+	"afi-safi-name"?:           #E_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                     @go(AfiSafiName)
 	config?:                    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Config                @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Config)
 	"graceful-restart"?:        null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_GracefulRestart       @go(GracefulRestart,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_GracefulRestart)
 	"ipv4-labeled-unicast"?:    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Ipv4LabeledUnicast    @go(Ipv4LabeledUnicast,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Ipv4LabeledUnicast)
@@ -3478,7 +3479,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Config: {
 	"afi-safi-name"?: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE @go(AfiSafiName)
-	enabled?:        null | bool                         @go(Enabled,*bool)
+	enabled?:         null | bool                         @go(Enabled,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_GracefulRestart: {
@@ -3846,7 +3847,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_Confederation_Config: {
 	identifier?: null | uint32 @go(Identifier,*uint32)
-	"member-as": [...uint32] @go(MemberAs,[]uint32)
+	"member-as"?: [...uint32] @go(MemberAs,[]uint32)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_Config: {
@@ -3991,7 +3992,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi: {
 	"add-paths"?:            null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_AddPaths           @go(AddPaths,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_AddPaths)
-	"afi-safi-name"?:         #E_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                              @go(AfiSafiName)
+	"afi-safi-name"?:        #E_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                              @go(AfiSafiName)
 	"apply-policy"?:         null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_ApplyPolicy        @go(ApplyPolicy,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_ApplyPolicy)
 	config?:                 null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_Config             @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_Config)
 	"graceful-restart"?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_GracefulRestart    @go(GracefulRestart,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_GracefulRestart)
@@ -4028,13 +4029,13 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_ApplyPolicy_Config: {
 	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
 	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
-	"export-policy": [...string] @go(ExportPolicy,[]string)
-	"import-policy": [...string] @go(ImportPolicy,[]string)
+	"export-policy"?: [...string] @go(ExportPolicy,[]string)
+	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_Config: {
 	"afi-safi-name"?: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE @go(AfiSafiName)
-	enabled?:        null | bool                         @go(Enabled,*bool)
+	enabled?:         null | bool                         @go(Enabled,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_GracefulRestart: {
@@ -4380,8 +4381,8 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_ApplyPolicy_Config: {
 	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
 	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
-	"export-policy": [...string] @go(ExportPolicy,[]string)
-	"import-policy": [...string] @go(ImportPolicy,[]string)
+	"export-policy"?: [...string] @go(ExportPolicy,[]string)
+	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AsPathOptions: {
@@ -4403,10 +4404,10 @@ import "strings"
 	"neighbor-port"?:      null | uint16                          @go(NeighborPort,*uint16)
 	"peer-as"?:            null | uint32                          @go(PeerAs,*uint32)
 	"peer-group"?:         null | string                          @go(PeerGroup,*string)
-	"peer-type"?:           #E_OpenconfigBgp_PeerType              @go(PeerType)
-	"remove-private-as"?:   #E_OpenconfigBgp_RemovePrivateAsOption @go(RemovePrivateAs)
+	"peer-type"?:          #E_OpenconfigBgp_PeerType              @go(PeerType)
+	"remove-private-as"?:  #E_OpenconfigBgp_RemovePrivateAsOption @go(RemovePrivateAs)
 	"route-flap-damping"?: null | bool                            @go(RouteFlapDamping,*bool)
-	"send-community"?:      #E_OpenconfigBgp_CommunityType         @go(SendCommunity)
+	"send-community"?:     #E_OpenconfigBgp_CommunityType         @go(SendCommunity)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_EbgpMultihop: {
@@ -4458,15 +4459,15 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_RouteReflector_Config: {
-	"route-reflector-client"?:    null | bool                                                                                                                                               @go(RouteReflectorClient,*bool)
-	"route-reflector-cluster-id": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_RouteReflector_Config_RouteReflectorClusterId_Union @go(RouteReflectorClusterId)
+	"route-reflector-client"?:     null | bool                                                                                                                                               @go(RouteReflectorClient,*bool)
+	"route-reflector-cluster-id"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_RouteReflector_Config_RouteReflectorClusterId_Union @go(RouteReflectorClusterId)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_RouteReflector_Config_RouteReflectorClusterId_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_RouteReflector_Config_RouteReflectorClusterId_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_RouteReflector_Config_RouteReflectorClusterId_Union_String: String?: string
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_RouteReflector_Config_RouteReflectorClusterId_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_RouteReflector_Config_RouteReflectorClusterId_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_Timers: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_Timers_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_Timers_Config)
@@ -4559,7 +4560,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi: {
 	"add-paths"?:            null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_AddPaths           @go(AddPaths,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_AddPaths)
-	"afi-safi-name"?:         #E_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                                @go(AfiSafiName)
+	"afi-safi-name"?:        #E_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                                @go(AfiSafiName)
 	"apply-policy"?:         null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_ApplyPolicy        @go(ApplyPolicy,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_ApplyPolicy)
 	config?:                 null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_Config             @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_Config)
 	"graceful-restart"?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_GracefulRestart    @go(GracefulRestart,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_GracefulRestart)
@@ -4596,13 +4597,13 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_ApplyPolicy_Config: {
 	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
 	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
-	"export-policy": [...string] @go(ExportPolicy,[]string)
-	"import-policy": [...string] @go(ImportPolicy,[]string)
+	"export-policy"?: [...string] @go(ExportPolicy,[]string)
+	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_Config: {
 	"afi-safi-name"?: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE @go(AfiSafiName)
-	enabled?:        null | bool                         @go(Enabled,*bool)
+	enabled?:         null | bool                         @go(Enabled,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_GracefulRestart: {
@@ -4958,8 +4959,8 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_ApplyPolicy_Config: {
 	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
 	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
-	"export-policy": [...string] @go(ExportPolicy,[]string)
-	"import-policy": [...string] @go(ImportPolicy,[]string)
+	"export-policy"?: [...string] @go(ExportPolicy,[]string)
+	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AsPathOptions: {
@@ -4978,10 +4979,10 @@ import "strings"
 	"local-as"?:           null | uint32                          @go(LocalAs,*uint32)
 	"peer-as"?:            null | uint32                          @go(PeerAs,*uint32)
 	"peer-group-name"?:    null | string                          @go(PeerGroupName,*string)
-	"peer-type"?:           #E_OpenconfigBgp_PeerType              @go(PeerType)
-	"remove-private-as"?:   #E_OpenconfigBgp_RemovePrivateAsOption @go(RemovePrivateAs)
+	"peer-type"?:          #E_OpenconfigBgp_PeerType              @go(PeerType)
+	"remove-private-as"?:  #E_OpenconfigBgp_RemovePrivateAsOption @go(RemovePrivateAs)
 	"route-flap-damping"?: null | bool                            @go(RouteFlapDamping,*bool)
-	"send-community"?:      #E_OpenconfigBgp_CommunityType         @go(SendCommunity)
+	"send-community"?:     #E_OpenconfigBgp_CommunityType         @go(SendCommunity)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_EbgpMultihop: {
@@ -5033,15 +5034,15 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_RouteReflector_Config: {
-	"route-reflector-client"?:    null | bool                                                                                                                                                 @go(RouteReflectorClient,*bool)
-	"route-reflector-cluster-id": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_RouteReflector_Config_RouteReflectorClusterId_Union @go(RouteReflectorClusterId)
+	"route-reflector-client"?:     null | bool                                                                                                                                                 @go(RouteReflectorClient,*bool)
+	"route-reflector-cluster-id"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_RouteReflector_Config_RouteReflectorClusterId_Union @go(RouteReflectorClusterId)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_RouteReflector_Config_RouteReflectorClusterId_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_RouteReflector_Config_RouteReflectorClusterId_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_RouteReflector_Config_RouteReflectorClusterId_Union_String: String?: string
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_RouteReflector_Config_RouteReflectorClusterId_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_RouteReflector_Config_RouteReflectorClusterId_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_Timers: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_Timers_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_Timers_Config)
@@ -5096,7 +5097,7 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Config: {
 	"default-metric"?: null | uint32                                  @go(DefaultMetric,*uint32)
 	enabled?:          null | bool                                    @go(Enabled,*bool)
-	identifier?:        #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Identifier)
+	identifier?:       #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Identifier)
 	name?:             null | string                                  @go(Name,*string)
 }
 
@@ -5272,16 +5273,16 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af: {
-	"afi-name"?:        #E_OpenconfigIsisTypes_AFI_TYPE                                                                                            @go(AfiName)
+	"afi-name"?:       #E_OpenconfigIsisTypes_AFI_TYPE                                                                                            @go(AfiName)
 	config?:           null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_Config        @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_Config)
 	"multi-topology"?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_MultiTopology @go(MultiTopology,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_MultiTopology)
-	"safi-name"?:       #E_OpenconfigIsisTypes_SAFI_TYPE                                                                                           @go(SafiName)
+	"safi-name"?:      #E_OpenconfigIsisTypes_SAFI_TYPE                                                                                           @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_Config: {
 	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	enabled?:    null | bool                      @go(Enabled,*bool)
-	metric?:     null | uint32                    @go(Metric,*uint32)
+	enabled?:     null | bool                      @go(Enabled,*bool)
+	metric?:      null | uint32                    @go(Metric,*uint32)
 	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
@@ -5298,13 +5299,13 @@ import "strings"
 	"authentication-check"?:     null | bool                        @go(AuthenticationCheck,*bool)
 	"csnp-enable-on-p2p-links"?: null | bool                        @go(CsnpEnableOnP2PLinks,*bool)
 	"fast-flooding"?:            null | bool                        @go(FastFlooding,*bool)
-	"hello-padding"?:             #E_OpenconfigIsis_HelloPaddingType @go(HelloPadding)
+	"hello-padding"?:            #E_OpenconfigIsis_HelloPaddingType @go(HelloPadding)
 	"iid-tlv"?:                  null | bool                        @go(IidTlv,*bool)
 	instance?:                   null | string                      @go(Instance,*string)
-	"level-capability"?:          #E_OpenconfigIsis_LevelType        @go(LevelCapability)
+	"level-capability"?:         #E_OpenconfigIsis_LevelType        @go(LevelCapability)
 	"max-ecmp-paths"?:           null | uint8                       @go(MaxEcmpPaths,*uint8)
 	"maximum-area-addresses"?:   null | uint8                       @go(MaximumAreaAddresses,*uint8)
-	net: [...string] @go(Net,[]string)
+	net?: [...string] @go(Net,[]string)
 	"poi-tlv"?: null | bool @go(PoiTlv,*bool)
 }
 
@@ -5335,7 +5336,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi: {
 	"afi-name"?: #E_OpenconfigIsisTypes_AFI_TYPE                                                                                           @go(AfiName)
-	config?:    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi_Config)
+	config?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi_Config: {
@@ -5354,7 +5355,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_InterLevelPropagationPolicies_Level1ToLevel2_Config: {
 	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
-	"import-policy": [...string] @go(ImportPolicy,[]string)
+	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_InterLevelPropagationPolicies_Level2ToLevel1: {
@@ -5363,7 +5364,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_InterLevelPropagationPolicies_Level2ToLevel1_Config: {
 	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
-	"import-policy": [...string] @go(ImportPolicy,[]string)
+	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit: {
@@ -5408,12 +5409,12 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger: {
-	config?:         null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger_Config)
+	config?:          null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger_Config)
 	"reset-trigger"?: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE                                                                                                     @go(ResetTrigger)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger_Config: {
-	delay?:          null | uint16                                      @go(Delay,*uint16)
+	delay?:           null | uint16                                      @go(Delay,*uint16)
 	"reset-trigger"?: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE @go(ResetTrigger)
 }
 
@@ -5548,13 +5549,13 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af: {
 	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE                                                                                                   @go(AfiName)
-	config?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af_Config)
+	config?:      null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af_Config)
 	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE                                                                                                  @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af_Config: {
 	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	enabled?:    null | bool                      @go(Enabled,*bool)
+	enabled?:     null | bool                      @go(Enabled,*bool)
 	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
@@ -5563,9 +5564,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Authentication_Config: {
-	"auth-mode"?:      #E_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
+	"auth-mode"?:     #E_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
 	"auth-password"?: null | string                        @go(AuthPassword,*string)
-	"auth-type"?:      #E_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
+	"auth-type"?:     #E_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
 	enabled?:         null | bool                          @go(Enabled,*bool)
 	keychain?:        null | string                        @go(Keychain,*string)
 }
@@ -5583,10 +5584,10 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Config: {
 	"circuit-type"?:  #E_OpenconfigIsis_CircuitType      @go(CircuitType)
-	enabled?:        null | bool                        @go(Enabled,*bool)
+	enabled?:         null | bool                        @go(Enabled,*bool)
 	"hello-padding"?: #E_OpenconfigIsis_HelloPaddingType @go(HelloPadding)
-	"interface-id"?: null | string                      @go(InterfaceId,*string)
-	passive?:        null | bool                        @go(Passive,*bool)
+	"interface-id"?:  null | string                      @go(InterfaceId,*string)
+	passive?:         null | bool                        @go(Passive,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_EnableBfd: {
@@ -5653,16 +5654,16 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af: {
-	"afi-name"?:         #E_OpenconfigIsisTypes_AFI_TYPE                                                                                                                        @go(AfiName)
+	"afi-name"?:        #E_OpenconfigIsisTypes_AFI_TYPE                                                                                                                        @go(AfiName)
 	config?:            null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_Config         @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_Config)
-	"safi-name"?:        #E_OpenconfigIsisTypes_SAFI_TYPE                                                                                                                       @go(SafiName)
+	"safi-name"?:       #E_OpenconfigIsisTypes_SAFI_TYPE                                                                                                                       @go(SafiName)
 	"segment-routing"?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting @go(SegmentRouting,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_Config: {
 	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	enabled?:    null | bool                      @go(Enabled,*bool)
-	metric?:     null | uint32                    @go(Metric,*uint32)
+	enabled?:     null | bool                      @go(Enabled,*bool)
+	metric?:      null | uint32                    @go(Metric,*uint32)
 	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
@@ -5688,29 +5689,29 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Key: {
-	neighbor: string                                                                                                                                                                                        @go(Neighbor)
-	"sid-id": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union @go(SidId)
+	neighbor?: string                                                                                                                                                                                        @go(Neighbor)
+	"sid-id"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union @go(SidId)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid: {
 	config?:   null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config      @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config)
 	neighbor?: null | string                                                                                                                                                                                 @go(Neighbor,*string)
-	"sid-id":  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union @go(SidId)
+	"sid-id"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union @go(SidId)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union_String: String?: string
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config: {
 	group?:                 null | bool                                                                                                                                                                                   @go(Group,*bool)
 	neighbor?:              null | string                                                                                                                                                                                 @go(Neighbor,*string)
 	"protection-eligible"?: null | bool                                                                                                                                                                                   @go(ProtectionEligible,*bool)
-	"sid-id":               #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union @go(SidId)
+	"sid-id"?:              #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union @go(SidId)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids: {
@@ -5736,17 +5737,17 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config: {
 	"label-options"?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions @go(LabelOptions)
-	prefix?:         null | string                                                                                                                                                                              @go(Prefix,*string)
-	"sid-id":        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union    @go(SidId)
+	prefix?:          null | string                                                                                                                                                                              @go(Prefix,*string)
+	"sid-id"?:        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union    @go(SidId)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union_String: String?: string
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_Config: {
 	enabled?:        null | bool  @go(Enabled,*bool)
@@ -5760,9 +5761,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_HelloAuthentication_Config: {
-	"auth-mode"?:      #E_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
+	"auth-mode"?:     #E_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
 	"auth-password"?: null | string                        @go(AuthPassword,*string)
-	"auth-type"?:      #E_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
+	"auth-type"?:     #E_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
 	enabled?:         null | bool                          @go(Enabled,*bool)
 	keychain?:        null | string                        @go(Keychain,*string)
 }
@@ -5859,9 +5860,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Levels_Level_Authentication_Config: {
-	"auth-mode"?:      #E_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
+	"auth-mode"?:     #E_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
 	"auth-password"?: null | string                        @go(AuthPassword,*string)
-	"auth-type"?:      #E_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
+	"auth-type"?:     #E_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
 	"disable-csnp"?:  null | bool                          @go(DisableCsnp,*bool)
 	"disable-lsp"?:   null | bool                          @go(DisableLsp,*bool)
 	"disable-psnp"?:  null | bool                          @go(DisablePsnp,*bool)
@@ -5873,7 +5874,7 @@ import "strings"
 	"authentication-check"?: null | bool                   @go(AuthenticationCheck,*bool)
 	enabled?:                null | bool                   @go(Enabled,*bool)
 	"level-number"?:         null | uint8                  @go(LevelNumber,*uint8)
-	"metric-style"?:          #E_OpenconfigIsis_MetricStyle @go(MetricStyle)
+	"metric-style"?:         #E_OpenconfigIsis_MetricStyle @go(MetricStyle)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Levels_Level_RoutePreference: {
@@ -5925,14 +5926,14 @@ import "strings"
 	metric?:      null | uint32                                                                                                                @go(Metric,*uint32)
 	preference?:  null | uint32                                                                                                                @go(Preference,*uint32)
 	prefix?:      null | string                                                                                                                @go(Prefix,*string)
-	"set-tag":    #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates_Aggregate_Config_SetTag_Union @go(SetTag)
+	"set-tag"?:   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates_Aggregate_Config_SetTag_Union @go(SetTag)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates_Aggregate_Config_SetTag_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates_Aggregate_Config_SetTag_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates_Aggregate_Config_SetTag_Union_String: String?: string
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates_Aggregate_Config_SetTag_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates_Aggregate_Config_SetTag_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2: {
 	areas?:  null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas  @go(Areas,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas)
@@ -5957,7 +5958,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area: {
 	config?:          null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config           @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config)
-	identifier:       #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(Identifier)
+	identifier?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(Identifier)
 	interfaces?:      null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Interfaces       @go(Interfaces,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Interfaces)
 	mpls?:            null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Mpls             @go(Mpls,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Mpls)
 	"virtual-links"?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_VirtualLinks     @go(VirtualLinks,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_VirtualLinks)
@@ -5965,12 +5966,12 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union_String: String?: string
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config: {
-	identifier: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(Identifier)
+	identifier?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(Identifier)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Interfaces: {
@@ -6006,7 +6007,7 @@ import "strings"
 	id?:                             null | string                            @go(Id,*string)
 	metric?:                         null | uint16                            @go(Metric,*uint16)
 	"multi-area-adjacency-primary"?: null | bool                              @go(MultiAreaAdjacencyPrimary,*bool)
-	"network-type"?:                  #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE @go(NetworkType)
+	"network-type"?:                 #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE @go(NetworkType)
 	passive?:                        null | bool                              @go(Passive,*bool)
 	priority?:                       null | uint8                             @go(Priority,*uint8)
 }
@@ -6136,7 +6137,7 @@ import "strings"
 	"igp-shortcuts"?:              null | bool                                                                                                                @go(IgpShortcuts,*bool)
 	"log-adjacency-changes"?:      null | bool                                                                                                                @go(LogAdjacencyChanges,*bool)
 	"router-id"?:                  null | string                                                                                                              @go(RouterId,*string)
-	"summary-route-cost-mode"?:     #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode @go(SummaryRouteCostMode)
+	"summary-route-cost-mode"?:    #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode @go(SummaryRouteCostMode)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_GracefulRestart: {
@@ -6165,21 +6166,21 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_InterAreaPropagationPolicies_InterAreaPropagationPolicy_Key: {
-	"src-area": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(SrcArea)
-	"dst-area": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(DstArea)
+	"src-area"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(SrcArea)
+	"dst-area"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(DstArea)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_InterAreaPropagationPolicies_InterAreaPropagationPolicy: {
-	config?:    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_InterAreaPropagationPolicies_InterAreaPropagationPolicy_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_InterAreaPropagationPolicies_InterAreaPropagationPolicy_Config)
-	"dst-area": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union                                           @go(DstArea)
-	"src-area": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union                                           @go(SrcArea)
+	config?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_InterAreaPropagationPolicies_InterAreaPropagationPolicy_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_InterAreaPropagationPolicies_InterAreaPropagationPolicy_Config)
+	"dst-area"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union                                           @go(DstArea)
+	"src-area"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union                                           @go(SrcArea)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_InterAreaPropagationPolicies_InterAreaPropagationPolicy_Config: {
 	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType                                                                             @go(DefaultImportPolicy)
-	"dst-area":              #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(DstArea)
-	"import-policy": [...string] @go(ImportPolicy,[]string)
-	"src-area": #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(SrcArea)
+	"dst-area"?:              #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(DstArea)
+	"import-policy"?: [...string] @go(ImportPolicy,[]string)
+	"src-area"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(SrcArea)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Mpls: {
@@ -6276,7 +6277,7 @@ import "strings"
 	id?:                         null | string                 @go(Id,*string)
 	"pce-initiated-capability"?: null | bool                   @go(PceInitiatedCapability,*bool)
 	"pce-server-address"?:       null | string                 @go(PceServerAddress,*string)
-	"pce-type"?:                  #E_OpenconfigPcep_PceModeType @go(PceType)
+	"pce-type"?:                 #E_OpenconfigPcep_PceModeType @go(PceType)
 	port?:                       null | uint16                 @go(Port,*uint16)
 	preference?:                 null | uint8                  @go(Preference,*uint8)
 	"report-local-lsp"?:         null | bool                   @go(ReportLocalLsp,*bool)
@@ -6377,7 +6378,7 @@ import "strings"
 	"interface-id"?:        null | string                  @go(InterfaceId,*string)
 	"join-prune-interval"?: null | uint8                   @go(JoinPruneInterval,*uint8)
 	"maximum-groups"?:      null | uint32                  @go(MaximumGroups,*uint32)
-	mode?:                   #E_OpenconfigPimTypes_PIM_MODE @go(Mode)
+	mode?:                  #E_OpenconfigPimTypes_PIM_MODE @go(Mode)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Pim_Interfaces_Interface_EnableBfd: {
@@ -6422,14 +6423,14 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_Config: {
 	description?: null | string                                                                                                          @go(Description,*string)
 	prefix?:      null | string                                                                                                          @go(Prefix,*string)
-	"set-tag":    #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_Config_SetTag_Union @go(SetTag)
+	"set-tag"?:   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_Config_SetTag_Union @go(SetTag)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_Config_SetTag_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_Config_SetTag_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_Config_SetTag_Union_String: String?: string
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_Config_SetTag_Union_Uint32: Uint32: uint32
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_Config_SetTag_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops: {
 	X = "next-hop" : [...null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop]
@@ -6457,16 +6458,16 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config: {
 	index?:      null | string                                                                                                                            @go(Index,*string)
 	metric?:     null | uint32                                                                                                                            @go(Metric,*uint32)
-	"next-hop":  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union @go(NextHop)
+	"next-hop"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union @go(NextHop)
 	preference?: null | uint32                                                                                                                            @go(Preference,*uint32)
 	recurse?:    null | bool                                                                                                                              @go(Recurse,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union_E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP: E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP: #E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union_E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP: E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP?: #E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union_String: String: string
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union_String: String?: string
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_EnableBfd: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_EnableBfd_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_EnableBfd_Config)
@@ -6502,12 +6503,12 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_RouteLimits_RouteLimit: {
-	afi?:     #E_OpenconfigTypes_ADDRESS_FAMILY                                                                @go(Afi)
+	afi?:    #E_OpenconfigTypes_ADDRESS_FAMILY                                                                @go(Afi)
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_RouteLimits_RouteLimit_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_RouteLimits_RouteLimit_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_RouteLimits_RouteLimit_Config: {
-	afi?:                #E_OpenconfigTypes_ADDRESS_FAMILY @go(Afi)
+	afi?:               #E_OpenconfigTypes_ADDRESS_FAMILY @go(Afi)
 	"alarm-threshold"?: null | uint32                     @go(AlarmThreshold,*uint32)
 	maximum?:           null | uint32                     @go(Maximum,*uint32)
 	"warning-only"?:    null | bool                       @go(WarningOnly,*bool)
@@ -6541,9 +6542,9 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_SegmentRouting_Srgbs_Srgb_Config: {
 	"dataplane-type"?: #E_OpenconfigSegmentRouting_SrDataplaneType @go(DataplaneType)
-	"ipv6-prefixes": [...string] @go(Ipv6Prefixes,[]string)
+	"ipv6-prefixes"?: [...string] @go(Ipv6Prefixes,[]string)
 	"local-id"?: null | string @go(LocalId,*string)
-	"mpls-label-blocks": [...string] @go(MplsLabelBlocks,[]string)
+	"mpls-label-blocks"?: [...string] @go(MplsLabelBlocks,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_SegmentRouting_Srlbs: {
@@ -6568,7 +6569,7 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_SegmentRouting_Srlbs_Srlb_Config: {
-	"dataplane-type"?:    #E_OpenconfigSegmentRouting_SrDataplaneType @go(DataplaneType)
+	"dataplane-type"?:   #E_OpenconfigSegmentRouting_SrDataplaneType @go(DataplaneType)
 	"ipv6-prefix"?:      null | string                               @go(Ipv6Prefix,*string)
 	"local-id"?:         null | string                               @go(LocalId,*string)
 	"mpls-label-block"?: null | string                               @go(MplsLabelBlock,*string)
@@ -6598,17 +6599,17 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection: {
 	"address-family"?: #E_OpenconfigTypes_ADDRESS_FAMILY                                                                          @go(AddressFamily)
-	config?:          null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection_Config)
+	config?:           null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection_Config)
 	"dst-protocol"?:   #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                             @go(DstProtocol)
 	"src-protocol"?:   #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                             @go(SrcProtocol)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection_Config: {
-	"address-family"?:              #E_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
-	"default-import-policy"?:       #E_OpenconfigRoutingPolicy_DefaultPolicyType   @go(DefaultImportPolicy)
+	"address-family"?:             #E_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
+	"default-import-policy"?:      #E_OpenconfigRoutingPolicy_DefaultPolicyType   @go(DefaultImportPolicy)
 	"disable-metric-propagation"?: null | bool                                    @go(DisableMetricPropagation,*bool)
-	"dst-protocol"?:                #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(DstProtocol)
-	"import-policy": [...string] @go(ImportPolicy,[]string)
+	"dst-protocol"?:               #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(DstProtocol)
+	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 	"src-protocol"?: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(SrcProtocol)
 }
 
@@ -6635,7 +6636,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table: {
 	"address-family"?: #E_OpenconfigTypes_ADDRESS_FAMILY                                                      @go(AddressFamily)
-	config?:          null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table_Config)
+	config?:           null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table_Config)
 	protocol?:         #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                         @go(Protocol)
 }
 
@@ -6668,7 +6669,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config: {
 	name?:      null | string                                                                          @go(Name,*string)
-	status?:     #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status @go(Status)
+	status?:    #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status @go(Status)
 	"vlan-id"?: null | uint16                                                                          @go(VlanId,*uint16)
 }
 
@@ -6708,7 +6709,7 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_NeighborSets_NeighborSet_Config: {
-	address: [...string] @go(Address,[]string)
+	address?: [...string] @go(Address,[]string)
 	name?: null | string @go(Name,*string)
 }
 
@@ -6735,7 +6736,7 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config: {
-	mode?:  #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode @go(Mode)
+	mode?: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode @go(Mode)
 	name?: null | string                                                                         @go(Name,*string)
 }
 
@@ -6756,8 +6757,8 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Prefixes_Prefix_Key: {
-	"ip-prefix":        string @go(IpPrefix)
-	"masklength-range": string @go(MasklengthRange)
+	"ip-prefix"?:        string @go(IpPrefix)
+	"masklength-range"?: string @go(MasklengthRange)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Prefixes_Prefix: {
@@ -6794,14 +6795,14 @@ import "strings"
 
 #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config: {
 	name?: null | string @go(Name,*string)
-	"tag-value": [...#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config_TagValue_Union] @go(TagValue,[]OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config_TagValue_Union)
+	"tag-value"?: [...#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config_TagValue_Union] @go(TagValue,[]OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config_TagValue_Union)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config_TagValue_Union: _
 
-#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config_TagValue_Union_String: String: string
+#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config_TagValue_Union_String: String?: string
 
-#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config_TagValue_Union_Uint32: Uint32: uint32
+#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_TagSets_TagSet_Config_TagValue_Union_Uint32: Uint32?: uint32
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions: {
 	X = "policy-definition" : [...null | #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition]
@@ -6876,14 +6877,14 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config: {
-	tag: [...#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config_Tag_Union] @go(Tag,[]OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config_Tag_Union)
+	tag?: [...#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config_Tag_Union] @go(Tag,[]OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config_Tag_Union)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config_Tag_Union: _
 
-#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config_Tag_Union_String: String: string
+#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config_Tag_Union_String: String?: string
 
-#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config_Tag_Union_Uint32: Uint32: uint32
+#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline_Config_Tag_Union_Uint32: Uint32?: uint32
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Reference: {
 	config?: null | #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Reference_Config @go(Config,*OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Reference_Config)
@@ -6902,7 +6903,7 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_Config: {
-	"call-policy"?:        null | string                                  @go(CallPolicy,*string)
+	"call-policy"?:         null | string                                  @go(CallPolicy,*string)
 	"install-protocol-eq"?: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(InstallProtocolEq)
 }
 
@@ -6921,7 +6922,7 @@ import "strings"
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchNeighborSet_Config: {
 	"match-set-options"?: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType @go(MatchSetOptions)
-	"neighbor-set"?:     null | string                                            @go(NeighborSet,*string)
+	"neighbor-set"?:      null | string                                            @go(NeighborSet,*string)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchPrefixSet: {
@@ -6930,7 +6931,7 @@ import "strings"
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchPrefixSet_Config: {
 	"match-set-options"?: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType @go(MatchSetOptions)
-	"prefix-set"?:       null | string                                            @go(PrefixSet,*string)
+	"prefix-set"?:        null | string                                            @go(PrefixSet,*string)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchTagSet: {
@@ -6939,12 +6940,14 @@ import "strings"
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchTagSet_Config: {
 	"match-set-options"?: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType @go(MatchSetOptions)
-	"tag-set"?:          null | string                                            @go(TagSet,*string)
+	"tag-set"?:           null | string                                            @go(TagSet,*string)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Config: {
 	name?: null | string @go(Name,*string)
 }
+
+#E_AristaIntfAugments_AristaAddrType: string
 
 #enumE_AristaIntfAugments_AristaAddrType:
 	#AristaIntfAugments_AristaAddrType_UNSET |
@@ -6953,19 +6956,21 @@ import "strings"
 	#AristaIntfAugments_AristaAddrType_IPV6
 
 #values_E_AristaIntfAugments_AristaAddrType: {
-	AristaIntfAugments_AristaAddrType_UNSET:     #AristaIntfAugments_AristaAddrType_UNSET
-	AristaIntfAugments_AristaAddrType_PRIMARY:   #AristaIntfAugments_AristaAddrType_PRIMARY
-	AristaIntfAugments_AristaAddrType_SECONDARY: #AristaIntfAugments_AristaAddrType_SECONDARY
-	AristaIntfAugments_AristaAddrType_IPV6:      #AristaIntfAugments_AristaAddrType_IPV6
+	AristaIntfAugments_AristaAddrType_UNSET?:     #AristaIntfAugments_AristaAddrType_UNSET
+	AristaIntfAugments_AristaAddrType_PRIMARY?:   #AristaIntfAugments_AristaAddrType_PRIMARY
+	AristaIntfAugments_AristaAddrType_SECONDARY?: #AristaIntfAugments_AristaAddrType_SECONDARY
+	AristaIntfAugments_AristaAddrType_IPV6?:      #AristaIntfAugments_AristaAddrType_IPV6
 }
 
-#AristaIntfAugments_AristaAddrType_UNSET: #E_AristaIntfAugments_AristaAddrType & 0
+#AristaIntfAugments_AristaAddrType_UNSET: #E_AristaIntfAugments_AristaAddrType & "UNSET"
 
-#AristaIntfAugments_AristaAddrType_PRIMARY: #E_AristaIntfAugments_AristaAddrType & 1
+#AristaIntfAugments_AristaAddrType_PRIMARY: #E_AristaIntfAugments_AristaAddrType & "PRIMARY"
 
-#AristaIntfAugments_AristaAddrType_SECONDARY: #E_AristaIntfAugments_AristaAddrType & 2
+#AristaIntfAugments_AristaAddrType_SECONDARY: #E_AristaIntfAugments_AristaAddrType & "SECONDARY"
 
-#AristaIntfAugments_AristaAddrType_IPV6: #E_AristaIntfAugments_AristaAddrType & 3
+#AristaIntfAugments_AristaAddrType_IPV6: #E_AristaIntfAugments_AristaAddrType & "IPV6"
+
+#E_AristaIntfAugments_FallbackEnum: string
 
 #enumE_AristaIntfAugments_FallbackEnum:
 	#AristaIntfAugments_FallbackEnum_UNSET |
@@ -6974,19 +6979,21 @@ import "strings"
 	#AristaIntfAugments_FallbackEnum_individual
 
 #values_E_AristaIntfAugments_FallbackEnum: {
-	AristaIntfAugments_FallbackEnum_UNSET:      #AristaIntfAugments_FallbackEnum_UNSET
-	AristaIntfAugments_FallbackEnum_none:       #AristaIntfAugments_FallbackEnum_none
-	AristaIntfAugments_FallbackEnum_static:     #AristaIntfAugments_FallbackEnum_static
-	AristaIntfAugments_FallbackEnum_individual: #AristaIntfAugments_FallbackEnum_individual
+	AristaIntfAugments_FallbackEnum_UNSET?:      #AristaIntfAugments_FallbackEnum_UNSET
+	AristaIntfAugments_FallbackEnum_none?:       #AristaIntfAugments_FallbackEnum_none
+	AristaIntfAugments_FallbackEnum_static?:     #AristaIntfAugments_FallbackEnum_static
+	AristaIntfAugments_FallbackEnum_individual?: #AristaIntfAugments_FallbackEnum_individual
 }
 
-#AristaIntfAugments_FallbackEnum_UNSET: #E_AristaIntfAugments_FallbackEnum & 0
+#AristaIntfAugments_FallbackEnum_UNSET: #E_AristaIntfAugments_FallbackEnum & "UNSET"
 
-#AristaIntfAugments_FallbackEnum_none: #E_AristaIntfAugments_FallbackEnum & 1
+#AristaIntfAugments_FallbackEnum_none: #E_AristaIntfAugments_FallbackEnum & "none"
 
-#AristaIntfAugments_FallbackEnum_static: #E_AristaIntfAugments_FallbackEnum & 2
+#AristaIntfAugments_FallbackEnum_static: #E_AristaIntfAugments_FallbackEnum & "static"
 
-#AristaIntfAugments_FallbackEnum_individual: #E_AristaIntfAugments_FallbackEnum & 3
+#AristaIntfAugments_FallbackEnum_individual: #E_AristaIntfAugments_FallbackEnum & "individual"
+
+#E_AristaIntfAugments_ReflectorDirection: string
 
 #enumE_AristaIntfAugments_ReflectorDirection:
 	#AristaIntfAugments_ReflectorDirection_UNSET |
@@ -6995,19 +7002,21 @@ import "strings"
 	#AristaIntfAugments_ReflectorDirection_out
 
 #values_E_AristaIntfAugments_ReflectorDirection: {
-	AristaIntfAugments_ReflectorDirection_UNSET: #AristaIntfAugments_ReflectorDirection_UNSET
-	AristaIntfAugments_ReflectorDirection_none:  #AristaIntfAugments_ReflectorDirection_none
-	AristaIntfAugments_ReflectorDirection_in:    #AristaIntfAugments_ReflectorDirection_in
-	AristaIntfAugments_ReflectorDirection_out:   #AristaIntfAugments_ReflectorDirection_out
+	AristaIntfAugments_ReflectorDirection_UNSET?: #AristaIntfAugments_ReflectorDirection_UNSET
+	AristaIntfAugments_ReflectorDirection_none?:  #AristaIntfAugments_ReflectorDirection_none
+	AristaIntfAugments_ReflectorDirection_in?:    #AristaIntfAugments_ReflectorDirection_in
+	AristaIntfAugments_ReflectorDirection_out?:   #AristaIntfAugments_ReflectorDirection_out
 }
 
-#AristaIntfAugments_ReflectorDirection_UNSET: #E_AristaIntfAugments_ReflectorDirection & 0
+#AristaIntfAugments_ReflectorDirection_UNSET: #E_AristaIntfAugments_ReflectorDirection & "UNSET"
 
-#AristaIntfAugments_ReflectorDirection_none: #E_AristaIntfAugments_ReflectorDirection & 1
+#AristaIntfAugments_ReflectorDirection_none: #E_AristaIntfAugments_ReflectorDirection & "none"
 
-#AristaIntfAugments_ReflectorDirection_in: #E_AristaIntfAugments_ReflectorDirection & 2
+#AristaIntfAugments_ReflectorDirection_in: #E_AristaIntfAugments_ReflectorDirection & "in"
 
-#AristaIntfAugments_ReflectorDirection_out: #E_AristaIntfAugments_ReflectorDirection & 3
+#AristaIntfAugments_ReflectorDirection_out: #E_AristaIntfAugments_ReflectorDirection & "out"
+
+#E_AristaIntfAugments_ReflectorMacAction: string
 
 #enumE_AristaIntfAugments_ReflectorMacAction:
 	#AristaIntfAugments_ReflectorMacAction_UNSET |
@@ -7015,16 +7024,18 @@ import "strings"
 	#AristaIntfAugments_ReflectorMacAction_swap
 
 #values_E_AristaIntfAugments_ReflectorMacAction: {
-	AristaIntfAugments_ReflectorMacAction_UNSET: #AristaIntfAugments_ReflectorMacAction_UNSET
-	AristaIntfAugments_ReflectorMacAction_none:  #AristaIntfAugments_ReflectorMacAction_none
-	AristaIntfAugments_ReflectorMacAction_swap:  #AristaIntfAugments_ReflectorMacAction_swap
+	AristaIntfAugments_ReflectorMacAction_UNSET?: #AristaIntfAugments_ReflectorMacAction_UNSET
+	AristaIntfAugments_ReflectorMacAction_none?:  #AristaIntfAugments_ReflectorMacAction_none
+	AristaIntfAugments_ReflectorMacAction_swap?:  #AristaIntfAugments_ReflectorMacAction_swap
 }
 
-#AristaIntfAugments_ReflectorMacAction_UNSET: #E_AristaIntfAugments_ReflectorMacAction & 0
+#AristaIntfAugments_ReflectorMacAction_UNSET: #E_AristaIntfAugments_ReflectorMacAction & "UNSET"
 
-#AristaIntfAugments_ReflectorMacAction_none: #E_AristaIntfAugments_ReflectorMacAction & 1
+#AristaIntfAugments_ReflectorMacAction_none: #E_AristaIntfAugments_ReflectorMacAction & "none"
 
-#AristaIntfAugments_ReflectorMacAction_swap: #E_AristaIntfAugments_ReflectorMacAction & 2
+#AristaIntfAugments_ReflectorMacAction_swap: #E_AristaIntfAugments_ReflectorMacAction & "swap"
+
+#E_IETFInterfaces_InterfaceType: string
 
 #enumE_IETFInterfaces_InterfaceType:
 	#IETFInterfaces_InterfaceType_UNSET |
@@ -7316,868 +7327,870 @@ import "strings"
 	#IETFInterfaces_InterfaceType_xboxWireless
 
 #values_E_IETFInterfaces_InterfaceType: {
-	IETFInterfaces_InterfaceType_UNSET:                         #IETFInterfaces_InterfaceType_UNSET
-	IETFInterfaces_InterfaceType_a12MppSwitch:                  #IETFInterfaces_InterfaceType_a12MppSwitch
-	IETFInterfaces_InterfaceType_aal2:                          #IETFInterfaces_InterfaceType_aal2
-	IETFInterfaces_InterfaceType_aal5:                          #IETFInterfaces_InterfaceType_aal5
-	IETFInterfaces_InterfaceType_actelisMetaLOOP:               #IETFInterfaces_InterfaceType_actelisMetaLOOP
-	IETFInterfaces_InterfaceType_adsl:                          #IETFInterfaces_InterfaceType_adsl
-	IETFInterfaces_InterfaceType_adsl2:                         #IETFInterfaces_InterfaceType_adsl2
-	IETFInterfaces_InterfaceType_adsl2plus:                     #IETFInterfaces_InterfaceType_adsl2plus
-	IETFInterfaces_InterfaceType_aflane8023:                    #IETFInterfaces_InterfaceType_aflane8023
-	IETFInterfaces_InterfaceType_aflane8025:                    #IETFInterfaces_InterfaceType_aflane8025
-	IETFInterfaces_InterfaceType_aluELP:                        #IETFInterfaces_InterfaceType_aluELP
-	IETFInterfaces_InterfaceType_aluEpon:                       #IETFInterfaces_InterfaceType_aluEpon
-	IETFInterfaces_InterfaceType_aluEponLogicalLink:            #IETFInterfaces_InterfaceType_aluEponLogicalLink
-	IETFInterfaces_InterfaceType_aluEponOnu:                    #IETFInterfaces_InterfaceType_aluEponOnu
-	IETFInterfaces_InterfaceType_aluEponPhysicalUni:            #IETFInterfaces_InterfaceType_aluEponPhysicalUni
-	IETFInterfaces_InterfaceType_aluGponOnu:                    #IETFInterfaces_InterfaceType_aluGponOnu
-	IETFInterfaces_InterfaceType_aluGponPhysicalUni:            #IETFInterfaces_InterfaceType_aluGponPhysicalUni
-	IETFInterfaces_InterfaceType_arap:                          #IETFInterfaces_InterfaceType_arap
-	IETFInterfaces_InterfaceType_arcnet:                        #IETFInterfaces_InterfaceType_arcnet
-	IETFInterfaces_InterfaceType_arcnetPlus:                    #IETFInterfaces_InterfaceType_arcnetPlus
-	IETFInterfaces_InterfaceType_async:                         #IETFInterfaces_InterfaceType_async
-	IETFInterfaces_InterfaceType_atm:                           #IETFInterfaces_InterfaceType_atm
-	IETFInterfaces_InterfaceType_atmDxi:                        #IETFInterfaces_InterfaceType_atmDxi
-	IETFInterfaces_InterfaceType_atmFuni:                       #IETFInterfaces_InterfaceType_atmFuni
-	IETFInterfaces_InterfaceType_atmIma:                        #IETFInterfaces_InterfaceType_atmIma
-	IETFInterfaces_InterfaceType_atmLogical:                    #IETFInterfaces_InterfaceType_atmLogical
-	IETFInterfaces_InterfaceType_atmRadio:                      #IETFInterfaces_InterfaceType_atmRadio
-	IETFInterfaces_InterfaceType_atmSubInterface:               #IETFInterfaces_InterfaceType_atmSubInterface
-	IETFInterfaces_InterfaceType_atmVciEndPt:                   #IETFInterfaces_InterfaceType_atmVciEndPt
-	IETFInterfaces_InterfaceType_atmVirtual:                    #IETFInterfaces_InterfaceType_atmVirtual
-	IETFInterfaces_InterfaceType_atmbond:                       #IETFInterfaces_InterfaceType_atmbond
-	IETFInterfaces_InterfaceType_aviciOpticalEther:             #IETFInterfaces_InterfaceType_aviciOpticalEther
-	IETFInterfaces_InterfaceType_basicISDN:                     #IETFInterfaces_InterfaceType_basicISDN
-	IETFInterfaces_InterfaceType_bgppolicyaccounting:           #IETFInterfaces_InterfaceType_bgppolicyaccounting
-	IETFInterfaces_InterfaceType_bits:                          #IETFInterfaces_InterfaceType_bits
-	IETFInterfaces_InterfaceType_bridge:                        #IETFInterfaces_InterfaceType_bridge
-	IETFInterfaces_InterfaceType_bsc:                           #IETFInterfaces_InterfaceType_bsc
-	IETFInterfaces_InterfaceType_cableDownstreamRfPort:         #IETFInterfaces_InterfaceType_cableDownstreamRfPort
-	IETFInterfaces_InterfaceType_capwapDot11Bss:                #IETFInterfaces_InterfaceType_capwapDot11Bss
-	IETFInterfaces_InterfaceType_capwapDot11Profile:            #IETFInterfaces_InterfaceType_capwapDot11Profile
-	IETFInterfaces_InterfaceType_capwapWtpVirtualRadio:         #IETFInterfaces_InterfaceType_capwapWtpVirtualRadio
-	IETFInterfaces_InterfaceType_cblVectaStar:                  #IETFInterfaces_InterfaceType_cblVectaStar
-	IETFInterfaces_InterfaceType_cctEmul:                       #IETFInterfaces_InterfaceType_cctEmul
-	IETFInterfaces_InterfaceType_ces:                           #IETFInterfaces_InterfaceType_ces
-	IETFInterfaces_InterfaceType_channel:                       #IETFInterfaces_InterfaceType_channel
-	IETFInterfaces_InterfaceType_ciscoISLvlan:                  #IETFInterfaces_InterfaceType_ciscoISLvlan
-	IETFInterfaces_InterfaceType_cnr:                           #IETFInterfaces_InterfaceType_cnr
-	IETFInterfaces_InterfaceType_coffee:                        #IETFInterfaces_InterfaceType_coffee
-	IETFInterfaces_InterfaceType_compositeLink:                 #IETFInterfaces_InterfaceType_compositeLink
-	IETFInterfaces_InterfaceType_dcn:                           #IETFInterfaces_InterfaceType_dcn
-	IETFInterfaces_InterfaceType_ddnX25:                        #IETFInterfaces_InterfaceType_ddnX25
-	IETFInterfaces_InterfaceType_digitalPowerline:              #IETFInterfaces_InterfaceType_digitalPowerline
-	IETFInterfaces_InterfaceType_digitalWrapperOverheadChannel: #IETFInterfaces_InterfaceType_digitalWrapperOverheadChannel
-	IETFInterfaces_InterfaceType_dlsw:                          #IETFInterfaces_InterfaceType_dlsw
-	IETFInterfaces_InterfaceType_docsCableDownstream:           #IETFInterfaces_InterfaceType_docsCableDownstream
-	IETFInterfaces_InterfaceType_docsCableMCmtsDownstream:      #IETFInterfaces_InterfaceType_docsCableMCmtsDownstream
-	IETFInterfaces_InterfaceType_docsCableMaclayer:             #IETFInterfaces_InterfaceType_docsCableMaclayer
-	IETFInterfaces_InterfaceType_docsCableNdf:                  #IETFInterfaces_InterfaceType_docsCableNdf
-	IETFInterfaces_InterfaceType_docsCableNdr:                  #IETFInterfaces_InterfaceType_docsCableNdr
-	IETFInterfaces_InterfaceType_docsCableScte55d1FwdOob:       #IETFInterfaces_InterfaceType_docsCableScte55d1FwdOob
-	IETFInterfaces_InterfaceType_docsCableScte55d1RetOob:       #IETFInterfaces_InterfaceType_docsCableScte55d1RetOob
-	IETFInterfaces_InterfaceType_docsCableScte55d2DsOob:        #IETFInterfaces_InterfaceType_docsCableScte55d2DsOob
-	IETFInterfaces_InterfaceType_docsCableScte55d2UsOob:        #IETFInterfaces_InterfaceType_docsCableScte55d2UsOob
-	IETFInterfaces_InterfaceType_docsCableUpstream:             #IETFInterfaces_InterfaceType_docsCableUpstream
-	IETFInterfaces_InterfaceType_docsCableUpstreamChannel:      #IETFInterfaces_InterfaceType_docsCableUpstreamChannel
-	IETFInterfaces_InterfaceType_docsCableUpstreamRfPort:       #IETFInterfaces_InterfaceType_docsCableUpstreamRfPort
-	IETFInterfaces_InterfaceType_docsOfdmDownstream:            #IETFInterfaces_InterfaceType_docsOfdmDownstream
-	IETFInterfaces_InterfaceType_docsOfdmaUpstream:             #IETFInterfaces_InterfaceType_docsOfdmaUpstream
-	IETFInterfaces_InterfaceType_ds0:                           #IETFInterfaces_InterfaceType_ds0
-	IETFInterfaces_InterfaceType_ds0Bundle:                     #IETFInterfaces_InterfaceType_ds0Bundle
-	IETFInterfaces_InterfaceType_ds1:                           #IETFInterfaces_InterfaceType_ds1
-	IETFInterfaces_InterfaceType_ds1FDL:                        #IETFInterfaces_InterfaceType_ds1FDL
-	IETFInterfaces_InterfaceType_ds3:                           #IETFInterfaces_InterfaceType_ds3
-	IETFInterfaces_InterfaceType_dtm:                           #IETFInterfaces_InterfaceType_dtm
-	IETFInterfaces_InterfaceType_dvbAsiIn:                      #IETFInterfaces_InterfaceType_dvbAsiIn
-	IETFInterfaces_InterfaceType_dvbAsiOut:                     #IETFInterfaces_InterfaceType_dvbAsiOut
-	IETFInterfaces_InterfaceType_dvbRccDownstream:              #IETFInterfaces_InterfaceType_dvbRccDownstream
-	IETFInterfaces_InterfaceType_dvbRccMacLayer:                #IETFInterfaces_InterfaceType_dvbRccMacLayer
-	IETFInterfaces_InterfaceType_dvbRccUpstream:                #IETFInterfaces_InterfaceType_dvbRccUpstream
-	IETFInterfaces_InterfaceType_dvbRcsMacLayer:                #IETFInterfaces_InterfaceType_dvbRcsMacLayer
-	IETFInterfaces_InterfaceType_dvbRcsTdma:                    #IETFInterfaces_InterfaceType_dvbRcsTdma
-	IETFInterfaces_InterfaceType_dvbTdm:                        #IETFInterfaces_InterfaceType_dvbTdm
-	IETFInterfaces_InterfaceType_e1:                            #IETFInterfaces_InterfaceType_e1
-	IETFInterfaces_InterfaceType_econet:                        #IETFInterfaces_InterfaceType_econet
-	IETFInterfaces_InterfaceType_eon:                           #IETFInterfaces_InterfaceType_eon
-	IETFInterfaces_InterfaceType_eplrs:                         #IETFInterfaces_InterfaceType_eplrs
-	IETFInterfaces_InterfaceType_escon:                         #IETFInterfaces_InterfaceType_escon
-	IETFInterfaces_InterfaceType_ethernet3Mbit:                 #IETFInterfaces_InterfaceType_ethernet3Mbit
-	IETFInterfaces_InterfaceType_ethernetCsmacd:                #IETFInterfaces_InterfaceType_ethernetCsmacd
-	IETFInterfaces_InterfaceType_fast:                          #IETFInterfaces_InterfaceType_fast
-	IETFInterfaces_InterfaceType_fastEther:                     #IETFInterfaces_InterfaceType_fastEther
-	IETFInterfaces_InterfaceType_fastEtherFX:                   #IETFInterfaces_InterfaceType_fastEtherFX
-	IETFInterfaces_InterfaceType_fastdsl:                       #IETFInterfaces_InterfaceType_fastdsl
-	IETFInterfaces_InterfaceType_fcipLink:                      #IETFInterfaces_InterfaceType_fcipLink
-	IETFInterfaces_InterfaceType_fddi:                          #IETFInterfaces_InterfaceType_fddi
-	IETFInterfaces_InterfaceType_fibreChannel:                  #IETFInterfaces_InterfaceType_fibreChannel
-	IETFInterfaces_InterfaceType_frDlciEndPt:                   #IETFInterfaces_InterfaceType_frDlciEndPt
-	IETFInterfaces_InterfaceType_frForward:                     #IETFInterfaces_InterfaceType_frForward
-	IETFInterfaces_InterfaceType_frameRelay:                    #IETFInterfaces_InterfaceType_frameRelay
-	IETFInterfaces_InterfaceType_frameRelayInterconnect:        #IETFInterfaces_InterfaceType_frameRelayInterconnect
-	IETFInterfaces_InterfaceType_frameRelayMPI:                 #IETFInterfaces_InterfaceType_frameRelayMPI
-	IETFInterfaces_InterfaceType_frameRelayService:             #IETFInterfaces_InterfaceType_frameRelayService
-	IETFInterfaces_InterfaceType_frf16MfrBundle:                #IETFInterfaces_InterfaceType_frf16MfrBundle
-	IETFInterfaces_InterfaceType_g703at2mb:                     #IETFInterfaces_InterfaceType_g703at2mb
-	IETFInterfaces_InterfaceType_g703at64k:                     #IETFInterfaces_InterfaceType_g703at64k
-	IETFInterfaces_InterfaceType_g9981:                         #IETFInterfaces_InterfaceType_g9981
-	IETFInterfaces_InterfaceType_g9982:                         #IETFInterfaces_InterfaceType_g9982
-	IETFInterfaces_InterfaceType_g9983:                         #IETFInterfaces_InterfaceType_g9983
-	IETFInterfaces_InterfaceType_gfast:                         #IETFInterfaces_InterfaceType_gfast
-	IETFInterfaces_InterfaceType_gfp:                           #IETFInterfaces_InterfaceType_gfp
-	IETFInterfaces_InterfaceType_gigabitEthernet:               #IETFInterfaces_InterfaceType_gigabitEthernet
-	IETFInterfaces_InterfaceType_gpon:                          #IETFInterfaces_InterfaceType_gpon
-	IETFInterfaces_InterfaceType_gr303IDT:                      #IETFInterfaces_InterfaceType_gr303IDT
-	IETFInterfaces_InterfaceType_gr303RDT:                      #IETFInterfaces_InterfaceType_gr303RDT
-	IETFInterfaces_InterfaceType_gtp:                           #IETFInterfaces_InterfaceType_gtp
-	IETFInterfaces_InterfaceType_h323Gatekeeper:                #IETFInterfaces_InterfaceType_h323Gatekeeper
-	IETFInterfaces_InterfaceType_h323Proxy:                     #IETFInterfaces_InterfaceType_h323Proxy
-	IETFInterfaces_InterfaceType_hdh1822:                       #IETFInterfaces_InterfaceType_hdh1822
-	IETFInterfaces_InterfaceType_hdlc:                          #IETFInterfaces_InterfaceType_hdlc
-	IETFInterfaces_InterfaceType_hdsl2:                         #IETFInterfaces_InterfaceType_hdsl2
-	IETFInterfaces_InterfaceType_hiperlan2:                     #IETFInterfaces_InterfaceType_hiperlan2
-	IETFInterfaces_InterfaceType_hippi:                         #IETFInterfaces_InterfaceType_hippi
-	IETFInterfaces_InterfaceType_hippiInterface:                #IETFInterfaces_InterfaceType_hippiInterface
-	IETFInterfaces_InterfaceType_homepna:                       #IETFInterfaces_InterfaceType_homepna
-	IETFInterfaces_InterfaceType_hostPad:                       #IETFInterfaces_InterfaceType_hostPad
-	IETFInterfaces_InterfaceType_hssi:                          #IETFInterfaces_InterfaceType_hssi
-	IETFInterfaces_InterfaceType_hyperchannel:                  #IETFInterfaces_InterfaceType_hyperchannel
-	IETFInterfaces_InterfaceType_iana_interface_type:           #IETFInterfaces_InterfaceType_iana_interface_type
-	IETFInterfaces_InterfaceType_ibm370parChan:                 #IETFInterfaces_InterfaceType_ibm370parChan
-	IETFInterfaces_InterfaceType_idsl:                          #IETFInterfaces_InterfaceType_idsl
-	IETFInterfaces_InterfaceType_ieee1394:                      #IETFInterfaces_InterfaceType_ieee1394
-	IETFInterfaces_InterfaceType_ieee80211:                     #IETFInterfaces_InterfaceType_ieee80211
-	IETFInterfaces_InterfaceType_ieee80212:                     #IETFInterfaces_InterfaceType_ieee80212
-	IETFInterfaces_InterfaceType_ieee802154:                    #IETFInterfaces_InterfaceType_ieee802154
-	IETFInterfaces_InterfaceType_ieee80216WMAN:                 #IETFInterfaces_InterfaceType_ieee80216WMAN
-	IETFInterfaces_InterfaceType_ieee8023adLag:                 #IETFInterfaces_InterfaceType_ieee8023adLag
-	IETFInterfaces_InterfaceType_if_gsn:                        #IETFInterfaces_InterfaceType_if_gsn
-	IETFInterfaces_InterfaceType_ifPwType:                      #IETFInterfaces_InterfaceType_ifPwType
-	IETFInterfaces_InterfaceType_ifVfiType:                     #IETFInterfaces_InterfaceType_ifVfiType
-	IETFInterfaces_InterfaceType_ilan:                          #IETFInterfaces_InterfaceType_ilan
-	IETFInterfaces_InterfaceType_imt:                           #IETFInterfaces_InterfaceType_imt
-	IETFInterfaces_InterfaceType_infiniband:                    #IETFInterfaces_InterfaceType_infiniband
-	IETFInterfaces_InterfaceType_interleave:                    #IETFInterfaces_InterfaceType_interleave
-	IETFInterfaces_InterfaceType_ip:                            #IETFInterfaces_InterfaceType_ip
-	IETFInterfaces_InterfaceType_ipForward:                     #IETFInterfaces_InterfaceType_ipForward
-	IETFInterfaces_InterfaceType_ipOverAtm:                     #IETFInterfaces_InterfaceType_ipOverAtm
-	IETFInterfaces_InterfaceType_ipOverCdlc:                    #IETFInterfaces_InterfaceType_ipOverCdlc
-	IETFInterfaces_InterfaceType_ipOverClaw:                    #IETFInterfaces_InterfaceType_ipOverClaw
-	IETFInterfaces_InterfaceType_ipSwitch:                      #IETFInterfaces_InterfaceType_ipSwitch
-	IETFInterfaces_InterfaceType_isdn:                          #IETFInterfaces_InterfaceType_isdn
-	IETFInterfaces_InterfaceType_isdns:                         #IETFInterfaces_InterfaceType_isdns
-	IETFInterfaces_InterfaceType_isdnu:                         #IETFInterfaces_InterfaceType_isdnu
-	IETFInterfaces_InterfaceType_iso88022llc:                   #IETFInterfaces_InterfaceType_iso88022llc
-	IETFInterfaces_InterfaceType_iso88023Csmacd:                #IETFInterfaces_InterfaceType_iso88023Csmacd
-	IETFInterfaces_InterfaceType_iso88024TokenBus:              #IETFInterfaces_InterfaceType_iso88024TokenBus
-	IETFInterfaces_InterfaceType_iso88025CRFPInt:               #IETFInterfaces_InterfaceType_iso88025CRFPInt
-	IETFInterfaces_InterfaceType_iso88025Dtr:                   #IETFInterfaces_InterfaceType_iso88025Dtr
-	IETFInterfaces_InterfaceType_iso88025Fiber:                 #IETFInterfaces_InterfaceType_iso88025Fiber
-	IETFInterfaces_InterfaceType_iso88025TokenRing:             #IETFInterfaces_InterfaceType_iso88025TokenRing
-	IETFInterfaces_InterfaceType_iso88026Man:                   #IETFInterfaces_InterfaceType_iso88026Man
-	IETFInterfaces_InterfaceType_isup:                          #IETFInterfaces_InterfaceType_isup
-	IETFInterfaces_InterfaceType_l2vlan:                        #IETFInterfaces_InterfaceType_l2vlan
-	IETFInterfaces_InterfaceType_l3ipvlan:                      #IETFInterfaces_InterfaceType_l3ipvlan
-	IETFInterfaces_InterfaceType_l3ipxvlan:                     #IETFInterfaces_InterfaceType_l3ipxvlan
-	IETFInterfaces_InterfaceType_lapb:                          #IETFInterfaces_InterfaceType_lapb
-	IETFInterfaces_InterfaceType_lapd:                          #IETFInterfaces_InterfaceType_lapd
-	IETFInterfaces_InterfaceType_lapf:                          #IETFInterfaces_InterfaceType_lapf
-	IETFInterfaces_InterfaceType_linegroup:                     #IETFInterfaces_InterfaceType_linegroup
-	IETFInterfaces_InterfaceType_lmp:                           #IETFInterfaces_InterfaceType_lmp
-	IETFInterfaces_InterfaceType_localTalk:                     #IETFInterfaces_InterfaceType_localTalk
-	IETFInterfaces_InterfaceType_macSecControlledIF:            #IETFInterfaces_InterfaceType_macSecControlledIF
-	IETFInterfaces_InterfaceType_macSecUncontrolledIF:          #IETFInterfaces_InterfaceType_macSecUncontrolledIF
-	IETFInterfaces_InterfaceType_mediaMailOverIp:               #IETFInterfaces_InterfaceType_mediaMailOverIp
-	IETFInterfaces_InterfaceType_mfSigLink:                     #IETFInterfaces_InterfaceType_mfSigLink
-	IETFInterfaces_InterfaceType_miox25:                        #IETFInterfaces_InterfaceType_miox25
-	IETFInterfaces_InterfaceType_mocaVersion1:                  #IETFInterfaces_InterfaceType_mocaVersion1
-	IETFInterfaces_InterfaceType_modem:                         #IETFInterfaces_InterfaceType_modem
-	IETFInterfaces_InterfaceType_mpc:                           #IETFInterfaces_InterfaceType_mpc
-	IETFInterfaces_InterfaceType_mpegTransport:                 #IETFInterfaces_InterfaceType_mpegTransport
-	IETFInterfaces_InterfaceType_mpls:                          #IETFInterfaces_InterfaceType_mpls
-	IETFInterfaces_InterfaceType_mplsTunnel:                    #IETFInterfaces_InterfaceType_mplsTunnel
-	IETFInterfaces_InterfaceType_msdsl:                         #IETFInterfaces_InterfaceType_msdsl
-	IETFInterfaces_InterfaceType_mvl:                           #IETFInterfaces_InterfaceType_mvl
-	IETFInterfaces_InterfaceType_myrinet:                       #IETFInterfaces_InterfaceType_myrinet
-	IETFInterfaces_InterfaceType_nfas:                          #IETFInterfaces_InterfaceType_nfas
-	IETFInterfaces_InterfaceType_nsip:                          #IETFInterfaces_InterfaceType_nsip
-	IETFInterfaces_InterfaceType_opticalChannel:                #IETFInterfaces_InterfaceType_opticalChannel
-	IETFInterfaces_InterfaceType_opticalChannelGroup:           #IETFInterfaces_InterfaceType_opticalChannelGroup
-	IETFInterfaces_InterfaceType_opticalTransport:              #IETFInterfaces_InterfaceType_opticalTransport
-	IETFInterfaces_InterfaceType_other:                         #IETFInterfaces_InterfaceType_other
-	IETFInterfaces_InterfaceType_otnOdu:                        #IETFInterfaces_InterfaceType_otnOdu
-	IETFInterfaces_InterfaceType_otnOtu:                        #IETFInterfaces_InterfaceType_otnOtu
-	IETFInterfaces_InterfaceType_para:                          #IETFInterfaces_InterfaceType_para
-	IETFInterfaces_InterfaceType_pdnEtherLoop1:                 #IETFInterfaces_InterfaceType_pdnEtherLoop1
-	IETFInterfaces_InterfaceType_pdnEtherLoop2:                 #IETFInterfaces_InterfaceType_pdnEtherLoop2
-	IETFInterfaces_InterfaceType_pip:                           #IETFInterfaces_InterfaceType_pip
-	IETFInterfaces_InterfaceType_plc:                           #IETFInterfaces_InterfaceType_plc
-	IETFInterfaces_InterfaceType_pon155:                        #IETFInterfaces_InterfaceType_pon155
-	IETFInterfaces_InterfaceType_pon622:                        #IETFInterfaces_InterfaceType_pon622
-	IETFInterfaces_InterfaceType_pos:                           #IETFInterfaces_InterfaceType_pos
-	IETFInterfaces_InterfaceType_ppp:                           #IETFInterfaces_InterfaceType_ppp
-	IETFInterfaces_InterfaceType_pppMultilinkBundle:            #IETFInterfaces_InterfaceType_pppMultilinkBundle
-	IETFInterfaces_InterfaceType_primaryISDN:                   #IETFInterfaces_InterfaceType_primaryISDN
-	IETFInterfaces_InterfaceType_propAtm:                       #IETFInterfaces_InterfaceType_propAtm
-	IETFInterfaces_InterfaceType_propBWAp2Mp:                   #IETFInterfaces_InterfaceType_propBWAp2Mp
-	IETFInterfaces_InterfaceType_propCnls:                      #IETFInterfaces_InterfaceType_propCnls
-	IETFInterfaces_InterfaceType_propDocsWirelessDownstream:    #IETFInterfaces_InterfaceType_propDocsWirelessDownstream
-	IETFInterfaces_InterfaceType_propDocsWirelessMaclayer:      #IETFInterfaces_InterfaceType_propDocsWirelessMaclayer
-	IETFInterfaces_InterfaceType_propDocsWirelessUpstream:      #IETFInterfaces_InterfaceType_propDocsWirelessUpstream
-	IETFInterfaces_InterfaceType_propMultiplexor:               #IETFInterfaces_InterfaceType_propMultiplexor
-	IETFInterfaces_InterfaceType_propPointToPointSerial:        #IETFInterfaces_InterfaceType_propPointToPointSerial
-	IETFInterfaces_InterfaceType_propVirtual:                   #IETFInterfaces_InterfaceType_propVirtual
-	IETFInterfaces_InterfaceType_propWirelessP2P:               #IETFInterfaces_InterfaceType_propWirelessP2P
-	IETFInterfaces_InterfaceType_proteon10Mbit:                 #IETFInterfaces_InterfaceType_proteon10Mbit
-	IETFInterfaces_InterfaceType_proteon80Mbit:                 #IETFInterfaces_InterfaceType_proteon80Mbit
-	IETFInterfaces_InterfaceType_ptm:                           #IETFInterfaces_InterfaceType_ptm
-	IETFInterfaces_InterfaceType_q2931:                         #IETFInterfaces_InterfaceType_q2931
-	IETFInterfaces_InterfaceType_qam:                           #IETFInterfaces_InterfaceType_qam
-	IETFInterfaces_InterfaceType_qllc:                          #IETFInterfaces_InterfaceType_qllc
-	IETFInterfaces_InterfaceType_radioMAC:                      #IETFInterfaces_InterfaceType_radioMAC
-	IETFInterfaces_InterfaceType_radsl:                         #IETFInterfaces_InterfaceType_radsl
-	IETFInterfaces_InterfaceType_reachDSL:                      #IETFInterfaces_InterfaceType_reachDSL
-	IETFInterfaces_InterfaceType_regular1822:                   #IETFInterfaces_InterfaceType_regular1822
-	IETFInterfaces_InterfaceType_rfc1483:                       #IETFInterfaces_InterfaceType_rfc1483
-	IETFInterfaces_InterfaceType_rfc877x25:                     #IETFInterfaces_InterfaceType_rfc877x25
-	IETFInterfaces_InterfaceType_rpr:                           #IETFInterfaces_InterfaceType_rpr
-	IETFInterfaces_InterfaceType_rs232:                         #IETFInterfaces_InterfaceType_rs232
-	IETFInterfaces_InterfaceType_rsrb:                          #IETFInterfaces_InterfaceType_rsrb
-	IETFInterfaces_InterfaceType_sdci:                          #IETFInterfaces_InterfaceType_sdci
-	IETFInterfaces_InterfaceType_sdlc:                          #IETFInterfaces_InterfaceType_sdlc
-	IETFInterfaces_InterfaceType_sdsl:                          #IETFInterfaces_InterfaceType_sdsl
-	IETFInterfaces_InterfaceType_shdsl:                         #IETFInterfaces_InterfaceType_shdsl
-	IETFInterfaces_InterfaceType_sip:                           #IETFInterfaces_InterfaceType_sip
-	IETFInterfaces_InterfaceType_sipSig:                        #IETFInterfaces_InterfaceType_sipSig
-	IETFInterfaces_InterfaceType_sipTg:                         #IETFInterfaces_InterfaceType_sipTg
-	IETFInterfaces_InterfaceType_sixToFour:                     #IETFInterfaces_InterfaceType_sixToFour
-	IETFInterfaces_InterfaceType_slip:                          #IETFInterfaces_InterfaceType_slip
-	IETFInterfaces_InterfaceType_smdsDxi:                       #IETFInterfaces_InterfaceType_smdsDxi
-	IETFInterfaces_InterfaceType_smdsIcip:                      #IETFInterfaces_InterfaceType_smdsIcip
-	IETFInterfaces_InterfaceType_softwareLoopback:              #IETFInterfaces_InterfaceType_softwareLoopback
-	IETFInterfaces_InterfaceType_sonet:                         #IETFInterfaces_InterfaceType_sonet
-	IETFInterfaces_InterfaceType_sonetOverheadChannel:          #IETFInterfaces_InterfaceType_sonetOverheadChannel
-	IETFInterfaces_InterfaceType_sonetPath:                     #IETFInterfaces_InterfaceType_sonetPath
-	IETFInterfaces_InterfaceType_sonetVT:                       #IETFInterfaces_InterfaceType_sonetVT
-	IETFInterfaces_InterfaceType_srp:                           #IETFInterfaces_InterfaceType_srp
-	IETFInterfaces_InterfaceType_ss7SigLink:                    #IETFInterfaces_InterfaceType_ss7SigLink
-	IETFInterfaces_InterfaceType_stackToStack:                  #IETFInterfaces_InterfaceType_stackToStack
-	IETFInterfaces_InterfaceType_starLan:                       #IETFInterfaces_InterfaceType_starLan
-	IETFInterfaces_InterfaceType_tdlc:                          #IETFInterfaces_InterfaceType_tdlc
-	IETFInterfaces_InterfaceType_teLink:                        #IETFInterfaces_InterfaceType_teLink
-	IETFInterfaces_InterfaceType_termPad:                       #IETFInterfaces_InterfaceType_termPad
-	IETFInterfaces_InterfaceType_tr008:                         #IETFInterfaces_InterfaceType_tr008
-	IETFInterfaces_InterfaceType_transpHdlc:                    #IETFInterfaces_InterfaceType_transpHdlc
-	IETFInterfaces_InterfaceType_tunnel:                        #IETFInterfaces_InterfaceType_tunnel
-	IETFInterfaces_InterfaceType_ultra:                         #IETFInterfaces_InterfaceType_ultra
-	IETFInterfaces_InterfaceType_usb:                           #IETFInterfaces_InterfaceType_usb
-	IETFInterfaces_InterfaceType_v11:                           #IETFInterfaces_InterfaceType_v11
-	IETFInterfaces_InterfaceType_v35:                           #IETFInterfaces_InterfaceType_v35
-	IETFInterfaces_InterfaceType_v36:                           #IETFInterfaces_InterfaceType_v36
-	IETFInterfaces_InterfaceType_v37:                           #IETFInterfaces_InterfaceType_v37
-	IETFInterfaces_InterfaceType_vdsl:                          #IETFInterfaces_InterfaceType_vdsl
-	IETFInterfaces_InterfaceType_vdsl2:                         #IETFInterfaces_InterfaceType_vdsl2
-	IETFInterfaces_InterfaceType_virtualIpAddress:              #IETFInterfaces_InterfaceType_virtualIpAddress
-	IETFInterfaces_InterfaceType_virtualTg:                     #IETFInterfaces_InterfaceType_virtualTg
-	IETFInterfaces_InterfaceType_vmwareNicTeam:                 #IETFInterfaces_InterfaceType_vmwareNicTeam
-	IETFInterfaces_InterfaceType_vmwareVirtualNic:              #IETFInterfaces_InterfaceType_vmwareVirtualNic
-	IETFInterfaces_InterfaceType_voiceDID:                      #IETFInterfaces_InterfaceType_voiceDID
-	IETFInterfaces_InterfaceType_voiceEBS:                      #IETFInterfaces_InterfaceType_voiceEBS
-	IETFInterfaces_InterfaceType_voiceEM:                       #IETFInterfaces_InterfaceType_voiceEM
-	IETFInterfaces_InterfaceType_voiceEMFGD:                    #IETFInterfaces_InterfaceType_voiceEMFGD
-	IETFInterfaces_InterfaceType_voiceEncap:                    #IETFInterfaces_InterfaceType_voiceEncap
-	IETFInterfaces_InterfaceType_voiceFGDEANA:                  #IETFInterfaces_InterfaceType_voiceFGDEANA
-	IETFInterfaces_InterfaceType_voiceFGDOS:                    #IETFInterfaces_InterfaceType_voiceFGDOS
-	IETFInterfaces_InterfaceType_voiceFXO:                      #IETFInterfaces_InterfaceType_voiceFXO
-	IETFInterfaces_InterfaceType_voiceFXS:                      #IETFInterfaces_InterfaceType_voiceFXS
-	IETFInterfaces_InterfaceType_voiceOverAtm:                  #IETFInterfaces_InterfaceType_voiceOverAtm
-	IETFInterfaces_InterfaceType_voiceOverCable:                #IETFInterfaces_InterfaceType_voiceOverCable
-	IETFInterfaces_InterfaceType_voiceOverFrameRelay:           #IETFInterfaces_InterfaceType_voiceOverFrameRelay
-	IETFInterfaces_InterfaceType_voiceOverIp:                   #IETFInterfaces_InterfaceType_voiceOverIp
-	IETFInterfaces_InterfaceType_wwanPP:                        #IETFInterfaces_InterfaceType_wwanPP
-	IETFInterfaces_InterfaceType_wwanPP2:                       #IETFInterfaces_InterfaceType_wwanPP2
-	IETFInterfaces_InterfaceType_x213:                          #IETFInterfaces_InterfaceType_x213
-	IETFInterfaces_InterfaceType_x25huntGroup:                  #IETFInterfaces_InterfaceType_x25huntGroup
-	IETFInterfaces_InterfaceType_x25mlp:                        #IETFInterfaces_InterfaceType_x25mlp
-	IETFInterfaces_InterfaceType_x25ple:                        #IETFInterfaces_InterfaceType_x25ple
-	IETFInterfaces_InterfaceType_x86Laps:                       #IETFInterfaces_InterfaceType_x86Laps
-	IETFInterfaces_InterfaceType_xboxWireless:                  #IETFInterfaces_InterfaceType_xboxWireless
+	IETFInterfaces_InterfaceType_UNSET?:                         #IETFInterfaces_InterfaceType_UNSET
+	IETFInterfaces_InterfaceType_a12MppSwitch?:                  #IETFInterfaces_InterfaceType_a12MppSwitch
+	IETFInterfaces_InterfaceType_aal2?:                          #IETFInterfaces_InterfaceType_aal2
+	IETFInterfaces_InterfaceType_aal5?:                          #IETFInterfaces_InterfaceType_aal5
+	IETFInterfaces_InterfaceType_actelisMetaLOOP?:               #IETFInterfaces_InterfaceType_actelisMetaLOOP
+	IETFInterfaces_InterfaceType_adsl?:                          #IETFInterfaces_InterfaceType_adsl
+	IETFInterfaces_InterfaceType_adsl2?:                         #IETFInterfaces_InterfaceType_adsl2
+	IETFInterfaces_InterfaceType_adsl2plus?:                     #IETFInterfaces_InterfaceType_adsl2plus
+	IETFInterfaces_InterfaceType_aflane8023?:                    #IETFInterfaces_InterfaceType_aflane8023
+	IETFInterfaces_InterfaceType_aflane8025?:                    #IETFInterfaces_InterfaceType_aflane8025
+	IETFInterfaces_InterfaceType_aluELP?:                        #IETFInterfaces_InterfaceType_aluELP
+	IETFInterfaces_InterfaceType_aluEpon?:                       #IETFInterfaces_InterfaceType_aluEpon
+	IETFInterfaces_InterfaceType_aluEponLogicalLink?:            #IETFInterfaces_InterfaceType_aluEponLogicalLink
+	IETFInterfaces_InterfaceType_aluEponOnu?:                    #IETFInterfaces_InterfaceType_aluEponOnu
+	IETFInterfaces_InterfaceType_aluEponPhysicalUni?:            #IETFInterfaces_InterfaceType_aluEponPhysicalUni
+	IETFInterfaces_InterfaceType_aluGponOnu?:                    #IETFInterfaces_InterfaceType_aluGponOnu
+	IETFInterfaces_InterfaceType_aluGponPhysicalUni?:            #IETFInterfaces_InterfaceType_aluGponPhysicalUni
+	IETFInterfaces_InterfaceType_arap?:                          #IETFInterfaces_InterfaceType_arap
+	IETFInterfaces_InterfaceType_arcnet?:                        #IETFInterfaces_InterfaceType_arcnet
+	IETFInterfaces_InterfaceType_arcnetPlus?:                    #IETFInterfaces_InterfaceType_arcnetPlus
+	IETFInterfaces_InterfaceType_async?:                         #IETFInterfaces_InterfaceType_async
+	IETFInterfaces_InterfaceType_atm?:                           #IETFInterfaces_InterfaceType_atm
+	IETFInterfaces_InterfaceType_atmDxi?:                        #IETFInterfaces_InterfaceType_atmDxi
+	IETFInterfaces_InterfaceType_atmFuni?:                       #IETFInterfaces_InterfaceType_atmFuni
+	IETFInterfaces_InterfaceType_atmIma?:                        #IETFInterfaces_InterfaceType_atmIma
+	IETFInterfaces_InterfaceType_atmLogical?:                    #IETFInterfaces_InterfaceType_atmLogical
+	IETFInterfaces_InterfaceType_atmRadio?:                      #IETFInterfaces_InterfaceType_atmRadio
+	IETFInterfaces_InterfaceType_atmSubInterface?:               #IETFInterfaces_InterfaceType_atmSubInterface
+	IETFInterfaces_InterfaceType_atmVciEndPt?:                   #IETFInterfaces_InterfaceType_atmVciEndPt
+	IETFInterfaces_InterfaceType_atmVirtual?:                    #IETFInterfaces_InterfaceType_atmVirtual
+	IETFInterfaces_InterfaceType_atmbond?:                       #IETFInterfaces_InterfaceType_atmbond
+	IETFInterfaces_InterfaceType_aviciOpticalEther?:             #IETFInterfaces_InterfaceType_aviciOpticalEther
+	IETFInterfaces_InterfaceType_basicISDN?:                     #IETFInterfaces_InterfaceType_basicISDN
+	IETFInterfaces_InterfaceType_bgppolicyaccounting?:           #IETFInterfaces_InterfaceType_bgppolicyaccounting
+	IETFInterfaces_InterfaceType_bits?:                          #IETFInterfaces_InterfaceType_bits
+	IETFInterfaces_InterfaceType_bridge?:                        #IETFInterfaces_InterfaceType_bridge
+	IETFInterfaces_InterfaceType_bsc?:                           #IETFInterfaces_InterfaceType_bsc
+	IETFInterfaces_InterfaceType_cableDownstreamRfPort?:         #IETFInterfaces_InterfaceType_cableDownstreamRfPort
+	IETFInterfaces_InterfaceType_capwapDot11Bss?:                #IETFInterfaces_InterfaceType_capwapDot11Bss
+	IETFInterfaces_InterfaceType_capwapDot11Profile?:            #IETFInterfaces_InterfaceType_capwapDot11Profile
+	IETFInterfaces_InterfaceType_capwapWtpVirtualRadio?:         #IETFInterfaces_InterfaceType_capwapWtpVirtualRadio
+	IETFInterfaces_InterfaceType_cblVectaStar?:                  #IETFInterfaces_InterfaceType_cblVectaStar
+	IETFInterfaces_InterfaceType_cctEmul?:                       #IETFInterfaces_InterfaceType_cctEmul
+	IETFInterfaces_InterfaceType_ces?:                           #IETFInterfaces_InterfaceType_ces
+	IETFInterfaces_InterfaceType_channel?:                       #IETFInterfaces_InterfaceType_channel
+	IETFInterfaces_InterfaceType_ciscoISLvlan?:                  #IETFInterfaces_InterfaceType_ciscoISLvlan
+	IETFInterfaces_InterfaceType_cnr?:                           #IETFInterfaces_InterfaceType_cnr
+	IETFInterfaces_InterfaceType_coffee?:                        #IETFInterfaces_InterfaceType_coffee
+	IETFInterfaces_InterfaceType_compositeLink?:                 #IETFInterfaces_InterfaceType_compositeLink
+	IETFInterfaces_InterfaceType_dcn?:                           #IETFInterfaces_InterfaceType_dcn
+	IETFInterfaces_InterfaceType_ddnX25?:                        #IETFInterfaces_InterfaceType_ddnX25
+	IETFInterfaces_InterfaceType_digitalPowerline?:              #IETFInterfaces_InterfaceType_digitalPowerline
+	IETFInterfaces_InterfaceType_digitalWrapperOverheadChannel?: #IETFInterfaces_InterfaceType_digitalWrapperOverheadChannel
+	IETFInterfaces_InterfaceType_dlsw?:                          #IETFInterfaces_InterfaceType_dlsw
+	IETFInterfaces_InterfaceType_docsCableDownstream?:           #IETFInterfaces_InterfaceType_docsCableDownstream
+	IETFInterfaces_InterfaceType_docsCableMCmtsDownstream?:      #IETFInterfaces_InterfaceType_docsCableMCmtsDownstream
+	IETFInterfaces_InterfaceType_docsCableMaclayer?:             #IETFInterfaces_InterfaceType_docsCableMaclayer
+	IETFInterfaces_InterfaceType_docsCableNdf?:                  #IETFInterfaces_InterfaceType_docsCableNdf
+	IETFInterfaces_InterfaceType_docsCableNdr?:                  #IETFInterfaces_InterfaceType_docsCableNdr
+	IETFInterfaces_InterfaceType_docsCableScte55d1FwdOob?:       #IETFInterfaces_InterfaceType_docsCableScte55d1FwdOob
+	IETFInterfaces_InterfaceType_docsCableScte55d1RetOob?:       #IETFInterfaces_InterfaceType_docsCableScte55d1RetOob
+	IETFInterfaces_InterfaceType_docsCableScte55d2DsOob?:        #IETFInterfaces_InterfaceType_docsCableScte55d2DsOob
+	IETFInterfaces_InterfaceType_docsCableScte55d2UsOob?:        #IETFInterfaces_InterfaceType_docsCableScte55d2UsOob
+	IETFInterfaces_InterfaceType_docsCableUpstream?:             #IETFInterfaces_InterfaceType_docsCableUpstream
+	IETFInterfaces_InterfaceType_docsCableUpstreamChannel?:      #IETFInterfaces_InterfaceType_docsCableUpstreamChannel
+	IETFInterfaces_InterfaceType_docsCableUpstreamRfPort?:       #IETFInterfaces_InterfaceType_docsCableUpstreamRfPort
+	IETFInterfaces_InterfaceType_docsOfdmDownstream?:            #IETFInterfaces_InterfaceType_docsOfdmDownstream
+	IETFInterfaces_InterfaceType_docsOfdmaUpstream?:             #IETFInterfaces_InterfaceType_docsOfdmaUpstream
+	IETFInterfaces_InterfaceType_ds0?:                           #IETFInterfaces_InterfaceType_ds0
+	IETFInterfaces_InterfaceType_ds0Bundle?:                     #IETFInterfaces_InterfaceType_ds0Bundle
+	IETFInterfaces_InterfaceType_ds1?:                           #IETFInterfaces_InterfaceType_ds1
+	IETFInterfaces_InterfaceType_ds1FDL?:                        #IETFInterfaces_InterfaceType_ds1FDL
+	IETFInterfaces_InterfaceType_ds3?:                           #IETFInterfaces_InterfaceType_ds3
+	IETFInterfaces_InterfaceType_dtm?:                           #IETFInterfaces_InterfaceType_dtm
+	IETFInterfaces_InterfaceType_dvbAsiIn?:                      #IETFInterfaces_InterfaceType_dvbAsiIn
+	IETFInterfaces_InterfaceType_dvbAsiOut?:                     #IETFInterfaces_InterfaceType_dvbAsiOut
+	IETFInterfaces_InterfaceType_dvbRccDownstream?:              #IETFInterfaces_InterfaceType_dvbRccDownstream
+	IETFInterfaces_InterfaceType_dvbRccMacLayer?:                #IETFInterfaces_InterfaceType_dvbRccMacLayer
+	IETFInterfaces_InterfaceType_dvbRccUpstream?:                #IETFInterfaces_InterfaceType_dvbRccUpstream
+	IETFInterfaces_InterfaceType_dvbRcsMacLayer?:                #IETFInterfaces_InterfaceType_dvbRcsMacLayer
+	IETFInterfaces_InterfaceType_dvbRcsTdma?:                    #IETFInterfaces_InterfaceType_dvbRcsTdma
+	IETFInterfaces_InterfaceType_dvbTdm?:                        #IETFInterfaces_InterfaceType_dvbTdm
+	IETFInterfaces_InterfaceType_e1?:                            #IETFInterfaces_InterfaceType_e1
+	IETFInterfaces_InterfaceType_econet?:                        #IETFInterfaces_InterfaceType_econet
+	IETFInterfaces_InterfaceType_eon?:                           #IETFInterfaces_InterfaceType_eon
+	IETFInterfaces_InterfaceType_eplrs?:                         #IETFInterfaces_InterfaceType_eplrs
+	IETFInterfaces_InterfaceType_escon?:                         #IETFInterfaces_InterfaceType_escon
+	IETFInterfaces_InterfaceType_ethernet3Mbit?:                 #IETFInterfaces_InterfaceType_ethernet3Mbit
+	IETFInterfaces_InterfaceType_ethernetCsmacd?:                #IETFInterfaces_InterfaceType_ethernetCsmacd
+	IETFInterfaces_InterfaceType_fast?:                          #IETFInterfaces_InterfaceType_fast
+	IETFInterfaces_InterfaceType_fastEther?:                     #IETFInterfaces_InterfaceType_fastEther
+	IETFInterfaces_InterfaceType_fastEtherFX?:                   #IETFInterfaces_InterfaceType_fastEtherFX
+	IETFInterfaces_InterfaceType_fastdsl?:                       #IETFInterfaces_InterfaceType_fastdsl
+	IETFInterfaces_InterfaceType_fcipLink?:                      #IETFInterfaces_InterfaceType_fcipLink
+	IETFInterfaces_InterfaceType_fddi?:                          #IETFInterfaces_InterfaceType_fddi
+	IETFInterfaces_InterfaceType_fibreChannel?:                  #IETFInterfaces_InterfaceType_fibreChannel
+	IETFInterfaces_InterfaceType_frDlciEndPt?:                   #IETFInterfaces_InterfaceType_frDlciEndPt
+	IETFInterfaces_InterfaceType_frForward?:                     #IETFInterfaces_InterfaceType_frForward
+	IETFInterfaces_InterfaceType_frameRelay?:                    #IETFInterfaces_InterfaceType_frameRelay
+	IETFInterfaces_InterfaceType_frameRelayInterconnect?:        #IETFInterfaces_InterfaceType_frameRelayInterconnect
+	IETFInterfaces_InterfaceType_frameRelayMPI?:                 #IETFInterfaces_InterfaceType_frameRelayMPI
+	IETFInterfaces_InterfaceType_frameRelayService?:             #IETFInterfaces_InterfaceType_frameRelayService
+	IETFInterfaces_InterfaceType_frf16MfrBundle?:                #IETFInterfaces_InterfaceType_frf16MfrBundle
+	IETFInterfaces_InterfaceType_g703at2mb?:                     #IETFInterfaces_InterfaceType_g703at2mb
+	IETFInterfaces_InterfaceType_g703at64k?:                     #IETFInterfaces_InterfaceType_g703at64k
+	IETFInterfaces_InterfaceType_g9981?:                         #IETFInterfaces_InterfaceType_g9981
+	IETFInterfaces_InterfaceType_g9982?:                         #IETFInterfaces_InterfaceType_g9982
+	IETFInterfaces_InterfaceType_g9983?:                         #IETFInterfaces_InterfaceType_g9983
+	IETFInterfaces_InterfaceType_gfast?:                         #IETFInterfaces_InterfaceType_gfast
+	IETFInterfaces_InterfaceType_gfp?:                           #IETFInterfaces_InterfaceType_gfp
+	IETFInterfaces_InterfaceType_gigabitEthernet?:               #IETFInterfaces_InterfaceType_gigabitEthernet
+	IETFInterfaces_InterfaceType_gpon?:                          #IETFInterfaces_InterfaceType_gpon
+	IETFInterfaces_InterfaceType_gr303IDT?:                      #IETFInterfaces_InterfaceType_gr303IDT
+	IETFInterfaces_InterfaceType_gr303RDT?:                      #IETFInterfaces_InterfaceType_gr303RDT
+	IETFInterfaces_InterfaceType_gtp?:                           #IETFInterfaces_InterfaceType_gtp
+	IETFInterfaces_InterfaceType_h323Gatekeeper?:                #IETFInterfaces_InterfaceType_h323Gatekeeper
+	IETFInterfaces_InterfaceType_h323Proxy?:                     #IETFInterfaces_InterfaceType_h323Proxy
+	IETFInterfaces_InterfaceType_hdh1822?:                       #IETFInterfaces_InterfaceType_hdh1822
+	IETFInterfaces_InterfaceType_hdlc?:                          #IETFInterfaces_InterfaceType_hdlc
+	IETFInterfaces_InterfaceType_hdsl2?:                         #IETFInterfaces_InterfaceType_hdsl2
+	IETFInterfaces_InterfaceType_hiperlan2?:                     #IETFInterfaces_InterfaceType_hiperlan2
+	IETFInterfaces_InterfaceType_hippi?:                         #IETFInterfaces_InterfaceType_hippi
+	IETFInterfaces_InterfaceType_hippiInterface?:                #IETFInterfaces_InterfaceType_hippiInterface
+	IETFInterfaces_InterfaceType_homepna?:                       #IETFInterfaces_InterfaceType_homepna
+	IETFInterfaces_InterfaceType_hostPad?:                       #IETFInterfaces_InterfaceType_hostPad
+	IETFInterfaces_InterfaceType_hssi?:                          #IETFInterfaces_InterfaceType_hssi
+	IETFInterfaces_InterfaceType_hyperchannel?:                  #IETFInterfaces_InterfaceType_hyperchannel
+	IETFInterfaces_InterfaceType_iana_interface_type?:           #IETFInterfaces_InterfaceType_iana_interface_type
+	IETFInterfaces_InterfaceType_ibm370parChan?:                 #IETFInterfaces_InterfaceType_ibm370parChan
+	IETFInterfaces_InterfaceType_idsl?:                          #IETFInterfaces_InterfaceType_idsl
+	IETFInterfaces_InterfaceType_ieee1394?:                      #IETFInterfaces_InterfaceType_ieee1394
+	IETFInterfaces_InterfaceType_ieee80211?:                     #IETFInterfaces_InterfaceType_ieee80211
+	IETFInterfaces_InterfaceType_ieee80212?:                     #IETFInterfaces_InterfaceType_ieee80212
+	IETFInterfaces_InterfaceType_ieee802154?:                    #IETFInterfaces_InterfaceType_ieee802154
+	IETFInterfaces_InterfaceType_ieee80216WMAN?:                 #IETFInterfaces_InterfaceType_ieee80216WMAN
+	IETFInterfaces_InterfaceType_ieee8023adLag?:                 #IETFInterfaces_InterfaceType_ieee8023adLag
+	IETFInterfaces_InterfaceType_if_gsn?:                        #IETFInterfaces_InterfaceType_if_gsn
+	IETFInterfaces_InterfaceType_ifPwType?:                      #IETFInterfaces_InterfaceType_ifPwType
+	IETFInterfaces_InterfaceType_ifVfiType?:                     #IETFInterfaces_InterfaceType_ifVfiType
+	IETFInterfaces_InterfaceType_ilan?:                          #IETFInterfaces_InterfaceType_ilan
+	IETFInterfaces_InterfaceType_imt?:                           #IETFInterfaces_InterfaceType_imt
+	IETFInterfaces_InterfaceType_infiniband?:                    #IETFInterfaces_InterfaceType_infiniband
+	IETFInterfaces_InterfaceType_interleave?:                    #IETFInterfaces_InterfaceType_interleave
+	IETFInterfaces_InterfaceType_ip?:                            #IETFInterfaces_InterfaceType_ip
+	IETFInterfaces_InterfaceType_ipForward?:                     #IETFInterfaces_InterfaceType_ipForward
+	IETFInterfaces_InterfaceType_ipOverAtm?:                     #IETFInterfaces_InterfaceType_ipOverAtm
+	IETFInterfaces_InterfaceType_ipOverCdlc?:                    #IETFInterfaces_InterfaceType_ipOverCdlc
+	IETFInterfaces_InterfaceType_ipOverClaw?:                    #IETFInterfaces_InterfaceType_ipOverClaw
+	IETFInterfaces_InterfaceType_ipSwitch?:                      #IETFInterfaces_InterfaceType_ipSwitch
+	IETFInterfaces_InterfaceType_isdn?:                          #IETFInterfaces_InterfaceType_isdn
+	IETFInterfaces_InterfaceType_isdns?:                         #IETFInterfaces_InterfaceType_isdns
+	IETFInterfaces_InterfaceType_isdnu?:                         #IETFInterfaces_InterfaceType_isdnu
+	IETFInterfaces_InterfaceType_iso88022llc?:                   #IETFInterfaces_InterfaceType_iso88022llc
+	IETFInterfaces_InterfaceType_iso88023Csmacd?:                #IETFInterfaces_InterfaceType_iso88023Csmacd
+	IETFInterfaces_InterfaceType_iso88024TokenBus?:              #IETFInterfaces_InterfaceType_iso88024TokenBus
+	IETFInterfaces_InterfaceType_iso88025CRFPInt?:               #IETFInterfaces_InterfaceType_iso88025CRFPInt
+	IETFInterfaces_InterfaceType_iso88025Dtr?:                   #IETFInterfaces_InterfaceType_iso88025Dtr
+	IETFInterfaces_InterfaceType_iso88025Fiber?:                 #IETFInterfaces_InterfaceType_iso88025Fiber
+	IETFInterfaces_InterfaceType_iso88025TokenRing?:             #IETFInterfaces_InterfaceType_iso88025TokenRing
+	IETFInterfaces_InterfaceType_iso88026Man?:                   #IETFInterfaces_InterfaceType_iso88026Man
+	IETFInterfaces_InterfaceType_isup?:                          #IETFInterfaces_InterfaceType_isup
+	IETFInterfaces_InterfaceType_l2vlan?:                        #IETFInterfaces_InterfaceType_l2vlan
+	IETFInterfaces_InterfaceType_l3ipvlan?:                      #IETFInterfaces_InterfaceType_l3ipvlan
+	IETFInterfaces_InterfaceType_l3ipxvlan?:                     #IETFInterfaces_InterfaceType_l3ipxvlan
+	IETFInterfaces_InterfaceType_lapb?:                          #IETFInterfaces_InterfaceType_lapb
+	IETFInterfaces_InterfaceType_lapd?:                          #IETFInterfaces_InterfaceType_lapd
+	IETFInterfaces_InterfaceType_lapf?:                          #IETFInterfaces_InterfaceType_lapf
+	IETFInterfaces_InterfaceType_linegroup?:                     #IETFInterfaces_InterfaceType_linegroup
+	IETFInterfaces_InterfaceType_lmp?:                           #IETFInterfaces_InterfaceType_lmp
+	IETFInterfaces_InterfaceType_localTalk?:                     #IETFInterfaces_InterfaceType_localTalk
+	IETFInterfaces_InterfaceType_macSecControlledIF?:            #IETFInterfaces_InterfaceType_macSecControlledIF
+	IETFInterfaces_InterfaceType_macSecUncontrolledIF?:          #IETFInterfaces_InterfaceType_macSecUncontrolledIF
+	IETFInterfaces_InterfaceType_mediaMailOverIp?:               #IETFInterfaces_InterfaceType_mediaMailOverIp
+	IETFInterfaces_InterfaceType_mfSigLink?:                     #IETFInterfaces_InterfaceType_mfSigLink
+	IETFInterfaces_InterfaceType_miox25?:                        #IETFInterfaces_InterfaceType_miox25
+	IETFInterfaces_InterfaceType_mocaVersion1?:                  #IETFInterfaces_InterfaceType_mocaVersion1
+	IETFInterfaces_InterfaceType_modem?:                         #IETFInterfaces_InterfaceType_modem
+	IETFInterfaces_InterfaceType_mpc?:                           #IETFInterfaces_InterfaceType_mpc
+	IETFInterfaces_InterfaceType_mpegTransport?:                 #IETFInterfaces_InterfaceType_mpegTransport
+	IETFInterfaces_InterfaceType_mpls?:                          #IETFInterfaces_InterfaceType_mpls
+	IETFInterfaces_InterfaceType_mplsTunnel?:                    #IETFInterfaces_InterfaceType_mplsTunnel
+	IETFInterfaces_InterfaceType_msdsl?:                         #IETFInterfaces_InterfaceType_msdsl
+	IETFInterfaces_InterfaceType_mvl?:                           #IETFInterfaces_InterfaceType_mvl
+	IETFInterfaces_InterfaceType_myrinet?:                       #IETFInterfaces_InterfaceType_myrinet
+	IETFInterfaces_InterfaceType_nfas?:                          #IETFInterfaces_InterfaceType_nfas
+	IETFInterfaces_InterfaceType_nsip?:                          #IETFInterfaces_InterfaceType_nsip
+	IETFInterfaces_InterfaceType_opticalChannel?:                #IETFInterfaces_InterfaceType_opticalChannel
+	IETFInterfaces_InterfaceType_opticalChannelGroup?:           #IETFInterfaces_InterfaceType_opticalChannelGroup
+	IETFInterfaces_InterfaceType_opticalTransport?:              #IETFInterfaces_InterfaceType_opticalTransport
+	IETFInterfaces_InterfaceType_other?:                         #IETFInterfaces_InterfaceType_other
+	IETFInterfaces_InterfaceType_otnOdu?:                        #IETFInterfaces_InterfaceType_otnOdu
+	IETFInterfaces_InterfaceType_otnOtu?:                        #IETFInterfaces_InterfaceType_otnOtu
+	IETFInterfaces_InterfaceType_para?:                          #IETFInterfaces_InterfaceType_para
+	IETFInterfaces_InterfaceType_pdnEtherLoop1?:                 #IETFInterfaces_InterfaceType_pdnEtherLoop1
+	IETFInterfaces_InterfaceType_pdnEtherLoop2?:                 #IETFInterfaces_InterfaceType_pdnEtherLoop2
+	IETFInterfaces_InterfaceType_pip?:                           #IETFInterfaces_InterfaceType_pip
+	IETFInterfaces_InterfaceType_plc?:                           #IETFInterfaces_InterfaceType_plc
+	IETFInterfaces_InterfaceType_pon155?:                        #IETFInterfaces_InterfaceType_pon155
+	IETFInterfaces_InterfaceType_pon622?:                        #IETFInterfaces_InterfaceType_pon622
+	IETFInterfaces_InterfaceType_pos?:                           #IETFInterfaces_InterfaceType_pos
+	IETFInterfaces_InterfaceType_ppp?:                           #IETFInterfaces_InterfaceType_ppp
+	IETFInterfaces_InterfaceType_pppMultilinkBundle?:            #IETFInterfaces_InterfaceType_pppMultilinkBundle
+	IETFInterfaces_InterfaceType_primaryISDN?:                   #IETFInterfaces_InterfaceType_primaryISDN
+	IETFInterfaces_InterfaceType_propAtm?:                       #IETFInterfaces_InterfaceType_propAtm
+	IETFInterfaces_InterfaceType_propBWAp2Mp?:                   #IETFInterfaces_InterfaceType_propBWAp2Mp
+	IETFInterfaces_InterfaceType_propCnls?:                      #IETFInterfaces_InterfaceType_propCnls
+	IETFInterfaces_InterfaceType_propDocsWirelessDownstream?:    #IETFInterfaces_InterfaceType_propDocsWirelessDownstream
+	IETFInterfaces_InterfaceType_propDocsWirelessMaclayer?:      #IETFInterfaces_InterfaceType_propDocsWirelessMaclayer
+	IETFInterfaces_InterfaceType_propDocsWirelessUpstream?:      #IETFInterfaces_InterfaceType_propDocsWirelessUpstream
+	IETFInterfaces_InterfaceType_propMultiplexor?:               #IETFInterfaces_InterfaceType_propMultiplexor
+	IETFInterfaces_InterfaceType_propPointToPointSerial?:        #IETFInterfaces_InterfaceType_propPointToPointSerial
+	IETFInterfaces_InterfaceType_propVirtual?:                   #IETFInterfaces_InterfaceType_propVirtual
+	IETFInterfaces_InterfaceType_propWirelessP2P?:               #IETFInterfaces_InterfaceType_propWirelessP2P
+	IETFInterfaces_InterfaceType_proteon10Mbit?:                 #IETFInterfaces_InterfaceType_proteon10Mbit
+	IETFInterfaces_InterfaceType_proteon80Mbit?:                 #IETFInterfaces_InterfaceType_proteon80Mbit
+	IETFInterfaces_InterfaceType_ptm?:                           #IETFInterfaces_InterfaceType_ptm
+	IETFInterfaces_InterfaceType_q2931?:                         #IETFInterfaces_InterfaceType_q2931
+	IETFInterfaces_InterfaceType_qam?:                           #IETFInterfaces_InterfaceType_qam
+	IETFInterfaces_InterfaceType_qllc?:                          #IETFInterfaces_InterfaceType_qllc
+	IETFInterfaces_InterfaceType_radioMAC?:                      #IETFInterfaces_InterfaceType_radioMAC
+	IETFInterfaces_InterfaceType_radsl?:                         #IETFInterfaces_InterfaceType_radsl
+	IETFInterfaces_InterfaceType_reachDSL?:                      #IETFInterfaces_InterfaceType_reachDSL
+	IETFInterfaces_InterfaceType_regular1822?:                   #IETFInterfaces_InterfaceType_regular1822
+	IETFInterfaces_InterfaceType_rfc1483?:                       #IETFInterfaces_InterfaceType_rfc1483
+	IETFInterfaces_InterfaceType_rfc877x25?:                     #IETFInterfaces_InterfaceType_rfc877x25
+	IETFInterfaces_InterfaceType_rpr?:                           #IETFInterfaces_InterfaceType_rpr
+	IETFInterfaces_InterfaceType_rs232?:                         #IETFInterfaces_InterfaceType_rs232
+	IETFInterfaces_InterfaceType_rsrb?:                          #IETFInterfaces_InterfaceType_rsrb
+	IETFInterfaces_InterfaceType_sdci?:                          #IETFInterfaces_InterfaceType_sdci
+	IETFInterfaces_InterfaceType_sdlc?:                          #IETFInterfaces_InterfaceType_sdlc
+	IETFInterfaces_InterfaceType_sdsl?:                          #IETFInterfaces_InterfaceType_sdsl
+	IETFInterfaces_InterfaceType_shdsl?:                         #IETFInterfaces_InterfaceType_shdsl
+	IETFInterfaces_InterfaceType_sip?:                           #IETFInterfaces_InterfaceType_sip
+	IETFInterfaces_InterfaceType_sipSig?:                        #IETFInterfaces_InterfaceType_sipSig
+	IETFInterfaces_InterfaceType_sipTg?:                         #IETFInterfaces_InterfaceType_sipTg
+	IETFInterfaces_InterfaceType_sixToFour?:                     #IETFInterfaces_InterfaceType_sixToFour
+	IETFInterfaces_InterfaceType_slip?:                          #IETFInterfaces_InterfaceType_slip
+	IETFInterfaces_InterfaceType_smdsDxi?:                       #IETFInterfaces_InterfaceType_smdsDxi
+	IETFInterfaces_InterfaceType_smdsIcip?:                      #IETFInterfaces_InterfaceType_smdsIcip
+	IETFInterfaces_InterfaceType_softwareLoopback?:              #IETFInterfaces_InterfaceType_softwareLoopback
+	IETFInterfaces_InterfaceType_sonet?:                         #IETFInterfaces_InterfaceType_sonet
+	IETFInterfaces_InterfaceType_sonetOverheadChannel?:          #IETFInterfaces_InterfaceType_sonetOverheadChannel
+	IETFInterfaces_InterfaceType_sonetPath?:                     #IETFInterfaces_InterfaceType_sonetPath
+	IETFInterfaces_InterfaceType_sonetVT?:                       #IETFInterfaces_InterfaceType_sonetVT
+	IETFInterfaces_InterfaceType_srp?:                           #IETFInterfaces_InterfaceType_srp
+	IETFInterfaces_InterfaceType_ss7SigLink?:                    #IETFInterfaces_InterfaceType_ss7SigLink
+	IETFInterfaces_InterfaceType_stackToStack?:                  #IETFInterfaces_InterfaceType_stackToStack
+	IETFInterfaces_InterfaceType_starLan?:                       #IETFInterfaces_InterfaceType_starLan
+	IETFInterfaces_InterfaceType_tdlc?:                          #IETFInterfaces_InterfaceType_tdlc
+	IETFInterfaces_InterfaceType_teLink?:                        #IETFInterfaces_InterfaceType_teLink
+	IETFInterfaces_InterfaceType_termPad?:                       #IETFInterfaces_InterfaceType_termPad
+	IETFInterfaces_InterfaceType_tr008?:                         #IETFInterfaces_InterfaceType_tr008
+	IETFInterfaces_InterfaceType_transpHdlc?:                    #IETFInterfaces_InterfaceType_transpHdlc
+	IETFInterfaces_InterfaceType_tunnel?:                        #IETFInterfaces_InterfaceType_tunnel
+	IETFInterfaces_InterfaceType_ultra?:                         #IETFInterfaces_InterfaceType_ultra
+	IETFInterfaces_InterfaceType_usb?:                           #IETFInterfaces_InterfaceType_usb
+	IETFInterfaces_InterfaceType_v11?:                           #IETFInterfaces_InterfaceType_v11
+	IETFInterfaces_InterfaceType_v35?:                           #IETFInterfaces_InterfaceType_v35
+	IETFInterfaces_InterfaceType_v36?:                           #IETFInterfaces_InterfaceType_v36
+	IETFInterfaces_InterfaceType_v37?:                           #IETFInterfaces_InterfaceType_v37
+	IETFInterfaces_InterfaceType_vdsl?:                          #IETFInterfaces_InterfaceType_vdsl
+	IETFInterfaces_InterfaceType_vdsl2?:                         #IETFInterfaces_InterfaceType_vdsl2
+	IETFInterfaces_InterfaceType_virtualIpAddress?:              #IETFInterfaces_InterfaceType_virtualIpAddress
+	IETFInterfaces_InterfaceType_virtualTg?:                     #IETFInterfaces_InterfaceType_virtualTg
+	IETFInterfaces_InterfaceType_vmwareNicTeam?:                 #IETFInterfaces_InterfaceType_vmwareNicTeam
+	IETFInterfaces_InterfaceType_vmwareVirtualNic?:              #IETFInterfaces_InterfaceType_vmwareVirtualNic
+	IETFInterfaces_InterfaceType_voiceDID?:                      #IETFInterfaces_InterfaceType_voiceDID
+	IETFInterfaces_InterfaceType_voiceEBS?:                      #IETFInterfaces_InterfaceType_voiceEBS
+	IETFInterfaces_InterfaceType_voiceEM?:                       #IETFInterfaces_InterfaceType_voiceEM
+	IETFInterfaces_InterfaceType_voiceEMFGD?:                    #IETFInterfaces_InterfaceType_voiceEMFGD
+	IETFInterfaces_InterfaceType_voiceEncap?:                    #IETFInterfaces_InterfaceType_voiceEncap
+	IETFInterfaces_InterfaceType_voiceFGDEANA?:                  #IETFInterfaces_InterfaceType_voiceFGDEANA
+	IETFInterfaces_InterfaceType_voiceFGDOS?:                    #IETFInterfaces_InterfaceType_voiceFGDOS
+	IETFInterfaces_InterfaceType_voiceFXO?:                      #IETFInterfaces_InterfaceType_voiceFXO
+	IETFInterfaces_InterfaceType_voiceFXS?:                      #IETFInterfaces_InterfaceType_voiceFXS
+	IETFInterfaces_InterfaceType_voiceOverAtm?:                  #IETFInterfaces_InterfaceType_voiceOverAtm
+	IETFInterfaces_InterfaceType_voiceOverCable?:                #IETFInterfaces_InterfaceType_voiceOverCable
+	IETFInterfaces_InterfaceType_voiceOverFrameRelay?:           #IETFInterfaces_InterfaceType_voiceOverFrameRelay
+	IETFInterfaces_InterfaceType_voiceOverIp?:                   #IETFInterfaces_InterfaceType_voiceOverIp
+	IETFInterfaces_InterfaceType_wwanPP?:                        #IETFInterfaces_InterfaceType_wwanPP
+	IETFInterfaces_InterfaceType_wwanPP2?:                       #IETFInterfaces_InterfaceType_wwanPP2
+	IETFInterfaces_InterfaceType_x213?:                          #IETFInterfaces_InterfaceType_x213
+	IETFInterfaces_InterfaceType_x25huntGroup?:                  #IETFInterfaces_InterfaceType_x25huntGroup
+	IETFInterfaces_InterfaceType_x25mlp?:                        #IETFInterfaces_InterfaceType_x25mlp
+	IETFInterfaces_InterfaceType_x25ple?:                        #IETFInterfaces_InterfaceType_x25ple
+	IETFInterfaces_InterfaceType_x86Laps?:                       #IETFInterfaces_InterfaceType_x86Laps
+	IETFInterfaces_InterfaceType_xboxWireless?:                  #IETFInterfaces_InterfaceType_xboxWireless
 }
 
-#IETFInterfaces_InterfaceType_UNSET: #E_IETFInterfaces_InterfaceType & 0
+#IETFInterfaces_InterfaceType_UNSET: #E_IETFInterfaces_InterfaceType & "UNSET"
 
-#IETFInterfaces_InterfaceType_a12MppSwitch: #E_IETFInterfaces_InterfaceType & 1
+#IETFInterfaces_InterfaceType_a12MppSwitch: #E_IETFInterfaces_InterfaceType & "a12MppSwitch"
 
-#IETFInterfaces_InterfaceType_aal2: #E_IETFInterfaces_InterfaceType & 2
+#IETFInterfaces_InterfaceType_aal2: #E_IETFInterfaces_InterfaceType & "aal2"
 
-#IETFInterfaces_InterfaceType_aal5: #E_IETFInterfaces_InterfaceType & 3
+#IETFInterfaces_InterfaceType_aal5: #E_IETFInterfaces_InterfaceType & "aal5"
 
-#IETFInterfaces_InterfaceType_actelisMetaLOOP: #E_IETFInterfaces_InterfaceType & 4
+#IETFInterfaces_InterfaceType_actelisMetaLOOP: #E_IETFInterfaces_InterfaceType & "actelisMetaLOOP"
 
-#IETFInterfaces_InterfaceType_adsl: #E_IETFInterfaces_InterfaceType & 5
+#IETFInterfaces_InterfaceType_adsl: #E_IETFInterfaces_InterfaceType & "adsl"
 
-#IETFInterfaces_InterfaceType_adsl2: #E_IETFInterfaces_InterfaceType & 6
+#IETFInterfaces_InterfaceType_adsl2: #E_IETFInterfaces_InterfaceType & "adsl2"
 
-#IETFInterfaces_InterfaceType_adsl2plus: #E_IETFInterfaces_InterfaceType & 7
+#IETFInterfaces_InterfaceType_adsl2plus: #E_IETFInterfaces_InterfaceType & "adsl2plus"
 
-#IETFInterfaces_InterfaceType_aflane8023: #E_IETFInterfaces_InterfaceType & 8
+#IETFInterfaces_InterfaceType_aflane8023: #E_IETFInterfaces_InterfaceType & "aflane8023"
 
-#IETFInterfaces_InterfaceType_aflane8025: #E_IETFInterfaces_InterfaceType & 9
+#IETFInterfaces_InterfaceType_aflane8025: #E_IETFInterfaces_InterfaceType & "aflane8025"
 
-#IETFInterfaces_InterfaceType_aluELP: #E_IETFInterfaces_InterfaceType & 10
+#IETFInterfaces_InterfaceType_aluELP: #E_IETFInterfaces_InterfaceType & "aluELP"
 
-#IETFInterfaces_InterfaceType_aluEpon: #E_IETFInterfaces_InterfaceType & 11
+#IETFInterfaces_InterfaceType_aluEpon: #E_IETFInterfaces_InterfaceType & "aluEpon"
 
-#IETFInterfaces_InterfaceType_aluEponLogicalLink: #E_IETFInterfaces_InterfaceType & 12
+#IETFInterfaces_InterfaceType_aluEponLogicalLink: #E_IETFInterfaces_InterfaceType & "aluEponLogicalLink"
 
-#IETFInterfaces_InterfaceType_aluEponOnu: #E_IETFInterfaces_InterfaceType & 13
+#IETFInterfaces_InterfaceType_aluEponOnu: #E_IETFInterfaces_InterfaceType & "aluEponOnu"
 
-#IETFInterfaces_InterfaceType_aluEponPhysicalUni: #E_IETFInterfaces_InterfaceType & 14
+#IETFInterfaces_InterfaceType_aluEponPhysicalUni: #E_IETFInterfaces_InterfaceType & "aluEponPhysicalUni"
 
-#IETFInterfaces_InterfaceType_aluGponOnu: #E_IETFInterfaces_InterfaceType & 15
+#IETFInterfaces_InterfaceType_aluGponOnu: #E_IETFInterfaces_InterfaceType & "aluGponOnu"
 
-#IETFInterfaces_InterfaceType_aluGponPhysicalUni: #E_IETFInterfaces_InterfaceType & 16
+#IETFInterfaces_InterfaceType_aluGponPhysicalUni: #E_IETFInterfaces_InterfaceType & "aluGponPhysicalUni"
 
-#IETFInterfaces_InterfaceType_arap: #E_IETFInterfaces_InterfaceType & 17
+#IETFInterfaces_InterfaceType_arap: #E_IETFInterfaces_InterfaceType & "arap"
 
-#IETFInterfaces_InterfaceType_arcnet: #E_IETFInterfaces_InterfaceType & 18
+#IETFInterfaces_InterfaceType_arcnet: #E_IETFInterfaces_InterfaceType & "arcnet"
 
-#IETFInterfaces_InterfaceType_arcnetPlus: #E_IETFInterfaces_InterfaceType & 19
+#IETFInterfaces_InterfaceType_arcnetPlus: #E_IETFInterfaces_InterfaceType & "arcnetPlus"
 
-#IETFInterfaces_InterfaceType_async: #E_IETFInterfaces_InterfaceType & 20
+#IETFInterfaces_InterfaceType_async: #E_IETFInterfaces_InterfaceType & "async"
 
-#IETFInterfaces_InterfaceType_atm: #E_IETFInterfaces_InterfaceType & 21
+#IETFInterfaces_InterfaceType_atm: #E_IETFInterfaces_InterfaceType & "atm"
 
-#IETFInterfaces_InterfaceType_atmDxi: #E_IETFInterfaces_InterfaceType & 22
+#IETFInterfaces_InterfaceType_atmDxi: #E_IETFInterfaces_InterfaceType & "atmDxi"
 
-#IETFInterfaces_InterfaceType_atmFuni: #E_IETFInterfaces_InterfaceType & 23
+#IETFInterfaces_InterfaceType_atmFuni: #E_IETFInterfaces_InterfaceType & "atmFuni"
 
-#IETFInterfaces_InterfaceType_atmIma: #E_IETFInterfaces_InterfaceType & 24
+#IETFInterfaces_InterfaceType_atmIma: #E_IETFInterfaces_InterfaceType & "atmIma"
 
-#IETFInterfaces_InterfaceType_atmLogical: #E_IETFInterfaces_InterfaceType & 25
+#IETFInterfaces_InterfaceType_atmLogical: #E_IETFInterfaces_InterfaceType & "atmLogical"
 
-#IETFInterfaces_InterfaceType_atmRadio: #E_IETFInterfaces_InterfaceType & 26
+#IETFInterfaces_InterfaceType_atmRadio: #E_IETFInterfaces_InterfaceType & "atmRadio"
 
-#IETFInterfaces_InterfaceType_atmSubInterface: #E_IETFInterfaces_InterfaceType & 27
+#IETFInterfaces_InterfaceType_atmSubInterface: #E_IETFInterfaces_InterfaceType & "atmSubInterface"
 
-#IETFInterfaces_InterfaceType_atmVciEndPt: #E_IETFInterfaces_InterfaceType & 28
+#IETFInterfaces_InterfaceType_atmVciEndPt: #E_IETFInterfaces_InterfaceType & "atmVciEndPt"
 
-#IETFInterfaces_InterfaceType_atmVirtual: #E_IETFInterfaces_InterfaceType & 29
+#IETFInterfaces_InterfaceType_atmVirtual: #E_IETFInterfaces_InterfaceType & "atmVirtual"
 
-#IETFInterfaces_InterfaceType_atmbond: #E_IETFInterfaces_InterfaceType & 30
+#IETFInterfaces_InterfaceType_atmbond: #E_IETFInterfaces_InterfaceType & "atmbond"
 
-#IETFInterfaces_InterfaceType_aviciOpticalEther: #E_IETFInterfaces_InterfaceType & 31
+#IETFInterfaces_InterfaceType_aviciOpticalEther: #E_IETFInterfaces_InterfaceType & "aviciOpticalEther"
 
-#IETFInterfaces_InterfaceType_basicISDN: #E_IETFInterfaces_InterfaceType & 32
+#IETFInterfaces_InterfaceType_basicISDN: #E_IETFInterfaces_InterfaceType & "basicISDN"
 
-#IETFInterfaces_InterfaceType_bgppolicyaccounting: #E_IETFInterfaces_InterfaceType & 33
+#IETFInterfaces_InterfaceType_bgppolicyaccounting: #E_IETFInterfaces_InterfaceType & "bgppolicyaccounting"
 
-#IETFInterfaces_InterfaceType_bits: #E_IETFInterfaces_InterfaceType & 34
+#IETFInterfaces_InterfaceType_bits: #E_IETFInterfaces_InterfaceType & "bits"
 
-#IETFInterfaces_InterfaceType_bridge: #E_IETFInterfaces_InterfaceType & 35
+#IETFInterfaces_InterfaceType_bridge: #E_IETFInterfaces_InterfaceType & "bridge"
 
-#IETFInterfaces_InterfaceType_bsc: #E_IETFInterfaces_InterfaceType & 36
+#IETFInterfaces_InterfaceType_bsc: #E_IETFInterfaces_InterfaceType & "bsc"
 
-#IETFInterfaces_InterfaceType_cableDownstreamRfPort: #E_IETFInterfaces_InterfaceType & 37
+#IETFInterfaces_InterfaceType_cableDownstreamRfPort: #E_IETFInterfaces_InterfaceType & "cableDownstreamRfPort"
 
-#IETFInterfaces_InterfaceType_capwapDot11Bss: #E_IETFInterfaces_InterfaceType & 38
+#IETFInterfaces_InterfaceType_capwapDot11Bss: #E_IETFInterfaces_InterfaceType & "capwapDot11Bss"
 
-#IETFInterfaces_InterfaceType_capwapDot11Profile: #E_IETFInterfaces_InterfaceType & 39
+#IETFInterfaces_InterfaceType_capwapDot11Profile: #E_IETFInterfaces_InterfaceType & "capwapDot11Profile"
 
-#IETFInterfaces_InterfaceType_capwapWtpVirtualRadio: #E_IETFInterfaces_InterfaceType & 40
+#IETFInterfaces_InterfaceType_capwapWtpVirtualRadio: #E_IETFInterfaces_InterfaceType & "capwapWtpVirtualRadio"
 
-#IETFInterfaces_InterfaceType_cblVectaStar: #E_IETFInterfaces_InterfaceType & 41
+#IETFInterfaces_InterfaceType_cblVectaStar: #E_IETFInterfaces_InterfaceType & "cblVectaStar"
 
-#IETFInterfaces_InterfaceType_cctEmul: #E_IETFInterfaces_InterfaceType & 42
+#IETFInterfaces_InterfaceType_cctEmul: #E_IETFInterfaces_InterfaceType & "cctEmul"
 
-#IETFInterfaces_InterfaceType_ces: #E_IETFInterfaces_InterfaceType & 43
+#IETFInterfaces_InterfaceType_ces: #E_IETFInterfaces_InterfaceType & "ces"
 
-#IETFInterfaces_InterfaceType_channel: #E_IETFInterfaces_InterfaceType & 44
+#IETFInterfaces_InterfaceType_channel: #E_IETFInterfaces_InterfaceType & "channel"
 
-#IETFInterfaces_InterfaceType_ciscoISLvlan: #E_IETFInterfaces_InterfaceType & 45
+#IETFInterfaces_InterfaceType_ciscoISLvlan: #E_IETFInterfaces_InterfaceType & "ciscoISLvlan"
 
-#IETFInterfaces_InterfaceType_cnr: #E_IETFInterfaces_InterfaceType & 46
+#IETFInterfaces_InterfaceType_cnr: #E_IETFInterfaces_InterfaceType & "cnr"
 
-#IETFInterfaces_InterfaceType_coffee: #E_IETFInterfaces_InterfaceType & 47
+#IETFInterfaces_InterfaceType_coffee: #E_IETFInterfaces_InterfaceType & "coffee"
 
-#IETFInterfaces_InterfaceType_compositeLink: #E_IETFInterfaces_InterfaceType & 48
+#IETFInterfaces_InterfaceType_compositeLink: #E_IETFInterfaces_InterfaceType & "compositeLink"
 
-#IETFInterfaces_InterfaceType_dcn: #E_IETFInterfaces_InterfaceType & 49
+#IETFInterfaces_InterfaceType_dcn: #E_IETFInterfaces_InterfaceType & "dcn"
 
-#IETFInterfaces_InterfaceType_ddnX25: #E_IETFInterfaces_InterfaceType & 50
+#IETFInterfaces_InterfaceType_ddnX25: #E_IETFInterfaces_InterfaceType & "ddnX25"
 
-#IETFInterfaces_InterfaceType_digitalPowerline: #E_IETFInterfaces_InterfaceType & 51
+#IETFInterfaces_InterfaceType_digitalPowerline: #E_IETFInterfaces_InterfaceType & "digitalPowerline"
 
-#IETFInterfaces_InterfaceType_digitalWrapperOverheadChannel: #E_IETFInterfaces_InterfaceType & 52
+#IETFInterfaces_InterfaceType_digitalWrapperOverheadChannel: #E_IETFInterfaces_InterfaceType & "digitalWrapperOverheadChannel"
 
-#IETFInterfaces_InterfaceType_dlsw: #E_IETFInterfaces_InterfaceType & 53
+#IETFInterfaces_InterfaceType_dlsw: #E_IETFInterfaces_InterfaceType & "dlsw"
 
-#IETFInterfaces_InterfaceType_docsCableDownstream: #E_IETFInterfaces_InterfaceType & 54
+#IETFInterfaces_InterfaceType_docsCableDownstream: #E_IETFInterfaces_InterfaceType & "docsCableDownstream"
 
-#IETFInterfaces_InterfaceType_docsCableMCmtsDownstream: #E_IETFInterfaces_InterfaceType & 55
+#IETFInterfaces_InterfaceType_docsCableMCmtsDownstream: #E_IETFInterfaces_InterfaceType & "docsCableMCmtsDownstream"
 
-#IETFInterfaces_InterfaceType_docsCableMaclayer: #E_IETFInterfaces_InterfaceType & 56
+#IETFInterfaces_InterfaceType_docsCableMaclayer: #E_IETFInterfaces_InterfaceType & "docsCableMaclayer"
 
-#IETFInterfaces_InterfaceType_docsCableNdf: #E_IETFInterfaces_InterfaceType & 57
+#IETFInterfaces_InterfaceType_docsCableNdf: #E_IETFInterfaces_InterfaceType & "docsCableNdf"
 
-#IETFInterfaces_InterfaceType_docsCableNdr: #E_IETFInterfaces_InterfaceType & 58
+#IETFInterfaces_InterfaceType_docsCableNdr: #E_IETFInterfaces_InterfaceType & "docsCableNdr"
 
-#IETFInterfaces_InterfaceType_docsCableScte55d1FwdOob: #E_IETFInterfaces_InterfaceType & 59
+#IETFInterfaces_InterfaceType_docsCableScte55d1FwdOob: #E_IETFInterfaces_InterfaceType & "docsCableScte55d1FwdOob"
 
-#IETFInterfaces_InterfaceType_docsCableScte55d1RetOob: #E_IETFInterfaces_InterfaceType & 60
+#IETFInterfaces_InterfaceType_docsCableScte55d1RetOob: #E_IETFInterfaces_InterfaceType & "docsCableScte55d1RetOob"
 
-#IETFInterfaces_InterfaceType_docsCableScte55d2DsOob: #E_IETFInterfaces_InterfaceType & 61
+#IETFInterfaces_InterfaceType_docsCableScte55d2DsOob: #E_IETFInterfaces_InterfaceType & "docsCableScte55d2DsOob"
 
-#IETFInterfaces_InterfaceType_docsCableScte55d2UsOob: #E_IETFInterfaces_InterfaceType & 62
+#IETFInterfaces_InterfaceType_docsCableScte55d2UsOob: #E_IETFInterfaces_InterfaceType & "docsCableScte55d2UsOob"
 
-#IETFInterfaces_InterfaceType_docsCableUpstream: #E_IETFInterfaces_InterfaceType & 63
+#IETFInterfaces_InterfaceType_docsCableUpstream: #E_IETFInterfaces_InterfaceType & "docsCableUpstream"
 
-#IETFInterfaces_InterfaceType_docsCableUpstreamChannel: #E_IETFInterfaces_InterfaceType & 64
+#IETFInterfaces_InterfaceType_docsCableUpstreamChannel: #E_IETFInterfaces_InterfaceType & "docsCableUpstreamChannel"
 
-#IETFInterfaces_InterfaceType_docsCableUpstreamRfPort: #E_IETFInterfaces_InterfaceType & 65
+#IETFInterfaces_InterfaceType_docsCableUpstreamRfPort: #E_IETFInterfaces_InterfaceType & "docsCableUpstreamRfPort"
 
-#IETFInterfaces_InterfaceType_docsOfdmDownstream: #E_IETFInterfaces_InterfaceType & 66
+#IETFInterfaces_InterfaceType_docsOfdmDownstream: #E_IETFInterfaces_InterfaceType & "docsOfdmDownstream"
 
-#IETFInterfaces_InterfaceType_docsOfdmaUpstream: #E_IETFInterfaces_InterfaceType & 67
+#IETFInterfaces_InterfaceType_docsOfdmaUpstream: #E_IETFInterfaces_InterfaceType & "docsOfdmaUpstream"
 
-#IETFInterfaces_InterfaceType_ds0: #E_IETFInterfaces_InterfaceType & 68
+#IETFInterfaces_InterfaceType_ds0: #E_IETFInterfaces_InterfaceType & "ds0"
 
-#IETFInterfaces_InterfaceType_ds0Bundle: #E_IETFInterfaces_InterfaceType & 69
+#IETFInterfaces_InterfaceType_ds0Bundle: #E_IETFInterfaces_InterfaceType & "ds0Bundle"
 
-#IETFInterfaces_InterfaceType_ds1: #E_IETFInterfaces_InterfaceType & 70
+#IETFInterfaces_InterfaceType_ds1: #E_IETFInterfaces_InterfaceType & "ds1"
 
-#IETFInterfaces_InterfaceType_ds1FDL: #E_IETFInterfaces_InterfaceType & 71
+#IETFInterfaces_InterfaceType_ds1FDL: #E_IETFInterfaces_InterfaceType & "ds1FDL"
 
-#IETFInterfaces_InterfaceType_ds3: #E_IETFInterfaces_InterfaceType & 72
+#IETFInterfaces_InterfaceType_ds3: #E_IETFInterfaces_InterfaceType & "ds3"
 
-#IETFInterfaces_InterfaceType_dtm: #E_IETFInterfaces_InterfaceType & 73
+#IETFInterfaces_InterfaceType_dtm: #E_IETFInterfaces_InterfaceType & "dtm"
 
-#IETFInterfaces_InterfaceType_dvbAsiIn: #E_IETFInterfaces_InterfaceType & 74
+#IETFInterfaces_InterfaceType_dvbAsiIn: #E_IETFInterfaces_InterfaceType & "dvbAsiIn"
 
-#IETFInterfaces_InterfaceType_dvbAsiOut: #E_IETFInterfaces_InterfaceType & 75
+#IETFInterfaces_InterfaceType_dvbAsiOut: #E_IETFInterfaces_InterfaceType & "dvbAsiOut"
 
-#IETFInterfaces_InterfaceType_dvbRccDownstream: #E_IETFInterfaces_InterfaceType & 76
+#IETFInterfaces_InterfaceType_dvbRccDownstream: #E_IETFInterfaces_InterfaceType & "dvbRccDownstream"
 
-#IETFInterfaces_InterfaceType_dvbRccMacLayer: #E_IETFInterfaces_InterfaceType & 77
+#IETFInterfaces_InterfaceType_dvbRccMacLayer: #E_IETFInterfaces_InterfaceType & "dvbRccMacLayer"
 
-#IETFInterfaces_InterfaceType_dvbRccUpstream: #E_IETFInterfaces_InterfaceType & 78
+#IETFInterfaces_InterfaceType_dvbRccUpstream: #E_IETFInterfaces_InterfaceType & "dvbRccUpstream"
 
-#IETFInterfaces_InterfaceType_dvbRcsMacLayer: #E_IETFInterfaces_InterfaceType & 79
+#IETFInterfaces_InterfaceType_dvbRcsMacLayer: #E_IETFInterfaces_InterfaceType & "dvbRcsMacLayer"
 
-#IETFInterfaces_InterfaceType_dvbRcsTdma: #E_IETFInterfaces_InterfaceType & 80
+#IETFInterfaces_InterfaceType_dvbRcsTdma: #E_IETFInterfaces_InterfaceType & "dvbRcsTdma"
 
-#IETFInterfaces_InterfaceType_dvbTdm: #E_IETFInterfaces_InterfaceType & 81
+#IETFInterfaces_InterfaceType_dvbTdm: #E_IETFInterfaces_InterfaceType & "dvbTdm"
 
-#IETFInterfaces_InterfaceType_e1: #E_IETFInterfaces_InterfaceType & 82
+#IETFInterfaces_InterfaceType_e1: #E_IETFInterfaces_InterfaceType & "e1"
 
-#IETFInterfaces_InterfaceType_econet: #E_IETFInterfaces_InterfaceType & 83
+#IETFInterfaces_InterfaceType_econet: #E_IETFInterfaces_InterfaceType & "econet"
 
-#IETFInterfaces_InterfaceType_eon: #E_IETFInterfaces_InterfaceType & 84
+#IETFInterfaces_InterfaceType_eon: #E_IETFInterfaces_InterfaceType & "eon"
 
-#IETFInterfaces_InterfaceType_eplrs: #E_IETFInterfaces_InterfaceType & 85
+#IETFInterfaces_InterfaceType_eplrs: #E_IETFInterfaces_InterfaceType & "eplrs"
 
-#IETFInterfaces_InterfaceType_escon: #E_IETFInterfaces_InterfaceType & 86
+#IETFInterfaces_InterfaceType_escon: #E_IETFInterfaces_InterfaceType & "escon"
 
-#IETFInterfaces_InterfaceType_ethernet3Mbit: #E_IETFInterfaces_InterfaceType & 87
+#IETFInterfaces_InterfaceType_ethernet3Mbit: #E_IETFInterfaces_InterfaceType & "ethernet3Mbit"
 
-#IETFInterfaces_InterfaceType_ethernetCsmacd: #E_IETFInterfaces_InterfaceType & 88
+#IETFInterfaces_InterfaceType_ethernetCsmacd: #E_IETFInterfaces_InterfaceType & "ethernetCsmacd"
 
-#IETFInterfaces_InterfaceType_fast: #E_IETFInterfaces_InterfaceType & 89
+#IETFInterfaces_InterfaceType_fast: #E_IETFInterfaces_InterfaceType & "fast"
 
-#IETFInterfaces_InterfaceType_fastEther: #E_IETFInterfaces_InterfaceType & 90
+#IETFInterfaces_InterfaceType_fastEther: #E_IETFInterfaces_InterfaceType & "fastEther"
 
-#IETFInterfaces_InterfaceType_fastEtherFX: #E_IETFInterfaces_InterfaceType & 91
+#IETFInterfaces_InterfaceType_fastEtherFX: #E_IETFInterfaces_InterfaceType & "fastEtherFX"
 
-#IETFInterfaces_InterfaceType_fastdsl: #E_IETFInterfaces_InterfaceType & 92
+#IETFInterfaces_InterfaceType_fastdsl: #E_IETFInterfaces_InterfaceType & "fastdsl"
 
-#IETFInterfaces_InterfaceType_fcipLink: #E_IETFInterfaces_InterfaceType & 93
+#IETFInterfaces_InterfaceType_fcipLink: #E_IETFInterfaces_InterfaceType & "fcipLink"
 
-#IETFInterfaces_InterfaceType_fddi: #E_IETFInterfaces_InterfaceType & 94
+#IETFInterfaces_InterfaceType_fddi: #E_IETFInterfaces_InterfaceType & "fddi"
 
-#IETFInterfaces_InterfaceType_fibreChannel: #E_IETFInterfaces_InterfaceType & 95
+#IETFInterfaces_InterfaceType_fibreChannel: #E_IETFInterfaces_InterfaceType & "fibreChannel"
 
-#IETFInterfaces_InterfaceType_frDlciEndPt: #E_IETFInterfaces_InterfaceType & 96
+#IETFInterfaces_InterfaceType_frDlciEndPt: #E_IETFInterfaces_InterfaceType & "frDlciEndPt"
 
-#IETFInterfaces_InterfaceType_frForward: #E_IETFInterfaces_InterfaceType & 97
+#IETFInterfaces_InterfaceType_frForward: #E_IETFInterfaces_InterfaceType & "frForward"
 
-#IETFInterfaces_InterfaceType_frameRelay: #E_IETFInterfaces_InterfaceType & 98
+#IETFInterfaces_InterfaceType_frameRelay: #E_IETFInterfaces_InterfaceType & "frameRelay"
 
-#IETFInterfaces_InterfaceType_frameRelayInterconnect: #E_IETFInterfaces_InterfaceType & 99
+#IETFInterfaces_InterfaceType_frameRelayInterconnect: #E_IETFInterfaces_InterfaceType & "frameRelayInterconnect"
 
-#IETFInterfaces_InterfaceType_frameRelayMPI: #E_IETFInterfaces_InterfaceType & 100
+#IETFInterfaces_InterfaceType_frameRelayMPI: #E_IETFInterfaces_InterfaceType & "frameRelayMPI"
 
-#IETFInterfaces_InterfaceType_frameRelayService: #E_IETFInterfaces_InterfaceType & 101
+#IETFInterfaces_InterfaceType_frameRelayService: #E_IETFInterfaces_InterfaceType & "frameRelayService"
 
-#IETFInterfaces_InterfaceType_frf16MfrBundle: #E_IETFInterfaces_InterfaceType & 102
+#IETFInterfaces_InterfaceType_frf16MfrBundle: #E_IETFInterfaces_InterfaceType & "frf16MfrBundle"
 
-#IETFInterfaces_InterfaceType_g703at2mb: #E_IETFInterfaces_InterfaceType & 103
+#IETFInterfaces_InterfaceType_g703at2mb: #E_IETFInterfaces_InterfaceType & "g703at2mb"
 
-#IETFInterfaces_InterfaceType_g703at64k: #E_IETFInterfaces_InterfaceType & 104
+#IETFInterfaces_InterfaceType_g703at64k: #E_IETFInterfaces_InterfaceType & "g703at64k"
 
-#IETFInterfaces_InterfaceType_g9981: #E_IETFInterfaces_InterfaceType & 105
+#IETFInterfaces_InterfaceType_g9981: #E_IETFInterfaces_InterfaceType & "g9981"
 
-#IETFInterfaces_InterfaceType_g9982: #E_IETFInterfaces_InterfaceType & 106
+#IETFInterfaces_InterfaceType_g9982: #E_IETFInterfaces_InterfaceType & "g9982"
 
-#IETFInterfaces_InterfaceType_g9983: #E_IETFInterfaces_InterfaceType & 107
+#IETFInterfaces_InterfaceType_g9983: #E_IETFInterfaces_InterfaceType & "g9983"
 
-#IETFInterfaces_InterfaceType_gfast: #E_IETFInterfaces_InterfaceType & 108
+#IETFInterfaces_InterfaceType_gfast: #E_IETFInterfaces_InterfaceType & "gfast"
 
-#IETFInterfaces_InterfaceType_gfp: #E_IETFInterfaces_InterfaceType & 109
+#IETFInterfaces_InterfaceType_gfp: #E_IETFInterfaces_InterfaceType & "gfp"
 
-#IETFInterfaces_InterfaceType_gigabitEthernet: #E_IETFInterfaces_InterfaceType & 110
+#IETFInterfaces_InterfaceType_gigabitEthernet: #E_IETFInterfaces_InterfaceType & "gigabitEthernet"
 
-#IETFInterfaces_InterfaceType_gpon: #E_IETFInterfaces_InterfaceType & 111
+#IETFInterfaces_InterfaceType_gpon: #E_IETFInterfaces_InterfaceType & "gpon"
 
-#IETFInterfaces_InterfaceType_gr303IDT: #E_IETFInterfaces_InterfaceType & 112
+#IETFInterfaces_InterfaceType_gr303IDT: #E_IETFInterfaces_InterfaceType & "gr303IDT"
 
-#IETFInterfaces_InterfaceType_gr303RDT: #E_IETFInterfaces_InterfaceType & 113
+#IETFInterfaces_InterfaceType_gr303RDT: #E_IETFInterfaces_InterfaceType & "gr303RDT"
 
-#IETFInterfaces_InterfaceType_gtp: #E_IETFInterfaces_InterfaceType & 114
+#IETFInterfaces_InterfaceType_gtp: #E_IETFInterfaces_InterfaceType & "gtp"
 
-#IETFInterfaces_InterfaceType_h323Gatekeeper: #E_IETFInterfaces_InterfaceType & 115
+#IETFInterfaces_InterfaceType_h323Gatekeeper: #E_IETFInterfaces_InterfaceType & "h323Gatekeeper"
 
-#IETFInterfaces_InterfaceType_h323Proxy: #E_IETFInterfaces_InterfaceType & 116
+#IETFInterfaces_InterfaceType_h323Proxy: #E_IETFInterfaces_InterfaceType & "h323Proxy"
 
-#IETFInterfaces_InterfaceType_hdh1822: #E_IETFInterfaces_InterfaceType & 117
+#IETFInterfaces_InterfaceType_hdh1822: #E_IETFInterfaces_InterfaceType & "hdh1822"
 
-#IETFInterfaces_InterfaceType_hdlc: #E_IETFInterfaces_InterfaceType & 118
+#IETFInterfaces_InterfaceType_hdlc: #E_IETFInterfaces_InterfaceType & "hdlc"
 
-#IETFInterfaces_InterfaceType_hdsl2: #E_IETFInterfaces_InterfaceType & 119
+#IETFInterfaces_InterfaceType_hdsl2: #E_IETFInterfaces_InterfaceType & "hdsl2"
 
-#IETFInterfaces_InterfaceType_hiperlan2: #E_IETFInterfaces_InterfaceType & 120
+#IETFInterfaces_InterfaceType_hiperlan2: #E_IETFInterfaces_InterfaceType & "hiperlan2"
 
-#IETFInterfaces_InterfaceType_hippi: #E_IETFInterfaces_InterfaceType & 121
+#IETFInterfaces_InterfaceType_hippi: #E_IETFInterfaces_InterfaceType & "hippi"
 
-#IETFInterfaces_InterfaceType_hippiInterface: #E_IETFInterfaces_InterfaceType & 122
+#IETFInterfaces_InterfaceType_hippiInterface: #E_IETFInterfaces_InterfaceType & "hippiInterface"
 
-#IETFInterfaces_InterfaceType_homepna: #E_IETFInterfaces_InterfaceType & 123
+#IETFInterfaces_InterfaceType_homepna: #E_IETFInterfaces_InterfaceType & "homepna"
 
-#IETFInterfaces_InterfaceType_hostPad: #E_IETFInterfaces_InterfaceType & 124
+#IETFInterfaces_InterfaceType_hostPad: #E_IETFInterfaces_InterfaceType & "hostPad"
 
-#IETFInterfaces_InterfaceType_hssi: #E_IETFInterfaces_InterfaceType & 125
+#IETFInterfaces_InterfaceType_hssi: #E_IETFInterfaces_InterfaceType & "hssi"
 
-#IETFInterfaces_InterfaceType_hyperchannel: #E_IETFInterfaces_InterfaceType & 126
+#IETFInterfaces_InterfaceType_hyperchannel: #E_IETFInterfaces_InterfaceType & "hyperchannel"
 
-#IETFInterfaces_InterfaceType_iana_interface_type: #E_IETFInterfaces_InterfaceType & 127
+#IETFInterfaces_InterfaceType_iana_interface_type: #E_IETFInterfaces_InterfaceType & "iana-interface-type"
 
-#IETFInterfaces_InterfaceType_ibm370parChan: #E_IETFInterfaces_InterfaceType & 128
+#IETFInterfaces_InterfaceType_ibm370parChan: #E_IETFInterfaces_InterfaceType & "ibm370parChan"
 
-#IETFInterfaces_InterfaceType_idsl: #E_IETFInterfaces_InterfaceType & 129
+#IETFInterfaces_InterfaceType_idsl: #E_IETFInterfaces_InterfaceType & "idsl"
 
-#IETFInterfaces_InterfaceType_ieee1394: #E_IETFInterfaces_InterfaceType & 130
+#IETFInterfaces_InterfaceType_ieee1394: #E_IETFInterfaces_InterfaceType & "ieee1394"
 
-#IETFInterfaces_InterfaceType_ieee80211: #E_IETFInterfaces_InterfaceType & 131
+#IETFInterfaces_InterfaceType_ieee80211: #E_IETFInterfaces_InterfaceType & "ieee80211"
 
-#IETFInterfaces_InterfaceType_ieee80212: #E_IETFInterfaces_InterfaceType & 132
+#IETFInterfaces_InterfaceType_ieee80212: #E_IETFInterfaces_InterfaceType & "ieee80212"
 
-#IETFInterfaces_InterfaceType_ieee802154: #E_IETFInterfaces_InterfaceType & 133
+#IETFInterfaces_InterfaceType_ieee802154: #E_IETFInterfaces_InterfaceType & "ieee802154"
 
-#IETFInterfaces_InterfaceType_ieee80216WMAN: #E_IETFInterfaces_InterfaceType & 134
+#IETFInterfaces_InterfaceType_ieee80216WMAN: #E_IETFInterfaces_InterfaceType & "ieee80216WMAN"
 
-#IETFInterfaces_InterfaceType_ieee8023adLag: #E_IETFInterfaces_InterfaceType & 135
+#IETFInterfaces_InterfaceType_ieee8023adLag: #E_IETFInterfaces_InterfaceType & "ieee8023adLag"
 
-#IETFInterfaces_InterfaceType_if_gsn: #E_IETFInterfaces_InterfaceType & 136
+#IETFInterfaces_InterfaceType_if_gsn: #E_IETFInterfaces_InterfaceType & "if-gsn"
 
-#IETFInterfaces_InterfaceType_ifPwType: #E_IETFInterfaces_InterfaceType & 137
+#IETFInterfaces_InterfaceType_ifPwType: #E_IETFInterfaces_InterfaceType & "ifPwType"
 
-#IETFInterfaces_InterfaceType_ifVfiType: #E_IETFInterfaces_InterfaceType & 138
+#IETFInterfaces_InterfaceType_ifVfiType: #E_IETFInterfaces_InterfaceType & "ifVfiType"
 
-#IETFInterfaces_InterfaceType_ilan: #E_IETFInterfaces_InterfaceType & 139
+#IETFInterfaces_InterfaceType_ilan: #E_IETFInterfaces_InterfaceType & "ilan"
 
-#IETFInterfaces_InterfaceType_imt: #E_IETFInterfaces_InterfaceType & 140
+#IETFInterfaces_InterfaceType_imt: #E_IETFInterfaces_InterfaceType & "imt"
 
-#IETFInterfaces_InterfaceType_infiniband: #E_IETFInterfaces_InterfaceType & 141
+#IETFInterfaces_InterfaceType_infiniband: #E_IETFInterfaces_InterfaceType & "infiniband"
 
-#IETFInterfaces_InterfaceType_interleave: #E_IETFInterfaces_InterfaceType & 142
+#IETFInterfaces_InterfaceType_interleave: #E_IETFInterfaces_InterfaceType & "interleave"
 
-#IETFInterfaces_InterfaceType_ip: #E_IETFInterfaces_InterfaceType & 143
+#IETFInterfaces_InterfaceType_ip: #E_IETFInterfaces_InterfaceType & "ip"
 
-#IETFInterfaces_InterfaceType_ipForward: #E_IETFInterfaces_InterfaceType & 144
+#IETFInterfaces_InterfaceType_ipForward: #E_IETFInterfaces_InterfaceType & "ipForward"
 
-#IETFInterfaces_InterfaceType_ipOverAtm: #E_IETFInterfaces_InterfaceType & 145
+#IETFInterfaces_InterfaceType_ipOverAtm: #E_IETFInterfaces_InterfaceType & "ipOverAtm"
 
-#IETFInterfaces_InterfaceType_ipOverCdlc: #E_IETFInterfaces_InterfaceType & 146
+#IETFInterfaces_InterfaceType_ipOverCdlc: #E_IETFInterfaces_InterfaceType & "ipOverCdlc"
 
-#IETFInterfaces_InterfaceType_ipOverClaw: #E_IETFInterfaces_InterfaceType & 147
+#IETFInterfaces_InterfaceType_ipOverClaw: #E_IETFInterfaces_InterfaceType & "ipOverClaw"
 
-#IETFInterfaces_InterfaceType_ipSwitch: #E_IETFInterfaces_InterfaceType & 148
+#IETFInterfaces_InterfaceType_ipSwitch: #E_IETFInterfaces_InterfaceType & "ipSwitch"
 
-#IETFInterfaces_InterfaceType_isdn: #E_IETFInterfaces_InterfaceType & 149
+#IETFInterfaces_InterfaceType_isdn: #E_IETFInterfaces_InterfaceType & "isdn"
 
-#IETFInterfaces_InterfaceType_isdns: #E_IETFInterfaces_InterfaceType & 150
+#IETFInterfaces_InterfaceType_isdns: #E_IETFInterfaces_InterfaceType & "isdns"
 
-#IETFInterfaces_InterfaceType_isdnu: #E_IETFInterfaces_InterfaceType & 151
+#IETFInterfaces_InterfaceType_isdnu: #E_IETFInterfaces_InterfaceType & "isdnu"
 
-#IETFInterfaces_InterfaceType_iso88022llc: #E_IETFInterfaces_InterfaceType & 152
+#IETFInterfaces_InterfaceType_iso88022llc: #E_IETFInterfaces_InterfaceType & "iso88022llc"
 
-#IETFInterfaces_InterfaceType_iso88023Csmacd: #E_IETFInterfaces_InterfaceType & 153
+#IETFInterfaces_InterfaceType_iso88023Csmacd: #E_IETFInterfaces_InterfaceType & "iso88023Csmacd"
 
-#IETFInterfaces_InterfaceType_iso88024TokenBus: #E_IETFInterfaces_InterfaceType & 154
+#IETFInterfaces_InterfaceType_iso88024TokenBus: #E_IETFInterfaces_InterfaceType & "iso88024TokenBus"
 
-#IETFInterfaces_InterfaceType_iso88025CRFPInt: #E_IETFInterfaces_InterfaceType & 155
+#IETFInterfaces_InterfaceType_iso88025CRFPInt: #E_IETFInterfaces_InterfaceType & "iso88025CRFPInt"
 
-#IETFInterfaces_InterfaceType_iso88025Dtr: #E_IETFInterfaces_InterfaceType & 156
+#IETFInterfaces_InterfaceType_iso88025Dtr: #E_IETFInterfaces_InterfaceType & "iso88025Dtr"
 
-#IETFInterfaces_InterfaceType_iso88025Fiber: #E_IETFInterfaces_InterfaceType & 157
+#IETFInterfaces_InterfaceType_iso88025Fiber: #E_IETFInterfaces_InterfaceType & "iso88025Fiber"
 
-#IETFInterfaces_InterfaceType_iso88025TokenRing: #E_IETFInterfaces_InterfaceType & 158
+#IETFInterfaces_InterfaceType_iso88025TokenRing: #E_IETFInterfaces_InterfaceType & "iso88025TokenRing"
 
-#IETFInterfaces_InterfaceType_iso88026Man: #E_IETFInterfaces_InterfaceType & 159
+#IETFInterfaces_InterfaceType_iso88026Man: #E_IETFInterfaces_InterfaceType & "iso88026Man"
 
-#IETFInterfaces_InterfaceType_isup: #E_IETFInterfaces_InterfaceType & 160
+#IETFInterfaces_InterfaceType_isup: #E_IETFInterfaces_InterfaceType & "isup"
 
-#IETFInterfaces_InterfaceType_l2vlan: #E_IETFInterfaces_InterfaceType & 161
+#IETFInterfaces_InterfaceType_l2vlan: #E_IETFInterfaces_InterfaceType & "l2vlan"
 
-#IETFInterfaces_InterfaceType_l3ipvlan: #E_IETFInterfaces_InterfaceType & 162
+#IETFInterfaces_InterfaceType_l3ipvlan: #E_IETFInterfaces_InterfaceType & "l3ipvlan"
 
-#IETFInterfaces_InterfaceType_l3ipxvlan: #E_IETFInterfaces_InterfaceType & 163
+#IETFInterfaces_InterfaceType_l3ipxvlan: #E_IETFInterfaces_InterfaceType & "l3ipxvlan"
 
-#IETFInterfaces_InterfaceType_lapb: #E_IETFInterfaces_InterfaceType & 164
+#IETFInterfaces_InterfaceType_lapb: #E_IETFInterfaces_InterfaceType & "lapb"
 
-#IETFInterfaces_InterfaceType_lapd: #E_IETFInterfaces_InterfaceType & 165
+#IETFInterfaces_InterfaceType_lapd: #E_IETFInterfaces_InterfaceType & "lapd"
 
-#IETFInterfaces_InterfaceType_lapf: #E_IETFInterfaces_InterfaceType & 166
+#IETFInterfaces_InterfaceType_lapf: #E_IETFInterfaces_InterfaceType & "lapf"
 
-#IETFInterfaces_InterfaceType_linegroup: #E_IETFInterfaces_InterfaceType & 167
+#IETFInterfaces_InterfaceType_linegroup: #E_IETFInterfaces_InterfaceType & "linegroup"
 
-#IETFInterfaces_InterfaceType_lmp: #E_IETFInterfaces_InterfaceType & 168
+#IETFInterfaces_InterfaceType_lmp: #E_IETFInterfaces_InterfaceType & "lmp"
 
-#IETFInterfaces_InterfaceType_localTalk: #E_IETFInterfaces_InterfaceType & 169
+#IETFInterfaces_InterfaceType_localTalk: #E_IETFInterfaces_InterfaceType & "localTalk"
 
-#IETFInterfaces_InterfaceType_macSecControlledIF: #E_IETFInterfaces_InterfaceType & 170
+#IETFInterfaces_InterfaceType_macSecControlledIF: #E_IETFInterfaces_InterfaceType & "macSecControlledIF"
 
-#IETFInterfaces_InterfaceType_macSecUncontrolledIF: #E_IETFInterfaces_InterfaceType & 171
+#IETFInterfaces_InterfaceType_macSecUncontrolledIF: #E_IETFInterfaces_InterfaceType & "macSecUncontrolledIF"
 
-#IETFInterfaces_InterfaceType_mediaMailOverIp: #E_IETFInterfaces_InterfaceType & 172
+#IETFInterfaces_InterfaceType_mediaMailOverIp: #E_IETFInterfaces_InterfaceType & "mediaMailOverIp"
 
-#IETFInterfaces_InterfaceType_mfSigLink: #E_IETFInterfaces_InterfaceType & 173
+#IETFInterfaces_InterfaceType_mfSigLink: #E_IETFInterfaces_InterfaceType & "mfSigLink"
 
-#IETFInterfaces_InterfaceType_miox25: #E_IETFInterfaces_InterfaceType & 174
+#IETFInterfaces_InterfaceType_miox25: #E_IETFInterfaces_InterfaceType & "miox25"
 
-#IETFInterfaces_InterfaceType_mocaVersion1: #E_IETFInterfaces_InterfaceType & 175
+#IETFInterfaces_InterfaceType_mocaVersion1: #E_IETFInterfaces_InterfaceType & "mocaVersion1"
 
-#IETFInterfaces_InterfaceType_modem: #E_IETFInterfaces_InterfaceType & 176
+#IETFInterfaces_InterfaceType_modem: #E_IETFInterfaces_InterfaceType & "modem"
 
-#IETFInterfaces_InterfaceType_mpc: #E_IETFInterfaces_InterfaceType & 177
+#IETFInterfaces_InterfaceType_mpc: #E_IETFInterfaces_InterfaceType & "mpc"
 
-#IETFInterfaces_InterfaceType_mpegTransport: #E_IETFInterfaces_InterfaceType & 178
+#IETFInterfaces_InterfaceType_mpegTransport: #E_IETFInterfaces_InterfaceType & "mpegTransport"
 
-#IETFInterfaces_InterfaceType_mpls: #E_IETFInterfaces_InterfaceType & 179
+#IETFInterfaces_InterfaceType_mpls: #E_IETFInterfaces_InterfaceType & "mpls"
 
-#IETFInterfaces_InterfaceType_mplsTunnel: #E_IETFInterfaces_InterfaceType & 180
+#IETFInterfaces_InterfaceType_mplsTunnel: #E_IETFInterfaces_InterfaceType & "mplsTunnel"
 
-#IETFInterfaces_InterfaceType_msdsl: #E_IETFInterfaces_InterfaceType & 181
+#IETFInterfaces_InterfaceType_msdsl: #E_IETFInterfaces_InterfaceType & "msdsl"
 
-#IETFInterfaces_InterfaceType_mvl: #E_IETFInterfaces_InterfaceType & 182
+#IETFInterfaces_InterfaceType_mvl: #E_IETFInterfaces_InterfaceType & "mvl"
 
-#IETFInterfaces_InterfaceType_myrinet: #E_IETFInterfaces_InterfaceType & 183
+#IETFInterfaces_InterfaceType_myrinet: #E_IETFInterfaces_InterfaceType & "myrinet"
 
-#IETFInterfaces_InterfaceType_nfas: #E_IETFInterfaces_InterfaceType & 184
+#IETFInterfaces_InterfaceType_nfas: #E_IETFInterfaces_InterfaceType & "nfas"
 
-#IETFInterfaces_InterfaceType_nsip: #E_IETFInterfaces_InterfaceType & 185
+#IETFInterfaces_InterfaceType_nsip: #E_IETFInterfaces_InterfaceType & "nsip"
 
-#IETFInterfaces_InterfaceType_opticalChannel: #E_IETFInterfaces_InterfaceType & 186
+#IETFInterfaces_InterfaceType_opticalChannel: #E_IETFInterfaces_InterfaceType & "opticalChannel"
 
-#IETFInterfaces_InterfaceType_opticalChannelGroup: #E_IETFInterfaces_InterfaceType & 187
+#IETFInterfaces_InterfaceType_opticalChannelGroup: #E_IETFInterfaces_InterfaceType & "opticalChannelGroup"
 
-#IETFInterfaces_InterfaceType_opticalTransport: #E_IETFInterfaces_InterfaceType & 188
+#IETFInterfaces_InterfaceType_opticalTransport: #E_IETFInterfaces_InterfaceType & "opticalTransport"
 
-#IETFInterfaces_InterfaceType_other: #E_IETFInterfaces_InterfaceType & 189
+#IETFInterfaces_InterfaceType_other: #E_IETFInterfaces_InterfaceType & "other"
 
-#IETFInterfaces_InterfaceType_otnOdu: #E_IETFInterfaces_InterfaceType & 190
+#IETFInterfaces_InterfaceType_otnOdu: #E_IETFInterfaces_InterfaceType & "otnOdu"
 
-#IETFInterfaces_InterfaceType_otnOtu: #E_IETFInterfaces_InterfaceType & 191
+#IETFInterfaces_InterfaceType_otnOtu: #E_IETFInterfaces_InterfaceType & "otnOtu"
 
-#IETFInterfaces_InterfaceType_para: #E_IETFInterfaces_InterfaceType & 192
+#IETFInterfaces_InterfaceType_para: #E_IETFInterfaces_InterfaceType & "para"
 
-#IETFInterfaces_InterfaceType_pdnEtherLoop1: #E_IETFInterfaces_InterfaceType & 193
+#IETFInterfaces_InterfaceType_pdnEtherLoop1: #E_IETFInterfaces_InterfaceType & "pdnEtherLoop1"
 
-#IETFInterfaces_InterfaceType_pdnEtherLoop2: #E_IETFInterfaces_InterfaceType & 194
+#IETFInterfaces_InterfaceType_pdnEtherLoop2: #E_IETFInterfaces_InterfaceType & "pdnEtherLoop2"
 
-#IETFInterfaces_InterfaceType_pip: #E_IETFInterfaces_InterfaceType & 195
+#IETFInterfaces_InterfaceType_pip: #E_IETFInterfaces_InterfaceType & "pip"
 
-#IETFInterfaces_InterfaceType_plc: #E_IETFInterfaces_InterfaceType & 196
+#IETFInterfaces_InterfaceType_plc: #E_IETFInterfaces_InterfaceType & "plc"
 
-#IETFInterfaces_InterfaceType_pon155: #E_IETFInterfaces_InterfaceType & 197
+#IETFInterfaces_InterfaceType_pon155: #E_IETFInterfaces_InterfaceType & "pon155"
 
-#IETFInterfaces_InterfaceType_pon622: #E_IETFInterfaces_InterfaceType & 198
+#IETFInterfaces_InterfaceType_pon622: #E_IETFInterfaces_InterfaceType & "pon622"
 
-#IETFInterfaces_InterfaceType_pos: #E_IETFInterfaces_InterfaceType & 199
+#IETFInterfaces_InterfaceType_pos: #E_IETFInterfaces_InterfaceType & "pos"
 
-#IETFInterfaces_InterfaceType_ppp: #E_IETFInterfaces_InterfaceType & 200
+#IETFInterfaces_InterfaceType_ppp: #E_IETFInterfaces_InterfaceType & "ppp"
 
-#IETFInterfaces_InterfaceType_pppMultilinkBundle: #E_IETFInterfaces_InterfaceType & 201
+#IETFInterfaces_InterfaceType_pppMultilinkBundle: #E_IETFInterfaces_InterfaceType & "pppMultilinkBundle"
 
-#IETFInterfaces_InterfaceType_primaryISDN: #E_IETFInterfaces_InterfaceType & 202
+#IETFInterfaces_InterfaceType_primaryISDN: #E_IETFInterfaces_InterfaceType & "primaryISDN"
 
-#IETFInterfaces_InterfaceType_propAtm: #E_IETFInterfaces_InterfaceType & 203
+#IETFInterfaces_InterfaceType_propAtm: #E_IETFInterfaces_InterfaceType & "propAtm"
 
-#IETFInterfaces_InterfaceType_propBWAp2Mp: #E_IETFInterfaces_InterfaceType & 204
+#IETFInterfaces_InterfaceType_propBWAp2Mp: #E_IETFInterfaces_InterfaceType & "propBWAp2Mp"
 
-#IETFInterfaces_InterfaceType_propCnls: #E_IETFInterfaces_InterfaceType & 205
+#IETFInterfaces_InterfaceType_propCnls: #E_IETFInterfaces_InterfaceType & "propCnls"
 
-#IETFInterfaces_InterfaceType_propDocsWirelessDownstream: #E_IETFInterfaces_InterfaceType & 206
+#IETFInterfaces_InterfaceType_propDocsWirelessDownstream: #E_IETFInterfaces_InterfaceType & "propDocsWirelessDownstream"
 
-#IETFInterfaces_InterfaceType_propDocsWirelessMaclayer: #E_IETFInterfaces_InterfaceType & 207
+#IETFInterfaces_InterfaceType_propDocsWirelessMaclayer: #E_IETFInterfaces_InterfaceType & "propDocsWirelessMaclayer"
 
-#IETFInterfaces_InterfaceType_propDocsWirelessUpstream: #E_IETFInterfaces_InterfaceType & 208
+#IETFInterfaces_InterfaceType_propDocsWirelessUpstream: #E_IETFInterfaces_InterfaceType & "propDocsWirelessUpstream"
 
-#IETFInterfaces_InterfaceType_propMultiplexor: #E_IETFInterfaces_InterfaceType & 209
+#IETFInterfaces_InterfaceType_propMultiplexor: #E_IETFInterfaces_InterfaceType & "propMultiplexor"
 
-#IETFInterfaces_InterfaceType_propPointToPointSerial: #E_IETFInterfaces_InterfaceType & 210
+#IETFInterfaces_InterfaceType_propPointToPointSerial: #E_IETFInterfaces_InterfaceType & "propPointToPointSerial"
 
-#IETFInterfaces_InterfaceType_propVirtual: #E_IETFInterfaces_InterfaceType & 211
+#IETFInterfaces_InterfaceType_propVirtual: #E_IETFInterfaces_InterfaceType & "propVirtual"
 
-#IETFInterfaces_InterfaceType_propWirelessP2P: #E_IETFInterfaces_InterfaceType & 212
+#IETFInterfaces_InterfaceType_propWirelessP2P: #E_IETFInterfaces_InterfaceType & "propWirelessP2P"
 
-#IETFInterfaces_InterfaceType_proteon10Mbit: #E_IETFInterfaces_InterfaceType & 213
+#IETFInterfaces_InterfaceType_proteon10Mbit: #E_IETFInterfaces_InterfaceType & "proteon10Mbit"
 
-#IETFInterfaces_InterfaceType_proteon80Mbit: #E_IETFInterfaces_InterfaceType & 214
+#IETFInterfaces_InterfaceType_proteon80Mbit: #E_IETFInterfaces_InterfaceType & "proteon80Mbit"
 
-#IETFInterfaces_InterfaceType_ptm: #E_IETFInterfaces_InterfaceType & 215
+#IETFInterfaces_InterfaceType_ptm: #E_IETFInterfaces_InterfaceType & "ptm"
 
-#IETFInterfaces_InterfaceType_q2931: #E_IETFInterfaces_InterfaceType & 216
+#IETFInterfaces_InterfaceType_q2931: #E_IETFInterfaces_InterfaceType & "q2931"
 
-#IETFInterfaces_InterfaceType_qam: #E_IETFInterfaces_InterfaceType & 217
+#IETFInterfaces_InterfaceType_qam: #E_IETFInterfaces_InterfaceType & "qam"
 
-#IETFInterfaces_InterfaceType_qllc: #E_IETFInterfaces_InterfaceType & 218
+#IETFInterfaces_InterfaceType_qllc: #E_IETFInterfaces_InterfaceType & "qllc"
 
-#IETFInterfaces_InterfaceType_radioMAC: #E_IETFInterfaces_InterfaceType & 219
+#IETFInterfaces_InterfaceType_radioMAC: #E_IETFInterfaces_InterfaceType & "radioMAC"
 
-#IETFInterfaces_InterfaceType_radsl: #E_IETFInterfaces_InterfaceType & 220
+#IETFInterfaces_InterfaceType_radsl: #E_IETFInterfaces_InterfaceType & "radsl"
 
-#IETFInterfaces_InterfaceType_reachDSL: #E_IETFInterfaces_InterfaceType & 221
+#IETFInterfaces_InterfaceType_reachDSL: #E_IETFInterfaces_InterfaceType & "reachDSL"
 
-#IETFInterfaces_InterfaceType_regular1822: #E_IETFInterfaces_InterfaceType & 222
+#IETFInterfaces_InterfaceType_regular1822: #E_IETFInterfaces_InterfaceType & "regular1822"
 
-#IETFInterfaces_InterfaceType_rfc1483: #E_IETFInterfaces_InterfaceType & 223
+#IETFInterfaces_InterfaceType_rfc1483: #E_IETFInterfaces_InterfaceType & "rfc1483"
 
-#IETFInterfaces_InterfaceType_rfc877x25: #E_IETFInterfaces_InterfaceType & 224
+#IETFInterfaces_InterfaceType_rfc877x25: #E_IETFInterfaces_InterfaceType & "rfc877x25"
 
-#IETFInterfaces_InterfaceType_rpr: #E_IETFInterfaces_InterfaceType & 225
+#IETFInterfaces_InterfaceType_rpr: #E_IETFInterfaces_InterfaceType & "rpr"
 
-#IETFInterfaces_InterfaceType_rs232: #E_IETFInterfaces_InterfaceType & 226
+#IETFInterfaces_InterfaceType_rs232: #E_IETFInterfaces_InterfaceType & "rs232"
 
-#IETFInterfaces_InterfaceType_rsrb: #E_IETFInterfaces_InterfaceType & 227
+#IETFInterfaces_InterfaceType_rsrb: #E_IETFInterfaces_InterfaceType & "rsrb"
 
-#IETFInterfaces_InterfaceType_sdci: #E_IETFInterfaces_InterfaceType & 228
+#IETFInterfaces_InterfaceType_sdci: #E_IETFInterfaces_InterfaceType & "sdci"
 
-#IETFInterfaces_InterfaceType_sdlc: #E_IETFInterfaces_InterfaceType & 229
+#IETFInterfaces_InterfaceType_sdlc: #E_IETFInterfaces_InterfaceType & "sdlc"
 
-#IETFInterfaces_InterfaceType_sdsl: #E_IETFInterfaces_InterfaceType & 230
+#IETFInterfaces_InterfaceType_sdsl: #E_IETFInterfaces_InterfaceType & "sdsl"
 
-#IETFInterfaces_InterfaceType_shdsl: #E_IETFInterfaces_InterfaceType & 231
+#IETFInterfaces_InterfaceType_shdsl: #E_IETFInterfaces_InterfaceType & "shdsl"
 
-#IETFInterfaces_InterfaceType_sip: #E_IETFInterfaces_InterfaceType & 232
+#IETFInterfaces_InterfaceType_sip: #E_IETFInterfaces_InterfaceType & "sip"
 
-#IETFInterfaces_InterfaceType_sipSig: #E_IETFInterfaces_InterfaceType & 233
+#IETFInterfaces_InterfaceType_sipSig: #E_IETFInterfaces_InterfaceType & "sipSig"
 
-#IETFInterfaces_InterfaceType_sipTg: #E_IETFInterfaces_InterfaceType & 234
+#IETFInterfaces_InterfaceType_sipTg: #E_IETFInterfaces_InterfaceType & "sipTg"
 
-#IETFInterfaces_InterfaceType_sixToFour: #E_IETFInterfaces_InterfaceType & 235
+#IETFInterfaces_InterfaceType_sixToFour: #E_IETFInterfaces_InterfaceType & "sixToFour"
 
-#IETFInterfaces_InterfaceType_slip: #E_IETFInterfaces_InterfaceType & 236
+#IETFInterfaces_InterfaceType_slip: #E_IETFInterfaces_InterfaceType & "slip"
 
-#IETFInterfaces_InterfaceType_smdsDxi: #E_IETFInterfaces_InterfaceType & 237
+#IETFInterfaces_InterfaceType_smdsDxi: #E_IETFInterfaces_InterfaceType & "smdsDxi"
 
-#IETFInterfaces_InterfaceType_smdsIcip: #E_IETFInterfaces_InterfaceType & 238
+#IETFInterfaces_InterfaceType_smdsIcip: #E_IETFInterfaces_InterfaceType & "smdsIcip"
 
-#IETFInterfaces_InterfaceType_softwareLoopback: #E_IETFInterfaces_InterfaceType & 239
+#IETFInterfaces_InterfaceType_softwareLoopback: #E_IETFInterfaces_InterfaceType & "softwareLoopback"
 
-#IETFInterfaces_InterfaceType_sonet: #E_IETFInterfaces_InterfaceType & 240
+#IETFInterfaces_InterfaceType_sonet: #E_IETFInterfaces_InterfaceType & "sonet"
 
-#IETFInterfaces_InterfaceType_sonetOverheadChannel: #E_IETFInterfaces_InterfaceType & 241
+#IETFInterfaces_InterfaceType_sonetOverheadChannel: #E_IETFInterfaces_InterfaceType & "sonetOverheadChannel"
 
-#IETFInterfaces_InterfaceType_sonetPath: #E_IETFInterfaces_InterfaceType & 242
+#IETFInterfaces_InterfaceType_sonetPath: #E_IETFInterfaces_InterfaceType & "sonetPath"
 
-#IETFInterfaces_InterfaceType_sonetVT: #E_IETFInterfaces_InterfaceType & 243
+#IETFInterfaces_InterfaceType_sonetVT: #E_IETFInterfaces_InterfaceType & "sonetVT"
 
-#IETFInterfaces_InterfaceType_srp: #E_IETFInterfaces_InterfaceType & 244
+#IETFInterfaces_InterfaceType_srp: #E_IETFInterfaces_InterfaceType & "srp"
 
-#IETFInterfaces_InterfaceType_ss7SigLink: #E_IETFInterfaces_InterfaceType & 245
+#IETFInterfaces_InterfaceType_ss7SigLink: #E_IETFInterfaces_InterfaceType & "ss7SigLink"
 
-#IETFInterfaces_InterfaceType_stackToStack: #E_IETFInterfaces_InterfaceType & 246
+#IETFInterfaces_InterfaceType_stackToStack: #E_IETFInterfaces_InterfaceType & "stackToStack"
 
-#IETFInterfaces_InterfaceType_starLan: #E_IETFInterfaces_InterfaceType & 247
+#IETFInterfaces_InterfaceType_starLan: #E_IETFInterfaces_InterfaceType & "starLan"
 
-#IETFInterfaces_InterfaceType_tdlc: #E_IETFInterfaces_InterfaceType & 248
+#IETFInterfaces_InterfaceType_tdlc: #E_IETFInterfaces_InterfaceType & "tdlc"
 
-#IETFInterfaces_InterfaceType_teLink: #E_IETFInterfaces_InterfaceType & 249
+#IETFInterfaces_InterfaceType_teLink: #E_IETFInterfaces_InterfaceType & "teLink"
 
-#IETFInterfaces_InterfaceType_termPad: #E_IETFInterfaces_InterfaceType & 250
+#IETFInterfaces_InterfaceType_termPad: #E_IETFInterfaces_InterfaceType & "termPad"
 
-#IETFInterfaces_InterfaceType_tr008: #E_IETFInterfaces_InterfaceType & 251
+#IETFInterfaces_InterfaceType_tr008: #E_IETFInterfaces_InterfaceType & "tr008"
 
-#IETFInterfaces_InterfaceType_transpHdlc: #E_IETFInterfaces_InterfaceType & 252
+#IETFInterfaces_InterfaceType_transpHdlc: #E_IETFInterfaces_InterfaceType & "transpHdlc"
 
-#IETFInterfaces_InterfaceType_tunnel: #E_IETFInterfaces_InterfaceType & 253
+#IETFInterfaces_InterfaceType_tunnel: #E_IETFInterfaces_InterfaceType & "tunnel"
 
-#IETFInterfaces_InterfaceType_ultra: #E_IETFInterfaces_InterfaceType & 254
+#IETFInterfaces_InterfaceType_ultra: #E_IETFInterfaces_InterfaceType & "ultra"
 
-#IETFInterfaces_InterfaceType_usb: #E_IETFInterfaces_InterfaceType & 255
+#IETFInterfaces_InterfaceType_usb: #E_IETFInterfaces_InterfaceType & "usb"
 
-#IETFInterfaces_InterfaceType_v11: #E_IETFInterfaces_InterfaceType & 256
+#IETFInterfaces_InterfaceType_v11: #E_IETFInterfaces_InterfaceType & "v11"
 
-#IETFInterfaces_InterfaceType_v35: #E_IETFInterfaces_InterfaceType & 257
+#IETFInterfaces_InterfaceType_v35: #E_IETFInterfaces_InterfaceType & "v35"
 
-#IETFInterfaces_InterfaceType_v36: #E_IETFInterfaces_InterfaceType & 258
+#IETFInterfaces_InterfaceType_v36: #E_IETFInterfaces_InterfaceType & "v36"
 
-#IETFInterfaces_InterfaceType_v37: #E_IETFInterfaces_InterfaceType & 259
+#IETFInterfaces_InterfaceType_v37: #E_IETFInterfaces_InterfaceType & "v37"
 
-#IETFInterfaces_InterfaceType_vdsl: #E_IETFInterfaces_InterfaceType & 260
+#IETFInterfaces_InterfaceType_vdsl: #E_IETFInterfaces_InterfaceType & "vdsl"
 
-#IETFInterfaces_InterfaceType_vdsl2: #E_IETFInterfaces_InterfaceType & 261
+#IETFInterfaces_InterfaceType_vdsl2: #E_IETFInterfaces_InterfaceType & "vdsl2"
 
-#IETFInterfaces_InterfaceType_virtualIpAddress: #E_IETFInterfaces_InterfaceType & 262
+#IETFInterfaces_InterfaceType_virtualIpAddress: #E_IETFInterfaces_InterfaceType & "virtualIpAddress"
 
-#IETFInterfaces_InterfaceType_virtualTg: #E_IETFInterfaces_InterfaceType & 263
+#IETFInterfaces_InterfaceType_virtualTg: #E_IETFInterfaces_InterfaceType & "virtualTg"
 
-#IETFInterfaces_InterfaceType_vmwareNicTeam: #E_IETFInterfaces_InterfaceType & 264
+#IETFInterfaces_InterfaceType_vmwareNicTeam: #E_IETFInterfaces_InterfaceType & "vmwareNicTeam"
 
-#IETFInterfaces_InterfaceType_vmwareVirtualNic: #E_IETFInterfaces_InterfaceType & 265
+#IETFInterfaces_InterfaceType_vmwareVirtualNic: #E_IETFInterfaces_InterfaceType & "vmwareVirtualNic"
 
-#IETFInterfaces_InterfaceType_voiceDID: #E_IETFInterfaces_InterfaceType & 266
+#IETFInterfaces_InterfaceType_voiceDID: #E_IETFInterfaces_InterfaceType & "voiceDID"
 
-#IETFInterfaces_InterfaceType_voiceEBS: #E_IETFInterfaces_InterfaceType & 267
+#IETFInterfaces_InterfaceType_voiceEBS: #E_IETFInterfaces_InterfaceType & "voiceEBS"
 
-#IETFInterfaces_InterfaceType_voiceEM: #E_IETFInterfaces_InterfaceType & 268
+#IETFInterfaces_InterfaceType_voiceEM: #E_IETFInterfaces_InterfaceType & "voiceEM"
 
-#IETFInterfaces_InterfaceType_voiceEMFGD: #E_IETFInterfaces_InterfaceType & 269
+#IETFInterfaces_InterfaceType_voiceEMFGD: #E_IETFInterfaces_InterfaceType & "voiceEMFGD"
 
-#IETFInterfaces_InterfaceType_voiceEncap: #E_IETFInterfaces_InterfaceType & 270
+#IETFInterfaces_InterfaceType_voiceEncap: #E_IETFInterfaces_InterfaceType & "voiceEncap"
 
-#IETFInterfaces_InterfaceType_voiceFGDEANA: #E_IETFInterfaces_InterfaceType & 271
+#IETFInterfaces_InterfaceType_voiceFGDEANA: #E_IETFInterfaces_InterfaceType & "voiceFGDEANA"
 
-#IETFInterfaces_InterfaceType_voiceFGDOS: #E_IETFInterfaces_InterfaceType & 272
+#IETFInterfaces_InterfaceType_voiceFGDOS: #E_IETFInterfaces_InterfaceType & "voiceFGDOS"
 
-#IETFInterfaces_InterfaceType_voiceFXO: #E_IETFInterfaces_InterfaceType & 273
+#IETFInterfaces_InterfaceType_voiceFXO: #E_IETFInterfaces_InterfaceType & "voiceFXO"
 
-#IETFInterfaces_InterfaceType_voiceFXS: #E_IETFInterfaces_InterfaceType & 274
+#IETFInterfaces_InterfaceType_voiceFXS: #E_IETFInterfaces_InterfaceType & "voiceFXS"
 
-#IETFInterfaces_InterfaceType_voiceOverAtm: #E_IETFInterfaces_InterfaceType & 275
+#IETFInterfaces_InterfaceType_voiceOverAtm: #E_IETFInterfaces_InterfaceType & "voiceOverAtm"
 
-#IETFInterfaces_InterfaceType_voiceOverCable: #E_IETFInterfaces_InterfaceType & 276
+#IETFInterfaces_InterfaceType_voiceOverCable: #E_IETFInterfaces_InterfaceType & "voiceOverCable"
 
-#IETFInterfaces_InterfaceType_voiceOverFrameRelay: #E_IETFInterfaces_InterfaceType & 277
+#IETFInterfaces_InterfaceType_voiceOverFrameRelay: #E_IETFInterfaces_InterfaceType & "voiceOverFrameRelay"
 
-#IETFInterfaces_InterfaceType_voiceOverIp: #E_IETFInterfaces_InterfaceType & 278
+#IETFInterfaces_InterfaceType_voiceOverIp: #E_IETFInterfaces_InterfaceType & "voiceOverIp"
 
-#IETFInterfaces_InterfaceType_wwanPP: #E_IETFInterfaces_InterfaceType & 279
+#IETFInterfaces_InterfaceType_wwanPP: #E_IETFInterfaces_InterfaceType & "wwanPP"
 
-#IETFInterfaces_InterfaceType_wwanPP2: #E_IETFInterfaces_InterfaceType & 280
+#IETFInterfaces_InterfaceType_wwanPP2: #E_IETFInterfaces_InterfaceType & "wwanPP2"
 
-#IETFInterfaces_InterfaceType_x213: #E_IETFInterfaces_InterfaceType & 281
+#IETFInterfaces_InterfaceType_x213: #E_IETFInterfaces_InterfaceType & "x213"
 
-#IETFInterfaces_InterfaceType_x25huntGroup: #E_IETFInterfaces_InterfaceType & 282
+#IETFInterfaces_InterfaceType_x25huntGroup: #E_IETFInterfaces_InterfaceType & "x25huntGroup"
 
-#IETFInterfaces_InterfaceType_x25mlp: #E_IETFInterfaces_InterfaceType & 283
+#IETFInterfaces_InterfaceType_x25mlp: #E_IETFInterfaces_InterfaceType & "x25mlp"
 
-#IETFInterfaces_InterfaceType_x25ple: #E_IETFInterfaces_InterfaceType & 284
+#IETFInterfaces_InterfaceType_x25ple: #E_IETFInterfaces_InterfaceType & "x25ple"
 
-#IETFInterfaces_InterfaceType_x86Laps: #E_IETFInterfaces_InterfaceType & 285
+#IETFInterfaces_InterfaceType_x86Laps: #E_IETFInterfaces_InterfaceType & "x86Laps"
 
-#IETFInterfaces_InterfaceType_xboxWireless: #E_IETFInterfaces_InterfaceType & 286
+#IETFInterfaces_InterfaceType_xboxWireless: #E_IETFInterfaces_InterfaceType & "xboxWireless"
+
+#E_OpenconfigAcl_ACL_TYPE: string
 
 #enumE_OpenconfigAcl_ACL_TYPE:
 	#OpenconfigAcl_ACL_TYPE_UNSET |
@@ -8188,25 +8201,27 @@ import "strings"
 	#OpenconfigAcl_ACL_TYPE_ACL_MPLS
 
 #values_E_OpenconfigAcl_ACL_TYPE: {
-	OpenconfigAcl_ACL_TYPE_UNSET:     #OpenconfigAcl_ACL_TYPE_UNSET
-	OpenconfigAcl_ACL_TYPE_ACL_IPV4:  #OpenconfigAcl_ACL_TYPE_ACL_IPV4
-	OpenconfigAcl_ACL_TYPE_ACL_IPV6:  #OpenconfigAcl_ACL_TYPE_ACL_IPV6
-	OpenconfigAcl_ACL_TYPE_ACL_L2:    #OpenconfigAcl_ACL_TYPE_ACL_L2
-	OpenconfigAcl_ACL_TYPE_ACL_MIXED: #OpenconfigAcl_ACL_TYPE_ACL_MIXED
-	OpenconfigAcl_ACL_TYPE_ACL_MPLS:  #OpenconfigAcl_ACL_TYPE_ACL_MPLS
+	OpenconfigAcl_ACL_TYPE_UNSET?:     #OpenconfigAcl_ACL_TYPE_UNSET
+	OpenconfigAcl_ACL_TYPE_ACL_IPV4?:  #OpenconfigAcl_ACL_TYPE_ACL_IPV4
+	OpenconfigAcl_ACL_TYPE_ACL_IPV6?:  #OpenconfigAcl_ACL_TYPE_ACL_IPV6
+	OpenconfigAcl_ACL_TYPE_ACL_L2?:    #OpenconfigAcl_ACL_TYPE_ACL_L2
+	OpenconfigAcl_ACL_TYPE_ACL_MIXED?: #OpenconfigAcl_ACL_TYPE_ACL_MIXED
+	OpenconfigAcl_ACL_TYPE_ACL_MPLS?:  #OpenconfigAcl_ACL_TYPE_ACL_MPLS
 }
 
-#OpenconfigAcl_ACL_TYPE_UNSET: #E_OpenconfigAcl_ACL_TYPE & 0
+#OpenconfigAcl_ACL_TYPE_UNSET: #E_OpenconfigAcl_ACL_TYPE & "UNSET"
 
-#OpenconfigAcl_ACL_TYPE_ACL_IPV4: #E_OpenconfigAcl_ACL_TYPE & 1
+#OpenconfigAcl_ACL_TYPE_ACL_IPV4: #E_OpenconfigAcl_ACL_TYPE & "ACL_IPV4"
 
-#OpenconfigAcl_ACL_TYPE_ACL_IPV6: #E_OpenconfigAcl_ACL_TYPE & 2
+#OpenconfigAcl_ACL_TYPE_ACL_IPV6: #E_OpenconfigAcl_ACL_TYPE & "ACL_IPV6"
 
-#OpenconfigAcl_ACL_TYPE_ACL_L2: #E_OpenconfigAcl_ACL_TYPE & 3
+#OpenconfigAcl_ACL_TYPE_ACL_L2: #E_OpenconfigAcl_ACL_TYPE & "ACL_L2"
 
-#OpenconfigAcl_ACL_TYPE_ACL_MIXED: #E_OpenconfigAcl_ACL_TYPE & 4
+#OpenconfigAcl_ACL_TYPE_ACL_MIXED: #E_OpenconfigAcl_ACL_TYPE & "ACL_MIXED"
 
-#OpenconfigAcl_ACL_TYPE_ACL_MPLS: #E_OpenconfigAcl_ACL_TYPE & 5
+#OpenconfigAcl_ACL_TYPE_ACL_MPLS: #E_OpenconfigAcl_ACL_TYPE & "ACL_MPLS"
+
+#E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue: string
 
 #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue:
 	#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_UNSET |
@@ -8218,28 +8233,30 @@ import "strings"
 	#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_NO_LABEL
 
 #values_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue: {
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_UNSET:                   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_UNSET
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV4_EXPLICIT_NULL:      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV4_EXPLICIT_NULL
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ROUTER_ALERT:            #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ROUTER_ALERT
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV6_EXPLICIT_NULL:      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV6_EXPLICIT_NULL
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IMPLICIT_NULL:           #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IMPLICIT_NULL
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ENTROPY_LABEL_INDICATOR: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ENTROPY_LABEL_INDICATOR
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_NO_LABEL:                #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_NO_LABEL
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_UNSET?:                   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_UNSET
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV4_EXPLICIT_NULL?:      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV4_EXPLICIT_NULL
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ROUTER_ALERT?:            #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ROUTER_ALERT
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV6_EXPLICIT_NULL?:      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV6_EXPLICIT_NULL
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IMPLICIT_NULL?:           #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IMPLICIT_NULL
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ENTROPY_LABEL_INDICATOR?: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ENTROPY_LABEL_INDICATOR
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_NO_LABEL?:                #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_NO_LABEL
 }
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_UNSET: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & 0
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_UNSET: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & "UNSET"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV4_EXPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & 1
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV4_EXPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & "IPV4_EXPLICIT_NULL"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ROUTER_ALERT: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & 2
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ROUTER_ALERT: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & "ROUTER_ALERT"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV6_EXPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & 3
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IPV6_EXPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & "IPV6_EXPLICIT_NULL"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IMPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & 4
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_IMPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & "IMPLICIT_NULL"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ENTROPY_LABEL_INDICATOR: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & 5
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_ENTROPY_LABEL_INDICATOR: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & "ENTROPY_LABEL_INDICATOR"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_NO_LABEL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & 6
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_NO_LABEL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue & "NO_LABEL"
+
+#E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue: string
 
 #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue:
 	#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_UNSET |
@@ -8251,54 +8268,60 @@ import "strings"
 	#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_NO_LABEL
 
 #values_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue: {
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_UNSET:                   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_UNSET
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV4_EXPLICIT_NULL:      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV4_EXPLICIT_NULL
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ROUTER_ALERT:            #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ROUTER_ALERT
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV6_EXPLICIT_NULL:      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV6_EXPLICIT_NULL
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IMPLICIT_NULL:           #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IMPLICIT_NULL
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ENTROPY_LABEL_INDICATOR: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ENTROPY_LABEL_INDICATOR
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_NO_LABEL:                #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_NO_LABEL
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_UNSET?:                   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_UNSET
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV4_EXPLICIT_NULL?:      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV4_EXPLICIT_NULL
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ROUTER_ALERT?:            #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ROUTER_ALERT
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV6_EXPLICIT_NULL?:      #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV6_EXPLICIT_NULL
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IMPLICIT_NULL?:           #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IMPLICIT_NULL
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ENTROPY_LABEL_INDICATOR?: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ENTROPY_LABEL_INDICATOR
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_NO_LABEL?:                #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_NO_LABEL
 }
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_UNSET: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & 0
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_UNSET: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & "UNSET"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV4_EXPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & 1
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV4_EXPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & "IPV4_EXPLICIT_NULL"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ROUTER_ALERT: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & 2
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ROUTER_ALERT: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & "ROUTER_ALERT"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV6_EXPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & 3
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IPV6_EXPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & "IPV6_EXPLICIT_NULL"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IMPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & 4
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_IMPLICIT_NULL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & "IMPLICIT_NULL"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ENTROPY_LABEL_INDICATOR: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & 5
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_ENTROPY_LABEL_INDICATOR: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & "ENTROPY_LABEL_INDICATOR"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_NO_LABEL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & 6
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_NO_LABEL: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue & "NO_LABEL"
+
+#E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: string
 
 #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort:
 	#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_UNSET |
 	#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_ANY
 
 #values_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: {
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_UNSET: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_UNSET
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_ANY:   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_ANY
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_UNSET?: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_UNSET
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_ANY?:   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_ANY
 }
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_UNSET: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort & 0
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_UNSET: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort & "UNSET"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_ANY: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort & 1
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_ANY: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort & "ANY"
+
+#E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: string
 
 #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort:
 	#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_UNSET |
 	#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_ANY
 
 #values_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: {
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_UNSET: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_UNSET
-	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_ANY:   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_ANY
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_UNSET?: #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_UNSET
+	OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_ANY?:   #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_ANY
 }
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_UNSET: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort & 0
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_UNSET: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort & "UNSET"
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_ANY: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort & 1
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_ANY: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort & "ANY"
+
+#E_OpenconfigAcl_FORWARDING_ACTION: string
 
 #enumE_OpenconfigAcl_FORWARDING_ACTION:
 	#OpenconfigAcl_FORWARDING_ACTION_UNSET |
@@ -8307,19 +8330,21 @@ import "strings"
 	#OpenconfigAcl_FORWARDING_ACTION_REJECT
 
 #values_E_OpenconfigAcl_FORWARDING_ACTION: {
-	OpenconfigAcl_FORWARDING_ACTION_UNSET:  #OpenconfigAcl_FORWARDING_ACTION_UNSET
-	OpenconfigAcl_FORWARDING_ACTION_ACCEPT: #OpenconfigAcl_FORWARDING_ACTION_ACCEPT
-	OpenconfigAcl_FORWARDING_ACTION_DROP:   #OpenconfigAcl_FORWARDING_ACTION_DROP
-	OpenconfigAcl_FORWARDING_ACTION_REJECT: #OpenconfigAcl_FORWARDING_ACTION_REJECT
+	OpenconfigAcl_FORWARDING_ACTION_UNSET?:  #OpenconfigAcl_FORWARDING_ACTION_UNSET
+	OpenconfigAcl_FORWARDING_ACTION_ACCEPT?: #OpenconfigAcl_FORWARDING_ACTION_ACCEPT
+	OpenconfigAcl_FORWARDING_ACTION_DROP?:   #OpenconfigAcl_FORWARDING_ACTION_DROP
+	OpenconfigAcl_FORWARDING_ACTION_REJECT?: #OpenconfigAcl_FORWARDING_ACTION_REJECT
 }
 
-#OpenconfigAcl_FORWARDING_ACTION_UNSET: #E_OpenconfigAcl_FORWARDING_ACTION & 0
+#OpenconfigAcl_FORWARDING_ACTION_UNSET: #E_OpenconfigAcl_FORWARDING_ACTION & "UNSET"
 
-#OpenconfigAcl_FORWARDING_ACTION_ACCEPT: #E_OpenconfigAcl_FORWARDING_ACTION & 1
+#OpenconfigAcl_FORWARDING_ACTION_ACCEPT: #E_OpenconfigAcl_FORWARDING_ACTION & "ACCEPT"
 
-#OpenconfigAcl_FORWARDING_ACTION_DROP: #E_OpenconfigAcl_FORWARDING_ACTION & 2
+#OpenconfigAcl_FORWARDING_ACTION_DROP: #E_OpenconfigAcl_FORWARDING_ACTION & "DROP"
 
-#OpenconfigAcl_FORWARDING_ACTION_REJECT: #E_OpenconfigAcl_FORWARDING_ACTION & 3
+#OpenconfigAcl_FORWARDING_ACTION_REJECT: #E_OpenconfigAcl_FORWARDING_ACTION & "REJECT"
+
+#E_OpenconfigAcl_LOG_ACTION: string
 
 #enumE_OpenconfigAcl_LOG_ACTION:
 	#OpenconfigAcl_LOG_ACTION_UNSET |
@@ -8327,16 +8352,18 @@ import "strings"
 	#OpenconfigAcl_LOG_ACTION_LOG_SYSLOG
 
 #values_E_OpenconfigAcl_LOG_ACTION: {
-	OpenconfigAcl_LOG_ACTION_UNSET:      #OpenconfigAcl_LOG_ACTION_UNSET
-	OpenconfigAcl_LOG_ACTION_LOG_NONE:   #OpenconfigAcl_LOG_ACTION_LOG_NONE
-	OpenconfigAcl_LOG_ACTION_LOG_SYSLOG: #OpenconfigAcl_LOG_ACTION_LOG_SYSLOG
+	OpenconfigAcl_LOG_ACTION_UNSET?:      #OpenconfigAcl_LOG_ACTION_UNSET
+	OpenconfigAcl_LOG_ACTION_LOG_NONE?:   #OpenconfigAcl_LOG_ACTION_LOG_NONE
+	OpenconfigAcl_LOG_ACTION_LOG_SYSLOG?: #OpenconfigAcl_LOG_ACTION_LOG_SYSLOG
 }
 
-#OpenconfigAcl_LOG_ACTION_UNSET: #E_OpenconfigAcl_LOG_ACTION & 0
+#OpenconfigAcl_LOG_ACTION_UNSET: #E_OpenconfigAcl_LOG_ACTION & "UNSET"
 
-#OpenconfigAcl_LOG_ACTION_LOG_NONE: #E_OpenconfigAcl_LOG_ACTION & 1
+#OpenconfigAcl_LOG_ACTION_LOG_NONE: #E_OpenconfigAcl_LOG_ACTION & "LOG_NONE"
 
-#OpenconfigAcl_LOG_ACTION_LOG_SYSLOG: #E_OpenconfigAcl_LOG_ACTION & 2
+#OpenconfigAcl_LOG_ACTION_LOG_SYSLOG: #E_OpenconfigAcl_LOG_ACTION & "LOG_SYSLOG"
+
+#E_OpenconfigBgpTypes_AFI_SAFI_TYPE: string
 
 #enumE_OpenconfigBgpTypes_AFI_SAFI_TYPE:
 	#OpenconfigBgpTypes_AFI_SAFI_TYPE_UNSET |
@@ -8359,61 +8386,63 @@ import "strings"
 	#OpenconfigBgpTypes_AFI_SAFI_TYPE_VPNV4_FLOWSPEC
 
 #values_E_OpenconfigBgpTypes_AFI_SAFI_TYPE: {
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_UNSET:                #OpenconfigBgpTypes_AFI_SAFI_TYPE_UNSET
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_FLOWSPEC:        #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_FLOWSPEC
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_LABELED_UNICAST: #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_LABELED_UNICAST
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_UNICAST:         #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_UNICAST
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_LABELED_UNICAST: #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_LABELED_UNICAST
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_UNICAST:         #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_UNICAST
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_EVPN:           #OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_EVPN
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_VPLS:           #OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_VPLS
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_MULTICAST: #OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_MULTICAST
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_UNICAST:   #OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_UNICAST
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_MULTICAST: #OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_MULTICAST
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_UNICAST:   #OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_UNICAST
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE:            #OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_SPF:        #OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_SPF
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_VPN:        #OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_VPN
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV4:     #OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV4
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV6:     #OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV6
-	OpenconfigBgpTypes_AFI_SAFI_TYPE_VPNV4_FLOWSPEC:       #OpenconfigBgpTypes_AFI_SAFI_TYPE_VPNV4_FLOWSPEC
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_UNSET?:                #OpenconfigBgpTypes_AFI_SAFI_TYPE_UNSET
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_FLOWSPEC?:        #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_FLOWSPEC
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_LABELED_UNICAST?: #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_LABELED_UNICAST
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_UNICAST?:         #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_UNICAST
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_LABELED_UNICAST?: #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_LABELED_UNICAST
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_UNICAST?:         #OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_UNICAST
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_EVPN?:           #OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_EVPN
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_VPLS?:           #OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_VPLS
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_MULTICAST?: #OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_MULTICAST
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_UNICAST?:   #OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_UNICAST
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_MULTICAST?: #OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_MULTICAST
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_UNICAST?:   #OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_UNICAST
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE?:            #OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_SPF?:        #OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_SPF
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_VPN?:        #OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_VPN
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV4?:     #OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV4
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV6?:     #OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV6
+	OpenconfigBgpTypes_AFI_SAFI_TYPE_VPNV4_FLOWSPEC?:       #OpenconfigBgpTypes_AFI_SAFI_TYPE_VPNV4_FLOWSPEC
 }
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_UNSET: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 0
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_UNSET: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "UNSET"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_FLOWSPEC: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 1
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_FLOWSPEC: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "IPV4_FLOWSPEC"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_LABELED_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 2
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_LABELED_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "IPV4_LABELED_UNICAST"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 3
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "IPV4_UNICAST"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_LABELED_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 4
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_LABELED_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "IPV6_LABELED_UNICAST"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 5
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV6_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "IPV6_UNICAST"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_EVPN: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 6
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_EVPN: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "L2VPN_EVPN"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_VPLS: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 7
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_L2VPN_VPLS: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "L2VPN_VPLS"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_MULTICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 8
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_MULTICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "L3VPN_IPV4_MULTICAST"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 9
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV4_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "L3VPN_IPV4_UNICAST"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_MULTICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 10
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_MULTICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "L3VPN_IPV6_MULTICAST"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 11
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_L3VPN_IPV6_UNICAST: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "L3VPN_IPV6_UNICAST"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 12
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "LINKSTATE"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_SPF: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 13
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_SPF: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "LINKSTATE_SPF"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_VPN: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 14
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_LINKSTATE_VPN: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "LINKSTATE_VPN"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV4: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 15
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV4: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "SRTE_POLICY_IPV4"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV6: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 16
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_SRTE_POLICY_IPV6: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "SRTE_POLICY_IPV6"
 
-#OpenconfigBgpTypes_AFI_SAFI_TYPE_VPNV4_FLOWSPEC: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & 17
+#OpenconfigBgpTypes_AFI_SAFI_TYPE_VPNV4_FLOWSPEC: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE & "VPNV4_FLOWSPEC"
+
+#E_OpenconfigBgp_CommunityType: string
 
 #enumE_OpenconfigBgp_CommunityType:
 	#OpenconfigBgp_CommunityType_UNSET |
@@ -8423,22 +8452,24 @@ import "strings"
 	#OpenconfigBgp_CommunityType_NONE
 
 #values_E_OpenconfigBgp_CommunityType: {
-	OpenconfigBgp_CommunityType_UNSET:    #OpenconfigBgp_CommunityType_UNSET
-	OpenconfigBgp_CommunityType_STANDARD: #OpenconfigBgp_CommunityType_STANDARD
-	OpenconfigBgp_CommunityType_EXTENDED: #OpenconfigBgp_CommunityType_EXTENDED
-	OpenconfigBgp_CommunityType_BOTH:     #OpenconfigBgp_CommunityType_BOTH
-	OpenconfigBgp_CommunityType_NONE:     #OpenconfigBgp_CommunityType_NONE
+	OpenconfigBgp_CommunityType_UNSET?:    #OpenconfigBgp_CommunityType_UNSET
+	OpenconfigBgp_CommunityType_STANDARD?: #OpenconfigBgp_CommunityType_STANDARD
+	OpenconfigBgp_CommunityType_EXTENDED?: #OpenconfigBgp_CommunityType_EXTENDED
+	OpenconfigBgp_CommunityType_BOTH?:     #OpenconfigBgp_CommunityType_BOTH
+	OpenconfigBgp_CommunityType_NONE?:     #OpenconfigBgp_CommunityType_NONE
 }
 
-#OpenconfigBgp_CommunityType_UNSET: #E_OpenconfigBgp_CommunityType & 0
+#OpenconfigBgp_CommunityType_UNSET: #E_OpenconfigBgp_CommunityType & "UNSET"
 
-#OpenconfigBgp_CommunityType_STANDARD: #E_OpenconfigBgp_CommunityType & 1
+#OpenconfigBgp_CommunityType_STANDARD: #E_OpenconfigBgp_CommunityType & "STANDARD"
 
-#OpenconfigBgp_CommunityType_EXTENDED: #E_OpenconfigBgp_CommunityType & 2
+#OpenconfigBgp_CommunityType_EXTENDED: #E_OpenconfigBgp_CommunityType & "EXTENDED"
 
-#OpenconfigBgp_CommunityType_BOTH: #E_OpenconfigBgp_CommunityType & 3
+#OpenconfigBgp_CommunityType_BOTH: #E_OpenconfigBgp_CommunityType & "BOTH"
 
-#OpenconfigBgp_CommunityType_NONE: #E_OpenconfigBgp_CommunityType & 4
+#OpenconfigBgp_CommunityType_NONE: #E_OpenconfigBgp_CommunityType & "NONE"
+
+#E_OpenconfigBgp_PeerType: string
 
 #enumE_OpenconfigBgp_PeerType:
 	#OpenconfigBgp_PeerType_UNSET |
@@ -8446,16 +8477,18 @@ import "strings"
 	#OpenconfigBgp_PeerType_EXTERNAL
 
 #values_E_OpenconfigBgp_PeerType: {
-	OpenconfigBgp_PeerType_UNSET:    #OpenconfigBgp_PeerType_UNSET
-	OpenconfigBgp_PeerType_INTERNAL: #OpenconfigBgp_PeerType_INTERNAL
-	OpenconfigBgp_PeerType_EXTERNAL: #OpenconfigBgp_PeerType_EXTERNAL
+	OpenconfigBgp_PeerType_UNSET?:    #OpenconfigBgp_PeerType_UNSET
+	OpenconfigBgp_PeerType_INTERNAL?: #OpenconfigBgp_PeerType_INTERNAL
+	OpenconfigBgp_PeerType_EXTERNAL?: #OpenconfigBgp_PeerType_EXTERNAL
 }
 
-#OpenconfigBgp_PeerType_UNSET: #E_OpenconfigBgp_PeerType & 0
+#OpenconfigBgp_PeerType_UNSET: #E_OpenconfigBgp_PeerType & "UNSET"
 
-#OpenconfigBgp_PeerType_INTERNAL: #E_OpenconfigBgp_PeerType & 1
+#OpenconfigBgp_PeerType_INTERNAL: #E_OpenconfigBgp_PeerType & "INTERNAL"
 
-#OpenconfigBgp_PeerType_EXTERNAL: #E_OpenconfigBgp_PeerType & 2
+#OpenconfigBgp_PeerType_EXTERNAL: #E_OpenconfigBgp_PeerType & "EXTERNAL"
+
+#E_OpenconfigBgp_RemovePrivateAsOption: string
 
 #enumE_OpenconfigBgp_RemovePrivateAsOption:
 	#OpenconfigBgp_RemovePrivateAsOption_UNSET |
@@ -8463,16 +8496,18 @@ import "strings"
 	#OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REPLACE_ALL
 
 #values_E_OpenconfigBgp_RemovePrivateAsOption: {
-	OpenconfigBgp_RemovePrivateAsOption_UNSET:                  #OpenconfigBgp_RemovePrivateAsOption_UNSET
-	OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REMOVE_ALL:  #OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REMOVE_ALL
-	OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REPLACE_ALL: #OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REPLACE_ALL
+	OpenconfigBgp_RemovePrivateAsOption_UNSET?:                  #OpenconfigBgp_RemovePrivateAsOption_UNSET
+	OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REMOVE_ALL?:  #OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REMOVE_ALL
+	OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REPLACE_ALL?: #OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REPLACE_ALL
 }
 
-#OpenconfigBgp_RemovePrivateAsOption_UNSET: #E_OpenconfigBgp_RemovePrivateAsOption & 0
+#OpenconfigBgp_RemovePrivateAsOption_UNSET: #E_OpenconfigBgp_RemovePrivateAsOption & "UNSET"
 
-#OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REMOVE_ALL: #E_OpenconfigBgp_RemovePrivateAsOption & 1
+#OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REMOVE_ALL: #E_OpenconfigBgp_RemovePrivateAsOption & "PRIVATE_AS_REMOVE_ALL"
 
-#OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REPLACE_ALL: #E_OpenconfigBgp_RemovePrivateAsOption & 2
+#OpenconfigBgp_RemovePrivateAsOption_PRIVATE_AS_REPLACE_ALL: #E_OpenconfigBgp_RemovePrivateAsOption & "PRIVATE_AS_REPLACE_ALL"
+
+#E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE: string
 
 #enumE_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE:
 	#OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_UNSET |
@@ -8480,16 +8515,18 @@ import "strings"
 	#OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_SINGLE_ACTIVE
 
 #values_E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE: {
-	OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_UNSET:         #OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_UNSET
-	OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_ALL_ACTIVE:    #OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_ALL_ACTIVE
-	OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_SINGLE_ACTIVE: #OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_SINGLE_ACTIVE
+	OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_UNSET?:         #OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_UNSET
+	OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_ALL_ACTIVE?:    #OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_ALL_ACTIVE
+	OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_SINGLE_ACTIVE?: #OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_SINGLE_ACTIVE
 }
 
-#OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_UNSET: #E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE & 0
+#OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_UNSET: #E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE & "UNSET"
 
-#OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_ALL_ACTIVE: #E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE & 1
+#OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_ALL_ACTIVE: #E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE & "ALL_ACTIVE"
 
-#OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_SINGLE_ACTIVE: #E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE & 2
+#OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE_SINGLE_ACTIVE: #E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE & "SINGLE_ACTIVE"
+
+#E_OpenconfigEvpnTypes_EVPN_TYPE: string
 
 #enumE_OpenconfigEvpnTypes_EVPN_TYPE:
 	#OpenconfigEvpnTypes_EVPN_TYPE_UNSET |
@@ -8498,19 +8535,21 @@ import "strings"
 	#OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BUNDLE
 
 #values_E_OpenconfigEvpnTypes_EVPN_TYPE: {
-	OpenconfigEvpnTypes_EVPN_TYPE_UNSET:       #OpenconfigEvpnTypes_EVPN_TYPE_UNSET
-	OpenconfigEvpnTypes_EVPN_TYPE_VLAN_AWARE:  #OpenconfigEvpnTypes_EVPN_TYPE_VLAN_AWARE
-	OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BASED:  #OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BASED
-	OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BUNDLE: #OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BUNDLE
+	OpenconfigEvpnTypes_EVPN_TYPE_UNSET?:       #OpenconfigEvpnTypes_EVPN_TYPE_UNSET
+	OpenconfigEvpnTypes_EVPN_TYPE_VLAN_AWARE?:  #OpenconfigEvpnTypes_EVPN_TYPE_VLAN_AWARE
+	OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BASED?:  #OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BASED
+	OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BUNDLE?: #OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BUNDLE
 }
 
-#OpenconfigEvpnTypes_EVPN_TYPE_UNSET: #E_OpenconfigEvpnTypes_EVPN_TYPE & 0
+#OpenconfigEvpnTypes_EVPN_TYPE_UNSET: #E_OpenconfigEvpnTypes_EVPN_TYPE & "UNSET"
 
-#OpenconfigEvpnTypes_EVPN_TYPE_VLAN_AWARE: #E_OpenconfigEvpnTypes_EVPN_TYPE & 1
+#OpenconfigEvpnTypes_EVPN_TYPE_VLAN_AWARE: #E_OpenconfigEvpnTypes_EVPN_TYPE & "VLAN_AWARE"
 
-#OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BASED: #E_OpenconfigEvpnTypes_EVPN_TYPE & 2
+#OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BASED: #E_OpenconfigEvpnTypes_EVPN_TYPE & "VLAN_BASED"
 
-#OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BUNDLE: #E_OpenconfigEvpnTypes_EVPN_TYPE & 3
+#OpenconfigEvpnTypes_EVPN_TYPE_VLAN_BUNDLE: #E_OpenconfigEvpnTypes_EVPN_TYPE & "VLAN_BUNDLE"
+
+#E_OpenconfigEvpn_EsiType: string
 
 #enumE_OpenconfigEvpn_EsiType:
 	#OpenconfigEvpn_EsiType_UNSET |
@@ -8522,28 +8561,30 @@ import "strings"
 	#OpenconfigEvpn_EsiType_TYPE_5_AS_BASED
 
 #values_E_OpenconfigEvpn_EsiType: {
-	OpenconfigEvpn_EsiType_UNSET:                        #OpenconfigEvpn_EsiType_UNSET
-	OpenconfigEvpn_EsiType_TYPE_0_OPERATOR_CONFIGURED:   #OpenconfigEvpn_EsiType_TYPE_0_OPERATOR_CONFIGURED
-	OpenconfigEvpn_EsiType_TYPE_1_LACP_BASED:            #OpenconfigEvpn_EsiType_TYPE_1_LACP_BASED
-	OpenconfigEvpn_EsiType_TYPE_2_BRIDGE_PROTOCOL_BASED: #OpenconfigEvpn_EsiType_TYPE_2_BRIDGE_PROTOCOL_BASED
-	OpenconfigEvpn_EsiType_TYPE_3_MAC_BASED:             #OpenconfigEvpn_EsiType_TYPE_3_MAC_BASED
-	OpenconfigEvpn_EsiType_TYPE_4_ROUTER_ID_BASED:       #OpenconfigEvpn_EsiType_TYPE_4_ROUTER_ID_BASED
-	OpenconfigEvpn_EsiType_TYPE_5_AS_BASED:              #OpenconfigEvpn_EsiType_TYPE_5_AS_BASED
+	OpenconfigEvpn_EsiType_UNSET?:                        #OpenconfigEvpn_EsiType_UNSET
+	OpenconfigEvpn_EsiType_TYPE_0_OPERATOR_CONFIGURED?:   #OpenconfigEvpn_EsiType_TYPE_0_OPERATOR_CONFIGURED
+	OpenconfigEvpn_EsiType_TYPE_1_LACP_BASED?:            #OpenconfigEvpn_EsiType_TYPE_1_LACP_BASED
+	OpenconfigEvpn_EsiType_TYPE_2_BRIDGE_PROTOCOL_BASED?: #OpenconfigEvpn_EsiType_TYPE_2_BRIDGE_PROTOCOL_BASED
+	OpenconfigEvpn_EsiType_TYPE_3_MAC_BASED?:             #OpenconfigEvpn_EsiType_TYPE_3_MAC_BASED
+	OpenconfigEvpn_EsiType_TYPE_4_ROUTER_ID_BASED?:       #OpenconfigEvpn_EsiType_TYPE_4_ROUTER_ID_BASED
+	OpenconfigEvpn_EsiType_TYPE_5_AS_BASED?:              #OpenconfigEvpn_EsiType_TYPE_5_AS_BASED
 }
 
-#OpenconfigEvpn_EsiType_UNSET: #E_OpenconfigEvpn_EsiType & 0
+#OpenconfigEvpn_EsiType_UNSET: #E_OpenconfigEvpn_EsiType & "UNSET"
 
-#OpenconfigEvpn_EsiType_TYPE_0_OPERATOR_CONFIGURED: #E_OpenconfigEvpn_EsiType & 1
+#OpenconfigEvpn_EsiType_TYPE_0_OPERATOR_CONFIGURED: #E_OpenconfigEvpn_EsiType & "TYPE_0_OPERATOR_CONFIGURED"
 
-#OpenconfigEvpn_EsiType_TYPE_1_LACP_BASED: #E_OpenconfigEvpn_EsiType & 2
+#OpenconfigEvpn_EsiType_TYPE_1_LACP_BASED: #E_OpenconfigEvpn_EsiType & "TYPE_1_LACP_BASED"
 
-#OpenconfigEvpn_EsiType_TYPE_2_BRIDGE_PROTOCOL_BASED: #E_OpenconfigEvpn_EsiType & 3
+#OpenconfigEvpn_EsiType_TYPE_2_BRIDGE_PROTOCOL_BASED: #E_OpenconfigEvpn_EsiType & "TYPE_2_BRIDGE_PROTOCOL_BASED"
 
-#OpenconfigEvpn_EsiType_TYPE_3_MAC_BASED: #E_OpenconfigEvpn_EsiType & 4
+#OpenconfigEvpn_EsiType_TYPE_3_MAC_BASED: #E_OpenconfigEvpn_EsiType & "TYPE_3_MAC_BASED"
 
-#OpenconfigEvpn_EsiType_TYPE_4_ROUTER_ID_BASED: #E_OpenconfigEvpn_EsiType & 5
+#OpenconfigEvpn_EsiType_TYPE_4_ROUTER_ID_BASED: #E_OpenconfigEvpn_EsiType & "TYPE_4_ROUTER_ID_BASED"
 
-#OpenconfigEvpn_EsiType_TYPE_5_AS_BASED: #E_OpenconfigEvpn_EsiType & 6
+#OpenconfigEvpn_EsiType_TYPE_5_AS_BASED: #E_OpenconfigEvpn_EsiType & "TYPE_5_AS_BASED"
+
+#E_OpenconfigIfAggregate_AggregationType: string
 
 #enumE_OpenconfigIfAggregate_AggregationType:
 	#OpenconfigIfAggregate_AggregationType_UNSET |
@@ -8551,16 +8592,18 @@ import "strings"
 	#OpenconfigIfAggregate_AggregationType_STATIC
 
 #values_E_OpenconfigIfAggregate_AggregationType: {
-	OpenconfigIfAggregate_AggregationType_UNSET:  #OpenconfigIfAggregate_AggregationType_UNSET
-	OpenconfigIfAggregate_AggregationType_LACP:   #OpenconfigIfAggregate_AggregationType_LACP
-	OpenconfigIfAggregate_AggregationType_STATIC: #OpenconfigIfAggregate_AggregationType_STATIC
+	OpenconfigIfAggregate_AggregationType_UNSET?:  #OpenconfigIfAggregate_AggregationType_UNSET
+	OpenconfigIfAggregate_AggregationType_LACP?:   #OpenconfigIfAggregate_AggregationType_LACP
+	OpenconfigIfAggregate_AggregationType_STATIC?: #OpenconfigIfAggregate_AggregationType_STATIC
 }
 
-#OpenconfigIfAggregate_AggregationType_UNSET: #E_OpenconfigIfAggregate_AggregationType & 0
+#OpenconfigIfAggregate_AggregationType_UNSET: #E_OpenconfigIfAggregate_AggregationType & "UNSET"
 
-#OpenconfigIfAggregate_AggregationType_LACP: #E_OpenconfigIfAggregate_AggregationType & 1
+#OpenconfigIfAggregate_AggregationType_LACP: #E_OpenconfigIfAggregate_AggregationType & "LACP"
 
-#OpenconfigIfAggregate_AggregationType_STATIC: #E_OpenconfigIfAggregate_AggregationType & 2
+#OpenconfigIfAggregate_AggregationType_STATIC: #E_OpenconfigIfAggregate_AggregationType & "STATIC"
+
+#E_OpenconfigIfEthernet_ETHERNET_SPEED: string
 
 #enumE_OpenconfigIfEthernet_ETHERNET_SPEED:
 	#OpenconfigIfEthernet_ETHERNET_SPEED_UNSET |
@@ -8585,67 +8628,69 @@ import "strings"
 	#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_UNKNOWN
 
 #values_E_OpenconfigIfEthernet_ETHERNET_SPEED: {
-	OpenconfigIfEthernet_ETHERNET_SPEED_UNSET:             #OpenconfigIfEthernet_ETHERNET_SPEED_UNSET
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB_2LANE: #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB_2LANE
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100MB:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100MB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10GB:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10MB:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10MB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_1GB:         #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_1GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_4LANE: #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_4LANE
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_8LANE: #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_8LANE
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_2500MB:      #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_2500MB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_25GB:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_25GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_400GB:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_400GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_40GB:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_40GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB_1LANE:  #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB_1LANE
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_5GB:         #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_5GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_600GB:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_600GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_800GB:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_800GB
-	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_UNKNOWN:     #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_UNKNOWN
+	OpenconfigIfEthernet_ETHERNET_SPEED_UNSET?:             #OpenconfigIfEthernet_ETHERNET_SPEED_UNSET
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB?:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB_2LANE?: #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB_2LANE
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100MB?:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100MB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10GB?:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10MB?:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10MB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_1GB?:         #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_1GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB?:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_4LANE?: #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_4LANE
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_8LANE?: #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_8LANE
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_2500MB?:      #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_2500MB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_25GB?:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_25GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_400GB?:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_400GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_40GB?:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_40GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB?:        #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB_1LANE?:  #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB_1LANE
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_5GB?:         #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_5GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_600GB?:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_600GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_800GB?:       #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_800GB
+	OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_UNKNOWN?:     #OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_UNKNOWN
 }
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_UNSET: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 0
+#OpenconfigIfEthernet_ETHERNET_SPEED_UNSET: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "UNSET"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 1
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_100GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB_2LANE: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 2
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100GB_2LANE: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_100GB_2LANE"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100MB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 3
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_100MB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_100MB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 4
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_10GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10MB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 5
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_10MB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_10MB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_1GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 6
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_1GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_1GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 7
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_200GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_4LANE: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 8
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_4LANE: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_200GB_4LANE"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_8LANE: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 9
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_200GB_8LANE: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_200GB_8LANE"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_2500MB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 10
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_2500MB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_2500MB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_25GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 11
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_25GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_25GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_400GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 12
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_400GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_400GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_40GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 13
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_40GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_40GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 14
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_50GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB_1LANE: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 15
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_50GB_1LANE: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_50GB_1LANE"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_5GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 16
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_5GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_5GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_600GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 17
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_600GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_600GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_800GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 18
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_800GB: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_800GB"
 
-#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_UNKNOWN: #E_OpenconfigIfEthernet_ETHERNET_SPEED & 19
+#OpenconfigIfEthernet_ETHERNET_SPEED_SPEED_UNKNOWN: #E_OpenconfigIfEthernet_ETHERNET_SPEED & "SPEED_UNKNOWN"
+
+#E_OpenconfigIfEthernet_INTERFACE_FEC: string
 
 #enumE_OpenconfigIfEthernet_INTERFACE_FEC:
 	#OpenconfigIfEthernet_INTERFACE_FEC_UNSET |
@@ -8656,25 +8701,27 @@ import "strings"
 	#OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544_2X_INTERLEAVE
 
 #values_E_OpenconfigIfEthernet_INTERFACE_FEC: {
-	OpenconfigIfEthernet_INTERFACE_FEC_UNSET:                   #OpenconfigIfEthernet_INTERFACE_FEC_UNSET
-	OpenconfigIfEthernet_INTERFACE_FEC_FEC_DISABLED:            #OpenconfigIfEthernet_INTERFACE_FEC_FEC_DISABLED
-	OpenconfigIfEthernet_INTERFACE_FEC_FEC_FC:                  #OpenconfigIfEthernet_INTERFACE_FEC_FEC_FC
-	OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS528:               #OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS528
-	OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544:               #OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544
-	OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544_2X_INTERLEAVE: #OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544_2X_INTERLEAVE
+	OpenconfigIfEthernet_INTERFACE_FEC_UNSET?:                   #OpenconfigIfEthernet_INTERFACE_FEC_UNSET
+	OpenconfigIfEthernet_INTERFACE_FEC_FEC_DISABLED?:            #OpenconfigIfEthernet_INTERFACE_FEC_FEC_DISABLED
+	OpenconfigIfEthernet_INTERFACE_FEC_FEC_FC?:                  #OpenconfigIfEthernet_INTERFACE_FEC_FEC_FC
+	OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS528?:               #OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS528
+	OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544?:               #OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544
+	OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544_2X_INTERLEAVE?: #OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544_2X_INTERLEAVE
 }
 
-#OpenconfigIfEthernet_INTERFACE_FEC_UNSET: #E_OpenconfigIfEthernet_INTERFACE_FEC & 0
+#OpenconfigIfEthernet_INTERFACE_FEC_UNSET: #E_OpenconfigIfEthernet_INTERFACE_FEC & "UNSET"
 
-#OpenconfigIfEthernet_INTERFACE_FEC_FEC_DISABLED: #E_OpenconfigIfEthernet_INTERFACE_FEC & 1
+#OpenconfigIfEthernet_INTERFACE_FEC_FEC_DISABLED: #E_OpenconfigIfEthernet_INTERFACE_FEC & "FEC_DISABLED"
 
-#OpenconfigIfEthernet_INTERFACE_FEC_FEC_FC: #E_OpenconfigIfEthernet_INTERFACE_FEC & 2
+#OpenconfigIfEthernet_INTERFACE_FEC_FEC_FC: #E_OpenconfigIfEthernet_INTERFACE_FEC & "FEC_FC"
 
-#OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS528: #E_OpenconfigIfEthernet_INTERFACE_FEC & 3
+#OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS528: #E_OpenconfigIfEthernet_INTERFACE_FEC & "FEC_RS528"
 
-#OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544: #E_OpenconfigIfEthernet_INTERFACE_FEC & 4
+#OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544: #E_OpenconfigIfEthernet_INTERFACE_FEC & "FEC_RS544"
 
-#OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544_2X_INTERLEAVE: #E_OpenconfigIfEthernet_INTERFACE_FEC & 5
+#OpenconfigIfEthernet_INTERFACE_FEC_FEC_RS544_2X_INTERLEAVE: #E_OpenconfigIfEthernet_INTERFACE_FEC & "FEC_RS544_2X_INTERLEAVE"
+
+#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode: string
 
 #enumE_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode:
 	#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_UNSET |
@@ -8682,16 +8729,18 @@ import "strings"
 	#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_HALF
 
 #values_E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode: {
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_UNSET: #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_UNSET
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_FULL:  #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_FULL
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_HALF:  #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_HALF
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_UNSET?: #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_UNSET
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_FULL?:  #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_FULL
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_HALF?:  #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_HALF
 }
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_UNSET: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode & 0
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_UNSET: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode & "UNSET"
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_FULL: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode & 1
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_FULL: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode & "FULL"
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_HALF: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode & 2
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode_HALF: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode & "HALF"
+
+#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding: string
 
 #enumE_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding:
 	#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_UNSET |
@@ -8704,31 +8753,33 @@ import "strings"
 	#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_G709
 
 #values_E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding: {
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_UNSET:             #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_UNSET
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_DEFAULT:  #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_DEFAULT
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25:     #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25_BCH: #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25_BCH
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD20:     #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD20
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD15:     #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD15
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_HD7:      #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_HD7
-	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_G709:     #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_G709
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_UNSET?:             #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_UNSET
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_DEFAULT?:  #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_DEFAULT
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25?:     #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25_BCH?: #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25_BCH
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD20?:     #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD20
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD15?:     #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD15
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_HD7?:      #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_HD7
+	OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_G709?:     #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_G709
 }
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_UNSET: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & 0
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_UNSET: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & "UNSET"
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_DEFAULT: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & 1
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_DEFAULT: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & "COHERENT_DEFAULT"
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & 2
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & "COHERENT_SD25"
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25_BCH: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & 3
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD25_BCH: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & "COHERENT_SD25_BCH"
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD20: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & 4
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD20: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & "COHERENT_SD20"
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD15: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & 5
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_SD15: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & "COHERENT_SD15"
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_HD7: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & 6
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_HD7: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & "COHERENT_HD7"
 
-#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_G709: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & 7
+#OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding_COHERENT_G709: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding & "COHERENT_G709"
+
+#E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode: string
 
 #enumE_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode:
 	#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_UNSET |
@@ -8737,19 +8788,21 @@ import "strings"
 	#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_ALL
 
 #values_E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode: {
-	OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_UNSET:       #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_UNSET
-	OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_DISABLE:     #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_DISABLE
-	OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_REMOTE_ONLY: #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_REMOTE_ONLY
-	OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_ALL:         #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_ALL
+	OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_UNSET?:       #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_UNSET
+	OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_DISABLE?:     #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_DISABLE
+	OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_REMOTE_ONLY?: #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_REMOTE_ONLY
+	OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_ALL?:         #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_ALL
 }
 
-#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_UNSET: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode & 0
+#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_UNSET: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode & "UNSET"
 
-#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_DISABLE: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode & 1
+#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_DISABLE: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode & "DISABLE"
 
-#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_REMOTE_ONLY: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode & 2
+#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_REMOTE_ONLY: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode & "REMOTE_ONLY"
 
-#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_ALL: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode & 3
+#OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode_ALL: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode & "ALL"
+
+#E_OpenconfigIsisTypes_AFI_TYPE: string
 
 #enumE_OpenconfigIsisTypes_AFI_TYPE:
 	#OpenconfigIsisTypes_AFI_TYPE_UNSET |
@@ -8757,16 +8810,18 @@ import "strings"
 	#OpenconfigIsisTypes_AFI_TYPE_IPV6
 
 #values_E_OpenconfigIsisTypes_AFI_TYPE: {
-	OpenconfigIsisTypes_AFI_TYPE_UNSET: #OpenconfigIsisTypes_AFI_TYPE_UNSET
-	OpenconfigIsisTypes_AFI_TYPE_IPV4:  #OpenconfigIsisTypes_AFI_TYPE_IPV4
-	OpenconfigIsisTypes_AFI_TYPE_IPV6:  #OpenconfigIsisTypes_AFI_TYPE_IPV6
+	OpenconfigIsisTypes_AFI_TYPE_UNSET?: #OpenconfigIsisTypes_AFI_TYPE_UNSET
+	OpenconfigIsisTypes_AFI_TYPE_IPV4?:  #OpenconfigIsisTypes_AFI_TYPE_IPV4
+	OpenconfigIsisTypes_AFI_TYPE_IPV6?:  #OpenconfigIsisTypes_AFI_TYPE_IPV6
 }
 
-#OpenconfigIsisTypes_AFI_TYPE_UNSET: #E_OpenconfigIsisTypes_AFI_TYPE & 0
+#OpenconfigIsisTypes_AFI_TYPE_UNSET: #E_OpenconfigIsisTypes_AFI_TYPE & "UNSET"
 
-#OpenconfigIsisTypes_AFI_TYPE_IPV4: #E_OpenconfigIsisTypes_AFI_TYPE & 1
+#OpenconfigIsisTypes_AFI_TYPE_IPV4: #E_OpenconfigIsisTypes_AFI_TYPE & "IPV4"
 
-#OpenconfigIsisTypes_AFI_TYPE_IPV6: #E_OpenconfigIsisTypes_AFI_TYPE & 2
+#OpenconfigIsisTypes_AFI_TYPE_IPV6: #E_OpenconfigIsisTypes_AFI_TYPE & "IPV6"
+
+#E_OpenconfigIsisTypes_AUTH_MODE: string
 
 #enumE_OpenconfigIsisTypes_AUTH_MODE:
 	#OpenconfigIsisTypes_AUTH_MODE_UNSET |
@@ -8774,16 +8829,18 @@ import "strings"
 	#OpenconfigIsisTypes_AUTH_MODE_TEXT
 
 #values_E_OpenconfigIsisTypes_AUTH_MODE: {
-	OpenconfigIsisTypes_AUTH_MODE_UNSET: #OpenconfigIsisTypes_AUTH_MODE_UNSET
-	OpenconfigIsisTypes_AUTH_MODE_MD5:   #OpenconfigIsisTypes_AUTH_MODE_MD5
-	OpenconfigIsisTypes_AUTH_MODE_TEXT:  #OpenconfigIsisTypes_AUTH_MODE_TEXT
+	OpenconfigIsisTypes_AUTH_MODE_UNSET?: #OpenconfigIsisTypes_AUTH_MODE_UNSET
+	OpenconfigIsisTypes_AUTH_MODE_MD5?:   #OpenconfigIsisTypes_AUTH_MODE_MD5
+	OpenconfigIsisTypes_AUTH_MODE_TEXT?:  #OpenconfigIsisTypes_AUTH_MODE_TEXT
 }
 
-#OpenconfigIsisTypes_AUTH_MODE_UNSET: #E_OpenconfigIsisTypes_AUTH_MODE & 0
+#OpenconfigIsisTypes_AUTH_MODE_UNSET: #E_OpenconfigIsisTypes_AUTH_MODE & "UNSET"
 
-#OpenconfigIsisTypes_AUTH_MODE_MD5: #E_OpenconfigIsisTypes_AUTH_MODE & 1
+#OpenconfigIsisTypes_AUTH_MODE_MD5: #E_OpenconfigIsisTypes_AUTH_MODE & "MD5"
 
-#OpenconfigIsisTypes_AUTH_MODE_TEXT: #E_OpenconfigIsisTypes_AUTH_MODE & 2
+#OpenconfigIsisTypes_AUTH_MODE_TEXT: #E_OpenconfigIsisTypes_AUTH_MODE & "TEXT"
+
+#E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE: string
 
 #enumE_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE:
 	#OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_UNSET |
@@ -8791,16 +8848,18 @@ import "strings"
 	#OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_SYSTEM
 
 #values_E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE: {
-	OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_UNSET:           #OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_UNSET
-	OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_BGP:    #OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_BGP
-	OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_SYSTEM: #OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_SYSTEM
+	OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_UNSET?:           #OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_UNSET
+	OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_BGP?:    #OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_BGP
+	OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_SYSTEM?: #OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_SYSTEM
 }
 
-#OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_UNSET: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE & 0
+#OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_UNSET: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE & "UNSET"
 
-#OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_BGP: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE & 1
+#OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_BGP: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE & "WAIT_FOR_BGP"
 
-#OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_SYSTEM: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE & 2
+#OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE_WAIT_FOR_SYSTEM: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE & "WAIT_FOR_SYSTEM"
+
+#E_OpenconfigIsisTypes_SAFI_TYPE: string
 
 #enumE_OpenconfigIsisTypes_SAFI_TYPE:
 	#OpenconfigIsisTypes_SAFI_TYPE_UNSET |
@@ -8808,16 +8867,18 @@ import "strings"
 	#OpenconfigIsisTypes_SAFI_TYPE_UNICAST
 
 #values_E_OpenconfigIsisTypes_SAFI_TYPE: {
-	OpenconfigIsisTypes_SAFI_TYPE_UNSET:     #OpenconfigIsisTypes_SAFI_TYPE_UNSET
-	OpenconfigIsisTypes_SAFI_TYPE_MULTICAST: #OpenconfigIsisTypes_SAFI_TYPE_MULTICAST
-	OpenconfigIsisTypes_SAFI_TYPE_UNICAST:   #OpenconfigIsisTypes_SAFI_TYPE_UNICAST
+	OpenconfigIsisTypes_SAFI_TYPE_UNSET?:     #OpenconfigIsisTypes_SAFI_TYPE_UNSET
+	OpenconfigIsisTypes_SAFI_TYPE_MULTICAST?: #OpenconfigIsisTypes_SAFI_TYPE_MULTICAST
+	OpenconfigIsisTypes_SAFI_TYPE_UNICAST?:   #OpenconfigIsisTypes_SAFI_TYPE_UNICAST
 }
 
-#OpenconfigIsisTypes_SAFI_TYPE_UNSET: #E_OpenconfigIsisTypes_SAFI_TYPE & 0
+#OpenconfigIsisTypes_SAFI_TYPE_UNSET: #E_OpenconfigIsisTypes_SAFI_TYPE & "UNSET"
 
-#OpenconfigIsisTypes_SAFI_TYPE_MULTICAST: #E_OpenconfigIsisTypes_SAFI_TYPE & 1
+#OpenconfigIsisTypes_SAFI_TYPE_MULTICAST: #E_OpenconfigIsisTypes_SAFI_TYPE & "MULTICAST"
 
-#OpenconfigIsisTypes_SAFI_TYPE_UNICAST: #E_OpenconfigIsisTypes_SAFI_TYPE & 2
+#OpenconfigIsisTypes_SAFI_TYPE_UNICAST: #E_OpenconfigIsisTypes_SAFI_TYPE & "UNICAST"
+
+#E_OpenconfigIsis_CircuitType: string
 
 #enumE_OpenconfigIsis_CircuitType:
 	#OpenconfigIsis_CircuitType_UNSET |
@@ -8825,16 +8886,18 @@ import "strings"
 	#OpenconfigIsis_CircuitType_BROADCAST
 
 #values_E_OpenconfigIsis_CircuitType: {
-	OpenconfigIsis_CircuitType_UNSET:          #OpenconfigIsis_CircuitType_UNSET
-	OpenconfigIsis_CircuitType_POINT_TO_POINT: #OpenconfigIsis_CircuitType_POINT_TO_POINT
-	OpenconfigIsis_CircuitType_BROADCAST:      #OpenconfigIsis_CircuitType_BROADCAST
+	OpenconfigIsis_CircuitType_UNSET?:          #OpenconfigIsis_CircuitType_UNSET
+	OpenconfigIsis_CircuitType_POINT_TO_POINT?: #OpenconfigIsis_CircuitType_POINT_TO_POINT
+	OpenconfigIsis_CircuitType_BROADCAST?:      #OpenconfigIsis_CircuitType_BROADCAST
 }
 
-#OpenconfigIsis_CircuitType_UNSET: #E_OpenconfigIsis_CircuitType & 0
+#OpenconfigIsis_CircuitType_UNSET: #E_OpenconfigIsis_CircuitType & "UNSET"
 
-#OpenconfigIsis_CircuitType_POINT_TO_POINT: #E_OpenconfigIsis_CircuitType & 1
+#OpenconfigIsis_CircuitType_POINT_TO_POINT: #E_OpenconfigIsis_CircuitType & "POINT_TO_POINT"
 
-#OpenconfigIsis_CircuitType_BROADCAST: #E_OpenconfigIsis_CircuitType & 2
+#OpenconfigIsis_CircuitType_BROADCAST: #E_OpenconfigIsis_CircuitType & "BROADCAST"
+
+#E_OpenconfigIsis_HelloPaddingType: string
 
 #enumE_OpenconfigIsis_HelloPaddingType:
 	#OpenconfigIsis_HelloPaddingType_UNSET |
@@ -8844,22 +8907,24 @@ import "strings"
 	#OpenconfigIsis_HelloPaddingType_DISABLE
 
 #values_E_OpenconfigIsis_HelloPaddingType: {
-	OpenconfigIsis_HelloPaddingType_UNSET:    #OpenconfigIsis_HelloPaddingType_UNSET
-	OpenconfigIsis_HelloPaddingType_STRICT:   #OpenconfigIsis_HelloPaddingType_STRICT
-	OpenconfigIsis_HelloPaddingType_LOOSE:    #OpenconfigIsis_HelloPaddingType_LOOSE
-	OpenconfigIsis_HelloPaddingType_ADAPTIVE: #OpenconfigIsis_HelloPaddingType_ADAPTIVE
-	OpenconfigIsis_HelloPaddingType_DISABLE:  #OpenconfigIsis_HelloPaddingType_DISABLE
+	OpenconfigIsis_HelloPaddingType_UNSET?:    #OpenconfigIsis_HelloPaddingType_UNSET
+	OpenconfigIsis_HelloPaddingType_STRICT?:   #OpenconfigIsis_HelloPaddingType_STRICT
+	OpenconfigIsis_HelloPaddingType_LOOSE?:    #OpenconfigIsis_HelloPaddingType_LOOSE
+	OpenconfigIsis_HelloPaddingType_ADAPTIVE?: #OpenconfigIsis_HelloPaddingType_ADAPTIVE
+	OpenconfigIsis_HelloPaddingType_DISABLE?:  #OpenconfigIsis_HelloPaddingType_DISABLE
 }
 
-#OpenconfigIsis_HelloPaddingType_UNSET: #E_OpenconfigIsis_HelloPaddingType & 0
+#OpenconfigIsis_HelloPaddingType_UNSET: #E_OpenconfigIsis_HelloPaddingType & "UNSET"
 
-#OpenconfigIsis_HelloPaddingType_STRICT: #E_OpenconfigIsis_HelloPaddingType & 1
+#OpenconfigIsis_HelloPaddingType_STRICT: #E_OpenconfigIsis_HelloPaddingType & "STRICT"
 
-#OpenconfigIsis_HelloPaddingType_LOOSE: #E_OpenconfigIsis_HelloPaddingType & 2
+#OpenconfigIsis_HelloPaddingType_LOOSE: #E_OpenconfigIsis_HelloPaddingType & "LOOSE"
 
-#OpenconfigIsis_HelloPaddingType_ADAPTIVE: #E_OpenconfigIsis_HelloPaddingType & 3
+#OpenconfigIsis_HelloPaddingType_ADAPTIVE: #E_OpenconfigIsis_HelloPaddingType & "ADAPTIVE"
 
-#OpenconfigIsis_HelloPaddingType_DISABLE: #E_OpenconfigIsis_HelloPaddingType & 4
+#OpenconfigIsis_HelloPaddingType_DISABLE: #E_OpenconfigIsis_HelloPaddingType & "DISABLE"
+
+#E_OpenconfigIsis_LevelType: string
 
 #enumE_OpenconfigIsis_LevelType:
 	#OpenconfigIsis_LevelType_UNSET |
@@ -8868,19 +8933,21 @@ import "strings"
 	#OpenconfigIsis_LevelType_LEVEL_1_2
 
 #values_E_OpenconfigIsis_LevelType: {
-	OpenconfigIsis_LevelType_UNSET:     #OpenconfigIsis_LevelType_UNSET
-	OpenconfigIsis_LevelType_LEVEL_1:   #OpenconfigIsis_LevelType_LEVEL_1
-	OpenconfigIsis_LevelType_LEVEL_2:   #OpenconfigIsis_LevelType_LEVEL_2
-	OpenconfigIsis_LevelType_LEVEL_1_2: #OpenconfigIsis_LevelType_LEVEL_1_2
+	OpenconfigIsis_LevelType_UNSET?:     #OpenconfigIsis_LevelType_UNSET
+	OpenconfigIsis_LevelType_LEVEL_1?:   #OpenconfigIsis_LevelType_LEVEL_1
+	OpenconfigIsis_LevelType_LEVEL_2?:   #OpenconfigIsis_LevelType_LEVEL_2
+	OpenconfigIsis_LevelType_LEVEL_1_2?: #OpenconfigIsis_LevelType_LEVEL_1_2
 }
 
-#OpenconfigIsis_LevelType_UNSET: #E_OpenconfigIsis_LevelType & 0
+#OpenconfigIsis_LevelType_UNSET: #E_OpenconfigIsis_LevelType & "UNSET"
 
-#OpenconfigIsis_LevelType_LEVEL_1: #E_OpenconfigIsis_LevelType & 1
+#OpenconfigIsis_LevelType_LEVEL_1: #E_OpenconfigIsis_LevelType & "LEVEL_1"
 
-#OpenconfigIsis_LevelType_LEVEL_2: #E_OpenconfigIsis_LevelType & 2
+#OpenconfigIsis_LevelType_LEVEL_2: #E_OpenconfigIsis_LevelType & "LEVEL_2"
 
-#OpenconfigIsis_LevelType_LEVEL_1_2: #E_OpenconfigIsis_LevelType & 3
+#OpenconfigIsis_LevelType_LEVEL_1_2: #E_OpenconfigIsis_LevelType & "LEVEL_1_2"
+
+#E_OpenconfigIsis_MetricStyle: string
 
 #enumE_OpenconfigIsis_MetricStyle:
 	#OpenconfigIsis_MetricStyle_UNSET |
@@ -8888,16 +8955,18 @@ import "strings"
 	#OpenconfigIsis_MetricStyle_WIDE_METRIC
 
 #values_E_OpenconfigIsis_MetricStyle: {
-	OpenconfigIsis_MetricStyle_UNSET:         #OpenconfigIsis_MetricStyle_UNSET
-	OpenconfigIsis_MetricStyle_NARROW_METRIC: #OpenconfigIsis_MetricStyle_NARROW_METRIC
-	OpenconfigIsis_MetricStyle_WIDE_METRIC:   #OpenconfigIsis_MetricStyle_WIDE_METRIC
+	OpenconfigIsis_MetricStyle_UNSET?:         #OpenconfigIsis_MetricStyle_UNSET
+	OpenconfigIsis_MetricStyle_NARROW_METRIC?: #OpenconfigIsis_MetricStyle_NARROW_METRIC
+	OpenconfigIsis_MetricStyle_WIDE_METRIC?:   #OpenconfigIsis_MetricStyle_WIDE_METRIC
 }
 
-#OpenconfigIsis_MetricStyle_UNSET: #E_OpenconfigIsis_MetricStyle & 0
+#OpenconfigIsis_MetricStyle_UNSET: #E_OpenconfigIsis_MetricStyle & "UNSET"
 
-#OpenconfigIsis_MetricStyle_NARROW_METRIC: #E_OpenconfigIsis_MetricStyle & 1
+#OpenconfigIsis_MetricStyle_NARROW_METRIC: #E_OpenconfigIsis_MetricStyle & "NARROW_METRIC"
 
-#OpenconfigIsis_MetricStyle_WIDE_METRIC: #E_OpenconfigIsis_MetricStyle & 2
+#OpenconfigIsis_MetricStyle_WIDE_METRIC: #E_OpenconfigIsis_MetricStyle & "WIDE_METRIC"
+
+#E_OpenconfigKeychainTypes_AUTH_TYPE: string
 
 #enumE_OpenconfigKeychainTypes_AUTH_TYPE:
 	#OpenconfigKeychainTypes_AUTH_TYPE_UNSET |
@@ -8905,16 +8974,18 @@ import "strings"
 	#OpenconfigKeychainTypes_AUTH_TYPE_SIMPLE_KEY
 
 #values_E_OpenconfigKeychainTypes_AUTH_TYPE: {
-	OpenconfigKeychainTypes_AUTH_TYPE_UNSET:      #OpenconfigKeychainTypes_AUTH_TYPE_UNSET
-	OpenconfigKeychainTypes_AUTH_TYPE_KEYCHAIN:   #OpenconfigKeychainTypes_AUTH_TYPE_KEYCHAIN
-	OpenconfigKeychainTypes_AUTH_TYPE_SIMPLE_KEY: #OpenconfigKeychainTypes_AUTH_TYPE_SIMPLE_KEY
+	OpenconfigKeychainTypes_AUTH_TYPE_UNSET?:      #OpenconfigKeychainTypes_AUTH_TYPE_UNSET
+	OpenconfigKeychainTypes_AUTH_TYPE_KEYCHAIN?:   #OpenconfigKeychainTypes_AUTH_TYPE_KEYCHAIN
+	OpenconfigKeychainTypes_AUTH_TYPE_SIMPLE_KEY?: #OpenconfigKeychainTypes_AUTH_TYPE_SIMPLE_KEY
 }
 
-#OpenconfigKeychainTypes_AUTH_TYPE_UNSET: #E_OpenconfigKeychainTypes_AUTH_TYPE & 0
+#OpenconfigKeychainTypes_AUTH_TYPE_UNSET: #E_OpenconfigKeychainTypes_AUTH_TYPE & "UNSET"
 
-#OpenconfigKeychainTypes_AUTH_TYPE_KEYCHAIN: #E_OpenconfigKeychainTypes_AUTH_TYPE & 1
+#OpenconfigKeychainTypes_AUTH_TYPE_KEYCHAIN: #E_OpenconfigKeychainTypes_AUTH_TYPE & "KEYCHAIN"
 
-#OpenconfigKeychainTypes_AUTH_TYPE_SIMPLE_KEY: #E_OpenconfigKeychainTypes_AUTH_TYPE & 2
+#OpenconfigKeychainTypes_AUTH_TYPE_SIMPLE_KEY: #E_OpenconfigKeychainTypes_AUTH_TYPE & "SIMPLE_KEY"
+
+#E_OpenconfigKeychainTypes_CRYPTO_TYPE: string
 
 #enumE_OpenconfigKeychainTypes_CRYPTO_TYPE:
 	#OpenconfigKeychainTypes_CRYPTO_TYPE_UNSET |
@@ -8930,53 +9001,57 @@ import "strings"
 	#OpenconfigKeychainTypes_CRYPTO_TYPE_SHA_1
 
 #values_E_OpenconfigKeychainTypes_CRYPTO_TYPE: {
-	OpenconfigKeychainTypes_CRYPTO_TYPE_UNSET:          #OpenconfigKeychainTypes_CRYPTO_TYPE_UNSET
-	OpenconfigKeychainTypes_CRYPTO_TYPE_AES_28_CMAC_96: #OpenconfigKeychainTypes_CRYPTO_TYPE_AES_28_CMAC_96
-	OpenconfigKeychainTypes_CRYPTO_TYPE_CRYPTO_NONE:    #OpenconfigKeychainTypes_CRYPTO_TYPE_CRYPTO_NONE
-	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_MD5:       #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_MD5
-	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1:     #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1
-	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_12:  #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_12
-	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_20:  #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_20
-	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_96:  #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_96
-	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_256:   #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_256
-	OpenconfigKeychainTypes_CRYPTO_TYPE_MD5:            #OpenconfigKeychainTypes_CRYPTO_TYPE_MD5
-	OpenconfigKeychainTypes_CRYPTO_TYPE_SHA_1:          #OpenconfigKeychainTypes_CRYPTO_TYPE_SHA_1
+	OpenconfigKeychainTypes_CRYPTO_TYPE_UNSET?:          #OpenconfigKeychainTypes_CRYPTO_TYPE_UNSET
+	OpenconfigKeychainTypes_CRYPTO_TYPE_AES_28_CMAC_96?: #OpenconfigKeychainTypes_CRYPTO_TYPE_AES_28_CMAC_96
+	OpenconfigKeychainTypes_CRYPTO_TYPE_CRYPTO_NONE?:    #OpenconfigKeychainTypes_CRYPTO_TYPE_CRYPTO_NONE
+	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_MD5?:       #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_MD5
+	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1?:     #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1
+	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_12?:  #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_12
+	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_20?:  #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_20
+	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_96?:  #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_96
+	OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_256?:   #OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_256
+	OpenconfigKeychainTypes_CRYPTO_TYPE_MD5?:            #OpenconfigKeychainTypes_CRYPTO_TYPE_MD5
+	OpenconfigKeychainTypes_CRYPTO_TYPE_SHA_1?:          #OpenconfigKeychainTypes_CRYPTO_TYPE_SHA_1
 }
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_UNSET: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 0
+#OpenconfigKeychainTypes_CRYPTO_TYPE_UNSET: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "UNSET"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_AES_28_CMAC_96: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 1
+#OpenconfigKeychainTypes_CRYPTO_TYPE_AES_28_CMAC_96: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "AES_28_CMAC_96"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_CRYPTO_NONE: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 2
+#OpenconfigKeychainTypes_CRYPTO_TYPE_CRYPTO_NONE: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "CRYPTO_NONE"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_MD5: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 3
+#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_MD5: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "HMAC_MD5"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 4
+#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "HMAC_SHA_1"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_12: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 5
+#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_12: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "HMAC_SHA_1_12"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_20: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 6
+#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_20: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "HMAC_SHA_1_20"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_96: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 7
+#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_1_96: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "HMAC_SHA_1_96"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_256: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 8
+#OpenconfigKeychainTypes_CRYPTO_TYPE_HMAC_SHA_256: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "HMAC_SHA_256"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_MD5: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 9
+#OpenconfigKeychainTypes_CRYPTO_TYPE_MD5: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "MD5"
 
-#OpenconfigKeychainTypes_CRYPTO_TYPE_SHA_1: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & 10
+#OpenconfigKeychainTypes_CRYPTO_TYPE_SHA_1: #E_OpenconfigKeychainTypes_CRYPTO_TYPE & "SHA_1"
+
+#E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance: string
 
 #enumE_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance:
 	#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_UNSET |
 	#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_FOREVER
 
 #values_E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance: {
-	OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_UNSET:   #OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_UNSET
-	OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_FOREVER: #OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_FOREVER
+	OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_UNSET?:   #OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_UNSET
+	OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_FOREVER?: #OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_FOREVER
 }
 
-#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_UNSET: #E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance & 0
+#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_UNSET: #E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance & "UNSET"
 
-#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_FOREVER: #E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance & 1
+#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_FOREVER: #E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance & "FOREVER"
+
+#E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP: string
 
 #enumE_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP:
 	#OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_UNSET |
@@ -8984,16 +9059,18 @@ import "strings"
 	#OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_LOCAL_LINK
 
 #values_E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP: {
-	OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_UNSET:      #OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_UNSET
-	OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_DROP:       #OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_DROP
-	OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_LOCAL_LINK: #OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_LOCAL_LINK
+	OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_UNSET?:      #OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_UNSET
+	OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_DROP?:       #OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_DROP
+	OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_LOCAL_LINK?: #OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_LOCAL_LINK
 }
 
-#OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_UNSET: #E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP & 0
+#OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_UNSET: #E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP & "UNSET"
 
-#OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_DROP: #E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP & 1
+#OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_DROP: #E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP & "DROP"
 
-#OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_LOCAL_LINK: #E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP & 2
+#OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP_LOCAL_LINK: #E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP & "LOCAL_LINK"
+
+#E_OpenconfigMplsLdp_MplsLdpAfi: string
 
 #enumE_OpenconfigMplsLdp_MplsLdpAfi:
 	#OpenconfigMplsLdp_MplsLdpAfi_UNSET |
@@ -9001,16 +9078,18 @@ import "strings"
 	#OpenconfigMplsLdp_MplsLdpAfi_IPV6
 
 #values_E_OpenconfigMplsLdp_MplsLdpAfi: {
-	OpenconfigMplsLdp_MplsLdpAfi_UNSET: #OpenconfigMplsLdp_MplsLdpAfi_UNSET
-	OpenconfigMplsLdp_MplsLdpAfi_IPV4:  #OpenconfigMplsLdp_MplsLdpAfi_IPV4
-	OpenconfigMplsLdp_MplsLdpAfi_IPV6:  #OpenconfigMplsLdp_MplsLdpAfi_IPV6
+	OpenconfigMplsLdp_MplsLdpAfi_UNSET?: #OpenconfigMplsLdp_MplsLdpAfi_UNSET
+	OpenconfigMplsLdp_MplsLdpAfi_IPV4?:  #OpenconfigMplsLdp_MplsLdpAfi_IPV4
+	OpenconfigMplsLdp_MplsLdpAfi_IPV6?:  #OpenconfigMplsLdp_MplsLdpAfi_IPV6
 }
 
-#OpenconfigMplsLdp_MplsLdpAfi_UNSET: #E_OpenconfigMplsLdp_MplsLdpAfi & 0
+#OpenconfigMplsLdp_MplsLdpAfi_UNSET: #E_OpenconfigMplsLdp_MplsLdpAfi & "UNSET"
 
-#OpenconfigMplsLdp_MplsLdpAfi_IPV4: #E_OpenconfigMplsLdp_MplsLdpAfi & 1
+#OpenconfigMplsLdp_MplsLdpAfi_IPV4: #E_OpenconfigMplsLdp_MplsLdpAfi & "IPV4"
 
-#OpenconfigMplsLdp_MplsLdpAfi_IPV6: #E_OpenconfigMplsLdp_MplsLdpAfi & 2
+#OpenconfigMplsLdp_MplsLdpAfi_IPV6: #E_OpenconfigMplsLdp_MplsLdpAfi & "IPV6"
+
+#E_OpenconfigMplsTypes_LSP_METRIC_TYPE: string
 
 #enumE_OpenconfigMplsTypes_LSP_METRIC_TYPE:
 	#OpenconfigMplsTypes_LSP_METRIC_TYPE_UNSET |
@@ -9019,19 +9098,21 @@ import "strings"
 	#OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_RELATIVE
 
 #values_E_OpenconfigMplsTypes_LSP_METRIC_TYPE: {
-	OpenconfigMplsTypes_LSP_METRIC_TYPE_UNSET:                #OpenconfigMplsTypes_LSP_METRIC_TYPE_UNSET
-	OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_ABSOLUTE:  #OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_ABSOLUTE
-	OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_INHERITED: #OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_INHERITED
-	OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_RELATIVE:  #OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_RELATIVE
+	OpenconfigMplsTypes_LSP_METRIC_TYPE_UNSET?:                #OpenconfigMplsTypes_LSP_METRIC_TYPE_UNSET
+	OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_ABSOLUTE?:  #OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_ABSOLUTE
+	OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_INHERITED?: #OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_INHERITED
+	OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_RELATIVE?:  #OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_RELATIVE
 }
 
-#OpenconfigMplsTypes_LSP_METRIC_TYPE_UNSET: #E_OpenconfigMplsTypes_LSP_METRIC_TYPE & 0
+#OpenconfigMplsTypes_LSP_METRIC_TYPE_UNSET: #E_OpenconfigMplsTypes_LSP_METRIC_TYPE & "UNSET"
 
-#OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_ABSOLUTE: #E_OpenconfigMplsTypes_LSP_METRIC_TYPE & 1
+#OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_ABSOLUTE: #E_OpenconfigMplsTypes_LSP_METRIC_TYPE & "LSP_METRIC_ABSOLUTE"
 
-#OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_INHERITED: #E_OpenconfigMplsTypes_LSP_METRIC_TYPE & 2
+#OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_INHERITED: #E_OpenconfigMplsTypes_LSP_METRIC_TYPE & "LSP_METRIC_INHERITED"
 
-#OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_RELATIVE: #E_OpenconfigMplsTypes_LSP_METRIC_TYPE & 3
+#OpenconfigMplsTypes_LSP_METRIC_TYPE_LSP_METRIC_RELATIVE: #E_OpenconfigMplsTypes_LSP_METRIC_TYPE & "LSP_METRIC_RELATIVE"
+
+#E_OpenconfigMplsTypes_NULL_LABEL_TYPE: string
 
 #enumE_OpenconfigMplsTypes_NULL_LABEL_TYPE:
 	#OpenconfigMplsTypes_NULL_LABEL_TYPE_UNSET |
@@ -9039,16 +9120,18 @@ import "strings"
 	#OpenconfigMplsTypes_NULL_LABEL_TYPE_IMPLICIT
 
 #values_E_OpenconfigMplsTypes_NULL_LABEL_TYPE: {
-	OpenconfigMplsTypes_NULL_LABEL_TYPE_UNSET:    #OpenconfigMplsTypes_NULL_LABEL_TYPE_UNSET
-	OpenconfigMplsTypes_NULL_LABEL_TYPE_EXPLICIT: #OpenconfigMplsTypes_NULL_LABEL_TYPE_EXPLICIT
-	OpenconfigMplsTypes_NULL_LABEL_TYPE_IMPLICIT: #OpenconfigMplsTypes_NULL_LABEL_TYPE_IMPLICIT
+	OpenconfigMplsTypes_NULL_LABEL_TYPE_UNSET?:    #OpenconfigMplsTypes_NULL_LABEL_TYPE_UNSET
+	OpenconfigMplsTypes_NULL_LABEL_TYPE_EXPLICIT?: #OpenconfigMplsTypes_NULL_LABEL_TYPE_EXPLICIT
+	OpenconfigMplsTypes_NULL_LABEL_TYPE_IMPLICIT?: #OpenconfigMplsTypes_NULL_LABEL_TYPE_IMPLICIT
 }
 
-#OpenconfigMplsTypes_NULL_LABEL_TYPE_UNSET: #E_OpenconfigMplsTypes_NULL_LABEL_TYPE & 0
+#OpenconfigMplsTypes_NULL_LABEL_TYPE_UNSET: #E_OpenconfigMplsTypes_NULL_LABEL_TYPE & "UNSET"
 
-#OpenconfigMplsTypes_NULL_LABEL_TYPE_EXPLICIT: #E_OpenconfigMplsTypes_NULL_LABEL_TYPE & 1
+#OpenconfigMplsTypes_NULL_LABEL_TYPE_EXPLICIT: #E_OpenconfigMplsTypes_NULL_LABEL_TYPE & "EXPLICIT"
 
-#OpenconfigMplsTypes_NULL_LABEL_TYPE_IMPLICIT: #E_OpenconfigMplsTypes_NULL_LABEL_TYPE & 2
+#OpenconfigMplsTypes_NULL_LABEL_TYPE_IMPLICIT: #E_OpenconfigMplsTypes_NULL_LABEL_TYPE & "IMPLICIT"
+
+#E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD: string
 
 #enumE_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD:
 	#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_UNSET |
@@ -9057,19 +9140,21 @@ import "strings"
 	#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_LOCALLY_COMPUTED
 
 #values_E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD: {
-	OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_UNSET:              #OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_UNSET
-	OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXPLICITLY_DEFINED: #OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXPLICITLY_DEFINED
-	OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXTERNALLY_QUERIED: #OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXTERNALLY_QUERIED
-	OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_LOCALLY_COMPUTED:   #OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_LOCALLY_COMPUTED
+	OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_UNSET?:              #OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_UNSET
+	OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXPLICITLY_DEFINED?: #OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXPLICITLY_DEFINED
+	OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXTERNALLY_QUERIED?: #OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXTERNALLY_QUERIED
+	OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_LOCALLY_COMPUTED?:   #OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_LOCALLY_COMPUTED
 }
 
-#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_UNSET: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD & 0
+#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_UNSET: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD & "UNSET"
 
-#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXPLICITLY_DEFINED: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD & 1
+#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXPLICITLY_DEFINED: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD & "EXPLICITLY_DEFINED"
 
-#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXTERNALLY_QUERIED: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD & 2
+#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_EXTERNALLY_QUERIED: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD & "EXTERNALLY_QUERIED"
 
-#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_LOCALLY_COMPUTED: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD & 3
+#OpenconfigMplsTypes_PATH_COMPUTATION_METHOD_LOCALLY_COMPUTED: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD & "LOCALLY_COMPUTED"
+
+#E_OpenconfigMplsTypes_PATH_METRIC_TYPE: string
 
 #enumE_OpenconfigMplsTypes_PATH_METRIC_TYPE:
 	#OpenconfigMplsTypes_PATH_METRIC_TYPE_UNSET |
@@ -9079,22 +9164,24 @@ import "strings"
 	#OpenconfigMplsTypes_PATH_METRIC_TYPE_TE_METRIC
 
 #values_E_OpenconfigMplsTypes_PATH_METRIC_TYPE: {
-	OpenconfigMplsTypes_PATH_METRIC_TYPE_UNSET:      #OpenconfigMplsTypes_PATH_METRIC_TYPE_UNSET
-	OpenconfigMplsTypes_PATH_METRIC_TYPE_HOP_COUNT:  #OpenconfigMplsTypes_PATH_METRIC_TYPE_HOP_COUNT
-	OpenconfigMplsTypes_PATH_METRIC_TYPE_IGP_METRIC: #OpenconfigMplsTypes_PATH_METRIC_TYPE_IGP_METRIC
-	OpenconfigMplsTypes_PATH_METRIC_TYPE_PATH_DELAY: #OpenconfigMplsTypes_PATH_METRIC_TYPE_PATH_DELAY
-	OpenconfigMplsTypes_PATH_METRIC_TYPE_TE_METRIC:  #OpenconfigMplsTypes_PATH_METRIC_TYPE_TE_METRIC
+	OpenconfigMplsTypes_PATH_METRIC_TYPE_UNSET?:      #OpenconfigMplsTypes_PATH_METRIC_TYPE_UNSET
+	OpenconfigMplsTypes_PATH_METRIC_TYPE_HOP_COUNT?:  #OpenconfigMplsTypes_PATH_METRIC_TYPE_HOP_COUNT
+	OpenconfigMplsTypes_PATH_METRIC_TYPE_IGP_METRIC?: #OpenconfigMplsTypes_PATH_METRIC_TYPE_IGP_METRIC
+	OpenconfigMplsTypes_PATH_METRIC_TYPE_PATH_DELAY?: #OpenconfigMplsTypes_PATH_METRIC_TYPE_PATH_DELAY
+	OpenconfigMplsTypes_PATH_METRIC_TYPE_TE_METRIC?:  #OpenconfigMplsTypes_PATH_METRIC_TYPE_TE_METRIC
 }
 
-#OpenconfigMplsTypes_PATH_METRIC_TYPE_UNSET: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & 0
+#OpenconfigMplsTypes_PATH_METRIC_TYPE_UNSET: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & "UNSET"
 
-#OpenconfigMplsTypes_PATH_METRIC_TYPE_HOP_COUNT: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & 1
+#OpenconfigMplsTypes_PATH_METRIC_TYPE_HOP_COUNT: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & "HOP_COUNT"
 
-#OpenconfigMplsTypes_PATH_METRIC_TYPE_IGP_METRIC: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & 2
+#OpenconfigMplsTypes_PATH_METRIC_TYPE_IGP_METRIC: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & "IGP_METRIC"
 
-#OpenconfigMplsTypes_PATH_METRIC_TYPE_PATH_DELAY: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & 3
+#OpenconfigMplsTypes_PATH_METRIC_TYPE_PATH_DELAY: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & "PATH_DELAY"
 
-#OpenconfigMplsTypes_PATH_METRIC_TYPE_TE_METRIC: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & 4
+#OpenconfigMplsTypes_PATH_METRIC_TYPE_TE_METRIC: #E_OpenconfigMplsTypes_PATH_METRIC_TYPE & "TE_METRIC"
+
+#E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL: string
 
 #enumE_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL:
 	#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_UNSET |
@@ -9103,19 +9190,21 @@ import "strings"
 	#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_SR
 
 #values_E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL: {
-	OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_UNSET:           #OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_UNSET
-	OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_LDP:  #OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_LDP
-	OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_RSVP: #OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_RSVP
-	OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_SR:   #OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_SR
+	OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_UNSET?:           #OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_UNSET
+	OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_LDP?:  #OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_LDP
+	OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_RSVP?: #OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_RSVP
+	OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_SR?:   #OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_SR
 }
 
-#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_UNSET: #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL & 0
+#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_UNSET: #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL & "UNSET"
 
-#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_LDP: #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL & 1
+#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_LDP: #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL & "PATH_SETUP_LDP"
 
-#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_RSVP: #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL & 2
+#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_RSVP: #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL & "PATH_SETUP_RSVP"
 
-#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_SR: #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL & 3
+#OpenconfigMplsTypes_PATH_SETUP_PROTOCOL_PATH_SETUP_SR: #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL & "PATH_SETUP_SR"
+
+#E_OpenconfigMplsTypes_PROTECTION_TYPE: string
 
 #enumE_OpenconfigMplsTypes_PROTECTION_TYPE:
 	#OpenconfigMplsTypes_PROTECTION_TYPE_UNSET |
@@ -9124,19 +9213,21 @@ import "strings"
 	#OpenconfigMplsTypes_PROTECTION_TYPE_UNPROTECTED
 
 #values_E_OpenconfigMplsTypes_PROTECTION_TYPE: {
-	OpenconfigMplsTypes_PROTECTION_TYPE_UNSET:                          #OpenconfigMplsTypes_PROTECTION_TYPE_UNSET
-	OpenconfigMplsTypes_PROTECTION_TYPE_LINK_NODE_PROTECTION_REQUESTED: #OpenconfigMplsTypes_PROTECTION_TYPE_LINK_NODE_PROTECTION_REQUESTED
-	OpenconfigMplsTypes_PROTECTION_TYPE_LINK_PROTECTION_REQUIRED:       #OpenconfigMplsTypes_PROTECTION_TYPE_LINK_PROTECTION_REQUIRED
-	OpenconfigMplsTypes_PROTECTION_TYPE_UNPROTECTED:                    #OpenconfigMplsTypes_PROTECTION_TYPE_UNPROTECTED
+	OpenconfigMplsTypes_PROTECTION_TYPE_UNSET?:                          #OpenconfigMplsTypes_PROTECTION_TYPE_UNSET
+	OpenconfigMplsTypes_PROTECTION_TYPE_LINK_NODE_PROTECTION_REQUESTED?: #OpenconfigMplsTypes_PROTECTION_TYPE_LINK_NODE_PROTECTION_REQUESTED
+	OpenconfigMplsTypes_PROTECTION_TYPE_LINK_PROTECTION_REQUIRED?:       #OpenconfigMplsTypes_PROTECTION_TYPE_LINK_PROTECTION_REQUIRED
+	OpenconfigMplsTypes_PROTECTION_TYPE_UNPROTECTED?:                    #OpenconfigMplsTypes_PROTECTION_TYPE_UNPROTECTED
 }
 
-#OpenconfigMplsTypes_PROTECTION_TYPE_UNSET: #E_OpenconfigMplsTypes_PROTECTION_TYPE & 0
+#OpenconfigMplsTypes_PROTECTION_TYPE_UNSET: #E_OpenconfigMplsTypes_PROTECTION_TYPE & "UNSET"
 
-#OpenconfigMplsTypes_PROTECTION_TYPE_LINK_NODE_PROTECTION_REQUESTED: #E_OpenconfigMplsTypes_PROTECTION_TYPE & 1
+#OpenconfigMplsTypes_PROTECTION_TYPE_LINK_NODE_PROTECTION_REQUESTED: #E_OpenconfigMplsTypes_PROTECTION_TYPE & "LINK_NODE_PROTECTION_REQUESTED"
 
-#OpenconfigMplsTypes_PROTECTION_TYPE_LINK_PROTECTION_REQUIRED: #E_OpenconfigMplsTypes_PROTECTION_TYPE & 2
+#OpenconfigMplsTypes_PROTECTION_TYPE_LINK_PROTECTION_REQUIRED: #E_OpenconfigMplsTypes_PROTECTION_TYPE & "LINK_PROTECTION_REQUIRED"
 
-#OpenconfigMplsTypes_PROTECTION_TYPE_UNPROTECTED: #E_OpenconfigMplsTypes_PROTECTION_TYPE & 3
+#OpenconfigMplsTypes_PROTECTION_TYPE_UNPROTECTED: #E_OpenconfigMplsTypes_PROTECTION_TYPE & "UNPROTECTED"
+
+#E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION: string
 
 #enumE_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION:
 	#OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_UNSET |
@@ -9144,29 +9235,33 @@ import "strings"
 	#OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_TAGGED_MODE
 
 #values_E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION: {
-	OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_UNSET:                    #OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_UNSET
-	OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_RAW_MODE:    #OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_RAW_MODE
-	OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_TAGGED_MODE: #OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_TAGGED_MODE
+	OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_UNSET?:                    #OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_UNSET
+	OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_RAW_MODE?:    #OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_RAW_MODE
+	OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_TAGGED_MODE?: #OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_TAGGED_MODE
 }
 
-#OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_UNSET: #E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION & 0
+#OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_UNSET: #E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION & "UNSET"
 
-#OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_RAW_MODE: #E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION & 1
+#OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_RAW_MODE: #E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION & "PWE_ETHERNET_RAW_MODE"
 
-#OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_TAGGED_MODE: #E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION & 2
+#OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION_PWE_ETHERNET_TAGGED_MODE: #E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION & "PWE_ETHERNET_TAGGED_MODE"
+
+#E_OpenconfigMplsTypes_RSVP_AUTH_TYPE: string
 
 #enumE_OpenconfigMplsTypes_RSVP_AUTH_TYPE:
 	#OpenconfigMplsTypes_RSVP_AUTH_TYPE_UNSET |
 	#OpenconfigMplsTypes_RSVP_AUTH_TYPE_RSVP_AUTH_MD5
 
 #values_E_OpenconfigMplsTypes_RSVP_AUTH_TYPE: {
-	OpenconfigMplsTypes_RSVP_AUTH_TYPE_UNSET:         #OpenconfigMplsTypes_RSVP_AUTH_TYPE_UNSET
-	OpenconfigMplsTypes_RSVP_AUTH_TYPE_RSVP_AUTH_MD5: #OpenconfigMplsTypes_RSVP_AUTH_TYPE_RSVP_AUTH_MD5
+	OpenconfigMplsTypes_RSVP_AUTH_TYPE_UNSET?:         #OpenconfigMplsTypes_RSVP_AUTH_TYPE_UNSET
+	OpenconfigMplsTypes_RSVP_AUTH_TYPE_RSVP_AUTH_MD5?: #OpenconfigMplsTypes_RSVP_AUTH_TYPE_RSVP_AUTH_MD5
 }
 
-#OpenconfigMplsTypes_RSVP_AUTH_TYPE_UNSET: #E_OpenconfigMplsTypes_RSVP_AUTH_TYPE & 0
+#OpenconfigMplsTypes_RSVP_AUTH_TYPE_UNSET: #E_OpenconfigMplsTypes_RSVP_AUTH_TYPE & "UNSET"
 
-#OpenconfigMplsTypes_RSVP_AUTH_TYPE_RSVP_AUTH_MD5: #E_OpenconfigMplsTypes_RSVP_AUTH_TYPE & 1
+#OpenconfigMplsTypes_RSVP_AUTH_TYPE_RSVP_AUTH_MD5: #E_OpenconfigMplsTypes_RSVP_AUTH_TYPE & "RSVP_AUTH_MD5"
+
+#E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS: string
 
 #enumE_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS:
 	#OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_UNSET |
@@ -9174,16 +9269,18 @@ import "strings"
 	#OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_UP
 
 #values_E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS: {
-	OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_UNSET:      #OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_UNSET
-	OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_DOWN: #OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_DOWN
-	OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_UP:   #OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_UP
+	OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_UNSET?:      #OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_UNSET
+	OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_DOWN?: #OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_DOWN
+	OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_UP?:   #OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_UP
 }
 
-#OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_UNSET: #E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS & 0
+#OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_UNSET: #E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS & "UNSET"
 
-#OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_DOWN: #E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS & 1
+#OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_DOWN: #E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS & "ADMIN_DOWN"
 
-#OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_UP: #E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS & 2
+#OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS_ADMIN_UP: #E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS & "ADMIN_UP"
+
+#E_OpenconfigMplsTypes_TUNNEL_TYPE: string
 
 #enumE_OpenconfigMplsTypes_TUNNEL_TYPE:
 	#OpenconfigMplsTypes_TUNNEL_TYPE_UNSET |
@@ -9191,16 +9288,18 @@ import "strings"
 	#OpenconfigMplsTypes_TUNNEL_TYPE_P2P
 
 #values_E_OpenconfigMplsTypes_TUNNEL_TYPE: {
-	OpenconfigMplsTypes_TUNNEL_TYPE_UNSET: #OpenconfigMplsTypes_TUNNEL_TYPE_UNSET
-	OpenconfigMplsTypes_TUNNEL_TYPE_P2MP:  #OpenconfigMplsTypes_TUNNEL_TYPE_P2MP
-	OpenconfigMplsTypes_TUNNEL_TYPE_P2P:   #OpenconfigMplsTypes_TUNNEL_TYPE_P2P
+	OpenconfigMplsTypes_TUNNEL_TYPE_UNSET?: #OpenconfigMplsTypes_TUNNEL_TYPE_UNSET
+	OpenconfigMplsTypes_TUNNEL_TYPE_P2MP?:  #OpenconfigMplsTypes_TUNNEL_TYPE_P2MP
+	OpenconfigMplsTypes_TUNNEL_TYPE_P2P?:   #OpenconfigMplsTypes_TUNNEL_TYPE_P2P
 }
 
-#OpenconfigMplsTypes_TUNNEL_TYPE_UNSET: #E_OpenconfigMplsTypes_TUNNEL_TYPE & 0
+#OpenconfigMplsTypes_TUNNEL_TYPE_UNSET: #E_OpenconfigMplsTypes_TUNNEL_TYPE & "UNSET"
 
-#OpenconfigMplsTypes_TUNNEL_TYPE_P2MP: #E_OpenconfigMplsTypes_TUNNEL_TYPE & 1
+#OpenconfigMplsTypes_TUNNEL_TYPE_P2MP: #E_OpenconfigMplsTypes_TUNNEL_TYPE & "P2MP"
 
-#OpenconfigMplsTypes_TUNNEL_TYPE_P2P: #E_OpenconfigMplsTypes_TUNNEL_TYPE & 2
+#OpenconfigMplsTypes_TUNNEL_TYPE_P2P: #E_OpenconfigMplsTypes_TUNNEL_TYPE & "P2P"
+
+#E_OpenconfigMpls_CspfTieBreaking: string
 
 #enumE_OpenconfigMpls_CspfTieBreaking:
 	#OpenconfigMpls_CspfTieBreaking_UNSET |
@@ -9209,19 +9308,21 @@ import "strings"
 	#OpenconfigMpls_CspfTieBreaking_MOST_FILL
 
 #values_E_OpenconfigMpls_CspfTieBreaking: {
-	OpenconfigMpls_CspfTieBreaking_UNSET:      #OpenconfigMpls_CspfTieBreaking_UNSET
-	OpenconfigMpls_CspfTieBreaking_RANDOM:     #OpenconfigMpls_CspfTieBreaking_RANDOM
-	OpenconfigMpls_CspfTieBreaking_LEAST_FILL: #OpenconfigMpls_CspfTieBreaking_LEAST_FILL
-	OpenconfigMpls_CspfTieBreaking_MOST_FILL:  #OpenconfigMpls_CspfTieBreaking_MOST_FILL
+	OpenconfigMpls_CspfTieBreaking_UNSET?:      #OpenconfigMpls_CspfTieBreaking_UNSET
+	OpenconfigMpls_CspfTieBreaking_RANDOM?:     #OpenconfigMpls_CspfTieBreaking_RANDOM
+	OpenconfigMpls_CspfTieBreaking_LEAST_FILL?: #OpenconfigMpls_CspfTieBreaking_LEAST_FILL
+	OpenconfigMpls_CspfTieBreaking_MOST_FILL?:  #OpenconfigMpls_CspfTieBreaking_MOST_FILL
 }
 
-#OpenconfigMpls_CspfTieBreaking_UNSET: #E_OpenconfigMpls_CspfTieBreaking & 0
+#OpenconfigMpls_CspfTieBreaking_UNSET: #E_OpenconfigMpls_CspfTieBreaking & "UNSET"
 
-#OpenconfigMpls_CspfTieBreaking_RANDOM: #E_OpenconfigMpls_CspfTieBreaking & 1
+#OpenconfigMpls_CspfTieBreaking_RANDOM: #E_OpenconfigMpls_CspfTieBreaking & "RANDOM"
 
-#OpenconfigMpls_CspfTieBreaking_LEAST_FILL: #E_OpenconfigMpls_CspfTieBreaking & 2
+#OpenconfigMpls_CspfTieBreaking_LEAST_FILL: #E_OpenconfigMpls_CspfTieBreaking & "LEAST_FILL"
 
-#OpenconfigMpls_CspfTieBreaking_MOST_FILL: #E_OpenconfigMpls_CspfTieBreaking & 3
+#OpenconfigMpls_CspfTieBreaking_MOST_FILL: #E_OpenconfigMpls_CspfTieBreaking & "MOST_FILL"
+
+#E_OpenconfigMpls_LspControlType: string
 
 #enumE_OpenconfigMpls_LspControlType:
 	#OpenconfigMpls_LspControlType_UNSET |
@@ -9230,19 +9331,21 @@ import "strings"
 	#OpenconfigMpls_LspControlType_PCC_REPORT_ONLY
 
 #values_E_OpenconfigMpls_LspControlType: {
-	OpenconfigMpls_LspControlType_UNSET:           #OpenconfigMpls_LspControlType_UNSET
-	OpenconfigMpls_LspControlType_PCE_DELEGATED:   #OpenconfigMpls_LspControlType_PCE_DELEGATED
-	OpenconfigMpls_LspControlType_PCC_CONTROLLED:  #OpenconfigMpls_LspControlType_PCC_CONTROLLED
-	OpenconfigMpls_LspControlType_PCC_REPORT_ONLY: #OpenconfigMpls_LspControlType_PCC_REPORT_ONLY
+	OpenconfigMpls_LspControlType_UNSET?:           #OpenconfigMpls_LspControlType_UNSET
+	OpenconfigMpls_LspControlType_PCE_DELEGATED?:   #OpenconfigMpls_LspControlType_PCE_DELEGATED
+	OpenconfigMpls_LspControlType_PCC_CONTROLLED?:  #OpenconfigMpls_LspControlType_PCC_CONTROLLED
+	OpenconfigMpls_LspControlType_PCC_REPORT_ONLY?: #OpenconfigMpls_LspControlType_PCC_REPORT_ONLY
 }
 
-#OpenconfigMpls_LspControlType_UNSET: #E_OpenconfigMpls_LspControlType & 0
+#OpenconfigMpls_LspControlType_UNSET: #E_OpenconfigMpls_LspControlType & "UNSET"
 
-#OpenconfigMpls_LspControlType_PCE_DELEGATED: #E_OpenconfigMpls_LspControlType & 1
+#OpenconfigMpls_LspControlType_PCE_DELEGATED: #E_OpenconfigMpls_LspControlType & "PCE_DELEGATED"
 
-#OpenconfigMpls_LspControlType_PCC_CONTROLLED: #E_OpenconfigMpls_LspControlType & 2
+#OpenconfigMpls_LspControlType_PCC_CONTROLLED: #E_OpenconfigMpls_LspControlType & "PCC_CONTROLLED"
 
-#OpenconfigMpls_LspControlType_PCC_REPORT_ONLY: #E_OpenconfigMpls_LspControlType & 3
+#OpenconfigMpls_LspControlType_PCC_REPORT_ONLY: #E_OpenconfigMpls_LspControlType & "PCC_REPORT_ONLY"
+
+#E_OpenconfigMpls_MplsHopType: string
 
 #enumE_OpenconfigMpls_MplsHopType:
 	#OpenconfigMpls_MplsHopType_UNSET |
@@ -9250,16 +9353,18 @@ import "strings"
 	#OpenconfigMpls_MplsHopType_STRICT
 
 #values_E_OpenconfigMpls_MplsHopType: {
-	OpenconfigMpls_MplsHopType_UNSET:  #OpenconfigMpls_MplsHopType_UNSET
-	OpenconfigMpls_MplsHopType_LOOSE:  #OpenconfigMpls_MplsHopType_LOOSE
-	OpenconfigMpls_MplsHopType_STRICT: #OpenconfigMpls_MplsHopType_STRICT
+	OpenconfigMpls_MplsHopType_UNSET?:  #OpenconfigMpls_MplsHopType_UNSET
+	OpenconfigMpls_MplsHopType_LOOSE?:  #OpenconfigMpls_MplsHopType_LOOSE
+	OpenconfigMpls_MplsHopType_STRICT?: #OpenconfigMpls_MplsHopType_STRICT
 }
 
-#OpenconfigMpls_MplsHopType_UNSET: #E_OpenconfigMpls_MplsHopType & 0
+#OpenconfigMpls_MplsHopType_UNSET: #E_OpenconfigMpls_MplsHopType & "UNSET"
 
-#OpenconfigMpls_MplsHopType_LOOSE: #E_OpenconfigMpls_MplsHopType & 1
+#OpenconfigMpls_MplsHopType_LOOSE: #E_OpenconfigMpls_MplsHopType & "LOOSE"
 
-#OpenconfigMpls_MplsHopType_STRICT: #E_OpenconfigMpls_MplsHopType & 2
+#OpenconfigMpls_MplsHopType_STRICT: #E_OpenconfigMpls_MplsHopType & "STRICT"
+
+#E_OpenconfigMpls_MplsSrlgFloodingType: string
 
 #enumE_OpenconfigMpls_MplsSrlgFloodingType:
 	#OpenconfigMpls_MplsSrlgFloodingType_UNSET |
@@ -9267,16 +9372,18 @@ import "strings"
 	#OpenconfigMpls_MplsSrlgFloodingType_STATIC_SRLG
 
 #values_E_OpenconfigMpls_MplsSrlgFloodingType: {
-	OpenconfigMpls_MplsSrlgFloodingType_UNSET:        #OpenconfigMpls_MplsSrlgFloodingType_UNSET
-	OpenconfigMpls_MplsSrlgFloodingType_FLOODED_SRLG: #OpenconfigMpls_MplsSrlgFloodingType_FLOODED_SRLG
-	OpenconfigMpls_MplsSrlgFloodingType_STATIC_SRLG:  #OpenconfigMpls_MplsSrlgFloodingType_STATIC_SRLG
+	OpenconfigMpls_MplsSrlgFloodingType_UNSET?:        #OpenconfigMpls_MplsSrlgFloodingType_UNSET
+	OpenconfigMpls_MplsSrlgFloodingType_FLOODED_SRLG?: #OpenconfigMpls_MplsSrlgFloodingType_FLOODED_SRLG
+	OpenconfigMpls_MplsSrlgFloodingType_STATIC_SRLG?:  #OpenconfigMpls_MplsSrlgFloodingType_STATIC_SRLG
 }
 
-#OpenconfigMpls_MplsSrlgFloodingType_UNSET: #E_OpenconfigMpls_MplsSrlgFloodingType & 0
+#OpenconfigMpls_MplsSrlgFloodingType_UNSET: #E_OpenconfigMpls_MplsSrlgFloodingType & "UNSET"
 
-#OpenconfigMpls_MplsSrlgFloodingType_FLOODED_SRLG: #E_OpenconfigMpls_MplsSrlgFloodingType & 1
+#OpenconfigMpls_MplsSrlgFloodingType_FLOODED_SRLG: #E_OpenconfigMpls_MplsSrlgFloodingType & "FLOODED_SRLG"
 
-#OpenconfigMpls_MplsSrlgFloodingType_STATIC_SRLG: #E_OpenconfigMpls_MplsSrlgFloodingType & 2
+#OpenconfigMpls_MplsSrlgFloodingType_STATIC_SRLG: #E_OpenconfigMpls_MplsSrlgFloodingType & "STATIC_SRLG"
+
+#E_OpenconfigMpls_TeBandwidthType: string
 
 #enumE_OpenconfigMpls_TeBandwidthType:
 	#OpenconfigMpls_TeBandwidthType_UNSET |
@@ -9284,16 +9391,18 @@ import "strings"
 	#OpenconfigMpls_TeBandwidthType_AUTO
 
 #values_E_OpenconfigMpls_TeBandwidthType: {
-	OpenconfigMpls_TeBandwidthType_UNSET:     #OpenconfigMpls_TeBandwidthType_UNSET
-	OpenconfigMpls_TeBandwidthType_SPECIFIED: #OpenconfigMpls_TeBandwidthType_SPECIFIED
-	OpenconfigMpls_TeBandwidthType_AUTO:      #OpenconfigMpls_TeBandwidthType_AUTO
+	OpenconfigMpls_TeBandwidthType_UNSET?:     #OpenconfigMpls_TeBandwidthType_UNSET
+	OpenconfigMpls_TeBandwidthType_SPECIFIED?: #OpenconfigMpls_TeBandwidthType_SPECIFIED
+	OpenconfigMpls_TeBandwidthType_AUTO?:      #OpenconfigMpls_TeBandwidthType_AUTO
 }
 
-#OpenconfigMpls_TeBandwidthType_UNSET: #E_OpenconfigMpls_TeBandwidthType & 0
+#OpenconfigMpls_TeBandwidthType_UNSET: #E_OpenconfigMpls_TeBandwidthType & "UNSET"
 
-#OpenconfigMpls_TeBandwidthType_SPECIFIED: #E_OpenconfigMpls_TeBandwidthType & 1
+#OpenconfigMpls_TeBandwidthType_SPECIFIED: #E_OpenconfigMpls_TeBandwidthType & "SPECIFIED"
 
-#OpenconfigMpls_TeBandwidthType_AUTO: #E_OpenconfigMpls_TeBandwidthType & 2
+#OpenconfigMpls_TeBandwidthType_AUTO: #E_OpenconfigMpls_TeBandwidthType & "AUTO"
+
+#E_OpenconfigNetworkInstanceTypes_ENCAPSULATION: string
 
 #enumE_OpenconfigNetworkInstanceTypes_ENCAPSULATION:
 	#OpenconfigNetworkInstanceTypes_ENCAPSULATION_UNSET |
@@ -9301,16 +9410,18 @@ import "strings"
 	#OpenconfigNetworkInstanceTypes_ENCAPSULATION_VXLAN
 
 #values_E_OpenconfigNetworkInstanceTypes_ENCAPSULATION: {
-	OpenconfigNetworkInstanceTypes_ENCAPSULATION_UNSET: #OpenconfigNetworkInstanceTypes_ENCAPSULATION_UNSET
-	OpenconfigNetworkInstanceTypes_ENCAPSULATION_MPLS:  #OpenconfigNetworkInstanceTypes_ENCAPSULATION_MPLS
-	OpenconfigNetworkInstanceTypes_ENCAPSULATION_VXLAN: #OpenconfigNetworkInstanceTypes_ENCAPSULATION_VXLAN
+	OpenconfigNetworkInstanceTypes_ENCAPSULATION_UNSET?: #OpenconfigNetworkInstanceTypes_ENCAPSULATION_UNSET
+	OpenconfigNetworkInstanceTypes_ENCAPSULATION_MPLS?:  #OpenconfigNetworkInstanceTypes_ENCAPSULATION_MPLS
+	OpenconfigNetworkInstanceTypes_ENCAPSULATION_VXLAN?: #OpenconfigNetworkInstanceTypes_ENCAPSULATION_VXLAN
 }
 
-#OpenconfigNetworkInstanceTypes_ENCAPSULATION_UNSET: #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION & 0
+#OpenconfigNetworkInstanceTypes_ENCAPSULATION_UNSET: #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION & "UNSET"
 
-#OpenconfigNetworkInstanceTypes_ENCAPSULATION_MPLS: #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION & 1
+#OpenconfigNetworkInstanceTypes_ENCAPSULATION_MPLS: #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION & "MPLS"
 
-#OpenconfigNetworkInstanceTypes_ENCAPSULATION_VXLAN: #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION & 2
+#OpenconfigNetworkInstanceTypes_ENCAPSULATION_VXLAN: #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION & "VXLAN"
+
+#E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE: string
 
 #enumE_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE:
 	#OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_UNSET |
@@ -9318,16 +9429,18 @@ import "strings"
 	#OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_REMOTE
 
 #values_E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE: {
-	OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_UNSET:  #OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_UNSET
-	OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_LOCAL:  #OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_LOCAL
-	OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_REMOTE: #OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_REMOTE
+	OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_UNSET?:  #OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_UNSET
+	OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_LOCAL?:  #OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_LOCAL
+	OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_REMOTE?: #OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_REMOTE
 }
 
-#OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_UNSET: #E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE & 0
+#OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_UNSET: #E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE & "UNSET"
 
-#OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_LOCAL: #E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE & 1
+#OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_LOCAL: #E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE & "LOCAL"
 
-#OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_REMOTE: #E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE & 2
+#OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE_REMOTE: #E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE & "REMOTE"
+
+#E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE: string
 
 #enumE_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE:
 	#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_UNSET |
@@ -9336,19 +9449,21 @@ import "strings"
 	#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_PREFIX
 
 #values_E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE: {
-	OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_UNSET:          #OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_UNSET
-	OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_INSTANCE_LABEL: #OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_INSTANCE_LABEL
-	OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_NEXTHOP:    #OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_NEXTHOP
-	OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_PREFIX:     #OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_PREFIX
+	OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_UNSET?:          #OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_UNSET
+	OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_INSTANCE_LABEL?: #OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_INSTANCE_LABEL
+	OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_NEXTHOP?:    #OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_NEXTHOP
+	OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_PREFIX?:     #OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_PREFIX
 }
 
-#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_UNSET: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE & 0
+#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_UNSET: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE & "UNSET"
 
-#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_INSTANCE_LABEL: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE & 1
+#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_INSTANCE_LABEL: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE & "INSTANCE_LABEL"
 
-#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_NEXTHOP: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE & 2
+#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_NEXTHOP: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE & "PER_NEXTHOP"
 
-#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_PREFIX: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE & 3
+#OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE_PER_PREFIX: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE & "PER_PREFIX"
+
+#E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE: string
 
 #enumE_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE:
 	#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_UNSET |
@@ -9359,38 +9474,42 @@ import "strings"
 	#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L3VRF
 
 #values_E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE: {
-	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_UNSET:            #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_UNSET
-	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_DEFAULT_INSTANCE: #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_DEFAULT_INSTANCE
-	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2L3:             #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2L3
-	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2P2P:            #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2P2P
-	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2VSI:            #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2VSI
-	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L3VRF:            #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L3VRF
+	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_UNSET?:            #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_UNSET
+	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_DEFAULT_INSTANCE?: #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_DEFAULT_INSTANCE
+	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2L3?:             #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2L3
+	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2P2P?:            #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2P2P
+	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2VSI?:            #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2VSI
+	OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L3VRF?:            #OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L3VRF
 }
 
-#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_UNSET: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & 0
+#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_UNSET: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & "UNSET"
 
-#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_DEFAULT_INSTANCE: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & 1
+#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_DEFAULT_INSTANCE: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & "DEFAULT_INSTANCE"
 
-#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2L3: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & 2
+#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2L3: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & "L2L3"
 
-#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2P2P: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & 3
+#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2P2P: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & "L2P2P"
 
-#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2VSI: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & 4
+#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L2VSI: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & "L2VSI"
 
-#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L3VRF: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & 5
+#OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE_L3VRF: #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE & "L3VRF"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_UNSET |
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_AUTO
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_UNSET: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_AUTO:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_AUTO
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_UNSET?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_AUTO?:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_AUTO
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_AUTO: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_AUTO: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi & "AUTO"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_UNSET |
@@ -9399,19 +9518,21 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_PREFERENCE
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_UNSET:                 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_DEFAULT:               #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_DEFAULT
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_HIGHEST_RANDOM_WEIGHT: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_HIGHEST_RANDOM_WEIGHT
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_PREFERENCE:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_PREFERENCE
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_UNSET?:                 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_DEFAULT?:               #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_DEFAULT
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_HIGHEST_RANDOM_WEIGHT?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_HIGHEST_RANDOM_WEIGHT
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_PREFERENCE?:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_PREFERENCE
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_DEFAULT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_DEFAULT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod & "DEFAULT"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_HIGHEST_RANDOM_WEIGHT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_HIGHEST_RANDOM_WEIGHT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod & "HIGHEST_RANDOM_WEIGHT"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_PREFERENCE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod & 3
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod_PREFERENCE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod & "PREFERENCE"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_UNSET |
@@ -9420,58 +9541,66 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_MULTICAST
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_UNSET:                      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_STATIC_INGRESS_REPLICATION: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_STATIC_INGRESS_REPLICATION
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_BGP:                        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_BGP
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_MULTICAST:                  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_MULTICAST
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_UNSET?:                      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_STATIC_INGRESS_REPLICATION?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_STATIC_INGRESS_REPLICATION
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_BGP?:                        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_BGP
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_MULTICAST?:                  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_MULTICAST
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_STATIC_INGRESS_REPLICATION: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_STATIC_INGRESS_REPLICATION: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode & "STATIC_INGRESS_REPLICATION"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_BGP: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_BGP: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode & "BGP"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_MULTICAST: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode & 3
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode_MULTICAST: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode & "MULTICAST"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_UNSET |
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_AUTO
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_UNSET: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_AUTO:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_AUTO
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_UNSET?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_AUTO?:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_AUTO
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_AUTO: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_AUTO: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher & "AUTO"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_UNSET |
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_AUTO
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_UNSET: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_AUTO:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_AUTO
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_UNSET?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_AUTO?:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_AUTO
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_AUTO: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_AUTO: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget & "AUTO"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_UNSET |
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_AUTO
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_UNSET: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_AUTO:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_AUTO
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_UNSET?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_AUTO?:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_AUTO
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_AUTO: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_AUTO: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget & "AUTO"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_UNSET |
@@ -9481,22 +9610,24 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_CENTRALIZED
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_UNSET:                 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_SYMETRIC:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_SYMETRIC
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_ASYMETRIC: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_ASYMETRIC
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_HYBRID:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_HYBRID
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_CENTRALIZED:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_CENTRALIZED
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_UNSET?:                 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_SYMETRIC?:  #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_SYMETRIC
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_ASYMETRIC?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_ASYMETRIC
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_HYBRID?:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_HYBRID
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_CENTRALIZED?:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_CENTRALIZED
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_SYMETRIC: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_SYMETRIC: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & "DISTRIBUTED_SYMETRIC"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_ASYMETRIC: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_DISTRIBUTED_ASYMETRIC: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & "DISTRIBUTED_ASYMETRIC"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_HYBRID: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & 3
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_HYBRID: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & "HYBRID"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_CENTRALIZED: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & 4
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway_CENTRALIZED: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway & "CENTRALIZED"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_UNSET |
@@ -9508,28 +9639,30 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_NO_LABEL
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_UNSET:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV4_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV4_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ROUTER_ALERT:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ROUTER_ALERT
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV6_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV6_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IMPLICIT_NULL:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IMPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ENTROPY_LABEL_INDICATOR: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ENTROPY_LABEL_INDICATOR
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_NO_LABEL:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_NO_LABEL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_UNSET?:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV4_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV4_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ROUTER_ALERT?:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ROUTER_ALERT
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV6_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV6_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IMPLICIT_NULL?:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IMPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ENTROPY_LABEL_INDICATOR?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ENTROPY_LABEL_INDICATOR
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_NO_LABEL?:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_NO_LABEL
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & "IPV4_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & "ROUTER_ALERT"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & 3
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & "IPV6_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & 4
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & "IMPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & 5
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & "ENTROPY_LABEL_INDICATOR"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & 6
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound & "NO_LABEL"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_UNSET |
@@ -9541,28 +9674,30 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_NO_LABEL
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_UNSET:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV4_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV4_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ROUTER_ALERT:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ROUTER_ALERT
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV6_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV6_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IMPLICIT_NULL:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IMPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ENTROPY_LABEL_INDICATOR: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ENTROPY_LABEL_INDICATOR
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_NO_LABEL:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_NO_LABEL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_UNSET?:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV4_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV4_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ROUTER_ALERT?:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ROUTER_ALERT
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV6_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV6_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IMPLICIT_NULL?:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IMPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ENTROPY_LABEL_INDICATOR?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ENTROPY_LABEL_INDICATOR
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_NO_LABEL?:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_NO_LABEL
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & "IPV4_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & "ROUTER_ALERT"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & 3
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & "IPV6_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & 4
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & "IMPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & 5
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & "ENTROPY_LABEL_INDICATOR"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & 6
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound & "NO_LABEL"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_UNSET |
@@ -9570,16 +9705,18 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_MIXED_MODE
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_UNSET:        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_ADJ_SID_ONLY: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_ADJ_SID_ONLY
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_MIXED_MODE:   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_MIXED_MODE
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_UNSET?:        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_ADJ_SID_ONLY?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_ADJ_SID_ONLY
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_MIXED_MODE?:   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_MIXED_MODE
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_ADJ_SID_ONLY: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_ADJ_SID_ONLY: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode & "ADJ_SID_ONLY"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_MIXED_MODE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode_MIXED_MODE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode & "MIXED_MODE"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_UNSET |
@@ -9591,28 +9728,30 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_NO_LABEL
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_UNSET:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV4_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV4_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ROUTER_ALERT:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ROUTER_ALERT
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV6_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV6_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IMPLICIT_NULL:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IMPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ENTROPY_LABEL_INDICATOR: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ENTROPY_LABEL_INDICATOR
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_NO_LABEL:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_NO_LABEL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_UNSET?:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV4_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV4_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ROUTER_ALERT?:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ROUTER_ALERT
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV6_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV6_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IMPLICIT_NULL?:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IMPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ENTROPY_LABEL_INDICATOR?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ENTROPY_LABEL_INDICATOR
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_NO_LABEL?:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_NO_LABEL
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & "IPV4_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & "ROUTER_ALERT"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & 3
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & "IPV6_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & 4
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & "IMPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & 5
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & "ENTROPY_LABEL_INDICATOR"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & 6
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel & "NO_LABEL"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_UNSET |
@@ -9624,28 +9763,30 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_NO_LABEL
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_UNSET:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV4_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV4_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ROUTER_ALERT:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ROUTER_ALERT
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV6_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV6_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IMPLICIT_NULL:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IMPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ENTROPY_LABEL_INDICATOR: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ENTROPY_LABEL_INDICATOR
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_NO_LABEL:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_NO_LABEL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_UNSET?:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV4_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV4_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ROUTER_ALERT?:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ROUTER_ALERT
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV6_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV6_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IMPLICIT_NULL?:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IMPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ENTROPY_LABEL_INDICATOR?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ENTROPY_LABEL_INDICATOR
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_NO_LABEL?:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_NO_LABEL
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & "IPV4_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & "ROUTER_ALERT"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & 3
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & "IPV6_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & 4
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & "IMPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & 5
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & "ENTROPY_LABEL_INDICATOR"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & 6
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel & "NO_LABEL"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_UNSET |
@@ -9653,16 +9794,18 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_SEPARATE_UP_DOWN
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_UNSET:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_MIRRORED_UP_DOWN: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_MIRRORED_UP_DOWN
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_SEPARATE_UP_DOWN: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_SEPARATE_UP_DOWN
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_UNSET?:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_MIRRORED_UP_DOWN?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_MIRRORED_UP_DOWN
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_SEPARATE_UP_DOWN?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_SEPARATE_UP_DOWN
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_MIRRORED_UP_DOWN: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_MIRRORED_UP_DOWN: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification & "MIRRORED_UP_DOWN"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_SEPARATE_UP_DOWN: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification_SEPARATE_UP_DOWN: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification & "SEPARATE_UP_DOWN"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_UNSET |
@@ -9670,16 +9813,18 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_THRESHOLD_CROSSED
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_UNSET:             #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_DELTA:             #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_DELTA
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_THRESHOLD_CROSSED: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_THRESHOLD_CROSSED
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_UNSET?:             #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_DELTA?:             #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_DELTA
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_THRESHOLD_CROSSED?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_THRESHOLD_CROSSED
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_DELTA: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_DELTA: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType & "DELTA"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_THRESHOLD_CROSSED: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType_THRESHOLD_CROSSED: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType & "THRESHOLD_CROSSED"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_UNSET |
@@ -9687,16 +9832,18 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_VRF_SELECTION_POLICY
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_UNSET:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_PBR_POLICY:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_PBR_POLICY
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_VRF_SELECTION_POLICY: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_VRF_SELECTION_POLICY
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_UNSET?:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_PBR_POLICY?:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_PBR_POLICY
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_VRF_SELECTION_POLICY?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_VRF_SELECTION_POLICY
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_PBR_POLICY: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_PBR_POLICY: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type & "PBR_POLICY"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_VRF_SELECTION_POLICY: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type_VRF_SELECTION_POLICY: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type & "VRF_SELECTION_POLICY"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_UNSET |
@@ -9708,28 +9855,30 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_NO_LABEL
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_UNSET:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV4_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV4_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ROUTER_ALERT:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ROUTER_ALERT
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV6_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV6_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IMPLICIT_NULL:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IMPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ENTROPY_LABEL_INDICATOR: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ENTROPY_LABEL_INDICATOR
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_NO_LABEL:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_NO_LABEL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_UNSET?:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV4_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV4_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ROUTER_ALERT?:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ROUTER_ALERT
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV6_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV6_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IMPLICIT_NULL?:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IMPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ENTROPY_LABEL_INDICATOR?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ENTROPY_LABEL_INDICATOR
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_NO_LABEL?:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_NO_LABEL
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & "IPV4_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & "ROUTER_ALERT"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & 3
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & "IPV6_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & 4
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & "IMPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & 5
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & "ENTROPY_LABEL_INDICATOR"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & 6
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId & "NO_LABEL"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_UNSET |
@@ -9737,16 +9886,18 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_EXPLICIT_NULL
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_UNSET:         #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_NO_PHP:        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_NO_PHP
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_EXPLICIT_NULL: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_UNSET?:         #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_NO_PHP?:        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_NO_PHP
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_EXPLICIT_NULL?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_EXPLICIT_NULL
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_NO_PHP: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_NO_PHP: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions & "NO_PHP"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions & "EXPLICIT_NULL"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_UNSET |
@@ -9758,28 +9909,30 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_NO_LABEL
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_UNSET:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV4_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV4_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ROUTER_ALERT:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ROUTER_ALERT
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV6_EXPLICIT_NULL:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV6_EXPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IMPLICIT_NULL:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IMPLICIT_NULL
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ENTROPY_LABEL_INDICATOR: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ENTROPY_LABEL_INDICATOR
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_NO_LABEL:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_NO_LABEL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_UNSET?:                   #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV4_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV4_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ROUTER_ALERT?:            #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ROUTER_ALERT
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV6_EXPLICIT_NULL?:      #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV6_EXPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IMPLICIT_NULL?:           #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IMPLICIT_NULL
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ENTROPY_LABEL_INDICATOR?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ENTROPY_LABEL_INDICATOR
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_NO_LABEL?:                #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_NO_LABEL
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV4_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & "IPV4_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ROUTER_ALERT: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & "ROUTER_ALERT"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & 3
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IPV6_EXPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & "IPV6_EXPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & 4
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_IMPLICIT_NULL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & "IMPLICIT_NULL"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & 5
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_ENTROPY_LABEL_INDICATOR: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & "ENTROPY_LABEL_INDICATOR"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & 6
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_NO_LABEL: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId & "NO_LABEL"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_UNSET |
@@ -9787,16 +9940,18 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC2328_COMPATIBLE
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_UNSET:              #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC1583_COMPATIBLE: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC1583_COMPATIBLE
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC2328_COMPATIBLE: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC2328_COMPATIBLE
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_UNSET?:              #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC1583_COMPATIBLE?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC1583_COMPATIBLE
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC2328_COMPATIBLE?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC2328_COMPATIBLE
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC1583_COMPATIBLE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC1583_COMPATIBLE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode & "RFC1583_COMPATIBLE"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC2328_COMPATIBLE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode_RFC2328_COMPATIBLE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode & "RFC2328_COMPATIBLE"
+
+#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status: string
 
 #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status:
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_UNSET |
@@ -9804,16 +9959,18 @@ import "strings"
 	#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_SUSPENDED
 
 #values_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status: {
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_UNSET:     #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_UNSET
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_ACTIVE:    #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_ACTIVE
-	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_SUSPENDED: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_SUSPENDED
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_UNSET?:     #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_UNSET
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_ACTIVE?:    #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_ACTIVE
+	OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_SUSPENDED?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_SUSPENDED
 }
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status & 0
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_UNSET: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status & "UNSET"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_ACTIVE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status & 1
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_ACTIVE: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status & "ACTIVE"
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_SUSPENDED: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status & 2
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status_SUSPENDED: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status & "SUSPENDED"
+
+#E_OpenconfigOspfTypes_MAX_METRIC_INCLUDE: string
 
 #enumE_OpenconfigOspfTypes_MAX_METRIC_INCLUDE:
 	#OpenconfigOspfTypes_MAX_METRIC_INCLUDE_UNSET |
@@ -9821,29 +9978,33 @@ import "strings"
 	#OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_TYPE2_EXTERNAL
 
 #values_E_OpenconfigOspfTypes_MAX_METRIC_INCLUDE: {
-	OpenconfigOspfTypes_MAX_METRIC_INCLUDE_UNSET:                             #OpenconfigOspfTypes_MAX_METRIC_INCLUDE_UNSET
-	OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_STUB:           #OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_STUB
-	OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_TYPE2_EXTERNAL: #OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_TYPE2_EXTERNAL
+	OpenconfigOspfTypes_MAX_METRIC_INCLUDE_UNSET?:                             #OpenconfigOspfTypes_MAX_METRIC_INCLUDE_UNSET
+	OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_STUB?:           #OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_STUB
+	OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_TYPE2_EXTERNAL?: #OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_TYPE2_EXTERNAL
 }
 
-#OpenconfigOspfTypes_MAX_METRIC_INCLUDE_UNSET: #E_OpenconfigOspfTypes_MAX_METRIC_INCLUDE & 0
+#OpenconfigOspfTypes_MAX_METRIC_INCLUDE_UNSET: #E_OpenconfigOspfTypes_MAX_METRIC_INCLUDE & "UNSET"
 
-#OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_STUB: #E_OpenconfigOspfTypes_MAX_METRIC_INCLUDE & 1
+#OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_STUB: #E_OpenconfigOspfTypes_MAX_METRIC_INCLUDE & "MAX_METRIC_INCLUDE_STUB"
 
-#OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_TYPE2_EXTERNAL: #E_OpenconfigOspfTypes_MAX_METRIC_INCLUDE & 2
+#OpenconfigOspfTypes_MAX_METRIC_INCLUDE_MAX_METRIC_INCLUDE_TYPE2_EXTERNAL: #E_OpenconfigOspfTypes_MAX_METRIC_INCLUDE & "MAX_METRIC_INCLUDE_TYPE2_EXTERNAL"
+
+#E_OpenconfigOspfTypes_MAX_METRIC_TRIGGER: string
 
 #enumE_OpenconfigOspfTypes_MAX_METRIC_TRIGGER:
 	#OpenconfigOspfTypes_MAX_METRIC_TRIGGER_UNSET |
 	#OpenconfigOspfTypes_MAX_METRIC_TRIGGER_MAX_METRIC_ON_SYSTEM_BOOT
 
 #values_E_OpenconfigOspfTypes_MAX_METRIC_TRIGGER: {
-	OpenconfigOspfTypes_MAX_METRIC_TRIGGER_UNSET:                     #OpenconfigOspfTypes_MAX_METRIC_TRIGGER_UNSET
-	OpenconfigOspfTypes_MAX_METRIC_TRIGGER_MAX_METRIC_ON_SYSTEM_BOOT: #OpenconfigOspfTypes_MAX_METRIC_TRIGGER_MAX_METRIC_ON_SYSTEM_BOOT
+	OpenconfigOspfTypes_MAX_METRIC_TRIGGER_UNSET?:                     #OpenconfigOspfTypes_MAX_METRIC_TRIGGER_UNSET
+	OpenconfigOspfTypes_MAX_METRIC_TRIGGER_MAX_METRIC_ON_SYSTEM_BOOT?: #OpenconfigOspfTypes_MAX_METRIC_TRIGGER_MAX_METRIC_ON_SYSTEM_BOOT
 }
 
-#OpenconfigOspfTypes_MAX_METRIC_TRIGGER_UNSET: #E_OpenconfigOspfTypes_MAX_METRIC_TRIGGER & 0
+#OpenconfigOspfTypes_MAX_METRIC_TRIGGER_UNSET: #E_OpenconfigOspfTypes_MAX_METRIC_TRIGGER & "UNSET"
 
-#OpenconfigOspfTypes_MAX_METRIC_TRIGGER_MAX_METRIC_ON_SYSTEM_BOOT: #E_OpenconfigOspfTypes_MAX_METRIC_TRIGGER & 1
+#OpenconfigOspfTypes_MAX_METRIC_TRIGGER_MAX_METRIC_ON_SYSTEM_BOOT: #E_OpenconfigOspfTypes_MAX_METRIC_TRIGGER & "MAX_METRIC_ON_SYSTEM_BOOT"
+
+#E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE: string
 
 #enumE_OpenconfigOspfTypes_OSPF_NETWORK_TYPE:
 	#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_UNSET |
@@ -9852,19 +10013,21 @@ import "strings"
 	#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_POINT_TO_POINT_NETWORK
 
 #values_E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE: {
-	OpenconfigOspfTypes_OSPF_NETWORK_TYPE_UNSET:                  #OpenconfigOspfTypes_OSPF_NETWORK_TYPE_UNSET
-	OpenconfigOspfTypes_OSPF_NETWORK_TYPE_BROADCAST_NETWORK:      #OpenconfigOspfTypes_OSPF_NETWORK_TYPE_BROADCAST_NETWORK
-	OpenconfigOspfTypes_OSPF_NETWORK_TYPE_NON_BROADCAST_NETWORK:  #OpenconfigOspfTypes_OSPF_NETWORK_TYPE_NON_BROADCAST_NETWORK
-	OpenconfigOspfTypes_OSPF_NETWORK_TYPE_POINT_TO_POINT_NETWORK: #OpenconfigOspfTypes_OSPF_NETWORK_TYPE_POINT_TO_POINT_NETWORK
+	OpenconfigOspfTypes_OSPF_NETWORK_TYPE_UNSET?:                  #OpenconfigOspfTypes_OSPF_NETWORK_TYPE_UNSET
+	OpenconfigOspfTypes_OSPF_NETWORK_TYPE_BROADCAST_NETWORK?:      #OpenconfigOspfTypes_OSPF_NETWORK_TYPE_BROADCAST_NETWORK
+	OpenconfigOspfTypes_OSPF_NETWORK_TYPE_NON_BROADCAST_NETWORK?:  #OpenconfigOspfTypes_OSPF_NETWORK_TYPE_NON_BROADCAST_NETWORK
+	OpenconfigOspfTypes_OSPF_NETWORK_TYPE_POINT_TO_POINT_NETWORK?: #OpenconfigOspfTypes_OSPF_NETWORK_TYPE_POINT_TO_POINT_NETWORK
 }
 
-#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_UNSET: #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE & 0
+#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_UNSET: #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE & "UNSET"
 
-#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_BROADCAST_NETWORK: #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE & 1
+#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_BROADCAST_NETWORK: #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE & "BROADCAST_NETWORK"
 
-#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_NON_BROADCAST_NETWORK: #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE & 2
+#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_NON_BROADCAST_NETWORK: #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE & "NON_BROADCAST_NETWORK"
 
-#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_POINT_TO_POINT_NETWORK: #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE & 3
+#OpenconfigOspfTypes_OSPF_NETWORK_TYPE_POINT_TO_POINT_NETWORK: #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE & "POINT_TO_POINT_NETWORK"
+
+#E_OpenconfigPacketMatchTypes_ETHERTYPE: string
 
 #enumE_OpenconfigPacketMatchTypes_ETHERTYPE:
 	#OpenconfigPacketMatchTypes_ETHERTYPE_UNSET |
@@ -9877,31 +10040,33 @@ import "strings"
 	#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_VLAN
 
 #values_E_OpenconfigPacketMatchTypes_ETHERTYPE: {
-	OpenconfigPacketMatchTypes_ETHERTYPE_UNSET:          #OpenconfigPacketMatchTypes_ETHERTYPE_UNSET
-	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ARP:  #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ARP
-	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV4: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV4
-	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV6: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV6
-	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_LLDP: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_LLDP
-	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_MPLS: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_MPLS
-	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ROCE: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ROCE
-	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_VLAN: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_VLAN
+	OpenconfigPacketMatchTypes_ETHERTYPE_UNSET?:          #OpenconfigPacketMatchTypes_ETHERTYPE_UNSET
+	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ARP?:  #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ARP
+	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV4?: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV4
+	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV6?: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV6
+	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_LLDP?: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_LLDP
+	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_MPLS?: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_MPLS
+	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ROCE?: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ROCE
+	OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_VLAN?: #OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_VLAN
 }
 
-#OpenconfigPacketMatchTypes_ETHERTYPE_UNSET: #E_OpenconfigPacketMatchTypes_ETHERTYPE & 0
+#OpenconfigPacketMatchTypes_ETHERTYPE_UNSET: #E_OpenconfigPacketMatchTypes_ETHERTYPE & "UNSET"
 
-#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ARP: #E_OpenconfigPacketMatchTypes_ETHERTYPE & 1
+#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ARP: #E_OpenconfigPacketMatchTypes_ETHERTYPE & "ETHERTYPE_ARP"
 
-#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV4: #E_OpenconfigPacketMatchTypes_ETHERTYPE & 2
+#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV4: #E_OpenconfigPacketMatchTypes_ETHERTYPE & "ETHERTYPE_IPV4"
 
-#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV6: #E_OpenconfigPacketMatchTypes_ETHERTYPE & 3
+#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_IPV6: #E_OpenconfigPacketMatchTypes_ETHERTYPE & "ETHERTYPE_IPV6"
 
-#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_LLDP: #E_OpenconfigPacketMatchTypes_ETHERTYPE & 4
+#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_LLDP: #E_OpenconfigPacketMatchTypes_ETHERTYPE & "ETHERTYPE_LLDP"
 
-#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_MPLS: #E_OpenconfigPacketMatchTypes_ETHERTYPE & 5
+#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_MPLS: #E_OpenconfigPacketMatchTypes_ETHERTYPE & "ETHERTYPE_MPLS"
 
-#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ROCE: #E_OpenconfigPacketMatchTypes_ETHERTYPE & 6
+#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_ROCE: #E_OpenconfigPacketMatchTypes_ETHERTYPE & "ETHERTYPE_ROCE"
 
-#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_VLAN: #E_OpenconfigPacketMatchTypes_ETHERTYPE & 7
+#OpenconfigPacketMatchTypes_ETHERTYPE_ETHERTYPE_VLAN: #E_OpenconfigPacketMatchTypes_ETHERTYPE & "ETHERTYPE_VLAN"
+
+#E_OpenconfigPacketMatchTypes_IP_PROTOCOL: string
 
 #enumE_OpenconfigPacketMatchTypes_IP_PROTOCOL:
 	#OpenconfigPacketMatchTypes_IP_PROTOCOL_UNSET |
@@ -9917,40 +10082,42 @@ import "strings"
 	#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_UDP
 
 #values_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: {
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_UNSET:    #OpenconfigPacketMatchTypes_IP_PROTOCOL_UNSET
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_AUTH:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_AUTH
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_GRE:   #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_GRE
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_ICMP:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_ICMP
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IGMP:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IGMP
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IN_IP: #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IN_IP
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_L2TP:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_L2TP
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_PIM:   #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_PIM
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_RSVP:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_RSVP
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_TCP:   #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_TCP
-	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_UDP:   #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_UDP
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_UNSET?:    #OpenconfigPacketMatchTypes_IP_PROTOCOL_UNSET
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_AUTH?:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_AUTH
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_GRE?:   #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_GRE
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_ICMP?:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_ICMP
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IGMP?:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IGMP
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IN_IP?: #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IN_IP
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_L2TP?:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_L2TP
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_PIM?:   #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_PIM
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_RSVP?:  #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_RSVP
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_TCP?:   #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_TCP
+	OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_UDP?:   #OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_UDP
 }
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_UNSET: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 0
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_UNSET: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "UNSET"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_AUTH: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 1
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_AUTH: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_AUTH"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_GRE: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 2
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_GRE: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_GRE"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_ICMP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 3
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_ICMP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_ICMP"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IGMP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 4
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IGMP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_IGMP"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IN_IP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 5
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_IN_IP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_IN_IP"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_L2TP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 6
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_L2TP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_L2TP"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_PIM: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 7
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_PIM: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_PIM"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_RSVP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 8
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_RSVP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_RSVP"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_TCP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 9
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_TCP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_TCP"
 
-#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_UDP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & 10
+#OpenconfigPacketMatchTypes_IP_PROTOCOL_IP_UDP: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL & "IP_UDP"
+
+#E_OpenconfigPacketMatchTypes_TCP_FLAGS: string
 
 #enumE_OpenconfigPacketMatchTypes_TCP_FLAGS:
 	#OpenconfigPacketMatchTypes_TCP_FLAGS_UNSET |
@@ -9964,34 +10131,36 @@ import "strings"
 	#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_URG
 
 #values_E_OpenconfigPacketMatchTypes_TCP_FLAGS: {
-	OpenconfigPacketMatchTypes_TCP_FLAGS_UNSET:   #OpenconfigPacketMatchTypes_TCP_FLAGS_UNSET
-	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ACK: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ACK
-	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_CWR: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_CWR
-	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ECE: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ECE
-	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_FIN: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_FIN
-	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_PSH: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_PSH
-	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_RST: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_RST
-	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_SYN: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_SYN
-	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_URG: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_URG
+	OpenconfigPacketMatchTypes_TCP_FLAGS_UNSET?:   #OpenconfigPacketMatchTypes_TCP_FLAGS_UNSET
+	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ACK?: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ACK
+	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_CWR?: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_CWR
+	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ECE?: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ECE
+	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_FIN?: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_FIN
+	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_PSH?: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_PSH
+	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_RST?: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_RST
+	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_SYN?: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_SYN
+	OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_URG?: #OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_URG
 }
 
-#OpenconfigPacketMatchTypes_TCP_FLAGS_UNSET: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & 0
+#OpenconfigPacketMatchTypes_TCP_FLAGS_UNSET: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & "UNSET"
 
-#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ACK: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & 1
+#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ACK: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & "TCP_ACK"
 
-#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_CWR: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & 2
+#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_CWR: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & "TCP_CWR"
 
-#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ECE: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & 3
+#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_ECE: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & "TCP_ECE"
 
-#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_FIN: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & 4
+#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_FIN: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & "TCP_FIN"
 
-#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_PSH: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & 5
+#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_PSH: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & "TCP_PSH"
 
-#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_RST: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & 6
+#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_RST: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & "TCP_RST"
 
-#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_SYN: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & 7
+#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_SYN: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & "TCP_SYN"
 
-#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_URG: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & 8
+#OpenconfigPacketMatchTypes_TCP_FLAGS_TCP_URG: #E_OpenconfigPacketMatchTypes_TCP_FLAGS & "TCP_URG"
+
+#E_OpenconfigPcep_PceModeType: string
 
 #enumE_OpenconfigPcep_PceModeType:
 	#OpenconfigPcep_PceModeType_UNSET |
@@ -10000,19 +10169,21 @@ import "strings"
 	#OpenconfigPcep_PceModeType_STATEFUL_ACTIVE
 
 #values_E_OpenconfigPcep_PceModeType: {
-	OpenconfigPcep_PceModeType_UNSET:            #OpenconfigPcep_PceModeType_UNSET
-	OpenconfigPcep_PceModeType_STATELESS:        #OpenconfigPcep_PceModeType_STATELESS
-	OpenconfigPcep_PceModeType_STATEFUL_PASSIVE: #OpenconfigPcep_PceModeType_STATEFUL_PASSIVE
-	OpenconfigPcep_PceModeType_STATEFUL_ACTIVE:  #OpenconfigPcep_PceModeType_STATEFUL_ACTIVE
+	OpenconfigPcep_PceModeType_UNSET?:            #OpenconfigPcep_PceModeType_UNSET
+	OpenconfigPcep_PceModeType_STATELESS?:        #OpenconfigPcep_PceModeType_STATELESS
+	OpenconfigPcep_PceModeType_STATEFUL_PASSIVE?: #OpenconfigPcep_PceModeType_STATEFUL_PASSIVE
+	OpenconfigPcep_PceModeType_STATEFUL_ACTIVE?:  #OpenconfigPcep_PceModeType_STATEFUL_ACTIVE
 }
 
-#OpenconfigPcep_PceModeType_UNSET: #E_OpenconfigPcep_PceModeType & 0
+#OpenconfigPcep_PceModeType_UNSET: #E_OpenconfigPcep_PceModeType & "UNSET"
 
-#OpenconfigPcep_PceModeType_STATELESS: #E_OpenconfigPcep_PceModeType & 1
+#OpenconfigPcep_PceModeType_STATELESS: #E_OpenconfigPcep_PceModeType & "STATELESS"
 
-#OpenconfigPcep_PceModeType_STATEFUL_PASSIVE: #E_OpenconfigPcep_PceModeType & 2
+#OpenconfigPcep_PceModeType_STATEFUL_PASSIVE: #E_OpenconfigPcep_PceModeType & "STATEFUL_PASSIVE"
 
-#OpenconfigPcep_PceModeType_STATEFUL_ACTIVE: #E_OpenconfigPcep_PceModeType & 3
+#OpenconfigPcep_PceModeType_STATEFUL_ACTIVE: #E_OpenconfigPcep_PceModeType & "STATEFUL_ACTIVE"
+
+#E_OpenconfigPimTypes_PIM_MODE: string
 
 #enumE_OpenconfigPimTypes_PIM_MODE:
 	#OpenconfigPimTypes_PIM_MODE_UNSET |
@@ -10020,16 +10191,18 @@ import "strings"
 	#OpenconfigPimTypes_PIM_MODE_PIM_MODE_SPARSE
 
 #values_E_OpenconfigPimTypes_PIM_MODE: {
-	OpenconfigPimTypes_PIM_MODE_UNSET:           #OpenconfigPimTypes_PIM_MODE_UNSET
-	OpenconfigPimTypes_PIM_MODE_PIM_MODE_DENSE:  #OpenconfigPimTypes_PIM_MODE_PIM_MODE_DENSE
-	OpenconfigPimTypes_PIM_MODE_PIM_MODE_SPARSE: #OpenconfigPimTypes_PIM_MODE_PIM_MODE_SPARSE
+	OpenconfigPimTypes_PIM_MODE_UNSET?:           #OpenconfigPimTypes_PIM_MODE_UNSET
+	OpenconfigPimTypes_PIM_MODE_PIM_MODE_DENSE?:  #OpenconfigPimTypes_PIM_MODE_PIM_MODE_DENSE
+	OpenconfigPimTypes_PIM_MODE_PIM_MODE_SPARSE?: #OpenconfigPimTypes_PIM_MODE_PIM_MODE_SPARSE
 }
 
-#OpenconfigPimTypes_PIM_MODE_UNSET: #E_OpenconfigPimTypes_PIM_MODE & 0
+#OpenconfigPimTypes_PIM_MODE_UNSET: #E_OpenconfigPimTypes_PIM_MODE & "UNSET"
 
-#OpenconfigPimTypes_PIM_MODE_PIM_MODE_DENSE: #E_OpenconfigPimTypes_PIM_MODE & 1
+#OpenconfigPimTypes_PIM_MODE_PIM_MODE_DENSE: #E_OpenconfigPimTypes_PIM_MODE & "PIM_MODE_DENSE"
 
-#OpenconfigPimTypes_PIM_MODE_PIM_MODE_SPARSE: #E_OpenconfigPimTypes_PIM_MODE & 2
+#OpenconfigPimTypes_PIM_MODE_PIM_MODE_SPARSE: #E_OpenconfigPimTypes_PIM_MODE & "PIM_MODE_SPARSE"
+
+#E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE: string
 
 #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE:
 	#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_UNSET |
@@ -10046,43 +10219,45 @@ import "strings"
 	#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_STATIC
 
 #values_E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE: {
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_UNSET:              #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_UNSET
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_BGP:                #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_BGP
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_DIRECTLY_CONNECTED: #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_DIRECTLY_CONNECTED
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_GRIBI:              #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_GRIBI
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_IGMP:               #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_IGMP
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_ISIS:               #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_ISIS
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_LOCAL_AGGREGATE:    #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_LOCAL_AGGREGATE
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF:               #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF3:              #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF3
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PCEP:               #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PCEP
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PIM:                #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PIM
-	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_STATIC:             #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_STATIC
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_UNSET?:              #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_UNSET
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_BGP?:                #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_BGP
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_DIRECTLY_CONNECTED?: #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_DIRECTLY_CONNECTED
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_GRIBI?:              #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_GRIBI
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_IGMP?:               #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_IGMP
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_ISIS?:               #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_ISIS
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_LOCAL_AGGREGATE?:    #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_LOCAL_AGGREGATE
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF?:               #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF3?:              #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF3
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PCEP?:               #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PCEP
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PIM?:                #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PIM
+	OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_STATIC?:             #OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_STATIC
 }
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_UNSET: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 0
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_UNSET: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "UNSET"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_BGP: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 1
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_BGP: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "BGP"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_DIRECTLY_CONNECTED: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 2
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_DIRECTLY_CONNECTED: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "DIRECTLY_CONNECTED"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_GRIBI: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 3
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_GRIBI: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "GRIBI"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_IGMP: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 4
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_IGMP: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "IGMP"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_ISIS: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 5
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_ISIS: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "ISIS"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_LOCAL_AGGREGATE: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 6
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_LOCAL_AGGREGATE: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "LOCAL_AGGREGATE"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 7
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "OSPF"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF3: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 8
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_OSPF3: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "OSPF3"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PCEP: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 9
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PCEP: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "PCEP"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PIM: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 10
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_PIM: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "PIM"
 
-#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_STATIC: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & 11
+#OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE_STATIC: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE & "STATIC"
+
+#E_OpenconfigRoutingPolicy_DefaultPolicyType: string
 
 #enumE_OpenconfigRoutingPolicy_DefaultPolicyType:
 	#OpenconfigRoutingPolicy_DefaultPolicyType_UNSET |
@@ -10090,16 +10265,18 @@ import "strings"
 	#OpenconfigRoutingPolicy_DefaultPolicyType_REJECT_ROUTE
 
 #values_E_OpenconfigRoutingPolicy_DefaultPolicyType: {
-	OpenconfigRoutingPolicy_DefaultPolicyType_UNSET:        #OpenconfigRoutingPolicy_DefaultPolicyType_UNSET
-	OpenconfigRoutingPolicy_DefaultPolicyType_ACCEPT_ROUTE: #OpenconfigRoutingPolicy_DefaultPolicyType_ACCEPT_ROUTE
-	OpenconfigRoutingPolicy_DefaultPolicyType_REJECT_ROUTE: #OpenconfigRoutingPolicy_DefaultPolicyType_REJECT_ROUTE
+	OpenconfigRoutingPolicy_DefaultPolicyType_UNSET?:        #OpenconfigRoutingPolicy_DefaultPolicyType_UNSET
+	OpenconfigRoutingPolicy_DefaultPolicyType_ACCEPT_ROUTE?: #OpenconfigRoutingPolicy_DefaultPolicyType_ACCEPT_ROUTE
+	OpenconfigRoutingPolicy_DefaultPolicyType_REJECT_ROUTE?: #OpenconfigRoutingPolicy_DefaultPolicyType_REJECT_ROUTE
 }
 
-#OpenconfigRoutingPolicy_DefaultPolicyType_UNSET: #E_OpenconfigRoutingPolicy_DefaultPolicyType & 0
+#OpenconfigRoutingPolicy_DefaultPolicyType_UNSET: #E_OpenconfigRoutingPolicy_DefaultPolicyType & "UNSET"
 
-#OpenconfigRoutingPolicy_DefaultPolicyType_ACCEPT_ROUTE: #E_OpenconfigRoutingPolicy_DefaultPolicyType & 1
+#OpenconfigRoutingPolicy_DefaultPolicyType_ACCEPT_ROUTE: #E_OpenconfigRoutingPolicy_DefaultPolicyType & "ACCEPT_ROUTE"
 
-#OpenconfigRoutingPolicy_DefaultPolicyType_REJECT_ROUTE: #E_OpenconfigRoutingPolicy_DefaultPolicyType & 2
+#OpenconfigRoutingPolicy_DefaultPolicyType_REJECT_ROUTE: #E_OpenconfigRoutingPolicy_DefaultPolicyType & "REJECT_ROUTE"
+
+#E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType: string
 
 #enumE_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType:
 	#OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_UNSET |
@@ -10107,16 +10284,18 @@ import "strings"
 	#OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_INVERT
 
 #values_E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType: {
-	OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_UNSET:  #OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_UNSET
-	OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_ANY:    #OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_ANY
-	OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_INVERT: #OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_INVERT
+	OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_UNSET?:  #OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_UNSET
+	OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_ANY?:    #OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_ANY
+	OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_INVERT?: #OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_INVERT
 }
 
-#OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_UNSET: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType & 0
+#OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_UNSET: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType & "UNSET"
 
-#OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_ANY: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType & 1
+#OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_ANY: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType & "ANY"
 
-#OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_INVERT: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType & 2
+#OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType_INVERT: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType & "INVERT"
+
+#E_OpenconfigRoutingPolicy_PolicyResultType: string
 
 #enumE_OpenconfigRoutingPolicy_PolicyResultType:
 	#OpenconfigRoutingPolicy_PolicyResultType_UNSET |
@@ -10124,16 +10303,18 @@ import "strings"
 	#OpenconfigRoutingPolicy_PolicyResultType_REJECT_ROUTE
 
 #values_E_OpenconfigRoutingPolicy_PolicyResultType: {
-	OpenconfigRoutingPolicy_PolicyResultType_UNSET:        #OpenconfigRoutingPolicy_PolicyResultType_UNSET
-	OpenconfigRoutingPolicy_PolicyResultType_ACCEPT_ROUTE: #OpenconfigRoutingPolicy_PolicyResultType_ACCEPT_ROUTE
-	OpenconfigRoutingPolicy_PolicyResultType_REJECT_ROUTE: #OpenconfigRoutingPolicy_PolicyResultType_REJECT_ROUTE
+	OpenconfigRoutingPolicy_PolicyResultType_UNSET?:        #OpenconfigRoutingPolicy_PolicyResultType_UNSET
+	OpenconfigRoutingPolicy_PolicyResultType_ACCEPT_ROUTE?: #OpenconfigRoutingPolicy_PolicyResultType_ACCEPT_ROUTE
+	OpenconfigRoutingPolicy_PolicyResultType_REJECT_ROUTE?: #OpenconfigRoutingPolicy_PolicyResultType_REJECT_ROUTE
 }
 
-#OpenconfigRoutingPolicy_PolicyResultType_UNSET: #E_OpenconfigRoutingPolicy_PolicyResultType & 0
+#OpenconfigRoutingPolicy_PolicyResultType_UNSET: #E_OpenconfigRoutingPolicy_PolicyResultType & "UNSET"
 
-#OpenconfigRoutingPolicy_PolicyResultType_ACCEPT_ROUTE: #E_OpenconfigRoutingPolicy_PolicyResultType & 1
+#OpenconfigRoutingPolicy_PolicyResultType_ACCEPT_ROUTE: #E_OpenconfigRoutingPolicy_PolicyResultType & "ACCEPT_ROUTE"
 
-#OpenconfigRoutingPolicy_PolicyResultType_REJECT_ROUTE: #E_OpenconfigRoutingPolicy_PolicyResultType & 2
+#OpenconfigRoutingPolicy_PolicyResultType_REJECT_ROUTE: #E_OpenconfigRoutingPolicy_PolicyResultType & "REJECT_ROUTE"
+
+#E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode: string
 
 #enumE_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode:
 	#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_UNSET |
@@ -10142,19 +10323,21 @@ import "strings"
 	#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_MIXED
 
 #values_E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode: {
-	OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_UNSET: #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_UNSET
-	OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV4:  #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV4
-	OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV6:  #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV6
-	OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_MIXED: #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_MIXED
+	OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_UNSET?: #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_UNSET
+	OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV4?:  #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV4
+	OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV6?:  #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV6
+	OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_MIXED?: #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_MIXED
 }
 
-#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_UNSET: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode & 0
+#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_UNSET: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode & "UNSET"
 
-#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV4: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode & 1
+#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV4: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode & "IPV4"
 
-#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV6: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode & 2
+#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_IPV6: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode & "IPV6"
 
-#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_MIXED: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode & 3
+#OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode_MIXED: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode & "MIXED"
+
+#E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode: string
 
 #enumE_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode:
 	#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_UNSET |
@@ -10162,16 +10345,18 @@ import "strings"
 	#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_REFERENCE
 
 #values_E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode: {
-	OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_UNSET:     #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_UNSET
-	OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_INLINE:    #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_INLINE
-	OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_REFERENCE: #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_REFERENCE
+	OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_UNSET?:     #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_UNSET
+	OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_INLINE?:    #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_INLINE
+	OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_REFERENCE?: #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_REFERENCE
 }
 
-#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_UNSET: #E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode & 0
+#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_UNSET: #E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode & "UNSET"
 
-#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_INLINE: #E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode & 1
+#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_INLINE: #E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode & "INLINE"
 
-#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_REFERENCE: #E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode & 2
+#OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode_REFERENCE: #E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode & "REFERENCE"
+
+#E_OpenconfigSegmentRouting_SrDataplaneType: string
 
 #enumE_OpenconfigSegmentRouting_SrDataplaneType:
 	#OpenconfigSegmentRouting_SrDataplaneType_UNSET |
@@ -10179,16 +10364,18 @@ import "strings"
 	#OpenconfigSegmentRouting_SrDataplaneType_IPV6
 
 #values_E_OpenconfigSegmentRouting_SrDataplaneType: {
-	OpenconfigSegmentRouting_SrDataplaneType_UNSET: #OpenconfigSegmentRouting_SrDataplaneType_UNSET
-	OpenconfigSegmentRouting_SrDataplaneType_MPLS:  #OpenconfigSegmentRouting_SrDataplaneType_MPLS
-	OpenconfigSegmentRouting_SrDataplaneType_IPV6:  #OpenconfigSegmentRouting_SrDataplaneType_IPV6
+	OpenconfigSegmentRouting_SrDataplaneType_UNSET?: #OpenconfigSegmentRouting_SrDataplaneType_UNSET
+	OpenconfigSegmentRouting_SrDataplaneType_MPLS?:  #OpenconfigSegmentRouting_SrDataplaneType_MPLS
+	OpenconfigSegmentRouting_SrDataplaneType_IPV6?:  #OpenconfigSegmentRouting_SrDataplaneType_IPV6
 }
 
-#OpenconfigSegmentRouting_SrDataplaneType_UNSET: #E_OpenconfigSegmentRouting_SrDataplaneType & 0
+#OpenconfigSegmentRouting_SrDataplaneType_UNSET: #E_OpenconfigSegmentRouting_SrDataplaneType & "UNSET"
 
-#OpenconfigSegmentRouting_SrDataplaneType_MPLS: #E_OpenconfigSegmentRouting_SrDataplaneType & 1
+#OpenconfigSegmentRouting_SrDataplaneType_MPLS: #E_OpenconfigSegmentRouting_SrDataplaneType & "MPLS"
 
-#OpenconfigSegmentRouting_SrDataplaneType_IPV6: #E_OpenconfigSegmentRouting_SrDataplaneType & 2
+#OpenconfigSegmentRouting_SrDataplaneType_IPV6: #E_OpenconfigSegmentRouting_SrDataplaneType & "IPV6"
+
+#E_OpenconfigTypes_ADDRESS_FAMILY: string
 
 #enumE_OpenconfigTypes_ADDRESS_FAMILY:
 	#OpenconfigTypes_ADDRESS_FAMILY_UNSET |
@@ -10198,22 +10385,24 @@ import "strings"
 	#OpenconfigTypes_ADDRESS_FAMILY_MPLS
 
 #values_E_OpenconfigTypes_ADDRESS_FAMILY: {
-	OpenconfigTypes_ADDRESS_FAMILY_UNSET:       #OpenconfigTypes_ADDRESS_FAMILY_UNSET
-	OpenconfigTypes_ADDRESS_FAMILY_IPV4:        #OpenconfigTypes_ADDRESS_FAMILY_IPV4
-	OpenconfigTypes_ADDRESS_FAMILY_IPV6:        #OpenconfigTypes_ADDRESS_FAMILY_IPV6
-	OpenconfigTypes_ADDRESS_FAMILY_L2_ETHERNET: #OpenconfigTypes_ADDRESS_FAMILY_L2_ETHERNET
-	OpenconfigTypes_ADDRESS_FAMILY_MPLS:        #OpenconfigTypes_ADDRESS_FAMILY_MPLS
+	OpenconfigTypes_ADDRESS_FAMILY_UNSET?:       #OpenconfigTypes_ADDRESS_FAMILY_UNSET
+	OpenconfigTypes_ADDRESS_FAMILY_IPV4?:        #OpenconfigTypes_ADDRESS_FAMILY_IPV4
+	OpenconfigTypes_ADDRESS_FAMILY_IPV6?:        #OpenconfigTypes_ADDRESS_FAMILY_IPV6
+	OpenconfigTypes_ADDRESS_FAMILY_L2_ETHERNET?: #OpenconfigTypes_ADDRESS_FAMILY_L2_ETHERNET
+	OpenconfigTypes_ADDRESS_FAMILY_MPLS?:        #OpenconfigTypes_ADDRESS_FAMILY_MPLS
 }
 
-#OpenconfigTypes_ADDRESS_FAMILY_UNSET: #E_OpenconfigTypes_ADDRESS_FAMILY & 0
+#OpenconfigTypes_ADDRESS_FAMILY_UNSET: #E_OpenconfigTypes_ADDRESS_FAMILY & "UNSET"
 
-#OpenconfigTypes_ADDRESS_FAMILY_IPV4: #E_OpenconfigTypes_ADDRESS_FAMILY & 1
+#OpenconfigTypes_ADDRESS_FAMILY_IPV4: #E_OpenconfigTypes_ADDRESS_FAMILY & "IPV4"
 
-#OpenconfigTypes_ADDRESS_FAMILY_IPV6: #E_OpenconfigTypes_ADDRESS_FAMILY & 2
+#OpenconfigTypes_ADDRESS_FAMILY_IPV6: #E_OpenconfigTypes_ADDRESS_FAMILY & "IPV6"
 
-#OpenconfigTypes_ADDRESS_FAMILY_L2_ETHERNET: #E_OpenconfigTypes_ADDRESS_FAMILY & 3
+#OpenconfigTypes_ADDRESS_FAMILY_L2_ETHERNET: #E_OpenconfigTypes_ADDRESS_FAMILY & "L2_ETHERNET"
 
-#OpenconfigTypes_ADDRESS_FAMILY_MPLS: #E_OpenconfigTypes_ADDRESS_FAMILY & 4
+#OpenconfigTypes_ADDRESS_FAMILY_MPLS: #E_OpenconfigTypes_ADDRESS_FAMILY & "MPLS"
+
+#E_OpenconfigVlanTypes_TPID_TYPES: string
 
 #enumE_OpenconfigVlanTypes_TPID_TYPES:
 	#OpenconfigVlanTypes_TPID_TYPES_UNSET |
@@ -10224,25 +10413,27 @@ import "strings"
 	#OpenconfigVlanTypes_TPID_TYPES_TPID_ANY
 
 #values_E_OpenconfigVlanTypes_TPID_TYPES: {
-	OpenconfigVlanTypes_TPID_TYPES_UNSET:       #OpenconfigVlanTypes_TPID_TYPES_UNSET
-	OpenconfigVlanTypes_TPID_TYPES_TPID_0X8100: #OpenconfigVlanTypes_TPID_TYPES_TPID_0X8100
-	OpenconfigVlanTypes_TPID_TYPES_TPID_0X88A8: #OpenconfigVlanTypes_TPID_TYPES_TPID_0X88A8
-	OpenconfigVlanTypes_TPID_TYPES_TPID_0X9100: #OpenconfigVlanTypes_TPID_TYPES_TPID_0X9100
-	OpenconfigVlanTypes_TPID_TYPES_TPID_0X9200: #OpenconfigVlanTypes_TPID_TYPES_TPID_0X9200
-	OpenconfigVlanTypes_TPID_TYPES_TPID_ANY:    #OpenconfigVlanTypes_TPID_TYPES_TPID_ANY
+	OpenconfigVlanTypes_TPID_TYPES_UNSET?:       #OpenconfigVlanTypes_TPID_TYPES_UNSET
+	OpenconfigVlanTypes_TPID_TYPES_TPID_0X8100?: #OpenconfigVlanTypes_TPID_TYPES_TPID_0X8100
+	OpenconfigVlanTypes_TPID_TYPES_TPID_0X88A8?: #OpenconfigVlanTypes_TPID_TYPES_TPID_0X88A8
+	OpenconfigVlanTypes_TPID_TYPES_TPID_0X9100?: #OpenconfigVlanTypes_TPID_TYPES_TPID_0X9100
+	OpenconfigVlanTypes_TPID_TYPES_TPID_0X9200?: #OpenconfigVlanTypes_TPID_TYPES_TPID_0X9200
+	OpenconfigVlanTypes_TPID_TYPES_TPID_ANY?:    #OpenconfigVlanTypes_TPID_TYPES_TPID_ANY
 }
 
-#OpenconfigVlanTypes_TPID_TYPES_UNSET: #E_OpenconfigVlanTypes_TPID_TYPES & 0
+#OpenconfigVlanTypes_TPID_TYPES_UNSET: #E_OpenconfigVlanTypes_TPID_TYPES & "UNSET"
 
-#OpenconfigVlanTypes_TPID_TYPES_TPID_0X8100: #E_OpenconfigVlanTypes_TPID_TYPES & 1
+#OpenconfigVlanTypes_TPID_TYPES_TPID_0X8100: #E_OpenconfigVlanTypes_TPID_TYPES & "TPID_0X8100"
 
-#OpenconfigVlanTypes_TPID_TYPES_TPID_0X88A8: #E_OpenconfigVlanTypes_TPID_TYPES & 2
+#OpenconfigVlanTypes_TPID_TYPES_TPID_0X88A8: #E_OpenconfigVlanTypes_TPID_TYPES & "TPID_0X88A8"
 
-#OpenconfigVlanTypes_TPID_TYPES_TPID_0X9100: #E_OpenconfigVlanTypes_TPID_TYPES & 3
+#OpenconfigVlanTypes_TPID_TYPES_TPID_0X9100: #E_OpenconfigVlanTypes_TPID_TYPES & "TPID_0X9100"
 
-#OpenconfigVlanTypes_TPID_TYPES_TPID_0X9200: #E_OpenconfigVlanTypes_TPID_TYPES & 4
+#OpenconfigVlanTypes_TPID_TYPES_TPID_0X9200: #E_OpenconfigVlanTypes_TPID_TYPES & "TPID_0X9200"
 
-#OpenconfigVlanTypes_TPID_TYPES_TPID_ANY: #E_OpenconfigVlanTypes_TPID_TYPES & 5
+#OpenconfigVlanTypes_TPID_TYPES_TPID_ANY: #E_OpenconfigVlanTypes_TPID_TYPES & "TPID_ANY"
+
+#E_OpenconfigVlan_VlanModeType: string
 
 #enumE_OpenconfigVlan_VlanModeType:
 	#OpenconfigVlan_VlanModeType_UNSET |
@@ -10250,16 +10441,18 @@ import "strings"
 	#OpenconfigVlan_VlanModeType_TRUNK
 
 #values_E_OpenconfigVlan_VlanModeType: {
-	OpenconfigVlan_VlanModeType_UNSET:  #OpenconfigVlan_VlanModeType_UNSET
-	OpenconfigVlan_VlanModeType_ACCESS: #OpenconfigVlan_VlanModeType_ACCESS
-	OpenconfigVlan_VlanModeType_TRUNK:  #OpenconfigVlan_VlanModeType_TRUNK
+	OpenconfigVlan_VlanModeType_UNSET?:  #OpenconfigVlan_VlanModeType_UNSET
+	OpenconfigVlan_VlanModeType_ACCESS?: #OpenconfigVlan_VlanModeType_ACCESS
+	OpenconfigVlan_VlanModeType_TRUNK?:  #OpenconfigVlan_VlanModeType_TRUNK
 }
 
-#OpenconfigVlan_VlanModeType_UNSET: #E_OpenconfigVlan_VlanModeType & 0
+#OpenconfigVlan_VlanModeType_UNSET: #E_OpenconfigVlan_VlanModeType & "UNSET"
 
-#OpenconfigVlan_VlanModeType_ACCESS: #E_OpenconfigVlan_VlanModeType & 1
+#OpenconfigVlan_VlanModeType_ACCESS: #E_OpenconfigVlan_VlanModeType & "ACCESS"
 
-#OpenconfigVlan_VlanModeType_TRUNK: #E_OpenconfigVlan_VlanModeType & 2
+#OpenconfigVlan_VlanModeType_TRUNK: #E_OpenconfigVlan_VlanModeType & "TRUNK"
+
+#E_OpenconfigVlan_VlanStackAction: string
 
 #enumE_OpenconfigVlan_VlanStackAction:
 	#OpenconfigVlan_VlanStackAction_UNSET |
@@ -10268,112 +10461,16 @@ import "strings"
 	#OpenconfigVlan_VlanStackAction_SWAP
 
 #values_E_OpenconfigVlan_VlanStackAction: {
-	OpenconfigVlan_VlanStackAction_UNSET: #OpenconfigVlan_VlanStackAction_UNSET
-	OpenconfigVlan_VlanStackAction_PUSH:  #OpenconfigVlan_VlanStackAction_PUSH
-	OpenconfigVlan_VlanStackAction_POP:   #OpenconfigVlan_VlanStackAction_POP
-	OpenconfigVlan_VlanStackAction_SWAP:  #OpenconfigVlan_VlanStackAction_SWAP
+	OpenconfigVlan_VlanStackAction_UNSET?: #OpenconfigVlan_VlanStackAction_UNSET
+	OpenconfigVlan_VlanStackAction_PUSH?:  #OpenconfigVlan_VlanStackAction_PUSH
+	OpenconfigVlan_VlanStackAction_POP?:   #OpenconfigVlan_VlanStackAction_POP
+	OpenconfigVlan_VlanStackAction_SWAP?:  #OpenconfigVlan_VlanStackAction_SWAP
 }
 
-#OpenconfigVlan_VlanStackAction_UNSET: #E_OpenconfigVlan_VlanStackAction & 0
+#OpenconfigVlan_VlanStackAction_UNSET: #E_OpenconfigVlan_VlanStackAction & "UNSET"
 
-#OpenconfigVlan_VlanStackAction_PUSH: #E_OpenconfigVlan_VlanStackAction & 1
+#OpenconfigVlan_VlanStackAction_PUSH: #E_OpenconfigVlan_VlanStackAction & "PUSH"
 
-#OpenconfigVlan_VlanStackAction_POP: #E_OpenconfigVlan_VlanStackAction & 2
+#OpenconfigVlan_VlanStackAction_POP: #E_OpenconfigVlan_VlanStackAction & "POP"
 
-#OpenconfigVlan_VlanStackAction_SWAP:                                                                                                                                                       #E_OpenconfigVlan_VlanStackAction & 3
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget:                                                  "AUTO"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound:                                                         "IPV4_EXPLICIT_NULL" | "ROUTER_ALERT" | "IPV6_EXPLICIT_NULL" | "IMPLICIT_NULL" | "ENTROPY_LABEL_INDICATOR" | "NO_LABEL"
-#E_OpenconfigPcep_PceModeType:                                                                                                                                                              "STATELESS" | "STATEFUL_PASSIVE" | "STATEFUL_ACTIVE"
-#E_OpenconfigVlanTypes_TPID_TYPES:                                                                                                                                                          "TPID_0X8100" | "TPID_0X88A8" | "TPID_0X9100" | "TPID_0X9200" | "TPID_ANY"
-#E_IETFInterfaces_InterfaceType:                                                                                                                                                            "ipOverClaw" | "aluGponOnu" | "dcn" | "fastdsl" | "ethernet3Mbit" | "fast" | "frf16MfrBundle" | "pon622" | "q2931" | "dlsw" | "docsCableUpstreamChannel" | "docsOfdmaUpstream" | "voiceOverAtm" | "rsrb" | "ds0Bundle" | "e1" | "l3ipvlan" | "propDocsWirelessUpstream" | "voiceOverFrameRelay" | "x213" | "bgppolicyaccounting" | "ds1" | "radsl" | "g703at2mb" | "ipForward" | "ppp" | "other" | "pon155" | "sipSig" | "termPad" | "voiceEncap" | "aluEpon" | "atmVciEndPt" | "frameRelayService" | "xboxWireless" | "docsCableNdr" | "vmwareVirtualNic" | "wwanPP" | "iana-interface-type" | "ultra" | "macSecControlledIF" | "x86Laps" | "eon" | "ieee8023adLag" | "proteon10Mbit" | "aflane8023" | "hyperchannel" | "docsCableMaclayer" | "frameRelay" | "infiniband" | "mpls" | "sonet" | "voiceEMFGD" | "arcnet" | "bsc" | "isdnu" | "async" | "propPointToPointSerial" | "smdsIcip" | "x25ple" | "sip" | "tunnel" | "cctEmul" | "frameRelayMPI" | "g703at64k" | "propCnls" | "sdlc" | "atmLogical" | "gtp" | "nsip" | "hdsl2" | "ifPwType" | "l2vlan" | "sonetOverheadChannel" | "docsCableNdf" | "eplrs" | "gr303RDT" | "iso88022llc" | "pos" | "ss7SigLink" | "voiceEBS" | "voiceEM" | "voiceFGDOS" | "aal5" | "ds1FDL" | "reachDSL" | "lapb" | "mpc" | "channel" | "coffee" | "dvbRccUpstream" | "hippiInterface" | "v37" | "opticalChannelGroup" | "atmFuni" | "econet" | "msdsl" | "virtualTg" | "voiceDID" | "capwapDot11Profile" | "docsOfdmDownstream" | "dvbAsiOut" | "docsCableDownstream" | "docsCableUpstream" | "ds3" | "vdsl" | "virtualIpAddress" | "gr303IDT" | "plc" | "propDocsWirelessDownstream" | "mvl" | "propAtm" | "teLink" | "v35" | "a12MppSwitch" | "ds0" | "iso88025Dtr" | "voiceFGDEANA" | "hdlc" | "if-gsn" | "primaryISDN" | "cnr" | "hiperlan2" | "voiceOverCable" | "x25huntGroup" | "aal2" | "cableDownstreamRfPort" | "capwapDot11Bss" | "aflane8025" | "qllc" | "ciscoISLvlan" | "docsCableScte55d1FwdOob" | "ipSwitch" | "sdci" | "sonetPath" | "atmSubInterface" | "otnOtu" | "propMultiplexor" | "lapd" | "mpegTransport" | "propWirelessP2P" | "digitalWrapperOverheadChannel" | "h323Proxy" | "idsl" | "aviciOpticalEther" | "ces" | "frameRelayInterconnect" | "rfc1483" | "lapf" | "compositeLink" | "ethernetCsmacd" | "h323Gatekeeper" | "dtm" | "dvbRccMacLayer" | "fibreChannel" | "frDlciEndPt" | "atmVirtual" | "bits" | "digitalPowerline" | "softwareLoopback" | "stackToStack" | "aluEponPhysicalUni" | "docsCableScte55d2UsOob" | "homepna" | "iso88025CRFPInt" | "aluELP" | "atmbond" | "escon" | "ibm370parChan" | "ipOverAtm" | "iso88024TokenBus" | "localTalk" | "aluEponOnu" | "aluGponPhysicalUni" | "g9983" | "ieee80216WMAN" | "linegroup" | "lmp" | "mocaVersion1" | "nfas" | "actelisMetaLOOP" | "ddnX25" | "frForward" | "para" | "pdnEtherLoop1" | "v11" | "gpon" | "srp" | "voiceFXO" | "iso88023Csmacd" | "mfSigLink" | "pip" | "aluEponLogicalLink" | "dvbRccDownstream" | "gfast" | "sonetVT" | "arcnetPlus" | "capwapWtpVirtualRadio" | "l3ipxvlan" | "atm" | "rs232" | "sixToFour" | "atmDxi" | "hssi" | "rpr" | "voiceFXS" | "bridge" | "dvbAsiIn" | "gfp" | "iso88026Man" | "mplsTunnel" | "propBWAp2Mp" | "regular1822" | "sipTg" | "atmIma" | "docsCableScte55d1RetOob" | "hostPad" | "voiceOverIp" | "transpHdlc" | "fastEther" | "isdn" | "starLan" | "isup" | "adsl2plus" | "ieee80211" | "ip" | "v36" | "fcipLink" | "g9981" | "modem" | "arap" | "docsCableUpstreamRfPort" | "opticalChannel" | "interleave" | "myrinet" | "radioMAC" | "ilan" | "pdnEtherLoop2" | "propVirtual" | "iso88025TokenRing" | "ptm" | "adsl2" | "atmRadio" | "basicISDN" | "ifVfiType" | "mediaMailOverIp" | "opticalTransport" | "proteon80Mbit" | "tr008" | "cblVectaStar" | "hippi" | "ieee802154" | "usb" | "pppMultilinkBundle" | "propDocsWirelessMaclayer" | "smdsDxi" | "docsCableScte55d2DsOob" | "dvbTdm" | "miox25" | "sdsl" | "shdsl" | "tdlc" | "docsCableMCmtsDownstream" | "fddi" | "qam" | "hdh1822" | "imt" | "ipOverCdlc" | "ieee1394" | "iso88025Fiber" | "wwanPP2" | "adsl" | "fastEtherFX" | "gigabitEthernet" | "isdns" | "macSecUncontrolledIF" | "otnOdu" | "rfc877x25" | "vdsl2" | "dvbRcsMacLayer" | "dvbRcsTdma" | "g9982" | "x25mlp" | "ieee80212" | "slip" | "vmwareNicTeam"
-#E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue:                                                                                                        "IPV6_EXPLICIT_NULL" | "IMPLICIT_NULL" | "ENTROPY_LABEL_INDICATOR" | "NO_LABEL" | "IPV4_EXPLICIT_NULL" | "ROUTER_ALERT"
-#E_OpenconfigEvpn_EsiType:                                                                                                                                                                  "TYPE_0_OPERATOR_CONFIGURED" | "TYPE_1_LACP_BASED" | "TYPE_2_BRIDGE_PROTOCOL_BASED" | "TYPE_3_MAC_BASED" | "TYPE_4_ROUTER_ID_BASED" | "TYPE_5_AS_BASED"
-#E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE:                                                                                                                                            "LOCAL" | "REMOTE"
-#E_OpenconfigVlan_VlanModeType:                                                                                                                                                             "ACCESS" | "TRUNK"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound:                                                         "IMPLICIT_NULL" | "ENTROPY_LABEL_INDICATOR" | "NO_LABEL" | "IPV4_EXPLICIT_NULL" | "ROUTER_ALERT" | "IPV6_EXPLICIT_NULL"
-#E_OpenconfigAcl_FORWARDING_ACTION:                                                                                                                                                         "ACCEPT" | "DROP" | "REJECT"
-#E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD:                                                                                                                                             "EXPLICITLY_DEFINED" | "EXTERNALLY_QUERIED" | "LOCALLY_COMPUTED"
-#E_OpenconfigMpls_MplsHopType:                                                                                                                                                              "LOOSE" | "STRICT"
-#E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE:                                                                                                                                    "PER_NEXTHOP" | "PER_PREFIX" | "INSTANCE_LABEL"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode:                                                                       "STATIC_INGRESS_REPLICATION" | "BGP" | "MULTICAST"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel:                                                                       "ROUTER_ALERT" | "IPV6_EXPLICIT_NULL" | "IMPLICIT_NULL" | "ENTROPY_LABEL_INDICATOR" | "NO_LABEL" | "IPV4_EXPLICIT_NULL"
-#E_OpenconfigTypes_ADDRESS_FAMILY:                                                                                                                                                          "L2_ETHERNET" | "MPLS" | "IPV4" | "IPV6"
-#E_OpenconfigBgpTypes_AFI_SAFI_TYPE:                                                                                                                                                        "SRTE_POLICY_IPV4" | "IPV6_LABELED_UNICAST" | "IPV6_UNICAST" | "L3VPN_IPV6_MULTICAST" | "IPV4_UNICAST" | "L2VPN_VPLS" | "LINKSTATE_VPN" | "LINKSTATE_SPF" | "L2VPN_EVPN" | "L3VPN_IPV4_MULTICAST" | "L3VPN_IPV6_UNICAST" | "LINKSTATE" | "SRTE_POLICY_IPV6" | "VPNV4_FLOWSPEC" | "IPV4_FLOWSPEC" | "IPV4_LABELED_UNICAST" | "L3VPN_IPV4_UNICAST"
-#E_OpenconfigEvpnTypes_EVPN_TYPE:                                                                                                                                                           "VLAN_AWARE" | "VLAN_BASED" | "VLAN_BUNDLE"
-#E_OpenconfigIsisTypes_AFI_TYPE:                                                                                                                                                            "IPV6" | "IPV4"
-#E_OpenconfigIsisTypes_AUTH_MODE:                                                                                                                                                           "MD5" | "TEXT"
-#E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE:                                                                                                                                                   "BROADCAST_NETWORK" | "NON_BROADCAST_NETWORK" | "POINT_TO_POINT_NETWORK"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod:                                                     "PREFERENCE" | "DEFAULT" | "HIGHEST_RANDOM_WEIGHT"
-#E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode:                                                                                                      "IPV4" | "IPV6" | "MIXED"
-#E_OpenconfigVlan_VlanStackAction:                                                                                                                                                          "SWAP" | "PUSH" | "POP"
-#E_OpenconfigIfEthernet_INTERFACE_FEC:                                                                                                                                                      "FEC_DISABLED" | "FEC_FC" | "FEC_RS528" | "FEC_RS544" | "FEC_RS544_2X_INTERLEAVE"
-#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding:                                                                                               "COHERENT_HD7" | "COHERENT_G709" | "COHERENT_DEFAULT" | "COHERENT_SD25" | "COHERENT_SD25_BCH" | "COHERENT_SD20" | "COHERENT_SD15"
-#E_OpenconfigIsis_MetricStyle:                                                                                                                                                              "NARROW_METRIC" | "WIDE_METRIC"
-#E_OpenconfigNetworkInstanceTypes_ENCAPSULATION:                                                                                                                                            "MPLS" | "VXLAN"
-#E_OpenconfigRoutingPolicy_DefaultPolicyType:                                                                                                                                               "ACCEPT_ROUTE" | "REJECT_ROUTE"
-#E_OpenconfigRoutingPolicy_PolicyResultType:                                                                                                                                                "ACCEPT_ROUTE" | "REJECT_ROUTE"
-#E_AristaIntfAugments_AristaAddrType:                                                                                                                                                       "PRIMARY" | "SECONDARY" | "IPV6"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType:                                               "DELTA" | "THRESHOLD_CROSSED"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode:                                                                 "RFC1583_COMPATIBLE" | "RFC2328_COMPATIBLE"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status:                                                                                                     "SUSPENDED" | "ACTIVE"
-#E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION:                                                                                                                                            "PWE_ETHERNET_RAW_MODE" | "PWE_ETHERNET_TAGGED_MODE"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget:                                                  "AUTO"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway:                                                                                "HYBRID" | "CENTRALIZED" | "DISTRIBUTED_SYMETRIC" | "DISTRIBUTED_ASYMETRIC"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type:                                                                                 "PBR_POLICY" | "VRF_SELECTION_POLICY"
-#E_OpenconfigBgp_PeerType:                                                                                                                                                                  "EXTERNAL" | "INTERNAL"
-#E_OpenconfigIsisTypes_SAFI_TYPE:                                                                                                                                                           "MULTICAST" | "UNICAST"
-#E_OpenconfigIsis_LevelType:                                                                                                                                                                "LEVEL_1" | "LEVEL_2" | "LEVEL_1_2"
-#E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL:                                                                                                                                                 "PATH_SETUP_LDP" | "PATH_SETUP_RSVP" | "PATH_SETUP_SR"
-#E_OpenconfigMplsTypes_PATH_METRIC_TYPE:                                                                                                                                                    "HOP_COUNT" | "IGP_METRIC" | "PATH_DELAY" | "TE_METRIC"
-#E_OpenconfigMplsTypes_TUNNEL_TYPE:                                                                                                                                                         "P2MP" | "P2P"
-#E_OpenconfigMpls_CspfTieBreaking:                                                                                                                                                          "RANDOM" | "LEAST_FILL" | "MOST_FILL"
-#E_OpenconfigMpls_MplsSrlgFloodingType:                                                                                                                                                     "FLOODED_SRLG" | "STATIC_SRLG"
-#E_AristaIntfAugments_ReflectorMacAction:                                                                                                                                                   "none" | "swap"
-#E_OpenconfigBgp_CommunityType:                                                                                                                                                             "EXTENDED" | "BOTH" | "NONE" | "STANDARD"
-#E_OpenconfigIfEthernet_ETHERNET_SPEED:                                                                                                                                                     "SPEED_2500MB" | "SPEED_UNKNOWN" | "SPEED_100GB" | "SPEED_100GB_2LANE" | "SPEED_200GB_4LANE" | "SPEED_40GB" | "SPEED_50GB" | "SPEED_600GB" | "SPEED_200GB" | "SPEED_200GB_8LANE" | "SPEED_10MB" | "SPEED_1GB" | "SPEED_25GB" | "SPEED_400GB" | "SPEED_50GB_1LANE" | "SPEED_5GB" | "SPEED_100MB" | "SPEED_10GB" | "SPEED_800GB"
-#E_OpenconfigKeychainTypes_CRYPTO_TYPE:                                                                                                                                                     "AES_28_CMAC_96" | "CRYPTO_NONE" | "HMAC_SHA_1_12" | "HMAC_SHA_1_20" | "SHA_1" | "HMAC_MD5" | "HMAC_SHA_1" | "HMAC_SHA_1_96" | "HMAC_SHA_256" | "MD5"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel:                                                                   "IMPLICIT_NULL" | "ENTROPY_LABEL_INDICATOR" | "NO_LABEL" | "IPV4_EXPLICIT_NULL" | "ROUTER_ALERT" | "IPV6_EXPLICIT_NULL"
-#E_OpenconfigOspfTypes_MAX_METRIC_INCLUDE:                                                                                                                                                  "MAX_METRIC_INCLUDE_STUB" | "MAX_METRIC_INCLUDE_TYPE2_EXTERNAL"
-#E_OpenconfigSegmentRouting_SrDataplaneType:                                                                                                                                                "MPLS" | "IPV6"
-#E_OpenconfigAcl_ACL_TYPE:                                                                                                                                                                  "ACL_MPLS" | "ACL_IPV4" | "ACL_IPV6" | "ACL_L2" | "ACL_MIXED"
-#E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue:                                                                                                          "IPV6_EXPLICIT_NULL" | "IMPLICIT_NULL" | "ENTROPY_LABEL_INDICATOR" | "NO_LABEL" | "IPV4_EXPLICIT_NULL" | "ROUTER_ALERT"
-#E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE:                                                                                                                                         "WAIT_FOR_BGP" | "WAIT_FOR_SYSTEM"
-#E_OpenconfigKeychainTypes_AUTH_TYPE:                                                                                                                                                       "KEYCHAIN" | "SIMPLE_KEY"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId:        "IPV6_EXPLICIT_NULL" | "IMPLICIT_NULL" | "ENTROPY_LABEL_INDICATOR" | "NO_LABEL" | "IPV4_EXPLICIT_NULL" | "ROUTER_ALERT"
-#E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType:                                                                                                                                   "ANY" | "INVERT"
-#E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort:                                                                                                   "ANY"
-#E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE:                                                                                                                                                "ALL_ACTIVE" | "SINGLE_ACTIVE"
-#E_OpenconfigIsis_CircuitType:                                                                                                                                                              "POINT_TO_POINT" | "BROADCAST"
-#E_OpenconfigIsis_HelloPaddingType:                                                                                                                                                         "STRICT" | "LOOSE" | "ADAPTIVE" | "DISABLE"
-#E_OpenconfigMplsTypes_LSP_METRIC_TYPE:                                                                                                                                                     "LSP_METRIC_ABSOLUTE" | "LSP_METRIC_INHERITED" | "LSP_METRIC_RELATIVE"
-#E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS:                                                                                                                                                 "ADMIN_DOWN" | "ADMIN_UP"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode:                                       "ADJ_SID_ONLY" | "MIXED_MODE"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId:  "IPV4_EXPLICIT_NULL" | "ROUTER_ALERT" | "IPV6_EXPLICIT_NULL" | "IMPLICIT_NULL" | "ENTROPY_LABEL_INDICATOR" | "NO_LABEL"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher:                                                                    "AUTO"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions: "NO_PHP" | "EXPLICIT_NULL"
-#E_OpenconfigPacketMatchTypes_ETHERTYPE:                                                                                                                                                    "ETHERTYPE_VLAN" | "ETHERTYPE_ARP" | "ETHERTYPE_IPV4" | "ETHERTYPE_IPV6" | "ETHERTYPE_LLDP" | "ETHERTYPE_MPLS" | "ETHERTYPE_ROCE"
-#E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode:                                                                "INLINE" | "REFERENCE"
-#E_AristaIntfAugments_FallbackEnum:                                                                                                                                                         "none" | "static" | "individual"
-#E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode:                                                                                                                    "FULL" | "HALF"
-#E_OpenconfigMplsTypes_NULL_LABEL_TYPE:                                                                                                                                                     "EXPLICIT" | "IMPLICIT"
-#E_OpenconfigMpls_TeBandwidthType:                                                                                                                                                          "SPECIFIED" | "AUTO"
-#E_AristaIntfAugments_ReflectorDirection:                                                                                                                                                   "out" | "none" | "in"
-#E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode:                                                                                                          "DISABLE" | "REMOTE_ONLY" | "ALL"
-#E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP:                                                                                                                                           "DROP" | "LOCAL_LINK"
-#E_OpenconfigMplsTypes_PROTECTION_TYPE:                                                                                                                                                     "LINK_NODE_PROTECTION_REQUESTED" | "LINK_PROTECTION_REQUIRED" | "UNPROTECTED"
-#E_OpenconfigOspfTypes_MAX_METRIC_TRIGGER:                                                                                                                                                  "MAX_METRIC_ON_SYSTEM_BOOT"
-#E_OpenconfigPimTypes_PIM_MODE:                                                                                                                                                             "PIM_MODE_DENSE" | "PIM_MODE_SPARSE"
-#E_OpenconfigAcl_LOG_ACTION:                                                                                                                                                                "LOG_NONE" | "LOG_SYSLOG"
-#E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance:                                                                                                                                  "FOREVER"
-#E_OpenconfigMpls_LspControlType:                                                                                                                                                           "PCE_DELEGATED" | "PCC_CONTROLLED" | "PCC_REPORT_ONLY"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification:                                      "MIRRORED_UP_DOWN" | "SEPARATE_UP_DOWN"
-#E_OpenconfigPacketMatchTypes_TCP_FLAGS:                                                                                                                                                    "TCP_ACK" | "TCP_CWR" | "TCP_ECE" | "TCP_FIN" | "TCP_PSH" | "TCP_RST" | "TCP_SYN" | "TCP_URG"
-#E_OpenconfigBgp_RemovePrivateAsOption:                                                                                                                                                     "PRIVATE_AS_REPLACE_ALL" | "PRIVATE_AS_REMOVE_ALL"
-#E_OpenconfigMplsTypes_RSVP_AUTH_TYPE:                                                                                                                                                      "RSVP_AUTH_MD5"
-#E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE:                                                                                                                                    "L2P2P" | "L2VSI" | "L3VRF" | "DEFAULT_INSTANCE" | "L2L3"
-#E_OpenconfigPacketMatchTypes_IP_PROTOCOL:                                                                                                                                                  "IP_IGMP" | "IP_L2TP" | "IP_TCP" | "IP_UDP" | "IP_ICMP" | "IP_GRE" | "IP_IN_IP" | "IP_PIM" | "IP_RSVP" | "IP_AUTH"
-#E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE:                                                                                                                                             "DIRECTLY_CONNECTED" | "GRIBI" | "OSPF3" | "PCEP" | "PIM" | "STATIC" | "BGP" | "IGMP" | "ISIS" | "LOCAL_AGGREGATE" | "OSPF"
-#E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort:                                                                                                        "ANY"
-#E_OpenconfigIfAggregate_AggregationType:                                                                                                                                                   "STATIC" | "LACP"
-#E_OpenconfigMplsLdp_MplsLdpAfi:                                                                                                                                                            "IPV4" | "IPV6"
-#E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi:                                                                             "AUTO"
+#OpenconfigVlan_VlanStackAction_SWAP: #E_OpenconfigVlan_VlanStackAction & "SWAP"

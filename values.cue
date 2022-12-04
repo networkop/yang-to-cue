@@ -22,7 +22,7 @@ config: oc.#Device & {
 						address: [{
 							ip: "192.0.2.1"
 							config: {
-								"addr-type":     "PRIMARY"
+								"addr-type":     oc.#AristaIntfAugments_AristaAddrType_PRIMARY
 								"prefix-length": 24
 								ip:              "192.0.2.1"
 							}
@@ -40,7 +40,7 @@ config: oc.#Device & {
 				global: config: as: 65000
 				neighbors: neighbor: [{
 					"afi-safis": "afi-safi": [{
-						"afi-safi-name": "IPV4_UNICAST"
+						"afi-safi-name": oc.#OpenconfigBgpTypes_AFI_SAFI_TYPE_IPV4_UNICAST
 						config: "afi-safi-name": "IPV4_UNICAST"
 					}]
 					config: {

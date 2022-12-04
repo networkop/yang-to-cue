@@ -79,16 +79,12 @@ The generated file is located in `cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue`
 
 8.  Modify CUE definitions
 
-* Remove existing ENUM definitions:
+* Patch existing ENUM definitions
+* Make all struct fields optional, since some types are incorrectly marked as required by 'cue go get'
+* (Optionally) Import YANG list definitions from ygot Go package and inject additional validation logic into CUE definitions
 
 ```
-sed -i -E '/#E_\S+:\s+.*/d' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue 
-```
-* Patch the auto-generated CUE definitions:
-  * re-generate ygot bindings 
-  * import ENUM and YANG list definitions
-
-```
+# regenerate ygot package
 go run github.com/openconfig/ygot/generator \
 -path=openconfig \
 -generate_fakeroot \
@@ -108,17 +104,6 @@ yang/arista.yang
 go run post-import.go
 ```
 
-Add an import statement
-
-```
-sed -i '2i import "strings"' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue
-```
-
-* Make struct fields pointing to ENUM types optional (marked as mandatory fields by cue during import)
-
-```
-sed -i -E 's/(^[^#]\S+)(:\s+.*#E_)/\1\?\2/' cue.mod/gen/yang.to.cue/pkg/yang_go_gen.cue
-```
 
 > From here on, you work exclusively with CUE definitions and can safely delete `./openconfig` and `./yang` directories with YANG models and `./pkg` containing ygot types.
 
@@ -142,6 +127,9 @@ cue eval bad/mismatch.cue --out=json
 
 # duplicate entry in YangList
 cue eval bad/duplicate.cue --out=json
+
+# misspelled/incorrect entry
+cue eval bad/undefined.cue --out=json
 ```
 
 
