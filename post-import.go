@@ -22,15 +22,6 @@ import (
 	//"github.com/openconfig/ygot/ygot"
 )
 
-//#E_AristaIntfAugments_AristaAddrType: int64 // #enumE_AristaIntfAugments_AristaAddrType
-
-//var ΛEnum = map[string]map[int64]ygot.EnumDefinition{
-//	"E_AristaIntfAugments_AristaAddrType": {
-//		1: {Name: "PRIMARY"},
-//		2: {Name: "SECONDARY"},
-//		3: {Name: "IPV6"},
-//	},
-
 type YangList struct {
 	resource, key string
 }
@@ -217,12 +208,14 @@ func main() {
 		// First two cases are for ENUM patching
 		case *ast.Field:
 			// find enum definitions
+			// e.g. #E_AristaIntfAugments_AristaAddrType: int64
 			name, isIdent, err := ast.LabelName(x.Label)
 			if err != nil {
 				log.Fatalf("Error parsing label %+v", x.Label)
 			}
 			if isIdent && strings.HasPrefix(name, "#E_") {
 				// all ENUM values are strings because EnumDefinition.Name is string
+				// e.g. #E_AristaIntfAugments_AristaAddrType: string
 				x.Value = ast.NewIdent("string")
 			}
 		case *ast.BinaryExpr:
@@ -244,12 +237,19 @@ func main() {
 							// foundValue tracks if we found a match
 							foundValue := false
 							// Lookup in the map
+							// var ΛEnum = map[string]map[int64]ygot.EnumDefinition{
+							//	"E_AristaIntfAugments_AristaAddrType": {
+							//		1: {Name: "PRIMARY"},
+							//		2: {Name: "SECONDARY"},
+							//		3: {Name: "IPV6"},
+							//	},
 							if v1, ok := oc.ΛEnum[enumName]; ok {
 								log.Debugf("Found v1: %+v", v1)
 								// v1 is { 1: {Name: "PRIMARY"}, 2: {Name: "SECONDARY"},3: {Name: "IPV6"}, }
 								if v2, ok := v1[idx]; ok {
-									log.Debugf("Found v2: %+v", v2)
 									// v2 is {Name: "PRIMARY"}
+									log.Debugf("Found v2: %+v", v2)
+									// change '#E_foo_bar & 0' -> '#E_foo_bar & "PRIMARY"'
 									x.Y = ast.NewString(v2.Name)
 									foundValue = true
 								}
