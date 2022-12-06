@@ -36,7 +36,7 @@ var (
 
 func main() {
 
-	debug := flag.Bool("debug", true, "Enable debugging")
+	debug := flag.Bool("debug", false, "Enable debugging")
 	yangList := flag.Bool("yanglist", true, "Include YANG lists validation")
 	flag.Parse()
 
@@ -278,16 +278,28 @@ func main() {
 			}
 
 		case *ast.StructLit:
-			// making all fields optional as some of them (e.g. tpid) are incorrectly marked as required
+			// the following changes are done even when yanglist is set to 'false'
 			for _, elt := range x.Elts {
 				if field, ok := elt.(*ast.Field); ok {
 					name, _, err := ast.LabelName(field.Label)
 					if err != nil {
 						log.Fatal(err)
 					}
+					// making all fields optional as some of them (e.g. tpid) are incorrectly marked as required
 					if field.Optional == token.NoPos {
 						log.Debugf("found mandadory field: %s", name)
 						field.Optional = token.Blank.Pos()
+					}
+
+					// correcting ENUM type references
+					// #E_AristaIntfAugments_AristaAddrType -> #enumE_AristaIntfAugments_AristaAddrType
+					valIdent, ok := field.Value.(*ast.Ident)
+					if !ok {
+						continue
+					}
+					if strings.HasPrefix(valIdent.Name, "#E_") {
+						newValue := strings.Replace(valIdent.Name, "#E_", "#enumE_", 1)
+						field.Value = ast.NewIdent(newValue)
 					}
 				}
 			}

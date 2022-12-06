@@ -38,15 +38,15 @@ import "strings"
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_Key: {
-	name?: string                    @go(Name)
-	type?: #E_OpenconfigAcl_ACL_TYPE @go(Type)
+	name?: string                        @go(Name)
+	type?: #enumE_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet: {
 	"acl-entries"?: null | #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries @go(AclEntries,*OpenconfigAcl_Acl_AclSets_AclSet_AclEntries)
 	config?:        null | #OpenconfigAcl_Acl_AclSets_AclSet_Config     @go(Config,*OpenconfigAcl_Acl_AclSets_AclSet_Config)
 	name?:          null | string                                       @go(Name,*string)
-	type?:          #E_OpenconfigAcl_ACL_TYPE                           @go(Type)
+	type?:          #enumE_OpenconfigAcl_ACL_TYPE                       @go(Type)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries: {
@@ -82,8 +82,8 @@ import "strings"
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Actions_Config: {
-	"forwarding-action"?: #E_OpenconfigAcl_FORWARDING_ACTION @go(ForwardingAction)
-	"log-action"?:        #E_OpenconfigAcl_LOG_ACTION        @go(LogAction)
+	"forwarding-action"?: #enumE_OpenconfigAcl_FORWARDING_ACTION @go(ForwardingAction)
+	"log-action"?:        #enumE_OpenconfigAcl_LOG_ACTION        @go(LogAction)
 }
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Config: {
@@ -123,7 +123,7 @@ import "strings"
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #enumE_OpenconfigPacketMatchTypes_IP_PROTOCOL
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv4_Config_Protocol_Union_Uint8: Uint8?: uint8
 
@@ -144,7 +144,7 @@ import "strings"
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #enumE_OpenconfigPacketMatchTypes_IP_PROTOCOL
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Ipv6_Config_Protocol_Union_Uint8: Uint8?: uint8
 
@@ -162,7 +162,7 @@ import "strings"
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union_E_OpenconfigPacketMatchTypes_ETHERTYPE: E_OpenconfigPacketMatchTypes_ETHERTYPE?: #E_OpenconfigPacketMatchTypes_ETHERTYPE
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union_E_OpenconfigPacketMatchTypes_ETHERTYPE: E_OpenconfigPacketMatchTypes_ETHERTYPE?: #enumE_OpenconfigPacketMatchTypes_ETHERTYPE
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_L2_Config_Ethertype_Union_Uint16: Uint16?: uint16
 
@@ -179,13 +179,13 @@ import "strings"
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue?: #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_EndLabelValue_Union_Uint32: Uint32?: uint32
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue?: #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Mpls_Config_StartLabelValue_Union_Uint32: Uint32?: uint32
 
@@ -201,7 +201,7 @@ import "strings"
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort?: #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort_Union_String: String?: string
 
@@ -209,16 +209,16 @@ import "strings"
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union: _
 
-#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort
+#OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort?: #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_String: String?: string
 
 #OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort_Union_Uint16: Uint16?: uint16
 
 #OpenconfigAcl_Acl_AclSets_AclSet_Config: {
-	description?: null | string             @go(Description,*string)
-	name?:        null | string             @go(Name,*string)
-	type?:        #E_OpenconfigAcl_ACL_TYPE @go(Type)
+	description?: null | string                 @go(Description,*string)
+	name?:        null | string                 @go(Name,*string)
+	type?:        #enumE_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Config: {
@@ -269,19 +269,19 @@ import "strings"
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet_Key: {
-	"set-name"?: string                    @go(SetName)
-	type?:       #E_OpenconfigAcl_ACL_TYPE @go(Type)
+	"set-name"?: string                        @go(SetName)
+	type?:       #enumE_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet: {
 	config?:     null | #OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet_Config @go(Config,*OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet_Config)
 	"set-name"?: null | string                                                                    @go(SetName,*string)
-	type?:       #E_OpenconfigAcl_ACL_TYPE                                                        @go(Type)
+	type?:       #enumE_OpenconfigAcl_ACL_TYPE                                                    @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_EgressAclSets_EgressAclSet_Config: {
-	"set-name"?: null | string             @go(SetName,*string)
-	type?:       #E_OpenconfigAcl_ACL_TYPE @go(Type)
+	"set-name"?: null | string                 @go(SetName,*string)
+	type?:       #enumE_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets: {
@@ -301,19 +301,19 @@ import "strings"
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet_Key: {
-	"set-name"?: string                    @go(SetName)
-	type?:       #E_OpenconfigAcl_ACL_TYPE @go(Type)
+	"set-name"?: string                        @go(SetName)
+	type?:       #enumE_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet: {
 	config?:     null | #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet_Config @go(Config,*OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet_Config)
 	"set-name"?: null | string                                                                      @go(SetName,*string)
-	type?:       #E_OpenconfigAcl_ACL_TYPE                                                          @go(Type)
+	type?:       #enumE_OpenconfigAcl_ACL_TYPE                                                      @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_IngressAclSets_IngressAclSet_Config: {
-	"set-name"?: null | string             @go(SetName,*string)
-	type?:       #E_OpenconfigAcl_ACL_TYPE @go(Type)
+	"set-name"?: null | string                 @go(SetName,*string)
+	type?:       #enumE_OpenconfigAcl_ACL_TYPE @go(Type)
 }
 
 #OpenconfigAcl_Acl_Interfaces_Interface_InterfaceRef: {
@@ -434,11 +434,11 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_Config: {
-	fallback?:           #E_AristaIntfAugments_FallbackEnum       @go(Fallback)
-	"fallback-timeout"?: null | uint16                            @go(FallbackTimeout,*uint16)
-	"lag-type"?:         #E_OpenconfigIfAggregate_AggregationType @go(LagType)
-	"min-links"?:        null | uint16                            @go(MinLinks,*uint16)
-	mlag?:               null | uint16                            @go(Mlag,*uint16)
+	fallback?:           #enumE_AristaIntfAugments_FallbackEnum       @go(Fallback)
+	"fallback-timeout"?: null | uint16                                @go(FallbackTimeout,*uint16)
+	"lag-type"?:         #enumE_OpenconfigIfAggregate_AggregationType @go(LagType)
+	"min-links"?:        null | uint16                                @go(MinLinks,*uint16)
+	mlag?:               null | uint16                                @go(Mlag,*uint16)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan: {
@@ -446,9 +446,9 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config: {
-	"access-vlan"?:    null | uint16                  @go(AccessVlan,*uint16)
-	"interface-mode"?: #E_OpenconfigVlan_VlanModeType @go(InterfaceMode)
-	"native-vlan"?:    null | uint16                  @go(NativeVlan,*uint16)
+	"access-vlan"?:    null | uint16                      @go(AccessVlan,*uint16)
+	"interface-mode"?: #enumE_OpenconfigVlan_VlanModeType @go(InterfaceMode)
+	"native-vlan"?:    null | uint16                      @go(NativeVlan,*uint16)
 	"trunk-groups"?: [...string] @go(TrunkGroups,[]string)
 	"trunk-vlans"?: [...#OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union)
 }
@@ -460,14 +460,14 @@ import "strings"
 #OpenconfigInterfaces_Interfaces_Interface_Aggregation_SwitchedVlan_Config_TrunkVlans_Union_Uint16: Uint16?: uint16
 
 #OpenconfigInterfaces_Interfaces_Interface_Config: {
-	description?:     null | string                     @go(Description,*string)
-	enabled?:         null | bool                       @go(Enabled,*bool)
-	"load-interval"?: null | uint16                     @go(LoadInterval,*uint16)
-	"loopback-mode"?: null | bool                       @go(LoopbackMode,*bool)
-	mtu?:             null | uint16                     @go(Mtu,*uint16)
-	name?:            null | string                     @go(Name,*string)
-	tpid?:            #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	type?:            #E_IETFInterfaces_InterfaceType   @go(Type)
+	description?:     null | string                         @go(Description,*string)
+	enabled?:         null | bool                           @go(Enabled,*bool)
+	"load-interval"?: null | uint16                         @go(LoadInterval,*uint16)
+	"loopback-mode"?: null | bool                           @go(LoopbackMode,*bool)
+	mtu?:             null | uint16                         @go(Mtu,*uint16)
+	name?:            null | string                         @go(Name,*string)
+	tpid?:            #enumE_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
+	type?:            #enumE_IETFInterfaces_InterfaceType   @go(Type)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet: {
@@ -481,22 +481,22 @@ import "strings"
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config: {
 	"aggregate-id"?:             null | string                                                                 @go(AggregateId,*string)
 	"auto-negotiate"?:           null | bool                                                                   @go(AutoNegotiate,*bool)
-	"duplex-mode"?:              #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode       @go(DuplexMode)
+	"duplex-mode"?:              #enumE_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_DuplexMode   @go(DuplexMode)
 	"enable-flow-control"?:      null | bool                                                                   @go(EnableFlowControl,*bool)
 	"fec-encoding"?:             null | #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding @go(FecEncoding,*OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding)
-	"fec-mode"?:                 #E_OpenconfigIfEthernet_INTERFACE_FEC                                         @go(FecMode)
+	"fec-mode"?:                 #enumE_OpenconfigIfEthernet_INTERFACE_FEC                                     @go(FecMode)
 	"mac-address"?:              null | string                                                                 @go(MacAddress,*string)
-	"port-speed"?:               #E_OpenconfigIfEthernet_ETHERNET_SPEED                                        @go(PortSpeed)
+	"port-speed"?:               #enumE_OpenconfigIfEthernet_ETHERNET_SPEED                                    @go(PortSpeed)
 	"sfp-1000base-t"?:           null | bool                                                                   @go(Sfp_1000BaseT,*bool)
 	"standalone-link-training"?: null | bool                                                                   @go(StandaloneLinkTraining,*bool)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding: {
-	"coherent-fec-encoding"?: #E_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding @go(CoherentFecEncoding)
-	disabled?:                null | bool                                                                                  @go(Disabled,*bool)
-	"fire-code"?:             null | bool                                                                                  @go(FireCode,*bool)
-	"reed-solomon"?:          null | bool                                                                                  @go(ReedSolomon,*bool)
-	"reed-solomon544"?:       null | bool                                                                                  @go(ReedSolomon544,*bool)
+	"coherent-fec-encoding"?: #enumE_OpenconfigInterfaces_Interfaces_Interface_Ethernet_Config_FecEncoding_CoherentFecEncoding @go(CoherentFecEncoding)
+	disabled?:                null | bool                                                                                      @go(Disabled,*bool)
+	"fire-code"?:             null | bool                                                                                      @go(FireCode,*bool)
+	"reed-solomon"?:          null | bool                                                                                      @go(ReedSolomon,*bool)
+	"reed-solomon544"?:       null | bool                                                                                      @go(ReedSolomon544,*bool)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Pfc: {
@@ -519,8 +519,8 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_Reflector_Config: {
-	direction?:    #E_AristaIntfAugments_ReflectorDirection @go(Direction)
-	"mac-action"?: #E_AristaIntfAugments_ReflectorMacAction @go(MacAction)
+	direction?:    #enumE_AristaIntfAugments_ReflectorDirection @go(Direction)
+	"mac-action"?: #enumE_AristaIntfAugments_ReflectorMacAction @go(MacAction)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan: {
@@ -528,9 +528,9 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config: {
-	"access-vlan"?:    null | uint16                  @go(AccessVlan,*uint16)
-	"interface-mode"?: #E_OpenconfigVlan_VlanModeType @go(InterfaceMode)
-	"native-vlan"?:    null | uint16                  @go(NativeVlan,*uint16)
+	"access-vlan"?:    null | uint16                      @go(AccessVlan,*uint16)
+	"interface-mode"?: #enumE_OpenconfigVlan_VlanModeType @go(InterfaceMode)
+	"native-vlan"?:    null | uint16                      @go(NativeVlan,*uint16)
 	"trunk-groups"?: [...string] @go(TrunkGroups,[]string)
 	"trunk-vlans"?: [...#OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union] @go(TrunkVlans,[]OpenconfigInterfaces_Interfaces_Interface_Ethernet_SwitchedVlan_Config_TrunkVlans_Union)
 }
@@ -597,9 +597,9 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Config: {
-	"addr-type"?:     #E_AristaIntfAugments_AristaAddrType @go(AddrType)
-	ip?:              null | string                        @go(Ip,*string)
-	"prefix-length"?: null | uint8                         @go(PrefixLength,*uint8)
+	"addr-type"?:     #enumE_AristaIntfAugments_AristaAddrType @go(AddrType)
+	ip?:              null | string                            @go(Ip,*string)
+	"prefix-length"?: null | uint8                             @go(PrefixLength,*uint8)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp: {
@@ -654,8 +654,8 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:        null | string                        @go(Addr,*string)
-	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
+	addr?:        null | string                            @go(Addr,*string)
+	"addr-type"?: #enumE_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking: {
@@ -730,7 +730,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config: {
-	mode?: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode @go(Mode)
+	mode?: #enumE_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode @go(Mode)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_Unnumbered: {
@@ -839,8 +839,8 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:        null | string                        @go(Addr,*string)
-	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
+	addr?:        null | string                            @go(Addr,*string)
+	"addr-type"?: #enumE_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking: {
@@ -1001,9 +1001,9 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Config: {
-	"addr-type"?:     #E_AristaIntfAugments_AristaAddrType @go(AddrType)
-	ip?:              null | string                        @go(Ip,*string)
-	"prefix-length"?: null | uint8                         @go(PrefixLength,*uint8)
+	"addr-type"?:     #enumE_AristaIntfAugments_AristaAddrType @go(AddrType)
+	ip?:              null | string                            @go(Ip,*string)
+	"prefix-length"?: null | uint8                             @go(PrefixLength,*uint8)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp: {
@@ -1058,8 +1058,8 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:        null | string                        @go(Addr,*string)
-	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
+	addr?:        null | string                            @go(Addr,*string)
+	"addr-type"?: #enumE_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking: {
@@ -1134,7 +1134,7 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_ProxyArp_Config: {
-	mode?: #E_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode @go(Mode)
+	mode?: #enumE_OpenconfigInterfaces_Interfaces_Interface_RoutedVlan_Ipv4_ProxyArp_Config_Mode @go(Mode)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv4_Unnumbered: {
@@ -1243,8 +1243,8 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_Config_VirtualAddresses_VirtualAddress: {
-	addr?:        null | string                        @go(Addr,*string)
-	"addr-type"?: #E_AristaIntfAugments_AristaAddrType @go(AddrType)
+	addr?:        null | string                            @go(Addr,*string)
+	"addr-type"?: #enumE_AristaIntfAugments_AristaAddrType @go(AddrType)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Ipv6_Addresses_Address_Vrrp_VrrpGroup_InterfaceTracking: {
@@ -1365,9 +1365,9 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_EgressMapping_Config: {
-	tpid?:                #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	"vlan-id"?:           null | uint16                     @go(VlanId,*uint16)
-	"vlan-stack-action"?: #E_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
+	tpid?:                #enumE_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
+	"vlan-id"?:           null | uint16                         @go(VlanId,*uint16)
+	"vlan-stack-action"?: #enumE_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping: {
@@ -1375,9 +1375,9 @@ import "strings"
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_IngressMapping_Config: {
-	tpid?:                #E_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
-	"vlan-id"?:           null | uint16                     @go(VlanId,*uint16)
-	"vlan-stack-action"?: #E_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
+	tpid?:                #enumE_OpenconfigVlanTypes_TPID_TYPES @go(Tpid)
+	"vlan-id"?:           null | uint16                         @go(VlanId,*uint16)
+	"vlan-stack-action"?: #enumE_OpenconfigVlan_VlanStackAction @go(VlanStackAction)
 }
 
 #OpenconfigInterfaces_Interfaces_Interface_Subinterfaces_Subinterface_Vlan_Match: {
@@ -1504,7 +1504,7 @@ import "strings"
 
 #OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union: _
 
-#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union_E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance: E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance?: #E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance
+#OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union_E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance: E_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance?: #enumE_OpenconfigKeychain_Keychains_Keychain_Config_Tolerance
 
 #OpenconfigKeychain_Keychains_Keychain_Config_Tolerance_Union_Uint32: Uint32?: uint32
 
@@ -1532,9 +1532,9 @@ import "strings"
 }
 
 #OpenconfigKeychain_Keychains_Keychain_Keys_Key_Config: {
-	"crypto-algorithm"?: #E_OpenconfigKeychainTypes_CRYPTO_TYPE @go(CryptoAlgorithm)
-	"key-id"?:           null | uint64                          @go(KeyId,*uint64)
-	"secret-key"?:       null | string                          @go(SecretKey,*string)
+	"crypto-algorithm"?: #enumE_OpenconfigKeychainTypes_CRYPTO_TYPE @go(CryptoAlgorithm)
+	"key-id"?:           null | uint64                              @go(KeyId,*uint64)
+	"secret-key"?:       null | string                              @go(SecretKey,*string)
 }
 
 #OpenconfigKeychain_Keychains_Keychain_Keys_Key_ReceiveLifetime: {
@@ -1595,12 +1595,12 @@ import "strings"
 	description?: null | string @go(Description,*string)
 	enabled?:     null | bool   @go(Enabled,*bool)
 	"enabled-address-families"?: [...#E_OpenconfigTypes_ADDRESS_FAMILY] @go(EnabledAddressFamilies,[]E_OpenconfigTypes_ADDRESS_FAMILY)
-	"fallback-network-instance"?: null | string                                           @go(FallbackNetworkInstance,*string)
-	mtu?:                         null | uint16                                           @go(Mtu,*uint16)
-	name?:                        null | string                                           @go(Name,*string)
-	"route-distinguisher"?:       null | string                                           @go(RouteDistinguisher,*string)
-	"router-id"?:                 null | string                                           @go(RouterId,*string)
-	type?:                        #E_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE @go(Type)
+	"fallback-network-instance"?: null | string                                               @go(FallbackNetworkInstance,*string)
+	mtu?:                         null | uint16                                               @go(Mtu,*uint16)
+	name?:                        null | string                                               @go(Name,*string)
+	"route-distinguisher"?:       null | string                                               @go(RouteDistinguisher,*string)
+	"router-id"?:                 null | string                                               @go(RouterId,*string)
+	type?:                        #enumE_OpenconfigNetworkInstanceTypes_NETWORK_INSTANCE_TYPE @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_ConnectionPoints: {
@@ -1654,9 +1654,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_ConnectionPoints_ConnectionPoint_Endpoints_Endpoint_Config: {
-	"endpoint-id"?: null | string                                   @go(EndpointId,*string)
-	precedence?:    null | uint16                                   @go(Precedence,*uint16)
-	type?:          #E_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE @go(Type)
+	"endpoint-id"?: null | string                                       @go(EndpointId,*string)
+	precedence?:    null | uint16                                       @go(Precedence,*uint16)
+	type?:          #enumE_OpenconfigNetworkInstanceTypes_ENDPOINT_TYPE @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_ConnectionPoints_ConnectionPoint_Endpoints_Endpoint_Local: {
@@ -1696,9 +1696,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Encapsulation_Config: {
-	"control-word"?:          null | bool                                             @go(ControlWord,*bool)
-	"encapsulation-type"?:    #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION         @go(EncapsulationType)
-	"label-allocation-mode"?: #E_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE @go(LabelAllocationMode)
+	"control-word"?:          null | bool                                                 @go(ControlWord,*bool)
+	"encapsulation-type"?:    #enumE_OpenconfigNetworkInstanceTypes_ENCAPSULATION         @go(EncapsulationType)
+	"label-allocation-mode"?: #enumE_OpenconfigNetworkInstanceTypes_LABEL_ALLOCATION_MODE @go(LabelAllocationMode)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn: {
@@ -1730,16 +1730,16 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config: {
 	esi?:               #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union @go(Esi)
-	"esi-type"?:        #E_OpenconfigEvpn_EsiType                                                                                          @go(EsiType)
+	"esi-type"?:        #enumE_OpenconfigEvpn_EsiType                                                                                      @go(EsiType)
 	interface?:         null | string                                                                                                      @go(Interface,*string)
 	name?:              null | string                                                                                                      @go(Name,*string)
-	"redundancy-mode"?: #E_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE                                                                        @go(RedundancyMode)
+	"redundancy-mode"?: #enumE_OpenconfigEvpnTypes_EVPN_REDUNDANCY_MODE                                                                    @go(RedundancyMode)
 	subinterface?:      null | uint32                                                                                                      @go(Subinterface,*uint32)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_Config_Esi_Union_String: String?: string
 
@@ -1748,10 +1748,10 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config: {
-	"df-election-method"?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod @go(DfElectionMethod)
-	"election-wait-time"?: null | uint32                                                                                                                          @go(ElectionWaitTime,*uint32)
-	preference?:           null | uint16                                                                                                                          @go(Preference,*uint16)
-	revertive?:            null | bool                                                                                                                            @go(Revertive,*bool)
+	"df-election-method"?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EthernetSegments_EthernetSegment_DfElection_Config_DfElectionMethod @go(DfElectionMethod)
+	"election-wait-time"?: null | uint32                                                                                                                              @go(ElectionWaitTime,*uint32)
+	preference?:           null | uint16                                                                                                                              @go(Preference,*uint16)
+	revertive?:            null | bool                                                                                                                                @go(Revertive,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances: {
@@ -1779,18 +1779,18 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config: {
-	"encapsulation-type"?:  #E_OpenconfigNetworkInstanceTypes_ENCAPSULATION                                                                             @go(EncapsulationType)
+	"encapsulation-type"?:  #enumE_OpenconfigNetworkInstanceTypes_ENCAPSULATION                                                                         @go(EncapsulationType)
 	evi?:                   null | string                                                                                                               @go(Evi,*string)
 	"multicast-group"?:     null | string                                                                                                               @go(MulticastGroup,*string)
 	"multicast-mask"?:      null | string                                                                                                               @go(MulticastMask,*string)
-	"replication-mode"?:    #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode        @go(ReplicationMode)
+	"replication-mode"?:    #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_ReplicationMode    @go(ReplicationMode)
 	"route-distinguisher"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union @go(RouteDistinguisher)
-	"service-type"?:        #E_OpenconfigEvpnTypes_EVPN_TYPE                                                                                            @go(ServiceType)
+	"service-type"?:        #enumE_OpenconfigEvpnTypes_EVPN_TYPE                                                                                        @go(ServiceType)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_Config_RouteDistinguisher_Union_String: String?: string
 
@@ -1805,13 +1805,13 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget_Union_String: String?: string
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget_Union_String: String?: string
 
@@ -2000,8 +2000,8 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ApplyPolicy_Config: {
-	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
-	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
+	"default-export-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
+	"default-import-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
 	"export-policy"?: [...string] @go(ExportPolicy,[]string)
 	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
@@ -2017,13 +2017,13 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ExportRouteTarget
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ExportRouteTarget_Union_String: String?: string
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Evpn_EvpnInstances_EvpnInstance_ImportExportPolicy_Config_ImportRouteTarget
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_InterInstancePolicies_ImportExportPolicy_Config_ImportRouteTarget_Union_String: String?: string
 
@@ -2050,11 +2050,11 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config: {
 	"associated-address-families"?: [...#E_OpenconfigTypes_ADDRESS_FAMILY] @go(AssociatedAddressFamilies,[]E_OpenconfigTypes_ADDRESS_FAMILY)
-	id?:                    null | string                                                                                               @go(Id,*string)
-	interface?:             null | string                                                                                               @go(Interface,*string)
-	"irb-anycast-gateway"?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway @go(IrbAnycastGateway)
-	"mac-pinning"?:         null | bool                                                                                                 @go(MacPinning,*bool)
-	subinterface?:          null | uint32                                                                                               @go(Subinterface,*uint32)
+	id?:                    null | string                                                                                                   @go(Id,*string)
+	interface?:             null | string                                                                                                   @go(Interface,*string)
+	"irb-anycast-gateway"?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Interfaces_Interface_Config_IrbAnycastGateway @go(IrbAnycastGateway)
+	"mac-pinning"?:         null | bool                                                                                                     @go(MacPinning,*bool)
+	subinterface?:          null | uint32                                                                                                   @go(Subinterface,*uint32)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls: {
@@ -2072,9 +2072,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_Config: {
-	"null-label"?:       #E_OpenconfigMplsTypes_NULL_LABEL_TYPE          @go(NullLabel)
-	"pw-encapsulation"?: #E_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION @go(PwEncapsulation)
-	"ttl-propagation"?:  null | bool                                     @go(TtlPropagation,*bool)
+	"null-label"?:       #enumE_OpenconfigMplsTypes_NULL_LABEL_TYPE          @go(NullLabel)
+	"pw-encapsulation"?: #enumE_OpenconfigMplsTypes_PSEUDOWIRE_ENCAPSULATION @go(PwEncapsulation)
+	"ttl-propagation"?:  null | bool                                         @go(TtlPropagation,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_InterfaceAttributes: {
@@ -2142,13 +2142,13 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_LowerBound_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Global_ReservedLabelBlocks_ReservedLabelBlock_Config_UpperBound_Union_Uint32: Uint32?: uint32
 
@@ -2186,9 +2186,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config: {
-	name?:                      null | string                                                                                                                                        @go(Name,*string)
-	"sid-protection-required"?: null | bool                                                                                                                                          @go(SidProtectionRequired,*bool)
-	"sid-selection-mode"?:      #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode @go(SidSelectionMode)
+	name?:                      null | string                                                                                                                                            @go(Name,*string)
+	"sid-protection-required"?: null | bool                                                                                                                                              @go(SidProtectionRequired,*bool)
+	"sid-selection-mode"?:      #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_Config_SidSelectionMode @go(SidSelectionMode)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_ExplicitRouteObjects: {
@@ -2213,9 +2213,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_NamedExplicitPaths_NamedExplicitPath_ExplicitRouteObjects_ExplicitRouteObject_Config: {
-	address?:    null | string                 @go(Address,*string)
-	"hop-type"?: #E_OpenconfigMpls_MplsHopType @go(HopType)
-	index?:      null | uint8                  @go(Index,*uint8)
+	address?:    null | string                     @go(Address,*string)
+	"hop-type"?: #enumE_OpenconfigMpls_MplsHopType @go(HopType)
+	index?:      null | uint8                      @go(Index,*uint8)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels: {
@@ -2281,26 +2281,26 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_Bandwidth_Config: {
-	"set-bandwidth"?:      null | uint64                     @go(SetBandwidth,*uint64)
-	"specification-type"?: #E_OpenconfigMpls_TeBandwidthType @go(SpecificationType)
+	"set-bandwidth"?:      null | uint64                         @go(SetBandwidth,*uint64)
+	"specification-type"?: #enumE_OpenconfigMpls_TeBandwidthType @go(SpecificationType)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_Config: {
-	"admin-status"?:               #E_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS @go(AdminStatus)
-	description?:                  null | string                              @go(Description,*string)
-	"hold-priority"?:              null | uint8                               @go(HoldPriority,*uint8)
-	metric?:                       null | int32                               @go(Metric,*int32)
-	"metric-type"?:                #E_OpenconfigMplsTypes_LSP_METRIC_TYPE     @go(MetricType)
-	name?:                         null | string                              @go(Name,*string)
-	preference?:                   null | uint8                               @go(Preference,*uint8)
-	"protection-style-requested"?: #E_OpenconfigMplsTypes_PROTECTION_TYPE     @go(ProtectionStyleRequested)
-	"reoptimize-timer"?:           null | uint16                              @go(ReoptimizeTimer,*uint16)
-	"setup-priority"?:             null | uint8                               @go(SetupPriority,*uint8)
-	"shortcut-eligible"?:          null | bool                                @go(ShortcutEligible,*bool)
-	"signaling-protocol"?:         #E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL @go(SignalingProtocol)
-	"soft-preemption"?:            null | bool                                @go(SoftPreemption,*bool)
-	source?:                       null | string                              @go(Source,*string)
-	type?:                         #E_OpenconfigMplsTypes_TUNNEL_TYPE         @go(Type)
+	"admin-status"?:               #enumE_OpenconfigMplsTypes_TUNNEL_ADMIN_STATUS @go(AdminStatus)
+	description?:                  null | string                                  @go(Description,*string)
+	"hold-priority"?:              null | uint8                                   @go(HoldPriority,*uint8)
+	metric?:                       null | int32                                   @go(Metric,*int32)
+	"metric-type"?:                #enumE_OpenconfigMplsTypes_LSP_METRIC_TYPE     @go(MetricType)
+	name?:                         null | string                                  @go(Name,*string)
+	preference?:                   null | uint8                                   @go(Preference,*uint8)
+	"protection-style-requested"?: #enumE_OpenconfigMplsTypes_PROTECTION_TYPE     @go(ProtectionStyleRequested)
+	"reoptimize-timer"?:           null | uint16                                  @go(ReoptimizeTimer,*uint16)
+	"setup-priority"?:             null | uint8                                   @go(SetupPriority,*uint8)
+	"shortcut-eligible"?:          null | bool                                    @go(ShortcutEligible,*bool)
+	"signaling-protocol"?:         #enumE_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL @go(SignalingProtocol)
+	"soft-preemption"?:            null | bool                                    @go(SoftPreemption,*bool)
+	source?:                       null | string                                  @go(Source,*string)
+	type?:                         #enumE_OpenconfigMplsTypes_TUNNEL_TYPE         @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes: {
@@ -2362,17 +2362,17 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_Config: {
-	"cspf-tiebreaker"?:         #E_OpenconfigMpls_CspfTieBreaking              @go(CspfTiebreaker)
-	"explicit-path-name"?:      null | string                                  @go(ExplicitPathName,*string)
-	"hold-priority"?:           null | uint8                                   @go(HoldPriority,*uint8)
-	name?:                      null | string                                  @go(Name,*string)
-	"path-computation-method"?: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD @go(PathComputationMethod)
-	"path-computation-server"?: null | string                                  @go(PathComputationServer,*string)
-	"path-control"?:            #E_OpenconfigMpls_LspControlType               @go(PathControl)
-	preference?:                null | uint8                                   @go(Preference,*uint8)
-	"retry-timer"?:             null | uint16                                  @go(RetryTimer,*uint16)
-	"setup-priority"?:          null | uint8                                   @go(SetupPriority,*uint8)
-	"use-cspf"?:                null | bool                                    @go(UseCspf,*bool)
+	"cspf-tiebreaker"?:         #enumE_OpenconfigMpls_CspfTieBreaking              @go(CspfTiebreaker)
+	"explicit-path-name"?:      null | string                                      @go(ExplicitPathName,*string)
+	"hold-priority"?:           null | uint8                                       @go(HoldPriority,*uint8)
+	name?:                      null | string                                      @go(Name,*string)
+	"path-computation-method"?: #enumE_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD @go(PathComputationMethod)
+	"path-computation-server"?: null | string                                      @go(PathComputationServer,*string)
+	"path-control"?:            #enumE_OpenconfigMpls_LspControlType               @go(PathControl)
+	preference?:                null | uint8                                       @go(Preference,*uint8)
+	"retry-timer"?:             null | uint16                                      @go(RetryTimer,*uint16)
+	"setup-priority"?:          null | uint8                                       @go(SetupPriority,*uint8)
+	"use-cspf"?:                null | bool                                        @go(UseCspf,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_PathMetricBoundConstraints: {
@@ -2393,12 +2393,12 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config)
-	type?:   #E_OpenconfigMplsTypes_PATH_METRIC_TYPE                                                                                                                                                                                   @go(Type)
+	type?:   #enumE_OpenconfigMplsTypes_PATH_METRIC_TYPE                                                                                                                                                                               @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PPrimaryPath_P2PPrimaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config: {
-	"metric-upper-bound"?: null | uint64                           @go(MetricUpperBound,*uint64)
-	type?:                 #E_OpenconfigMplsTypes_PATH_METRIC_TYPE @go(Type)
+	"metric-upper-bound"?: null | uint64                               @go(MetricUpperBound,*uint64)
+	type?:                 #enumE_OpenconfigMplsTypes_PATH_METRIC_TYPE @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths: {
@@ -2423,17 +2423,17 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_Config: {
-	"cspf-tiebreaker"?:         #E_OpenconfigMpls_CspfTieBreaking              @go(CspfTiebreaker)
-	"explicit-path-name"?:      null | string                                  @go(ExplicitPathName,*string)
-	"hold-priority"?:           null | uint8                                   @go(HoldPriority,*uint8)
-	name?:                      null | string                                  @go(Name,*string)
-	"path-computation-method"?: #E_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD @go(PathComputationMethod)
-	"path-computation-server"?: null | string                                  @go(PathComputationServer,*string)
-	"path-control"?:            #E_OpenconfigMpls_LspControlType               @go(PathControl)
-	preference?:                null | uint8                                   @go(Preference,*uint8)
-	"retry-timer"?:             null | uint16                                  @go(RetryTimer,*uint16)
-	"setup-priority"?:          null | uint8                                   @go(SetupPriority,*uint8)
-	"use-cspf"?:                null | bool                                    @go(UseCspf,*bool)
+	"cspf-tiebreaker"?:         #enumE_OpenconfigMpls_CspfTieBreaking              @go(CspfTiebreaker)
+	"explicit-path-name"?:      null | string                                      @go(ExplicitPathName,*string)
+	"hold-priority"?:           null | uint8                                       @go(HoldPriority,*uint8)
+	name?:                      null | string                                      @go(Name,*string)
+	"path-computation-method"?: #enumE_OpenconfigMplsTypes_PATH_COMPUTATION_METHOD @go(PathComputationMethod)
+	"path-computation-server"?: null | string                                      @go(PathComputationServer,*string)
+	"path-control"?:            #enumE_OpenconfigMpls_LspControlType               @go(PathControl)
+	preference?:                null | uint8                                       @go(Preference,*uint8)
+	"retry-timer"?:             null | uint16                                      @go(RetryTimer,*uint16)
+	"setup-priority"?:          null | uint8                                       @go(SetupPriority,*uint8)
+	"use-cspf"?:                null | bool                                        @go(UseCspf,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_PathMetricBoundConstraints: {
@@ -2454,12 +2454,12 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint: {
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config)
-	type?:   #E_OpenconfigMplsTypes_PATH_METRIC_TYPE                                                                                                                                                                                        @go(Type)
+	type?:   #enumE_OpenconfigMplsTypes_PATH_METRIC_TYPE                                                                                                                                                                                    @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_ConstrainedPath_Tunnels_Tunnel_P2PTunnelAttributes_P2PSecondaryPaths_P2PSecondaryPath_PathMetricBoundConstraints_PathMetricBoundConstraint_Config: {
-	"metric-upper-bound"?: null | uint64                           @go(MetricUpperBound,*uint64)
-	type?:                 #E_OpenconfigMplsTypes_PATH_METRIC_TYPE @go(Type)
+	"metric-upper-bound"?: null | uint64                               @go(MetricUpperBound,*uint64)
+	type?:                 #enumE_OpenconfigMplsTypes_PATH_METRIC_TYPE @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps: {
@@ -2502,13 +2502,13 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel_Union_Uint32: Uint32?: uint32
 
@@ -2524,13 +2524,13 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_IncomingLabel_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Ingress_Config_PushLabel_Union_Uint32: Uint32?: uint32
 
@@ -2546,13 +2546,13 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_IncomingLabel
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_IncomingLabel_Union_Uint32: Uint32?: uint32
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Egress_Config_PushLabel
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_Lsps_StaticLsps_StaticLsp_Transit_Config_PushLabel_Union_Uint32: Uint32?: uint32
 
@@ -2661,13 +2661,13 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily: {
-	"afi-name"?: #E_OpenconfigMplsLdp_MplsLdpAfi                                                                                                                                              @go(AfiName)
+	"afi-name"?: #enumE_OpenconfigMplsLdp_MplsLdpAfi                                                                                                                                          @go(AfiName)
 	config?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_AddressFamilies_AddressFamily_Config: {
-	"afi-name"?: #E_OpenconfigMplsLdp_MplsLdpAfi @go(AfiName)
-	enabled?:    null | bool                     @go(Enabled,*bool)
+	"afi-name"?: #enumE_OpenconfigMplsLdp_MplsLdpAfi @go(AfiName)
+	enabled?:    null | bool                         @go(Enabled,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_InterfaceAttributes_Interfaces_Interface_Config: {
@@ -2749,13 +2749,13 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily: {
-	"afi-name"?: #E_OpenconfigMplsLdp_MplsLdpAfi                                                                                                               @go(AfiName)
+	"afi-name"?: #enumE_OpenconfigMplsLdp_MplsLdpAfi                                                                                                           @go(AfiName)
 	config?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Config  @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Config)
 	targets?:    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Targets @go(Targets,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Targets)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Config: {
-	"afi-name"?: #E_OpenconfigMplsLdp_MplsLdpAfi @go(AfiName)
+	"afi-name"?: #enumE_OpenconfigMplsLdp_MplsLdpAfi @go(AfiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_Ldp_Targeted_AddressFamilies_AddressFamily_Targets: {
@@ -2866,9 +2866,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_RsvpTe_InterfaceAttributes_Interface_Authentication_Config: {
-	"authentication-key"?:  null | string                         @go(AuthenticationKey,*string)
-	"authentication-type"?: #E_OpenconfigMplsTypes_RSVP_AUTH_TYPE @go(AuthenticationType)
-	enable?:                null | bool                           @go(Enable,*bool)
+	"authentication-key"?:  null | string                             @go(AuthenticationKey,*string)
+	"authentication-type"?: #enumE_OpenconfigMplsTypes_RSVP_AUTH_TYPE @go(AuthenticationType)
+	enable?:                null | bool                               @go(Enable,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_RsvpTe_InterfaceAttributes_Interface_BandwidthReservations: {
@@ -2901,8 +2901,8 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_RsvpTe_InterfaceAttributes_Interface_Protection_Config: {
-	"bypass-optimize-interval"?:        null | uint16                          @go(BypassOptimizeInterval,*uint16)
-	"link-protection-style-requested"?: #E_OpenconfigMplsTypes_PROTECTION_TYPE @go(LinkProtectionStyleRequested)
+	"bypass-optimize-interval"?:        null | uint16                              @go(BypassOptimizeInterval,*uint16)
+	"link-protection-style-requested"?: #enumE_OpenconfigMplsTypes_PROTECTION_TYPE @go(LinkProtectionStyleRequested)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_SignalingProtocols_RsvpTe_InterfaceAttributes_Interface_Subscription: {
@@ -3021,10 +3021,10 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeGlobalAttributes_Srlgs_Srlg_Config: {
-	cost?:            null | uint32                          @go(Cost,*uint32)
-	"flooding-type"?: #E_OpenconfigMpls_MplsSrlgFloodingType @go(FloodingType)
-	name?:            null | string                          @go(Name,*string)
-	value?:           null | uint32                          @go(Value,*uint32)
+	cost?:            null | uint32                              @go(Cost,*uint32)
+	"flooding-type"?: #enumE_OpenconfigMpls_MplsSrlgFloodingType @go(FloodingType)
+	name?:            null | string                              @go(Name,*string)
+	value?:           null | uint32                              @go(Value,*uint32)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeGlobalAttributes_Srlgs_Srlg_StaticSrlgMembers: {
@@ -3100,8 +3100,8 @@ import "strings"
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config: {
 	"delta-percentage"?: null | uint8 @go(DeltaPercentage,*uint8)
 	"down-thresholds"?: [...uint8] @go(DownThresholds,[]uint8)
-	"threshold-specification"?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification @go(ThresholdSpecification)
-	"threshold-type"?:          #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType          @go(ThresholdType)
+	"threshold-specification"?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdSpecification @go(ThresholdSpecification)
+	"threshold-type"?:          #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Mpls_TeInterfaceAttributes_Interface_IgpFloodingBandwidth_Config_ThresholdType          @go(ThresholdType)
 	"up-down-thresholds"?: [...uint8] @go(UpDownThresholds,[]uint8)
 	"up-thresholds"?: [...uint8] @go(UpThresholds,[]uint8)
 }
@@ -3207,8 +3207,8 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config: {
-	"policy-id"?: null | string                                                                                              @go(PolicyId,*string)
-	type?:        #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type @go(Type)
+	"policy-id"?: null | string                                                                                                  @go(PolicyId,*string)
+	type?:        #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Config_Type @go(Type)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules: {
@@ -3308,7 +3308,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #enumE_OpenconfigPacketMatchTypes_IP_PROTOCOL
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv4_Config_Protocol_Union_Uint8: Uint8?: uint8
 
@@ -3329,7 +3329,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #E_OpenconfigPacketMatchTypes_IP_PROTOCOL
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union_E_OpenconfigPacketMatchTypes_IP_PROTOCOL: E_OpenconfigPacketMatchTypes_IP_PROTOCOL?: #enumE_OpenconfigPacketMatchTypes_IP_PROTOCOL
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Ipv6_Config_Protocol_Union_Uint8: Uint8?: uint8
 
@@ -3347,7 +3347,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union_E_OpenconfigPacketMatchTypes_ETHERTYPE: E_OpenconfigPacketMatchTypes_ETHERTYPE?: #E_OpenconfigPacketMatchTypes_ETHERTYPE
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union_E_OpenconfigPacketMatchTypes_ETHERTYPE: E_OpenconfigPacketMatchTypes_ETHERTYPE?: #enumE_OpenconfigPacketMatchTypes_ETHERTYPE
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_L2_Config_Ethertype_Union_Uint16: Uint16?: uint16
 
@@ -3363,7 +3363,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort?: #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_DestinationPort
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_DestinationPort_Union_String: String?: string
 
@@ -3371,7 +3371,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort?: #E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union_E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort: E_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort?: #enumE_OpenconfigAcl_Acl_AclSets_AclSet_AclEntries_AclEntry_Transport_Config_SourcePort
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_PolicyForwarding_Policies_Policy_Rules_Rule_Transport_Config_SourcePort_Union_String: String?: string
 
@@ -3394,14 +3394,14 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Key: {
-	identifier?: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Identifier)
-	name?:       string                                         @go(Name)
+	identifier?: #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Identifier)
+	name?:       string                                             @go(Name)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol: {
 	bgp?:                null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp             @go(Bgp,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp)
 	config?:             null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Config          @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Config)
-	identifier?:         #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                        @go(Identifier)
+	identifier?:         #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                    @go(Identifier)
 	igmp?:               null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Igmp            @go(Igmp,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Igmp)
 	isis?:               null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis            @go(Isis,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis)
 	"local-aggregates"?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates @go(LocalAggregates,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_LocalAggregates)
@@ -3447,7 +3447,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi: {
 	"add-paths"?:               null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_AddPaths              @go(AddPaths,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_AddPaths)
-	"afi-safi-name"?:           #E_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                     @go(AfiSafiName)
+	"afi-safi-name"?:           #enumE_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                 @go(AfiSafiName)
 	config?:                    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Config                @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Config)
 	"graceful-restart"?:        null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_GracefulRestart       @go(GracefulRestart,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_GracefulRestart)
 	"ipv4-labeled-unicast"?:    null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Ipv4LabeledUnicast    @go(Ipv4LabeledUnicast,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Ipv4LabeledUnicast)
@@ -3478,8 +3478,8 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_Config: {
-	"afi-safi-name"?: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE @go(AfiSafiName)
-	enabled?:         null | bool                         @go(Enabled,*bool)
+	"afi-safi-name"?: #enumE_OpenconfigBgpTypes_AFI_SAFI_TYPE @go(AfiSafiName)
+	enabled?:         null | bool                             @go(Enabled,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Global_AfiSafis_AfiSafi_GracefulRestart: {
@@ -3992,7 +3992,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi: {
 	"add-paths"?:            null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_AddPaths           @go(AddPaths,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_AddPaths)
-	"afi-safi-name"?:        #E_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                              @go(AfiSafiName)
+	"afi-safi-name"?:        #enumE_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                          @go(AfiSafiName)
 	"apply-policy"?:         null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_ApplyPolicy        @go(ApplyPolicy,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_ApplyPolicy)
 	config?:                 null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_Config             @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_Config)
 	"graceful-restart"?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_GracefulRestart    @go(GracefulRestart,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_GracefulRestart)
@@ -4027,15 +4027,15 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_ApplyPolicy_Config: {
-	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
-	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
+	"default-export-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
+	"default-import-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
 	"export-policy"?: [...string] @go(ExportPolicy,[]string)
 	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_Config: {
-	"afi-safi-name"?: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE @go(AfiSafiName)
-	enabled?:         null | bool                         @go(Enabled,*bool)
+	"afi-safi-name"?: #enumE_OpenconfigBgpTypes_AFI_SAFI_TYPE @go(AfiSafiName)
+	enabled?:         null | bool                             @go(Enabled,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_AfiSafis_AfiSafi_GracefulRestart: {
@@ -4379,8 +4379,8 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_ApplyPolicy_Config: {
-	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
-	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
+	"default-export-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
+	"default-import-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
 	"export-policy"?: [...string] @go(ExportPolicy,[]string)
 	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
@@ -4396,18 +4396,18 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_Config: {
-	"auth-password"?:      null | string                          @go(AuthPassword,*string)
-	description?:          null | string                          @go(Description,*string)
-	enabled?:              null | bool                            @go(Enabled,*bool)
-	"local-as"?:           null | uint32                          @go(LocalAs,*uint32)
-	"neighbor-address"?:   null | string                          @go(NeighborAddress,*string)
-	"neighbor-port"?:      null | uint16                          @go(NeighborPort,*uint16)
-	"peer-as"?:            null | uint32                          @go(PeerAs,*uint32)
-	"peer-group"?:         null | string                          @go(PeerGroup,*string)
-	"peer-type"?:          #E_OpenconfigBgp_PeerType              @go(PeerType)
-	"remove-private-as"?:  #E_OpenconfigBgp_RemovePrivateAsOption @go(RemovePrivateAs)
-	"route-flap-damping"?: null | bool                            @go(RouteFlapDamping,*bool)
-	"send-community"?:     #E_OpenconfigBgp_CommunityType         @go(SendCommunity)
+	"auth-password"?:      null | string                              @go(AuthPassword,*string)
+	description?:          null | string                              @go(Description,*string)
+	enabled?:              null | bool                                @go(Enabled,*bool)
+	"local-as"?:           null | uint32                              @go(LocalAs,*uint32)
+	"neighbor-address"?:   null | string                              @go(NeighborAddress,*string)
+	"neighbor-port"?:      null | uint16                              @go(NeighborPort,*uint16)
+	"peer-as"?:            null | uint32                              @go(PeerAs,*uint32)
+	"peer-group"?:         null | string                              @go(PeerGroup,*string)
+	"peer-type"?:          #enumE_OpenconfigBgp_PeerType              @go(PeerType)
+	"remove-private-as"?:  #enumE_OpenconfigBgp_RemovePrivateAsOption @go(RemovePrivateAs)
+	"route-flap-damping"?: null | bool                                @go(RouteFlapDamping,*bool)
+	"send-community"?:     #enumE_OpenconfigBgp_CommunityType         @go(SendCommunity)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_Neighbors_Neighbor_EbgpMultihop: {
@@ -4560,7 +4560,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi: {
 	"add-paths"?:            null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_AddPaths           @go(AddPaths,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_AddPaths)
-	"afi-safi-name"?:        #E_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                                @go(AfiSafiName)
+	"afi-safi-name"?:        #enumE_OpenconfigBgpTypes_AFI_SAFI_TYPE                                                                                                            @go(AfiSafiName)
 	"apply-policy"?:         null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_ApplyPolicy        @go(ApplyPolicy,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_ApplyPolicy)
 	config?:                 null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_Config             @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_Config)
 	"graceful-restart"?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_GracefulRestart    @go(GracefulRestart,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_GracefulRestart)
@@ -4595,15 +4595,15 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_ApplyPolicy_Config: {
-	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
-	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
+	"default-export-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
+	"default-import-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
 	"export-policy"?: [...string] @go(ExportPolicy,[]string)
 	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_Config: {
-	"afi-safi-name"?: #E_OpenconfigBgpTypes_AFI_SAFI_TYPE @go(AfiSafiName)
-	enabled?:         null | bool                         @go(Enabled,*bool)
+	"afi-safi-name"?: #enumE_OpenconfigBgpTypes_AFI_SAFI_TYPE @go(AfiSafiName)
+	enabled?:         null | bool                             @go(Enabled,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_AfiSafis_AfiSafi_GracefulRestart: {
@@ -4957,8 +4957,8 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_ApplyPolicy_Config: {
-	"default-export-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
-	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
+	"default-export-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultExportPolicy)
+	"default-import-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
 	"export-policy"?: [...string] @go(ExportPolicy,[]string)
 	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
@@ -4974,15 +4974,15 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_Config: {
-	"auth-password"?:      null | string                          @go(AuthPassword,*string)
-	description?:          null | string                          @go(Description,*string)
-	"local-as"?:           null | uint32                          @go(LocalAs,*uint32)
-	"peer-as"?:            null | uint32                          @go(PeerAs,*uint32)
-	"peer-group-name"?:    null | string                          @go(PeerGroupName,*string)
-	"peer-type"?:          #E_OpenconfigBgp_PeerType              @go(PeerType)
-	"remove-private-as"?:  #E_OpenconfigBgp_RemovePrivateAsOption @go(RemovePrivateAs)
-	"route-flap-damping"?: null | bool                            @go(RouteFlapDamping,*bool)
-	"send-community"?:     #E_OpenconfigBgp_CommunityType         @go(SendCommunity)
+	"auth-password"?:      null | string                              @go(AuthPassword,*string)
+	description?:          null | string                              @go(Description,*string)
+	"local-as"?:           null | uint32                              @go(LocalAs,*uint32)
+	"peer-as"?:            null | uint32                              @go(PeerAs,*uint32)
+	"peer-group-name"?:    null | string                              @go(PeerGroupName,*string)
+	"peer-type"?:          #enumE_OpenconfigBgp_PeerType              @go(PeerType)
+	"remove-private-as"?:  #enumE_OpenconfigBgp_RemovePrivateAsOption @go(RemovePrivateAs)
+	"route-flap-damping"?: null | bool                                @go(RouteFlapDamping,*bool)
+	"send-community"?:     #enumE_OpenconfigBgp_CommunityType         @go(SendCommunity)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Bgp_PeerGroups_PeerGroup_EbgpMultihop: {
@@ -5095,10 +5095,10 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Config: {
-	"default-metric"?: null | uint32                                  @go(DefaultMetric,*uint32)
-	enabled?:          null | bool                                    @go(Enabled,*bool)
-	identifier?:       #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Identifier)
-	name?:             null | string                                  @go(Name,*string)
+	"default-metric"?: null | uint32                                      @go(DefaultMetric,*uint32)
+	enabled?:          null | bool                                        @go(Enabled,*bool)
+	identifier?:       #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Identifier)
+	name?:             null | string                                      @go(Name,*string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Igmp: {
@@ -5268,22 +5268,22 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_Key: {
-	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
+	"afi-name"?:  #enumE_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
+	"safi-name"?: #enumE_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af: {
-	"afi-name"?:       #E_OpenconfigIsisTypes_AFI_TYPE                                                                                            @go(AfiName)
+	"afi-name"?:       #enumE_OpenconfigIsisTypes_AFI_TYPE                                                                                        @go(AfiName)
 	config?:           null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_Config        @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_Config)
 	"multi-topology"?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_MultiTopology @go(MultiTopology,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_MultiTopology)
-	"safi-name"?:      #E_OpenconfigIsisTypes_SAFI_TYPE                                                                                           @go(SafiName)
+	"safi-name"?:      #enumE_OpenconfigIsisTypes_SAFI_TYPE                                                                                       @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_Config: {
-	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	enabled?:     null | bool                      @go(Enabled,*bool)
-	metric?:      null | uint32                    @go(Metric,*uint32)
-	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
+	"afi-name"?:  #enumE_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
+	enabled?:     null | bool                          @go(Enabled,*bool)
+	metric?:      null | uint32                        @go(Metric,*uint32)
+	"safi-name"?: #enumE_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_MultiTopology: {
@@ -5291,20 +5291,20 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_AfiSafi_Af_MultiTopology_Config: {
-	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
+	"afi-name"?:  #enumE_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
+	"safi-name"?: #enumE_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_Config: {
-	"authentication-check"?:     null | bool                        @go(AuthenticationCheck,*bool)
-	"csnp-enable-on-p2p-links"?: null | bool                        @go(CsnpEnableOnP2PLinks,*bool)
-	"fast-flooding"?:            null | bool                        @go(FastFlooding,*bool)
-	"hello-padding"?:            #E_OpenconfigIsis_HelloPaddingType @go(HelloPadding)
-	"iid-tlv"?:                  null | bool                        @go(IidTlv,*bool)
-	instance?:                   null | string                      @go(Instance,*string)
-	"level-capability"?:         #E_OpenconfigIsis_LevelType        @go(LevelCapability)
-	"max-ecmp-paths"?:           null | uint8                       @go(MaxEcmpPaths,*uint8)
-	"maximum-area-addresses"?:   null | uint8                       @go(MaximumAreaAddresses,*uint8)
+	"authentication-check"?:     null | bool                            @go(AuthenticationCheck,*bool)
+	"csnp-enable-on-p2p-links"?: null | bool                            @go(CsnpEnableOnP2PLinks,*bool)
+	"fast-flooding"?:            null | bool                            @go(FastFlooding,*bool)
+	"hello-padding"?:            #enumE_OpenconfigIsis_HelloPaddingType @go(HelloPadding)
+	"iid-tlv"?:                  null | bool                            @go(IidTlv,*bool)
+	instance?:                   null | string                          @go(Instance,*string)
+	"level-capability"?:         #enumE_OpenconfigIsis_LevelType        @go(LevelCapability)
+	"max-ecmp-paths"?:           null | uint8                           @go(MaxEcmpPaths,*uint8)
+	"maximum-area-addresses"?:   null | uint8                           @go(MaximumAreaAddresses,*uint8)
 	net?: [...string] @go(Net,[]string)
 	"poi-tlv"?: null | bool @go(PoiTlv,*bool)
 }
@@ -5335,12 +5335,12 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi: {
-	"afi-name"?: #E_OpenconfigIsisTypes_AFI_TYPE                                                                                           @go(AfiName)
+	"afi-name"?: #enumE_OpenconfigIsisTypes_AFI_TYPE                                                                                       @go(AfiName)
 	config?:     null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_IgpShortcuts_Afi_Config: {
-	"afi-name"?: #E_OpenconfigIsisTypes_AFI_TYPE @go(AfiName)
+	"afi-name"?: #enumE_OpenconfigIsisTypes_AFI_TYPE @go(AfiName)
 	"nh-type"?: [...#E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL] @go(NhType,[]E_OpenconfigMplsTypes_PATH_SETUP_PROTOCOL)
 }
 
@@ -5354,7 +5354,7 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_InterLevelPropagationPolicies_Level1ToLevel2_Config: {
-	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
+	"default-import-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
 	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
@@ -5363,7 +5363,7 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_InterLevelPropagationPolicies_Level2ToLevel1_Config: {
-	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
+	"default-import-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType @go(DefaultImportPolicy)
 	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 }
 
@@ -5410,12 +5410,12 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger: {
 	config?:          null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger_Config)
-	"reset-trigger"?: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE                                                                                                     @go(ResetTrigger)
+	"reset-trigger"?: #enumE_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE                                                                                                 @go(ResetTrigger)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_LspBit_OverloadBit_ResetTriggers_ResetTrigger_Config: {
-	delay?:           null | uint16                                      @go(Delay,*uint16)
-	"reset-trigger"?: #E_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE @go(ResetTrigger)
+	delay?:           null | uint16                                          @go(Delay,*uint16)
+	"reset-trigger"?: #enumE_OpenconfigIsisTypes_OVERLOAD_RESET_TRIGGER_TYPE @go(ResetTrigger)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Global_Mpls: {
@@ -5543,20 +5543,20 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af_Key: {
-	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
+	"afi-name"?:  #enumE_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
+	"safi-name"?: #enumE_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af: {
-	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE                                                                                                   @go(AfiName)
+	"afi-name"?:  #enumE_OpenconfigIsisTypes_AFI_TYPE                                                                                               @go(AfiName)
 	config?:      null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af_Config)
-	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE                                                                                                  @go(SafiName)
+	"safi-name"?: #enumE_OpenconfigIsisTypes_SAFI_TYPE                                                                                              @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_AfiSafi_Af_Config: {
-	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	enabled?:     null | bool                      @go(Enabled,*bool)
-	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
+	"afi-name"?:  #enumE_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
+	enabled?:     null | bool                          @go(Enabled,*bool)
+	"safi-name"?: #enumE_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Authentication: {
@@ -5564,11 +5564,11 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Authentication_Config: {
-	"auth-mode"?:     #E_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
-	"auth-password"?: null | string                        @go(AuthPassword,*string)
-	"auth-type"?:     #E_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
-	enabled?:         null | bool                          @go(Enabled,*bool)
-	keychain?:        null | string                        @go(Keychain,*string)
+	"auth-mode"?:     #enumE_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
+	"auth-password"?: null | string                            @go(AuthPassword,*string)
+	"auth-type"?:     #enumE_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
+	enabled?:         null | bool                              @go(Enabled,*bool)
+	keychain?:        null | string                            @go(Keychain,*string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Bfd: {
@@ -5583,11 +5583,11 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Config: {
-	"circuit-type"?:  #E_OpenconfigIsis_CircuitType      @go(CircuitType)
-	enabled?:         null | bool                        @go(Enabled,*bool)
-	"hello-padding"?: #E_OpenconfigIsis_HelloPaddingType @go(HelloPadding)
-	"interface-id"?:  null | string                      @go(InterfaceId,*string)
-	passive?:         null | bool                        @go(Passive,*bool)
+	"circuit-type"?:  #enumE_OpenconfigIsis_CircuitType      @go(CircuitType)
+	enabled?:         null | bool                            @go(Enabled,*bool)
+	"hello-padding"?: #enumE_OpenconfigIsis_HelloPaddingType @go(HelloPadding)
+	"interface-id"?:  null | string                          @go(InterfaceId,*string)
+	passive?:         null | bool                            @go(Passive,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_EnableBfd: {
@@ -5649,22 +5649,22 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_Key: {
-	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
+	"afi-name"?:  #enumE_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
+	"safi-name"?: #enumE_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af: {
-	"afi-name"?:        #E_OpenconfigIsisTypes_AFI_TYPE                                                                                                                        @go(AfiName)
+	"afi-name"?:        #enumE_OpenconfigIsisTypes_AFI_TYPE                                                                                                                    @go(AfiName)
 	config?:            null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_Config         @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_Config)
-	"safi-name"?:       #E_OpenconfigIsisTypes_SAFI_TYPE                                                                                                                       @go(SafiName)
+	"safi-name"?:       #enumE_OpenconfigIsisTypes_SAFI_TYPE                                                                                                                   @go(SafiName)
 	"segment-routing"?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting @go(SegmentRouting,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_Config: {
-	"afi-name"?:  #E_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
-	enabled?:     null | bool                      @go(Enabled,*bool)
-	metric?:      null | uint32                    @go(Metric,*uint32)
-	"safi-name"?: #E_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
+	"afi-name"?:  #enumE_OpenconfigIsisTypes_AFI_TYPE  @go(AfiName)
+	enabled?:     null | bool                          @go(Enabled,*bool)
+	metric?:      null | uint32                        @go(Metric,*uint32)
+	"safi-name"?: #enumE_OpenconfigIsisTypes_SAFI_TYPE @go(SafiName)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting: {
@@ -5701,7 +5701,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_AdjacencySids_AdjacencySid_Config_SidId_Union_String: String?: string
 
@@ -5736,14 +5736,14 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config: {
-	"label-options"?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions @go(LabelOptions)
-	prefix?:          null | string                                                                                                                                                                              @go(Prefix,*string)
-	"sid-id"?:        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union    @go(SidId)
+	"label-options"?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_LabelOptions @go(LabelOptions)
+	prefix?:          null | string                                                                                                                                                                                  @go(Prefix,*string)
+	"sid-id"?:        #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union        @go(SidId)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId?: #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union_E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId: E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId?: #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_AfiSafi_Af_SegmentRouting_PrefixSids_PrefixSid_Config_SidId_Union_String: String?: string
 
@@ -5761,11 +5761,11 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_HelloAuthentication_Config: {
-	"auth-mode"?:     #E_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
-	"auth-password"?: null | string                        @go(AuthPassword,*string)
-	"auth-type"?:     #E_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
-	enabled?:         null | bool                          @go(Enabled,*bool)
-	keychain?:        null | string                        @go(Keychain,*string)
+	"auth-mode"?:     #enumE_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
+	"auth-password"?: null | string                            @go(AuthPassword,*string)
+	"auth-type"?:     #enumE_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
+	enabled?:         null | bool                              @go(Enabled,*bool)
+	keychain?:        null | string                            @go(Keychain,*string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Interfaces_Interface_Levels_Level_PacketCounters: {
@@ -5860,21 +5860,21 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Levels_Level_Authentication_Config: {
-	"auth-mode"?:     #E_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
-	"auth-password"?: null | string                        @go(AuthPassword,*string)
-	"auth-type"?:     #E_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
-	"disable-csnp"?:  null | bool                          @go(DisableCsnp,*bool)
-	"disable-lsp"?:   null | bool                          @go(DisableLsp,*bool)
-	"disable-psnp"?:  null | bool                          @go(DisablePsnp,*bool)
-	enabled?:         null | bool                          @go(Enabled,*bool)
-	keychain?:        null | string                        @go(Keychain,*string)
+	"auth-mode"?:     #enumE_OpenconfigIsisTypes_AUTH_MODE     @go(AuthMode)
+	"auth-password"?: null | string                            @go(AuthPassword,*string)
+	"auth-type"?:     #enumE_OpenconfigKeychainTypes_AUTH_TYPE @go(AuthType)
+	"disable-csnp"?:  null | bool                              @go(DisableCsnp,*bool)
+	"disable-lsp"?:   null | bool                              @go(DisableLsp,*bool)
+	"disable-psnp"?:  null | bool                              @go(DisablePsnp,*bool)
+	enabled?:         null | bool                              @go(Enabled,*bool)
+	keychain?:        null | string                            @go(Keychain,*string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Levels_Level_Config: {
-	"authentication-check"?: null | bool                   @go(AuthenticationCheck,*bool)
-	enabled?:                null | bool                   @go(Enabled,*bool)
-	"level-number"?:         null | uint8                  @go(LevelNumber,*uint8)
-	"metric-style"?:         #E_OpenconfigIsis_MetricStyle @go(MetricStyle)
+	"authentication-check"?: null | bool                       @go(AuthenticationCheck,*bool)
+	enabled?:                null | bool                       @go(Enabled,*bool)
+	"level-number"?:         null | uint8                      @go(LevelNumber,*uint8)
+	"metric-style"?:         #enumE_OpenconfigIsis_MetricStyle @go(MetricStyle)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Isis_Levels_Level_RoutePreference: {
@@ -6002,14 +6002,14 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Interfaces_Interface_Config: {
-	"authentication-type"?:          null | string                            @go(AuthenticationType,*string)
-	"hide-network"?:                 null | bool                              @go(HideNetwork,*bool)
-	id?:                             null | string                            @go(Id,*string)
-	metric?:                         null | uint16                            @go(Metric,*uint16)
-	"multi-area-adjacency-primary"?: null | bool                              @go(MultiAreaAdjacencyPrimary,*bool)
-	"network-type"?:                 #E_OpenconfigOspfTypes_OSPF_NETWORK_TYPE @go(NetworkType)
-	passive?:                        null | bool                              @go(Passive,*bool)
-	priority?:                       null | uint8                             @go(Priority,*uint8)
+	"authentication-type"?:          null | string                                @go(AuthenticationType,*string)
+	"hide-network"?:                 null | bool                                  @go(HideNetwork,*bool)
+	id?:                             null | string                                @go(Id,*string)
+	metric?:                         null | uint16                                @go(Metric,*uint16)
+	"multi-area-adjacency-primary"?: null | bool                                  @go(MultiAreaAdjacencyPrimary,*bool)
+	"network-type"?:                 #enumE_OpenconfigOspfTypes_OSPF_NETWORK_TYPE @go(NetworkType)
+	passive?:                        null | bool                                  @go(Passive,*bool)
+	priority?:                       null | uint8                                 @go(Priority,*uint8)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Interfaces_Interface_EnableBfd: {
@@ -6133,11 +6133,11 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config: {
-	"hide-transit-only-networks"?: null | bool                                                                                                                @go(HideTransitOnlyNetworks,*bool)
-	"igp-shortcuts"?:              null | bool                                                                                                                @go(IgpShortcuts,*bool)
-	"log-adjacency-changes"?:      null | bool                                                                                                                @go(LogAdjacencyChanges,*bool)
-	"router-id"?:                  null | string                                                                                                              @go(RouterId,*string)
-	"summary-route-cost-mode"?:    #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode @go(SummaryRouteCostMode)
+	"hide-transit-only-networks"?: null | bool                                                                                                                    @go(HideTransitOnlyNetworks,*bool)
+	"igp-shortcuts"?:              null | bool                                                                                                                    @go(IgpShortcuts,*bool)
+	"log-adjacency-changes"?:      null | bool                                                                                                                    @go(LogAdjacencyChanges,*bool)
+	"router-id"?:                  null | string                                                                                                                  @go(RouterId,*string)
+	"summary-route-cost-mode"?:    #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_Config_SummaryRouteCostMode @go(SummaryRouteCostMode)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_GracefulRestart: {
@@ -6177,7 +6177,7 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Global_InterAreaPropagationPolicies_InterAreaPropagationPolicy_Config: {
-	"default-import-policy"?: #E_OpenconfigRoutingPolicy_DefaultPolicyType                                                                             @go(DefaultImportPolicy)
+	"default-import-policy"?: #enumE_OpenconfigRoutingPolicy_DefaultPolicyType                                                                         @go(DefaultImportPolicy)
 	"dst-area"?:              #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(DstArea)
 	"import-policy"?: [...string] @go(ImportPolicy,[]string)
 	"src-area"?: #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Ospfv2_Areas_Area_Config_Identifier_Union @go(SrcArea)
@@ -6274,15 +6274,15 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Pcep_PathComputationServers_PathComputationServer_Config: {
-	id?:                         null | string                 @go(Id,*string)
-	"pce-initiated-capability"?: null | bool                   @go(PceInitiatedCapability,*bool)
-	"pce-server-address"?:       null | string                 @go(PceServerAddress,*string)
-	"pce-type"?:                 #E_OpenconfigPcep_PceModeType @go(PceType)
-	port?:                       null | uint16                 @go(Port,*uint16)
-	preference?:                 null | uint8                  @go(Preference,*uint8)
-	"report-local-lsp"?:         null | bool                   @go(ReportLocalLsp,*bool)
-	"source-address"?:           null | string                 @go(SourceAddress,*string)
-	"sr-support"?:               null | bool                   @go(SrSupport,*bool)
+	id?:                         null | string                     @go(Id,*string)
+	"pce-initiated-capability"?: null | bool                       @go(PceInitiatedCapability,*bool)
+	"pce-server-address"?:       null | string                     @go(PceServerAddress,*string)
+	"pce-type"?:                 #enumE_OpenconfigPcep_PceModeType @go(PceType)
+	port?:                       null | uint16                     @go(Port,*uint16)
+	preference?:                 null | uint8                      @go(Preference,*uint8)
+	"report-local-lsp"?:         null | bool                       @go(ReportLocalLsp,*bool)
+	"source-address"?:           null | string                     @go(SourceAddress,*string)
+	"sr-support"?:               null | bool                       @go(SrSupport,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Pcep_PathComputationServers_PathComputationServer_Timers: {
@@ -6369,16 +6369,16 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Pim_Interfaces_Interface_Config: {
-	"border-router"?:       null | bool                    @go(BorderRouter,*bool)
-	"bsr-border"?:          null | bool                    @go(BsrBorder,*bool)
-	"dead-timer"?:          null | uint16                  @go(DeadTimer,*uint16)
-	"dr-priority"?:         null | uint32                  @go(DrPriority,*uint32)
-	enabled?:               null | bool                    @go(Enabled,*bool)
-	"hello-interval"?:      null | uint8                   @go(HelloInterval,*uint8)
-	"interface-id"?:        null | string                  @go(InterfaceId,*string)
-	"join-prune-interval"?: null | uint8                   @go(JoinPruneInterval,*uint8)
-	"maximum-groups"?:      null | uint32                  @go(MaximumGroups,*uint32)
-	mode?:                  #E_OpenconfigPimTypes_PIM_MODE @go(Mode)
+	"border-router"?:       null | bool                        @go(BorderRouter,*bool)
+	"bsr-border"?:          null | bool                        @go(BsrBorder,*bool)
+	"dead-timer"?:          null | uint16                      @go(DeadTimer,*uint16)
+	"dr-priority"?:         null | uint32                      @go(DrPriority,*uint32)
+	enabled?:               null | bool                        @go(Enabled,*bool)
+	"hello-interval"?:      null | uint8                       @go(HelloInterval,*uint8)
+	"interface-id"?:        null | string                      @go(InterfaceId,*string)
+	"join-prune-interval"?: null | uint8                       @go(JoinPruneInterval,*uint8)
+	"maximum-groups"?:      null | uint32                      @go(MaximumGroups,*uint32)
+	mode?:                  #enumE_OpenconfigPimTypes_PIM_MODE @go(Mode)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_Pim_Interfaces_Interface_EnableBfd: {
@@ -6465,7 +6465,7 @@ import "strings"
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union: _
 
-#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union_E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP: E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP?: #E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP
+#OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union_E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP: E_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP?: #enumE_OpenconfigLocalRouting_LOCAL_DEFINED_NEXT_HOP
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Protocols_Protocol_StaticRoutes_Static_NextHops_NextHop_Config_NextHop_Union_String: String?: string
 
@@ -6503,15 +6503,15 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_RouteLimits_RouteLimit: {
-	afi?:    #E_OpenconfigTypes_ADDRESS_FAMILY                                                                @go(Afi)
+	afi?:    #enumE_OpenconfigTypes_ADDRESS_FAMILY                                                            @go(Afi)
 	config?: null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_RouteLimits_RouteLimit_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_RouteLimits_RouteLimit_Config)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_RouteLimits_RouteLimit_Config: {
-	afi?:               #E_OpenconfigTypes_ADDRESS_FAMILY @go(Afi)
-	"alarm-threshold"?: null | uint32                     @go(AlarmThreshold,*uint32)
-	maximum?:           null | uint32                     @go(Maximum,*uint32)
-	"warning-only"?:    null | bool                       @go(WarningOnly,*bool)
+	afi?:               #enumE_OpenconfigTypes_ADDRESS_FAMILY @go(Afi)
+	"alarm-threshold"?: null | uint32                         @go(AlarmThreshold,*uint32)
+	maximum?:           null | uint32                         @go(Maximum,*uint32)
+	"warning-only"?:    null | bool                           @go(WarningOnly,*bool)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_SegmentRouting: {
@@ -6541,7 +6541,7 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_SegmentRouting_Srgbs_Srgb_Config: {
-	"dataplane-type"?: #E_OpenconfigSegmentRouting_SrDataplaneType @go(DataplaneType)
+	"dataplane-type"?: #enumE_OpenconfigSegmentRouting_SrDataplaneType @go(DataplaneType)
 	"ipv6-prefixes"?: [...string] @go(Ipv6Prefixes,[]string)
 	"local-id"?: null | string @go(LocalId,*string)
 	"mpls-label-blocks"?: [...string] @go(MplsLabelBlocks,[]string)
@@ -6569,10 +6569,10 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_SegmentRouting_Srlbs_Srlb_Config: {
-	"dataplane-type"?:   #E_OpenconfigSegmentRouting_SrDataplaneType @go(DataplaneType)
-	"ipv6-prefix"?:      null | string                               @go(Ipv6Prefix,*string)
-	"local-id"?:         null | string                               @go(LocalId,*string)
-	"mpls-label-block"?: null | string                               @go(MplsLabelBlock,*string)
+	"dataplane-type"?:   #enumE_OpenconfigSegmentRouting_SrDataplaneType @go(DataplaneType)
+	"ipv6-prefix"?:      null | string                                   @go(Ipv6Prefix,*string)
+	"local-id"?:         null | string                                   @go(LocalId,*string)
+	"mpls-label-block"?: null | string                                   @go(MplsLabelBlock,*string)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections: {
@@ -6592,25 +6592,25 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection_Key: {
-	"src-protocol"?:   #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(SrcProtocol)
-	"dst-protocol"?:   #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(DstProtocol)
-	"address-family"?: #E_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
+	"src-protocol"?:   #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(SrcProtocol)
+	"dst-protocol"?:   #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(DstProtocol)
+	"address-family"?: #enumE_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection: {
-	"address-family"?: #E_OpenconfigTypes_ADDRESS_FAMILY                                                                          @go(AddressFamily)
+	"address-family"?: #enumE_OpenconfigTypes_ADDRESS_FAMILY                                                                      @go(AddressFamily)
 	config?:           null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection_Config)
-	"dst-protocol"?:   #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                             @go(DstProtocol)
-	"src-protocol"?:   #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                             @go(SrcProtocol)
+	"dst-protocol"?:   #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                         @go(DstProtocol)
+	"src-protocol"?:   #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                                         @go(SrcProtocol)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_TableConnections_TableConnection_Config: {
-	"address-family"?:             #E_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
-	"default-import-policy"?:      #E_OpenconfigRoutingPolicy_DefaultPolicyType   @go(DefaultImportPolicy)
-	"disable-metric-propagation"?: null | bool                                    @go(DisableMetricPropagation,*bool)
-	"dst-protocol"?:               #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(DstProtocol)
+	"address-family"?:             #enumE_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
+	"default-import-policy"?:      #enumE_OpenconfigRoutingPolicy_DefaultPolicyType   @go(DefaultImportPolicy)
+	"disable-metric-propagation"?: null | bool                                        @go(DisableMetricPropagation,*bool)
+	"dst-protocol"?:               #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(DstProtocol)
 	"import-policy"?: [...string] @go(ImportPolicy,[]string)
-	"src-protocol"?: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(SrcProtocol)
+	"src-protocol"?: #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(SrcProtocol)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables: {
@@ -6630,19 +6630,19 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table_Key: {
-	protocol?:         #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Protocol)
-	"address-family"?: #E_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
+	protocol?:         #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Protocol)
+	"address-family"?: #enumE_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table: {
-	"address-family"?: #E_OpenconfigTypes_ADDRESS_FAMILY                                                      @go(AddressFamily)
+	"address-family"?: #enumE_OpenconfigTypes_ADDRESS_FAMILY                                                  @go(AddressFamily)
 	config?:           null | #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table_Config @go(Config,*OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table_Config)
-	protocol?:         #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                         @go(Protocol)
+	protocol?:         #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE                                     @go(Protocol)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Tables_Table_Config: {
-	"address-family"?: #E_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
-	protocol?:         #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Protocol)
+	"address-family"?: #enumE_OpenconfigTypes_ADDRESS_FAMILY              @go(AddressFamily)
+	protocol?:         #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(Protocol)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans: {
@@ -6668,9 +6668,9 @@ import "strings"
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config: {
-	name?:      null | string                                                                          @go(Name,*string)
-	status?:    #E_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status @go(Status)
-	"vlan-id"?: null | uint16                                                                          @go(VlanId,*uint16)
+	name?:      null | string                                                                              @go(Name,*string)
+	status?:    #enumE_OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Config_Status @go(Status)
+	"vlan-id"?: null | uint16                                                                              @go(VlanId,*uint16)
 }
 
 #OpenconfigNetworkInstance_NetworkInstances_NetworkInstance_Vlans_Vlan_Members: {
@@ -6736,8 +6736,8 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config: {
-	mode?: #E_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode @go(Mode)
-	name?: null | string                                                                         @go(Name,*string)
+	mode?: #enumE_OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Config_Mode @go(Mode)
+	name?: null | string                                                                             @go(Name,*string)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_DefinedSets_PrefixSets_PrefixSet_Prefixes: {
@@ -6859,7 +6859,7 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_Config: {
-	"policy-result"?: #E_OpenconfigRoutingPolicy_PolicyResultType @go(PolicyResult)
+	"policy-result"?: #enumE_OpenconfigRoutingPolicy_PolicyResultType @go(PolicyResult)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag: {
@@ -6869,7 +6869,7 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config: {
-	mode?: #E_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode @go(Mode)
+	mode?: #enumE_OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Config_Mode @go(Mode)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Actions_SetTag_Inline: {
@@ -6903,8 +6903,8 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_Config: {
-	"call-policy"?:         null | string                                  @go(CallPolicy,*string)
-	"install-protocol-eq"?: #E_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(InstallProtocolEq)
+	"call-policy"?:         null | string                                      @go(CallPolicy,*string)
+	"install-protocol-eq"?: #enumE_OpenconfigPolicyTypes_INSTALL_PROTOCOL_TYPE @go(InstallProtocolEq)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchInterface: {
@@ -6921,8 +6921,8 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchNeighborSet_Config: {
-	"match-set-options"?: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType @go(MatchSetOptions)
-	"neighbor-set"?:      null | string                                            @go(NeighborSet,*string)
+	"match-set-options"?: #enumE_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType @go(MatchSetOptions)
+	"neighbor-set"?:      null | string                                                @go(NeighborSet,*string)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchPrefixSet: {
@@ -6930,8 +6930,8 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchPrefixSet_Config: {
-	"match-set-options"?: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType @go(MatchSetOptions)
-	"prefix-set"?:        null | string                                            @go(PrefixSet,*string)
+	"match-set-options"?: #enumE_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType @go(MatchSetOptions)
+	"prefix-set"?:        null | string                                                @go(PrefixSet,*string)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchTagSet: {
@@ -6939,8 +6939,8 @@ import "strings"
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Conditions_MatchTagSet_Config: {
-	"match-set-options"?: #E_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType @go(MatchSetOptions)
-	"tag-set"?:           null | string                                            @go(TagSet,*string)
+	"match-set-options"?: #enumE_OpenconfigRoutingPolicy_MatchSetOptionsRestrictedType @go(MatchSetOptions)
+	"tag-set"?:           null | string                                                @go(TagSet,*string)
 }
 
 #OpenconfigRoutingPolicy_RoutingPolicy_PolicyDefinitions_PolicyDefinition_Statements_Statement_Config: {
