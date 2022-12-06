@@ -4,3 +4,5 @@ yang
 openconfig
 log
 bkp
+.*
+clab-ceos
